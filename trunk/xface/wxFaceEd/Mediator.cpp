@@ -29,6 +29,7 @@
 #include <wx/event.h>
 #include <wx/utils.h>
 #include <wx/busyinfo.h>
+#include <wx/filename.h>
 
 #include <XEngine/ModelFileFactory.h>
 #include <XFace/FDPWriter.h>
@@ -53,14 +54,15 @@ Mediator::Mediator(void) : m_pAffectedList(0), m_pFDPItem(0), m_pView(0), m_pFAP
 
 	// init dictionaries (is this a good place?)
 	DicTraverser traverser;
-	wxDir dir(_T(".\\lang\\"));
+	wxDir dir(_T("./lang/"));
 	dir.Traverse(traverser);
 	wxArrayString dics = traverser.getFileNames();
+	m_face.addPhonemeDictionary("italian.dic");
+	m_face.addPhonemeDictionary("enSAPI.dic");
 	for (unsigned int i = 0; i < dics.GetCount(); ++i)
-		m_face.addPhonemeDictionary((const char*)dics[i].c_str());
+		//m_face.addPhonemeDictionary( (const char*)dics[i].c_str() );
 	if(dics.GetCount() == 0)
 		std::cerr << "No dictionary file found!\n";
-
 }
 
 Mediator::~Mediator(void)

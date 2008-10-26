@@ -64,6 +64,7 @@ END_EVENT_TABLE()
 FaceView::FaceView(wxWindow *parent, wxWindowID id,
     const wxPoint& pos, const wxSize& size, long style, const wxString& name):
   wxGLCanvas(parent, (wxGLCanvas*) NULL, id, pos, size, style, name )
+ //wxGLCanvas(parent, id, pos, size, style|wxFULL_REPAINT_ON_RESIZE|WX_GL_DOUBLEBUFFER|WX_GL_RGBA|WX_GL_DEPTH_SIZE, name )
 {
 	wxLogNull nolog;
 	SetCameraMode(NAVIGATE);
@@ -73,7 +74,7 @@ FaceView::FaceView(wxWindow *parent, wxWindowID id,
 	for (int i = 0; i < 7; ++i)
 		m_bFAPU[i] = false;
 
-    m_init = FALSE;
+        m_init = FALSE;
 	m_globalTransform.setTranslation(m_viewCamera.getReferencePoint());
 	m_globalTransform.setRotation(Quaternion(AxisAngle(Vector3(-0.999632, -0.0154467, 0.0223226), 0.407589)));
 	m_globalTransform.updateLocalTransform();
