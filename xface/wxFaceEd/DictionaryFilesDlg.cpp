@@ -50,7 +50,7 @@ void DictionaryFilesDlg::UpdateList()
 {
 	m_dicList->DeleteAllItems();
 	DicTraverser traverser;
-	wxDir dir(_T(".\\lang\\"));
+	wxDir dir(_T("./lang/"));
 	dir.Traverse(traverser);
 	wxArrayString dics = traverser.getFileNames();
 	for (unsigned int i = 0; i < dics.GetCount(); ++i)

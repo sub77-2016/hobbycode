@@ -69,7 +69,7 @@ class FaceFrame : public wxFrame
 	DictionaryFilesDlg* m_dictionaryDlg;
 	LeftPanel *m_panel;
 	FaceView *m_GLwnd;
-    wxSplitterWindow* m_splitter;
+        wxSplitterWindow* m_splitter;
 	wxHtmlHelpController m_help;
 public:
 	FaceFrame();
