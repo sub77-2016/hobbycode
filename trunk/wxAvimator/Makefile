@@ -1,0 +1,64 @@
+# Uncomment the appropriate line to match your platform:
+
+LINUX = 1
+#MINGW = 1
+#MACOSX = 1
+
+ifdef LINUX
+ROOT = /usr
+CC = g++
+CFLAGS = -Wall `wx-config --cxxflags` -Iart -Ilibquat -DLINUX
+LIBS = -Llibquat `wx-config --libs --gl-libs` -lquat -lz -lm $(GL_LIBS) $(LUA_LIBS) 
+GL_LIBS = -lGL -lGLU -lglut
+LUA_LIBS = -llualib -llua 
+endif
+
+ifdef MINGW
+ROOT = /mingw
+CC = g++
+CFLAGS=-I/usr/include `fltk-config --cflags` -Ilibquat -DMINGW
+LIBS=-L$(ROOT)/lib -L/lib -Llibquat `fltk-config --ldflags` -lfltk_images -lfltk_gl -lfltk_png -lquat -lfltk_z -lm $(GL_LIBS) 
+GL_LIBS = -lopengl32 -lglu32 -lglut32
+endif
+
+ifdef MACOSX
+ROOT = /usr
+CC = g++
+CFLAGS=-arch i386 -arch ppc `fltk-config --cflags` -Ilibquat -DMACOSX
+LIBS=-L$(ROOT)/lib -Llibquat `fltk-config --ldflags` -lfltk_images -lfltk_gl -lfltk_png -lquat -lz -lm $(GL_LIBS) 
+GL_LIBS = -framework AGL -framework OpenGL -framework GLUT
+endif
+
+APP_NAME = wxAvimator
+
+OBJS = Main.o MainApplication.o LuaScriptEditor.o LuaScriptEngine.o AnimationView.o Animation.o Camera.o SLPartsMale.o SLPartsFemale.o Math3D.o IKTree.o glm.o bvh.o 
+
+$(APP_NAME): $(OBJS) 
+	CC="$(CC)" CFLAGS="$(CFLAGS)" $(MAKE) -C libquat
+	$(CC) $(CFLAGS) -O3 -o $(APP_NAME) $(OBJS) $(LIBS)
+	#fltk-config --post $(APP_NAME)
+
+lua: avlua
+
+avlua: LuaMain.o MainApplication.o AnimationView.o Animation.o Camera.o SLPartsMale.o SLPartsFemale.o Math3D.o IKTree.o glm.o bvh.o
+	 $(CC) $(CFLAGS) -O3 -o $@ $(OBJS) $(LIBS)
+
+.c.o: 
+	$(CC) $(CFLAGS) -c $<
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c $<
+
+wrap: LuaScriptEngine.i
+	swig -c++ -lua $<
+
+clean:
+	cp SLPartsMale.o SPM.tmp
+	cp SLPartsFemale.o SPF.tmp
+	rm -rf *.o
+	rm -rf *~
+	rm -f $(APP_NAME) $(APP_NAME).exe luaAvimator
+	mv SPM.tmp SLPartsMale.o 
+	mv SPF.tmp SLPartsFemale.o
+.PHONY: clean wrap 
+

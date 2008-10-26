@@ -1,0 +1,362 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {.h} 
+code_name {.cpp}
+widget_class MainWindow {
+  label Avimator
+  callback cb_MainWindow open
+  xywh {405 133 800 600} type Double color 0 align 80 resizable
+  code0 {\#include "MainWindow_src.h"}
+  code1 {\#define APPLICATION_NAME "Avimator"}
+  code2 {initialize();}
+  class Fl_Double_Window visible
+} {
+  Fl_Menu_Bar {} {open
+    xywh {0 0 800 25} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 7 labelsize 12 labelcolor 39 textsize 12
+  } {
+    Submenu {} {
+      label File open
+      xywh {0 0 80 20} labelsize 12
+    } {
+      MenuItem {} {
+        label New
+        callback cb_New
+        xywh {0 0 30 20} shortcut 0x4006e labelsize 12
+      }
+      MenuItem {} {
+        label {Open File...}
+        callback cb_Open
+        xywh {10 10 30 20} shortcut 0x4006f labelsize 12
+      }
+      MenuItem {} {
+        label Save
+        callback cb_Save
+        xywh {0 0 30 20} shortcut 0x40073 labelsize 12
+      }
+      MenuItem {} {
+        label {Save As...}
+        callback cb_SaveAs
+        xywh {5 5 30 20} labelsize 12 divider
+      }
+      MenuItem {} {
+        label Exit
+        callback cb_Exit
+        xywh {0 0 30 20} labelsize 12
+      }
+    }
+    Submenu {} {
+      label Edit open
+      xywh {0 0 62 20} labelsize 12
+    } {
+      MenuItem {} {
+        label {Copy Frame}
+        callback cb_CopyFrame
+        xywh {0 0 30 20} shortcut 0x40063 labelsize 12
+      }
+      MenuItem editPasteFrame {
+        label {Paste Frame}
+        callback cb_PasteFrame
+        xywh {10 10 30 20} shortcut 0x40076 labelsize 12
+      }
+    }
+    Submenu {} {
+      label Options open
+      xywh {0 0 62 20} labelsize 12
+    } {
+      Submenu {} {
+        label Figure open
+        xywh {0 0 62 20} labelsize 12
+      } {
+        MenuItem {} {
+          label Male
+          callback cb_FigureMale
+          xywh {5 5 30 20} type Radio value 1 labelsize 12
+        }
+        MenuItem {} {
+          label Female
+          callback cb_FigureFemale
+          xywh {5 5 30 20} type Radio labelsize 12
+        }
+      }
+      Submenu {} {
+        label Skeleton open
+        xywh {0 0 62 20} labelsize 12
+      } {
+        MenuItem {} {
+          label Show
+          callback cb_JointsShow
+          xywh {5 5 30 20} type Radio labelsize 12
+        }
+        MenuItem {} {
+          label Hide
+          callback cb_JointsHide
+          xywh {5 5 30 20} type Radio value 1 labelsize 12
+        }
+      }
+      Submenu {} {
+        label {Joint Limits} open
+        xywh {10 10 62 20} labelsize 12
+      } {
+        MenuItem limits {
+          label On
+          callback cb_LimitsOn
+          xywh {15 15 30 20} type Radio labelsize 12
+        }
+        MenuItem {} {
+          label Off
+          callback cb_LimitsOff
+          xywh {15 15 30 20} type Radio value 1 labelsize 12
+        }
+      }
+      MenuItem {} {
+        label Loop
+        callback cb_Loop
+        xywh {0 0 30 20} type Toggle value 1 labelsize 12
+      }
+    }
+  }
+  Fl_Pack {} {open
+    xywh {0 25 800 575} resizable
+  } {
+    Fl_Pack {} {open
+      private xywh {0 25 800 550} type HORIZONTAL color 7 resizable
+    } {
+      Fl_Box view {
+        callback cb_AnimationView
+        xywh {0 25 640 550} box FLAT_BOX color 0 resizable
+        code0 {\#include "AnimationView.h"}
+        class AnimationView
+      }
+      Fl_Group {} {open
+        xywh {640 25 160 550} color 0 selection_color 55
+      } {
+        Fl_Choice partChoice {
+          label {Edit Part: }
+          callback cb_PartChoice
+          tooltip {Select body part to edit} xywh {700 35 90 20} box DOWN_BOX down_box BORDER_BOX color 0 labelsize 10 labelcolor 7 textsize 10 textcolor 7
+          code0 {o->value(1);}
+        } {
+          MenuItem {} {
+            label hip
+            xywh {5 5 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label abdomen
+            xywh {15 15 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label chest
+            xywh {25 25 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label neck
+            xywh {35 35 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label head
+            xywh {45 45 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label lCollar
+            xywh {55 55 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label lShldr
+            xywh {65 65 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label lForeArm
+            xywh {75 75 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label lHand
+            xywh {85 85 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label rCollar
+            xywh {65 65 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label rShldr
+            xywh {75 75 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label rForeArm
+            xywh {85 85 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label rHand
+            xywh {95 95 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label lThigh
+            xywh {105 105 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label lShin
+            xywh {115 115 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label lFoot
+            xywh {125 125 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label rThigh
+            xywh {115 115 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label rShin
+            xywh {125 125 30 20} value 1 labelsize 10 labelcolor 7
+          }
+          MenuItem {} {
+            label rFoot
+            xywh {135 135 30 20} value 1 labelsize 10 labelcolor 7
+          }
+        }
+        Fl_Roller xRotRoller {
+          callback cb_RotRoller
+          xywh {650 80 140 20} type Horizontal minimum -180 maximum 180 step 1
+        }
+        Fl_Value_Input xRotValue {
+          label {X-Rotation: }
+          callback cb_RotValue
+          tooltip {Current X-Rotation in degrees} xywh {710 65 45 15} box FLAT_BOX color 0 selection_color 31 labelsize 10 labelcolor 7 minimum -180 maximum 180 step 0.01 textsize 10 textcolor 7
+          code0 {o->soft(false);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+        Fl_Roller yRotRoller {
+          callback cb_RotRoller
+          xywh {650 120 140 20} type Horizontal minimum -180 maximum 180 step 1
+        }
+        Fl_Value_Input yRotValue {
+          label {Y-Rotation: }
+          callback cb_RotValue
+          tooltip {Current Y-Rotation in degrees} xywh {710 105 45 15} box FLAT_BOX color 0 selection_color 31 labelsize 10 labelcolor 7 minimum -180 maximum 180 step 0.01 textsize 10 textcolor 7
+          code0 {o->soft(false);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+        Fl_Roller zRotRoller {
+          callback cb_RotRoller
+          xywh {650 160 140 20} type Horizontal minimum -180 maximum 180 step 1
+        }
+        Fl_Value_Input zRotValue {
+          label {Z-Rotation: }
+          callback cb_RotValue
+          tooltip {Current Z-Rotation in degrees} xywh {710 145 45 15} box FLAT_BOX color 0 selection_color 31 labelsize 10 labelcolor 7 minimum -180 maximum 180 step 0.01 textsize 10 textcolor 7
+          code0 {o->soft(false);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+        Fl_Roller xPosRoller {
+          callback cb_PosRoller
+          xywh {650 230 140 20} type Horizontal minimum -196.85 maximum 196.85 step 1
+        }
+        Fl_Value_Input xPosValue {
+          label {X-Position: }
+          callback cb_PosValue
+          tooltip {Current X-Rotation in degrees} xywh {710 215 45 15} box FLAT_BOX color 0 selection_color 31 labelsize 10 labelcolor 7 minimum -196.85 maximum 196.85 step 0.01 textsize 10 textcolor 7
+          code0 {o->soft(false);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+        Fl_Roller yPosRoller {
+          callback cb_PosRoller
+          xywh {650 270 140 20} type Horizontal minimum -196.85 maximum 196.85 step 1 value 43
+        }
+        Fl_Value_Input yPosValue {
+          label {Y-Position: }
+          callback cb_PosValue
+          tooltip {Current Y-Rotation in degrees} xywh {710 255 45 15} box FLAT_BOX color 0 selection_color 31 labelsize 10 labelcolor 7 minimum -196.85 maximum 196.85 step 0.01 value 43 textsize 10 textcolor 7
+          code0 {o->soft(false);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+        Fl_Roller zPosRoller {
+          callback cb_PosRoller
+          xywh {650 310 140 20} type Horizontal minimum -196.85 maximum 196.85 step 1
+        }
+        Fl_Value_Input zPosValue {
+          label {Z-Position: }
+          callback cb_PosValue
+          tooltip {Current Z-Rotation in degrees} xywh {710 295 45 15} box FLAT_BOX color 0 selection_color 31 labelsize 10 labelcolor 7 minimum -196.85 maximum 196.85 step 0.01 textsize 10 textcolor 7
+          code0 {o->soft(false);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+        Fl_Output {} {
+          private xywh {765 145 30 15} box FLAT_BOX color 0 labeltype NO_LABEL labelsize 10 align 56 textsize 10 textcolor 4
+          code0 {o->value("Ctrl");}
+        }
+        Fl_Output {} {
+          private xywh {765 105 30 15} box FLAT_BOX color 0 labeltype NO_LABEL labelsize 10 align 56 textsize 10 textcolor 2
+          code0 {o->value("Alt");}
+        }
+        Fl_Output {} {
+          private xywh {765 65 30 15} box FLAT_BOX color 0 selection_color 7 labeltype NO_LABEL labelsize 10 align 56 textsize 10 textcolor 1
+          code0 {o->value("Shift");}
+        }
+        Fl_Value_Input fpsValue {
+          label {FPS: }
+          callback cb_fpsValue
+          tooltip {Frames per second} xywh {765 555 30 15} box FLAT_BOX color 30 selection_color 0 labelsize 10 labelcolor 7 minimum 1 maximum 300 step 0.01 value 30 textsize 10 textcolor 7
+          code0 {o->soft(false);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+      }
+    }
+    Fl_Pack {} {open
+      xywh {0 575 800 25} type HORIZONTAL
+    } {
+      Fl_Slider frameSlider {
+        callback cb_FrameSlider
+        tooltip {Drag to change frames} xywh {0 575 645 25} type {Horz Knob} box PLASTIC_UP_BOX color 0 selection_color 3 labeltype NO_LABEL labelsize 10 labelcolor 7 align 0 minimum 1 step 1 value 1
+      }
+      Fl_Button playBtn {
+        callback cb_PlayBtn
+        tooltip {Play/Pause Animation} xywh {645 575 25 25} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 0
+      }
+      Fl_Button keyBtn {
+        callback cb_KeyBtn
+        tooltip {Toggle Keyframe} xywh {670 575 25 25} box PLASTIC_UP_BOX down_box PLASTIC_DOWN_BOX color 0
+      }
+      Fl_Group {} {open
+        xywh {695 575 105 25}
+      } {
+      Fl_Output {} {
+        xywh {695 575 35 25} box FLAT_BOX color 0 labeltype NO_LABEL labelcolor 7 align 16 textsize 10 textcolor 7
+        code0 {o->value("Frame:");}
+      }
+      Fl_Value_Input frameValue {
+        tooltip {Current frame number} xywh {730 580 25 15} box FLAT_BOX color 0 labeltype NO_LABEL labelsize 10 align 16 minimum 1 value 1 textsize 10 textcolor 7
+      }
+      Fl_Output {} {
+          xywh {745 575 15 25} box FLAT_BOX color 0 labeltype NO_LABEL labelcolor 7 align 16 textsize 10 textcolor 7
+        code0 {o->value("of ");}
+      }
+      Fl_Value_Input numFramesValue {
+          callback cb_NumFramesValue selected
+          tooltip {Double-click to change animation length} xywh {765 580 30 15} box FLAT_BOX color 30 labeltype NO_LABEL labelsize 10 align 16 when 4 minimum 1 maximum 1800 step 1 value 1 textsize 10 textcolor 7
+        code0 {o->when(FL_WHEN_RELEASE | FL_WHEN_ENTER_KEY);}
+          code1 {o->cursor_color(FL_WHITE);}
+        }
+      }
+    }
+  }
+  decl {char currentFile[256];} {public
+  }
+  decl {void initialize();} {public
+  }
+  decl {bool playing;} {public
+  }
+  decl {Fl_PNG_Image *playImage;} {public
+  }
+  decl {Fl_PNG_Image *pauseImage;} {public
+  }
+  decl {Fl_PNG_Image *keyImage;} {public
+  }
+  decl {Fl_PNG_Image *nokeyImage;} {public
+  }
+  decl {int handle(int event);} {}
+  decl {double frameData[512];} {public
+  }
+  decl {bool frameDataValid;} {public
+  }
+  decl {bool loop;} {public
+  }
+} 

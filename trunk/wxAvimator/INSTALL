@@ -1,0 +1,26 @@
+To build Avimator, take the following steps:
+
+1. Download the FLTK source:
+http://ftp.easysw.com/pub/fltk/1.1.7/fltk-1.1.7-source.tar.gz
+2. Untar it into a temporary directory and change to that directory
+3. Execute: ./configure --enable-gl --enable-localpng --prefix=/usr
+4. Execute: make
+5. Execute: make install
+6. Download the avimator source:
+http://avimator.com/downloads/avimator-X.Y-src.tar.gz
+7. Untar it into a temporary directory and change to that directory
+8. Edit "Makefile" and uncomment the line that matches your platform.
+   Use "MINGW=1" for Windows. Currently, you will need to install mingw 
+   (http://www.mingw.org/) to compile it on Windows. If you make a project file
+   for Microsoft Visual Studio, please send me a copy and I will include it 
+   with the source. Thanks!
+9. Execute: cd iksolver
+10. Execute: make
+11. Execute: cd ..
+12. Execute: make
+
+That's it!  You should now have a new binary called "avimator".  Run
+that from the command line.  If you run into problems, please visit the 
+Avimator forum (http://www.avimator.com/forums) and post a bug.
+
+Thanks!

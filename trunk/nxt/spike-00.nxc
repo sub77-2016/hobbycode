@@ -1,0 +1,57 @@
+/*
+Spike simple
+17/11/2007
+by Waipot Ngamsaad (Nxt@Waipot.com)
+http://nxt.waipot.com
+*/
+
+#include "NXCDefs.h"
+
+#define turn_right(s,t) \
+    OnFwd(OUT_B, s); OnRev(OUT_C, s); Wait(t);
+#define turn_left(s,t) \
+    OnRev(OUT_B, s); OnFwd(OUT_C, s); Wait(t);
+#define forwards(s,t) \
+    OnFwdReg(OUT_BC, s, OUT_REGMODE_SYNC); Wait(t);
+#define backwards(s,t) \
+    OnRevReg(OUT_BC, s, OUT_REGMODE_SYNC); Wait(t);
+    
+mutex moveMutex;
+
+void init(){
+   SetSensorTouch(IN_1);                   // Configure all the sensors.
+   SetSensorSound(IN_2);                   //
+   //SetSensorLight(IN_3);
+   SetSensorLowspeed(IN_4);                //
+}
+
+task detect(){
+  while(true){
+   Acquire(moveMutex);
+   while((SensorUS(IN_4)>=40)&&(SensorUS(IN_4)<80))
+       forwards(75,100);
+   while((SensorUS(IN_4)>=10)&&(SensorUS(IN_4)<40))
+       backwards(50,100);
+   Release(moveMutex);
+ }
+}
+
+task attack(){
+ while(true){
+   Acquire(moveMutex);
+   if(SensorUS(IN_4)<10){
+      Off(OUT_BC); //Stop
+      OnFwd(OUT_A,100);
+      Wait(1000);
+      OnRev(OUT_A,100);
+      Wait(100);
+   }
+   Release(moveMutex);
+ }
+}
+
+task main(){
+ Precedes(detect, attack);
+ init();
+} //End main
+
