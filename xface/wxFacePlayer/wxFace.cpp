@@ -67,8 +67,9 @@ bool wxFace::init()
 		wxDir dir(_T("./lang/"));
 		dir.Traverse(traverser);
 		wxArrayString dics = traverser.getFileNames();
-		for (int i = 0; i < dics.GetCount(); ++i)
-			m_pFace->addPhonemeDictionary((const char*)dics[i].c_str());
+		m_pFace->addPhonemeDictionary("italian.dic");
+		//for (int i = 0; i < dics.GetCount(); ++i)
+			//m_pFace->addPhonemeDictionary((const char*)dics[i].c_str());
 		if(dics.GetCount() == 0)
 			std::cerr << "No dictionary file found!\n";
 
