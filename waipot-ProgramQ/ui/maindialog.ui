@@ -1,0 +1,119 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MainDialog</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>MainDialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>663</width>
+            <height>443</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Program "Q" AIML v1.1 by Houssem BDIOUI (houssem.bdioui@gmail.com)</string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QGroupBox" row="1" column="0">
+            <property name="name">
+                <cstring>groupBox4</cstring>
+            </property>
+            <property name="title">
+                <string>Chat</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QTextEdit" row="0" column="0">
+                    <property name="name">
+                        <cstring>textEdit</cstring>
+                    </property>
+                    <property name="paletteBackgroundColor">
+                        <color>
+                            <red>209</red>
+                            <green>209</green>
+                            <blue>209</blue>
+                        </color>
+                    </property>
+                    <property name="textFormat">
+                        <enum>PlainText</enum>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                    <property name="undoRedoEnabled">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="0" column="0">
+            <property name="name">
+                <cstring>groupBox3</cstring>
+            </property>
+            <property name="title">
+                <string>User Input</string>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QComboBox">
+                    <property name="name">
+                        <cstring>comboBox</cstring>
+                    </property>
+                    <property name="editable">
+                        <bool>true</bool>
+                    </property>
+                    <property name="autoCompletion">
+                        <bool>true</bool>
+                    </property>
+                    <property name="duplicatesEnabled">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton1</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap>image0</pixmap>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Enter!</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </grid>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="591">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000021649444154388dedd54f68545718c6e1e7de9b349384a62394263b6f413021200dc2e8726653b28c0b571132c1457123edc6a581d2d63f441415a4143a29b69b8260445c09a3e0c2e51813503763a185e2c24c292499f1c6d345d0c4686a2266e70b1f1cce39fc78f978cf77a21082ed50bc2dd4ed0447ef13d6f3bbb43d36d19e1889a25f5443f08db2da3b132b52b189245246234994223f9907cf957cb545f88f529189ae5c5779a1b940e4b1c80187d5622d577b7b7af33255177cb129e079a98b2ab924572f0e15cbbb3edd454bcd33430eaf988bb54c8b28140b79cf544dfe0f7c52ea8c4a7bd25e1fd83b501e3e386cf6c1ac998733b7644a8e68ac5e3e2defa430b83818faeef70527cdfb611dfc7ba9132af1d938ecb8b323f42ff587c1c5c1d0fd7377704ae54d1e5652f1ad6a723029c6bb63d9bd4cb8161a8292a02132a153d93eda0a6da25cc4df649733a119a61c37fe26701b689a5e9e592e2eef5c6637be94775d5587bc020ac891c9f803bfa269dc77a636eada8ae363521fa9fb7acdc9137c828e357bb3b8899671a73786ae82e1a8ba31a9cf36b839871b1a6225e7de1ecbe4e56a48aac37e7dc8d6d54d54353c57727173595f9d152db7cd61715d4de3ae9acce72e6dfe01bd3a2b0e993726ef633471037fa989945c5e9bd1ad3886e0963afec115fc694ad83a94b53d863d3afd6bc4233c35e537e3ee5bda2af4758dca1b158cbe12bc7752f4e16b7aa1ff00db39ad95e4ce74590000000049454e44ae426082</data>
+    </image>
+</images>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

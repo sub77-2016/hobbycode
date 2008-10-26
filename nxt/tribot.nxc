@@ -1,0 +1,37 @@
+/* Control TriBot with NXC
+   11/11/2007
+   by Waipot (nodot@waipot.com)
+   http://nodot.waipot.com
+*/
+
+#include "NXCDefs.h"
+
+#define THRESHOLD 25
+#define NEAR 40 //cm
+#define MIC SENSOR_2
+
+task main(){
+     SetSensorTouch(IN_1);
+     SetSensorSound(IN_2);
+     SetSensorLight(IN_3);
+     SetSensorLowspeed(IN_4);
+     
+     RotateMotor(OUT_A,75,60);
+     Off(OUT_A);
+     RotateMotor(OUT_A,75,-60);
+     Off(OUT_A);
+     while(true){
+                 OnFwd(OUT_BC,50);
+                 while(SensorUS(IN_4)>NEAR);
+                 Off(OUT_BC);
+                 OnRev(OUT_BC,100);
+                 Wait(800);
+                 OnFwd(OUT_B,100);
+                 Wait(200);
+     }
+}
+
+
+
+
+
