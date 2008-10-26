@@ -1,0 +1,22 @@
+# The set of files whose dependency integrity should be checked:
+SET(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/waipot/svn/xface/wxFacePlayer/DropFAPFileTarget.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/DropFAPFileTarget.o"
+  "/home/waipot/svn/xface/wxFacePlayer/FaceView.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/FaceView.o"
+  "/home/waipot/svn/xface/wxFacePlayer/ServerThread.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/ServerThread.o"
+  "/home/waipot/svn/xface/wxFacePlayer/wxFacePlayerApp.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/wxFacePlayerApp.o"
+  "/home/waipot/svn/xface/wxFacePlayer/ConnPortSetting.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/ConnPortSetting.o"
+  "/home/waipot/svn/xface/wxFacePlayer/wxFace.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/wxFace.o"
+  "/home/waipot/svn/xface/wxFacePlayer/NotificationSenderThread.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/NotificationSenderThread.o"
+  "/home/waipot/svn/xface/wxFacePlayer/wxFacePlayerFrm.cpp"
+  "/home/waipot/svn/xface/wxFacePlayer/CMakeFiles/wxfaceplayer.dir/wxFacePlayerFrm.o"
+  )
