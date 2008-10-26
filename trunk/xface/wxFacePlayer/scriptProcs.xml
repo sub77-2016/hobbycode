@@ -30,9 +30,9 @@
 	<output filename="TempFile.wav"/>
 	<output filename="TempFile.fap"/>
 </scripter>
-<scripter name="SMIL-Agent" type="SMIL" lang="en_SAPI">
-	<TTSEngine lang="english" engine="SAPI51" ini="sapiEn.txt"/>
-	<TTSEngine lang="italian" engine="it_flite" path="C:\Work\DevLibs\it_flite\" />
+<scripter name="SMIL-Agent" type="SMIL" lang="italian">
+	<!--<TTSEngine lang="english" engine="SAPI51" ini="sapiEn.txt"/>-->
+	<TTSEngine lang="italian" engine="it_flite" path="flite" />
 	<output filename="TempFile.pho"/>
 	<output filename="TempFile.anim"/>
 	<output filename="TempFile.wav"/>
