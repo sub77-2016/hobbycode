@@ -1,0 +1,62 @@
+G Soft Desenvolvimento - Programador ISP 8051
+Gabriel Ortiz Lour - gsoftcr@mail.com
+
+** For English see the half bottom.
+
+Descrição do cabo para ISP:
+
+ Pinos da LPT  |  Conexão com o 8051
+--------------------------------------
+ 2             | -*
+--------------------------------------
+ 4             | 7 - MISO
+--------------------------------------
+ 7             | 6 - MOSI
+--------------------------------------
+ 8             | 8 - SCK
+--------------------------------------
+ 12            | -*
+--------------------------------------
+ 18 ao 25      | 20 - GND
+ ------------------------------------- 
+ * Pino 2 da LPT ligado diretamente ao pino 12 da LPT
+ 
+ Para a programação ISP funcionar só é necessário o 8051 esta alimentado por
+5 Volts, claro, um cristal conectado nos pinos 18 e 19 do 8051, com os devidos
+capacitores de 33pF, um resistor de 10K ligando o pino 31 (EA/VPP) ao +5V, e
+manter o pino de reset (pino 9) em nível lógico alto enquanto a programação é
+feita. Nas minhas placas coloco um pequeno push button para jogar o reset para
+o +5V.
+ 
+ 
+ 
+ 
+ IN ENGLISH::
+ G Soft Desenvolvimento - 8051 ISP Programmer
+Gabriel Ortiz Lour - gsoftcr@mail.com
+
+Conections for the Parallel (LPT) ISP cable:
+
+ LPT pins      |  8051 pins
+--------------------------------------
+ 2             | -*
+--------------------------------------
+ 4             | 7 - MISO
+--------------------------------------
+ 7             | 6 - MOSI
+--------------------------------------
+ 8             | 8 - SCK
+--------------------------------------
+ 12            | -*
+--------------------------------------
+ 18 to 25      | 20 - GND
+ ------------------------------------- 
+ * LPT Pin 2 conected directly to LPT pin 12
+ 
+  For the ISP programming to work it is only needed a few things: the 8051 chip
+being properly feed with +5V, and GND of course, a crystal conected to the pins
+18 and 19, with the respective 33pF capacitors, a 10K resistor conecting pin 31
+(EA/VPP) to +5V, and keep the reset pin (pin 9) high while doing the
+programming. On my boards I use a push switch to connect reset to VCC that I
+keep pushed while programming.
+ 
