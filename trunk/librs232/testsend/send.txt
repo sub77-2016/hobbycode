@@ -1,0 +1,47 @@
+this is the send file.
+#include <stdio.h>
+#include "librs232.h"
+
+int main(int argc, char** argv)
+{
+	HRS232 hRS232 = NULL;
+	RS232_PARAM param;
+	FILE *fp=NULL;
+	char chrSend;
+
+	hRS232 = RS232_Open  ("/dev/ttyS0");
+
+	if(hRS232==NULL)
+		return 0;
+
+	param.BaudRate = BR_96000;
+	param.DataBits = DB_8;
+	param.Parity = PARITY_NONE;
+	param.StopBits = SB_1;
+	param.xonxoff = 0;
+	param.rtscts = 0;
+
+	RS232_SetParam(hRS232, &param);
+	fp = fopen("send.txt", "rb");
+	if(fp==NULL)
+	{
+		RS232_Close (hRS232);
+		return 0;
+	}
+	while(1)
+	{
+		if(fread(&chrSend, 1,1, fp)!=1)
+			break;
+		RS232_Send (hRS232, &chrSend,1);
+		printf("send %c\n", chrSend);
+		usleep(1000);
+	}
+	RS232_Close (hRS232);
+
+	fclose(fp);
+	return 0;
+}
+
+
+$
+
