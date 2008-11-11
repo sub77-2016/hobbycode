@@ -1,0 +1,1271 @@
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 1
+
+
+
+
+
+       MCS-51 Family Macro Assembler   A S E M - 5 1   V 1.3
+       =====================================================
+
+
+
+	Source File:	prog.a51
+	Object File:	prog.hex
+	List File:	prog.lst
+
+
+
+ Line  I  Addr  Code            Source
+
+    1:				;LAMAPROG v 0.2
+    2:				;Jan Parkman (parkmaj@users.sourceforge.net)
+    3:				;This software is under GNU license (www.gpl.org)
+    4:
+    5:				;suported devices:
+    6:				;	- i2c eeproms: 24c01 -- 24c512
+    7:				;	- 8051: at89c2051
+    8:				;	- general purpose i2c bus (rs232 <-> i2c convertor)
+    9:
+   10:
+   11:				;TODO -- revcblock convert data from hexa ascii to number?
+   12:
+   13:				;----------------------------------------------------------------------
+   14:				;--- EQUs
+   15:				;base code segment
+   16:		N      0000	cbaseseg	equ	0000h
+   17:
+   18:
+   19:				;----------------------------------------------------------------------
+   20:				;--- Data segment
+   21:		N	 30	dseg at 0030h
+   22:
+   23:				;----------------------------------------------------------------------
+   24:				;--- Bit segment
+   25:		N	 21	bseg at 21h
+   26:
+   27:
+   28:				;----------------------------------------------------------------------
+   29:				;--- Code segment
+   30:		N      0000	cseg at cbaseseg
+   31:
+   32:	  0000	02 00 30		jmp start
+   33:
+   34:		N      0030	org cbaseseg + 0030h
+   35:
+   36:
+   37:	  0030			start:
+   38:	  0030	12 03 51		call 	init
+   39:	  0033	12 03 33		call 	comver
+   40:
+   41:	  0036			loop:
+   42:
+   43:	  0036	30 98 19		jnb 	RI,loopend
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 2
+
+
+
+ Line  I  Addr  Code            Source
+
+   44:	  0039	12 03 5F		call 	recvblock
+   45:
+   46:	  003C	78 80			mov 	r0,#80h
+   47:	  003E	B6 3A 13		cjne 	@r0,#':',badcom
+   48:
+   49:	  0041	08			inc	r0			;#81h
+   50:
+   51:	  0042	B6 76 05		cjne 	@r0,#'v',loopdev	;Version command
+   52:
+   53:	  0045	12 03 33		call 	comver
+   54:	  0048	80 EC			jmp	loop
+   55:
+   56:	  004A			loopdev:
+   57:	  004A	B6 64 07		cjne 	@r0,#'d',badcom		;Device select
+   58:	  004D	12 03 3A		call 	comdev
+   59:	  0050	80 E4			jmp	loop
+   60:
+   61:
+   62:	  0052			loopend:
+   63:
+   64:	  0052	80 E2			jmp	loop
+   65:	  0054			badcom:			;bad command
+   66:	  0054	12 03 93		call	sendminus
+   67:
+   68:	  0057	80 DD			jmp 	loop
+   69:
+   70:
+   71:				;--- DEVICES
+   72:
+   73:
+   74:				;!NOT implemented (now)
+   75:
+   76:				;----------------------------------------------------------------------
+   77:				;--- device 'a' -- Atmel 89cxxx chips
+   78:				; current address is in dptr
+   79:				dseg
+   80:
+   81:				cseg
+   82:				;in dptr is curent address
+   83:		B      0082	pin_p33		equ	p0.2	;on 2051 p3.3
+   84:		B      0083	pin_p34		equ	p0.3	;	 p3.4
+   85:		B      0084	pin_p35		equ	p0.4	;	 p3.5
+   86:		B      0085	pin_p37		equ	p0.5	;	 p3.7
+   87:		D      00A0	port_data	equ	p2	;	 p1
+   88:		B      0086	pin_prog	equ	p0.6	;	 p3.2	(ale)
+   89:		B      00B5	pin_p5_12v	equ	p3.5	;	 5V/12V (5V if set)
+   90:		B      00B4	pin_p0v		equ	p3.4	;	 0V     (0V if set)
+   91:		B      0081	pin_xtal1	equ	p0.1	;	 XTAL1 ****
+   92:		B      0087	pin_bsy		equ	p0.7	;	 p3.1
+   93:
+   94:	  0059			dev_a:	;only 89c2051 now
+   95:	  0059	12 03 9C		call	sendplus
+   96:					;init
+   97:	  005C	75 A0 FF		mov	port_data,#0ffh
+   98:	  005F	75 83 00		mov	dph,#0
+   99:	  0062	75 82 00		mov	dpl,#0
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 3
+
+
+
+ Line  I  Addr  Code            Source
+
+  100:	  0065	D2 B5			setb	pin_p5_12v	;0V
+  101:	  0067	D2 B4			setb	pin_p0v
+  102:	  0069	C2 81			clr	pin_xtal1
+  103:
+  104:	  006B			deva_loop:
+  105:	  006B	12 03 5F		call	recvblock
+  106:	  006E	78 80			mov	r0,#80h
+  107:	  0070	B6 3A 39		cjne	@r0,#':',deva_bad1	;bad command
+  108:	  0073	08			inc	r0			;r0=81h (second char)
+  109:
+  110:
+  111:				;--- set address :aAAAA
+  112:	  0074			deva_addr:
+  113:	  0074	B6 61 38		cjne @r0,#'a',deva_read
+  114:
+  115:	  0077	C2 81			clr	pin_xtal1
+  116:								;reset counter...
+  117:	  0079	D2 B5			setb	pin_p5_12v	;rising edge 0 -> 5V
+  118:	  007B	D2 B4			setb	pin_p0v
+  119:	  007D	C2 B4			clr	pin_p0v
+  120:
+  121:	  007F	78 84			mov	r0,#84h		;low address byte
+  122:	  0081	12 03 CC		call 	ascii2num
+  123:	  0084	F5 82			mov	dpl,a
+  124:
+  125:	  0086	78 82			mov	r0,#82h
+  126:	  0088	12 03 CC		call	ascii2num	;high address byte
+  127:	  008B	F5 83			mov	dph,a
+  128:
+  129:	  008D	60 0D			jz	deva_addr_l
+  130:	  008F			deva_addr_h1:			;high byte
+  131:	  008F	75 F0 00		mov	b,#0
+  132:	  0092			deva_addr_h2:
+  133:	  0092	D2 81			setb	pin_xtal1
+  134:	  0094	C2 81			clr	pin_xtal1
+  135:	  0096	D5 F0 F9		djnz	b,deva_addr_h2
+  136:	  0099	D5 E0 F3		djnz	acc,deva_addr_h1
+  137:
+  138:	  009C			deva_addr_l:
+  139:	  009C	E5 82			mov	a,dpl		;low byte
+  140:	  009E	60 07			jz	deva_addr_l2
+  141:	  00A0			deva_addr_l1:
+  142:	  00A0	D2 81			setb	pin_xtal1
+  143:	  00A2	C2 81			clr	pin_xtal1
+  144:	  00A4	D5 E0 F9		djnz	acc,deva_addr_l1;
+  145:	  00A7			deva_addr_l2:
+  146:
+  147:	  00A7	12 03 9C		call	sendplus
+  148:	  00AA	80 BF			jmp	deva_loop
+  149:
+  150:	  00AC			deva_bad1:
+  151:	  00AC	02 01 71		jmp	deva_bad
+  152:
+  153:				;--- program reading :rNN
+  154:				;- read NN bytes from device
+  155:	  00AF			deva_read:
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 4
+
+
+
+ Line  I  Addr  Code            Source
+
+  156:	  00AF	B6 72 27		cjne @r0,#'r',deva_sig
+  157:
+  158:	  00B2	75 A0 FF		mov	port_data,#0ffh
+  159:
+  160:	  00B5	D2 84			setb	pin_p35
+  161:	  00B7	D2 85			setb	pin_p37
+  162:	  00B9	C2 82			clr	pin_p33
+  163:	  00BB	C2 83			clr	pin_p34
+  164:
+  165:	  00BD	78 82			mov 	r0,#82h		;count
+  166:	  00BF	12 03 CC		call	ascii2num
+  167:	  00C2	F9			mov	r1,a
+  168:
+  169:
+  170:	  00C3			deva_read_sig:
+  171:
+  172:	  00C3	D2 B5			setb	pin_p5_12v	;5V
+  173:	  00C5	C2 B4			clr	pin_p0v
+  174:	  00C7	D2 86			setb	pin_prog
+  175:
+  176:
+  177:	  00C9			deva_read_l:			;reading loop
+  178:	  00C9	E5 A0			mov	a,port_data
+  179:	  00CB	D2 81			setb	pin_xtal1
+  180:	  00CD	C2 81			clr	pin_xtal1
+  181:	  00CF	12 03 A5		call	sendhex
+  182:	  00D2	D9 F5			djnz r1,deva_read_l
+  183:
+  184:	  00D4	12 03 9C		call	sendplus
+  185:	  00D7	80 92			jmp	deva_loop
+  186:
+  187:				;-- read signature bytes (:s)
+  188:	  00D9			deva_sig:
+  189:	  00D9	B6 73 1B		cjne @r0,#'s',deva_erase
+  190:	  00DC	75 82 00		mov	dpl,#0
+  191:	  00DF	75 83 00		mov	dph,#0
+  192:								;reset counter...
+  193:	  00E2	D2 B5			setb	pin_p5_12v	;rising edge 0 -> 5V
+  194:	  00E4	D2 B4			setb	pin_p0v
+  195:	  00E6	C2 B4			clr	pin_p0v
+  196:
+  197:	  00E8	79 03			mov	r1,#3
+  198:	  00EA	75 A0 FF		mov	port_data,#0ffh
+  199:	  00ED	C2 84			clr	pin_p35
+  200:	  00EF	C2 85			clr	pin_p37
+  201:	  00F1	C2 82			clr	pin_p33
+  202:	  00F3	C2 83			clr	pin_p34
+  203:	  00F5	80 CC			jmp	deva_read_sig
+  204:				;	jmp	deva_loop
+  205:
+  206:				;--- chip erase (:e)
+  207:	  00F7			deva_erase:
+  208:	  00F7	B6 65 24		cjne @r0,#'e',deva_write
+  209:	  00FA	D2 86			setb	pin_prog
+  210:	  00FC	D2 82			setb	pin_p33
+  211:	  00FE	C2 83			clr	pin_p34
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 5
+
+
+
+ Line  I  Addr  Code            Source
+
+  212:	  0100	C2 84			clr	pin_p35
+  213:	  0102	C2 85			clr	pin_p37
+  214:
+  215:	  0104	C2 B5			clr	pin_p5_12v	;12V
+  216:	  0106	C2 B4			clr	pin_p0v
+  217:
+  218:	  0108	C2 86			clr	pin_prog
+  219:
+  220:	  010A	74 FA			mov	a,#250		;10ms
+  221:	  010C			deva_erase1:
+  222:	  010C	75 F0 28		mov	b,#40
+  223:	  010F	D5 F0 FD		djnz	b,$
+  224:	  0112	D5 E0 F7		djnz	acc,deva_erase1
+  225:
+  226:	  0115	D2 86			setb	pin_prog
+  227:
+  228:	  0117	D2 B5			setb	pin_p5_12v
+  229:
+  230:	  0119	12 03 9C		call	sendplus
+  231:	  011C	01 6B			jmp	deva_loop
+  232:
+  233:				;--- write NN data bytes from current address (:wNNDDDDDDDDD)
+  234:	  011E			deva_write:
+  235:	  011E	B6 77 3E		cjne	@r0,#'w',deva_ver
+  236:	  0121	D2 86			setb	pin_prog
+  237:	  0123	C2 82			clr	pin_p33
+  238:	  0125	D2 83			setb	pin_p34
+  239:	  0127	D2 84			setb	pin_p35
+  240:	  0129	D2 85			setb	pin_p37
+  241:
+  242:	  012B	78 82			mov	r0,#82h		;in b is number of repeat (NN)
+  243:	  012D	12 03 CC		call	ascii2num
+  244:	  0130	F5 F0			mov	b,a
+  245:
+  246:	  0132	C2 B5			clr	pin_p5_12v	;12V
+  247:	  0134	C2 B4			clr	pin_p0v
+  248:
+  249:	  0136	78 84			mov	r0,#84h		;first data byte
+  250:
+  251:	  0138			deva_write_loop:
+  252:	  0138	12 03 CC		call	ascii2num
+  253:	  013B	F5 A0			mov	port_data,a
+  254:
+  255:	  013D	C2 86			clr	pin_prog
+  256:	  013F	D2 86			setb	pin_prog
+  257:
+  258:	  0141	08			inc	r0		;increment "data pointer"
+  259:	  0142	08			inc	r0
+  260:
+  261:	  0143	74 FA			mov	a,#250		;wait 2ms for bsy high else write failed
+  262:	  0145			deva_write_2ms:
+  263:	  0145	00			nop
+  264:	  0146	00			nop
+  265:	  0147	00			nop
+  266:	  0148	20 87 06		jb	pin_bsy,deva_write_ok
+  267:	  014B	D5 E0 F7		djnz	acc,deva_write_2ms
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 6
+
+
+
+ Line  I  Addr  Code            Source
+
+  268:	  014E	02 01 71		jmp	deva_bad
+  269:
+  270:	  0151			deva_write_ok:
+  271:
+  272:	  0151	D2 81			setb	pin_xtal1	;increment counter
+  273:	  0153	C2 81			clr	pin_xtal1
+  274:
+  275:	  0155	D5 F0 E0		djnz	b,deva_write_loop
+  276:
+  277:	  0158	D2 B5			setb	pin_p5_12v
+  278:
+  279:	  015A	12 03 9C		call	sendplus
+  280:	  015D	01 6B			jmp	deva_loop
+  281:
+  282:				;--- print version
+  283:	  015F			deva_ver:
+  284:	  015F	B6 76 08		cjne	@r0,#'v',deva_quit
+  285:	  0162	90 01 77		mov 	DPTR,#devaban
+  286:	  0165	12 03 74		call 	sendtext
+  287:	  0168	01 6B			jmp	deva_loop
+  288:
+  289:				;--- return... (:q)
+  290:	  016A			deva_quit:
+  291:	  016A	B6 71 04		cjne	@r0,#'q',deva_bad
+  292:	  016D	12 03 9C		 call	sendplus
+  293:	  0170	22			 ret
+  294:
+  295:
+  296:
+  297:
+  298:	  0171			deva_bad:
+  299:	  0171	12 03 93		call	sendminus
+  300:	  0174	01 6B			jmp	deva_loop
+  301:	  0176	22		ret
+  302:
+  303:
+  304:	  0177	61 74 38 39	devaban:	db "at89c2051 interface v 0.1+",0
+	  017B	63 32 30 35
+	  017F	31 20 69 6E
+	  0183	74 65 72 66
+	  0187	61 63 65 20
+	  018B	76 20 30 2E
+	  018F	31 2B 00
+  305:
+  306:
+  307:
+  308:				;----------------------------------------------------------------------
+  309:				;--- device 'j' -- I2C 24cxx memory
+  310:				;--- tested with at24c16 and at24c256
+  311:		N      00A1	base24cr	equ	10100001b	;read i2c address
+  312:		N      00A0	base24cw	equ	10100000b	;write i2c address
+  313:
+  314:				bseg
+  315:	    21	N	 01	j_large:	dbit	1	;set for large memorry (two bytes address)
+  316:				cseg
+  317:
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 7
+
+
+
+ Line  I  Addr  Code            Source
+
+  318:				;init
+  319:	  0192			device_j:
+  320:	  0192	12 03 F1		call	i2c_init
+  321:	  0195	08			inc	r0
+  322:	  0196	B6 6C 08		cjne	@r0,#'l', device_j1	;large mem
+  323:	  0199	D2 21			 setb	j_large
+  324:	  019B	12 03 9C		 call	sendplus
+  325:	  019E	02 01 B0		 jmp	device_jloop
+  326:
+  327:	  01A1			device_j1:
+  328:	  01A1	B6 73 08		cjne	@r0,#'s',device_j2	;small mem
+  329:	  01A4	C2 21			 clr	j_large
+  330:	  01A6	12 03 9C		 call	sendplus
+  331:	  01A9	02 01 B0		 jmp	device_jloop
+  332:
+  333:	  01AC			device_j2:				;bad device
+  334:	  01AC	12 03 93		call	sendminus
+  335:	  01AF	22			ret
+  336:
+  337:	  01B0			device_jloop:
+  338:	  01B0	12 03 5F		call	recvblock
+  339:	  01B3	78 80			mov	r0,#80h
+  340:	  01B5	B6 3A 4A		cjne	@r0,#':',devj_b0	;bad command
+  341:	  01B8	08			inc	r0			;r0=81h (second char)
+  342:
+  343:				;--- return... (:q)
+  344:	  01B9			devj_quit:
+  345:	  01B9	B6 71 04		cjne	@r0,#'q',device_jread
+  346:	  01BC	12 03 9C		 call	sendplus
+  347:	  01BF	22			 ret
+  348:
+  349:				;--- read N bytes from address A (:rNNAAAA)
+  350:	  01C0			device_jread:
+  351:	  01C0	B6 72 63		cjne	@r0,#'r',device_jwrite
+  352:	  01C3	12 04 05		 call	i2c_start
+  353:
+  354:	  01C6	20 21 12		 jb	j_large,devj_readl
+  355:	  01C9	78 84			 mov	r0,#84h		;SMALL high address byte
+  356:	  01CB	12 03 CC		 call	ascii2num
+  357:	  01CE	23			 rl	a		;in acc address high byte
+  358:	  01CF	44 A0			 orl	a,#10100000b
+  359:	  01D1	C0 E0			 push	acc		;save write addres
+  360:	  01D3	12 04 12		 call	i2c_send
+  361:	  01D6	40 62			 jc	devj_b1		;if no ack
+  362:	  01D8	02 01 EE		 jmp	devj_reads
+  363:
+  364:	  01DB			devj_readl:
+  365:	  01DB	74 A0			 mov	a,#10100000b	;LARGE
+  366:	  01DD	C0 E0			 push	acc
+  367:	  01DF	12 04 12		 call	i2c_send
+  368:	  01E2	40 56			 jc	devj_b1
+  369:	  01E4	78 84			 mov	r0,#84h		;high address byte
+  370:	  01E6	12 03 CC		 call	ascii2num
+  371:	  01E9	12 04 12	 	 call	i2c_send
+  372:	  01EC	40 4C		 	 jc	devj_b1
+  373:	  01EE			devj_reads:
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 8
+
+
+
+ Line  I  Addr  Code            Source
+
+  374:
+  375:	  01EE	78 86			 mov	r0,#86h 	;low address byte
+  376:	  01F0	12 03 CC		 call	ascii2num
+  377:	  01F3	12 04 12		 call	i2c_send
+  378:	  01F6	40 42			 jc	devj_b1		;if no ack
+  379:
+  380:	  01F8	12 04 05		 call	i2c_start	;read bytes
+  381:	  01FB	D0 E0			 pop	acc
+  382:	  01FD	D2 E0			 setb	acc.0		;in acc is read i2c address
+  383:	  01FF	12 04 12		 call	i2c_send
+  384:	  0202	40 36		devj_b0: jc	devj_b1		;if no ack
+  385:
+  386:	  0204	78 82			 mov	r0,#82h		;repeat number byte
+  387:	  0206	12 03 CC		 call	ascii2num
+  388:	  0209	FF			 mov	r7,a
+  389:
+  390:	  020A			device_jrloop:         		;reading loop
+  391:	  020A	12 04 34		  call	i2c_recv
+  392:	  020D	12 03 A5		  call	sendhex
+  393:	  0210	BF 01 06		  cjne	r7,#1,device_jrlend
+  394:	  0213	12 04 57		   call	i2c_nak
+  395:	  0216	02 02 1E		   jmp	device_jrend
+  396:	  0219			device_jrlend:
+  397:	  0219	12 04 4B		  call	i2c_ack
+  398:	  021C	DF EC			 djnz	r7,device_jrloop
+  399:
+  400:	  021E			device_jrend:
+  401:	  021E	12 03 F6		 call	i2c_stop
+  402:	  0221	12 03 9C		 call	sendplus
+  403:	  0224	80 8A			 jmp	device_jloop
+  404:
+  405:
+  406:				;--- write N bytes D from address A (:wNNAAAADDDDDD...)
+  407:	  0226			device_jwrite:
+  408:	  0226	B6 77 50		cjne	@r0,#'w',device_jver
+  409:	  0229	12 04 05		 call	i2c_start
+  410:
+  411:	  022C	20 21 10		 jb	j_large, devj_wl
+  412:	  022F	78 84			 mov	r0,#84h		;SMALL high address byte
+  413:	  0231	12 03 CC		 call	ascii2num
+  414:	  0234	23			 rl	a		;in acc address high byte
+  415:	  0235	44 A0			 orl	a,#10100000b
+  416:	  0237	12 04 12		 call	i2c_send
+  417:	  023A	40 48		devj_b1: jc	device_jbad	;if no ack
+  418:	  023C	02 02 53		 jmp	devj_ws
+  419:	  023F			devj_wl:
+  420:	  023F	74 A0			 mov	a,#10100000b
+  421:	  0241	12 04 12		 call	i2c_send
+  422:	  0244	40 3E			 jc	device_jbad	;if no ack
+  423:	  0246	78 84			 mov	r0,#84h		;SMALL high address byte
+  424:	  0248	12 03 CC		 call	ascii2num
+  425:	  024B	12 04 12		 call	i2c_send	;in acc address high byte
+  426:	  024E	40 34			 jc	device_jbad
+  427:	  0250	02 02 53		 jmp	devj_ws
+  428:
+  429:	  0253			devj_ws:
+
+ASEM-51 V1.3                                         Copyright (c) 2002 by W.W. Heinz                                         PAGE 9
+
+
+
+ Line  I  Addr  Code            Source
+
+  430:	  0253	78 86			 mov	r0,#86h 	;low address byte
+  431:	  0255	12 03 CC		 call	ascii2num
+  432:	  0258	12 04 12		 call	i2c_send
+  433:	  025B	40 27			 jc	device_jbad	;if no ack
+  434:
+  435:	  025D	78 82			 mov	r0,#82h		;repeat number byte
+  436:	  025F	12 03 CC		 call	ascii2num
+  437:	  0262	FF			 mov	r7,a
+  438:
+  439:	  0263	78 88			 mov	r0,#88h
+  440:	  0265			device_jwloop:         		;reading loop
+  441:	  0265	12 03 CC		call	ascii2num
+  442:	  0268	12 04 12		call	i2c_send
+  443:
+  444:	  026B	40 17			jc	device_jbad	;if no ack
+  445:
+  446:	  026D	08			inc	r0
+  447:	  026E	08			inc	r0
+  448:	  026F	DF F4			djnz	r7,device_jwloop
+  449:
+  450:	  0271	12 03 F6		call	i2c_stop
+  451:
+  452:	  0274	12 03 9C		call	sendplus
+  453:	  0277	21 B0			jmp	device_jloop
+  454:
+  455:	  0279			device_jver:
+  456:	  0279	B6 76 08		cjne	@r0,#'v',device_jbad
+  457:	  027C	90 02 89		mov 	DPTR,#devjban
+  458:	  027F	12 03 74		call 	sendtext
+  459:	  0282	21 B0			jmp	device_jloop
+  460:
+  461:	  0284			device_jbad:
+  462:	  0284	12 03 93		call	sendminus
+  463:				;	call	sendhex
+  464:				;	mov	a,b
+  465:				;	call	senda
+  466:	  0287	21 B0			jmp	device_jloop
+  467:
+  468:	  0289	32 34 43 78	devjban:	db "24Cxx interface v 0.1+",0
+	  028D	78 20 69 6E
+	  0291	74 65 72 66
+	  0295	61 63 65 20
+	  0299	76 20 30 2E
+	  029D	31 2B 00
+  469:
+  470:
+  471:				;----------------------------------------------------------------------
+  472:				;--- device 'i' -- I2C
+  473:	  02A0			device_i:
+  474:				;init
+  475:	  02A0	12 03 9C		call	sendplus
+  476:	  02A3	12 03 F1		call	i2c_init
+  477:	  02A6			device_iloop:
+  478:	  02A6	12 03 5F		call	recvblock
+  479:	  02A9	78 80			 mov	r0,#80h
+  480:	  02AB	B6 3A 6C		 cjne	@r0,#':',device_ibad	;bad command
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 10
+
+
+
+ Line  I  Addr  Code            Source
+
+  481:	  02AE	08			 inc	r0	;r0=81h (second char)
+  482:
+  483:				;--- return (:q)
+  484:	  02AF			devi_quit:
+  485:	  02AF	B6 71 04		cjne	@r0,#'q',device_iread
+  486:	  02B2	12 03 9C		 call	sendplus
+  487:	  02B5	22			 ret
+  488:
+  489:				;--- read byte (:r) (return +XX (x is hexa number) / -)
+  490:	  02B6			device_iread:
+  491:	  02B6	B6 72 0B		cjne	@r0,#'r',device_iwrite
+  492:	  02B9	12 03 9C		call	sendplus
+  493:	  02BC	12 04 34		call	i2c_recv
+  494:	  02BF	12 03 A5		call	sendhex
+  495:	  02C2	80 E2			jmp	device_iloop
+  496:					;/// read byte
+  497:
+  498:				;--- write byte (:wXX) return +a if ack,  +n if nak / -
+  499:	  02C4			device_iwrite:
+  500:	  02C4	B6 77 18		cjne	@r0,#'w',device_iack
+  501:	  02C7	08			inc	r0
+  502:
+  503:	  02C8	12 03 CC		call	ascii2num
+  504:	  02CB	12 04 12		call	i2c_send	;in carry is ack
+  505:
+  506:	  02CE	50 05			jnc	device_iwrite1
+  507:	  02D0	74 6E			mov	a,#'n'
+  508:	  02D2	02 02 D7		jmp	device_iwrite2
+  509:	  02D5			device_iwrite1:
+  510:	  02D5	74 61			mov	a,#'a'
+  511:	  02D7			device_iwrite2:
+  512:	  02D7	12 03 8B		call	senda
+  513:	  02DA	12 03 9C		call	sendplus
+  514:	  02DD	80 C7			jmp 	device_iloop
+  515:					;/// write byte
+  516:
+  517:				;--- write ack (:a+) or nak (:a-)
+  518:	  02DF			device_iack:
+  519:	  02DF	B6 61 17		cjne	@r0,#'a',device_istop
+  520:
+  521:	  02E2	08			inc	r0
+  522:
+  523:	  02E3	B6 2D 08		cjne	@r0,#'-',device_iack1	;write nak
+  524:	  02E6	12 04 57		call	i2c_nak
+  525:	  02E9	12 03 9C		call	sendplus
+  526:	  02EC	80 B8			jmp	device_iloop
+  527:
+  528:	  02EE			device_iack1:
+  529:	  02EE	B6 2B 29		cjne	@r0,#'+',device_ibad	;write ack
+  530:	  02F1	12 04 4B		call	i2c_ack
+  531:	  02F4	12 03 9C		call	sendplus
+  532:	  02F7	80 AD			jmp	device_iloop
+  533:					;/// write ack or nak
+  534:
+  535:				;--- generate stop (:t)
+  536:	  02F9			device_istop:
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 11
+
+
+
+ Line  I  Addr  Code            Source
+
+  537:	  02F9	B6 74 08		cjne	@r0,#'t',device_istart
+  538:	  02FC	12 03 F6		call	i2c_stop
+  539:	  02FF	12 03 9C		call	sendplus
+  540:	  0302	80 A2			jmp	device_iloop
+  541:					;///generate stop
+  542:
+  543:				;--- generate start (:s)
+  544:	  0304			device_istart:
+  545:	  0304	B6 73 08		cjne	@r0,#'s',device_iver
+  546:	  0307	12 04 05		call	i2c_start
+  547:	  030A	12 03 9C		call	sendplus
+  548:	  030D	80 97			jmp	device_iloop
+  549:					;///generate start
+  550:
+  551:	  030F			device_iver:
+  552:	  030F	B6 76 08		cjne	@r0,#'v',device_i6
+  553:	  0312	90 03 20		mov 	DPTR,#deviban
+  554:	  0315	12 03 74		call 	sendtext
+  555:	  0318	21 B0			jmp	device_jloop
+  556:
+  557:
+  558:	  031A			device_i6:
+  559:
+  560:
+  561:				;bad command
+  562:	  031A			device_ibad:
+  563:	  031A	12 03 93		call	sendminus
+  564:	  031D	80 87			jmp	device_iloop
+  565:	  031F	22		ret
+  566:
+  567:	  0320	49 32 43 20	deviban:	db "I2C interface 0.1+",0
+	  0324	69 6E 74 65
+	  0328	72 66 61 63
+	  032C	65 20 30 2E
+	  0330	31 2B 00
+  568:
+  569:				;----------------------------------------------------------------------
+  570:				;--- COMMANDS
+  571:				;command Get programmer version :v
+  572:	  0333			comver:
+  573:	  0333	90 04 5B		mov DPTR,#banner
+  574:	  0336	12 03 74		call sendtext
+  575:	  0339	22		ret
+  576:
+  577:
+  578:				;--- command Select programmed device :dxx
+  579:	  033A			comdev:
+  580:	  033A	08			inc 	r0
+  581:				;general i2c device (rs232 <-> i2c comvertor)
+  582:	  033B	B6 69 03		cjne 	@r0,#'i',comdev1
+  583:	  033E	51 A0			call	device_i
+  584:	  0340	22			ret
+  585:
+  586:				;i2c eeproms (24c01)
+  587:	  0341			comdev1:
+  588:	  0341	B6 6A 03		cjne 	@r0,#'j',comdev2
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 12
+
+
+
+ Line  I  Addr  Code            Source
+
+  589:	  0344	31 92			call	device_j
+  590:	  0346	22			ret
+  591:
+  592:				;MCU 51 (at89c51)
+  593:	  0347			comdev2:
+  594:	  0347	B6 61 03		cjne @r0,#'a',comdev3
+  595:	  034A	11 59			call dev_a
+  596:	  034C	22			ret
+  597:
+  598:	  034D			comdev3:
+  599:				;bad command
+  600:	  034D	12 03 93		call	sendminus
+  601:
+  602:	  0350			comdevend:
+  603:
+  604:	  0350	22		ret
+  605:
+  606:
+  607:
+  608:
+  609:
+  610:				;----------------------------------------------------------------------
+  611:				;--- Initialization
+  612:	  0351			init:
+  613:	  0351	C2 AF			clr EA
+  614:	  0353	75 8D FD		mov     th1,#0fdh       ;9600 Bd pro XTAL=11,0592 Mhz
+  615:	  0356	D2 8E			setb	tr1
+  616:	  0358	75 98 52		mov     scon,#52h       ;8 bit. UART
+  617:	  035B	75 89 20		mov	tmod,#20h	;timer 1 mod 2
+  618:	  035E	22		ret
+  619:
+  620:				;----------------------------------------------------------------------
+  621:				;--- Utilites
+  622:
+  623:
+  624:				;--- receive block of data, place it to high half memory (80h -- ffh)
+  625:				;--- end of data is indicated #0 (like C string)
+  626:	  035F			recvblock:
+  627:
+  628:	  035F			recvblock1:
+  629:	  035F	79 7F			mov r1,#080h-1
+  630:
+  631:	  0361			recvnext:
+  632:	  0361	30 98 FD		jnb ri,$
+  633:	  0364	C2 98			clr ri
+  634:	  0366	E5 99			mov a,sbuf
+  635:	  0368	09			inc r1
+  636:
+  637:				;	cjne a,#0ah,recv1	;end (acc == \n)
+  638:	  0369	B4 20 04		cjne a,#' ',recv1	;end (acc == \n)
+  639:
+  640:	  036C	74 00			mov a,#0
+  641:	  036E	F7			mov @r1,a
+  642:	  036F	22			ret
+  643:	  0370			recv1:
+  644:	  0370	F7			mov @r1,a
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 13
+
+
+
+ Line  I  Addr  Code            Source
+
+  645:	  0371	80 EE			jmp recvnext
+  646:
+  647:	  0373	22		ret
+  648:
+  649:				;--- send text form address in DPTR to first \0 (like C string)
+  650:	  0374			sendtext:
+  651:	  0374	C0 83			push	dph
+  652:	  0376	C0 82			push	dpl
+  653:	  0378			sendloop:
+  654:	  0378	E4			clr a
+  655:	  0379	93			movc a,@a+DPTR
+  656:	  037A	60 0A			jz  sendend
+  657:	  037C	30 99 FD		jnb TI,$
+  658:	  037F	C2 99			clr TI
+  659:	  0381	F5 99			mov sbuf,a
+  660:	  0383	A3			inc dptr
+  661:	  0384	80 F2			jmp sendloop
+  662:	  0386			sendend:
+  663:	  0386	D0 82			pop	dpl
+  664:	  0388	D0 83			pop	dph
+  665:	  038A	22		ret
+  666:
+  667:
+  668:
+  669:				;--- send acc
+  670:	  038B			senda:
+  671:	  038B	30 99 FD		jnb 	TI,$
+  672:	  038E	C2 99			clr 	TI
+  673:	  0390	F5 99			mov 	sbuf,a
+  674:	  0392	22		ret
+  675:
+  676:				;--- send '-'
+  677:	  0393			sendminus:
+  678:	  0393	30 99 FD		jnb 	TI,$
+  679:	  0396	C2 99			clr 	TI
+  680:	  0398	75 99 2D		mov 	sbuf,#'-'
+  681:	  039B	22		ret
+  682:
+  683:				;--- send '+'
+  684:	  039C			sendplus:
+  685:	  039C	30 99 FD		jnb 	TI,$
+  686:	  039F	C2 99			clr 	TI
+  687:	  03A1	75 99 2B		mov 	sbuf,#'+'
+  688:	  03A4	22		ret
+  689:
+  690:				;--- send acc as a hex number (high byte first)
+  691:				;ok
+  692:	  03A5			sendhex:
+  693:	  03A5	75 F0 10		mov	b,#16
+  694:	  03A8	84			div	ab
+  695:
+  696:	  03A9	24 30			add	a,#'0'
+  697:	  03AB	B4 3A 00		cjne	a,#9+'0'+1,sendhex1	;if (a<#9) {c=1}
+  698:	  03AE			sendhex1:
+  699:	  03AE	40 02			jc 	sendhex10
+  700:	  03B0	24 07			add	a,#'A' - '0' - 10
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 14
+
+
+
+ Line  I  Addr  Code            Source
+
+  701:	  03B2			sendhex10:
+  702:	  03B2	30 99 FD		jnb 	TI,$
+  703:	  03B5	C2 99			clr 	TI
+  704:	  03B7	F5 99			mov 	sbuf,a
+  705:
+  706:	  03B9	E5 F0			mov	a,b
+  707:	  03BB	24 30			add	a,#'0'
+  708:	  03BD	B4 3A 00		cjne	a,#9+'0'+1,sendhex2	;if (a<#9) {c=1}
+  709:	  03C0			sendhex2:
+  710:	  03C0	40 02			jc	sendhex20
+  711:	  03C2	24 07			add	a,#'A'-'0' - 10
+  712:	  03C4			sendhex20:
+  713:	  03C4	30 99 FD		jnb 	TI,$
+  714:	  03C7	C2 99			clr 	TI
+  715:	  03C9	F5 99			mov 	sbuf,a
+  716:
+  717:	  03CB	22		ret
+  718:
+  719:				;--- convert ascii hex number in @r0 (H) and @r0+1 (L) into byte in acc
+  720:				;ok
+  721:	  03CC			ascii2num:
+  722:	  03CC	C0 F0			push	b
+  723:	  03CE	E6			mov 	a,@r0		;high
+  724:	  03CF	B4 3A 00		cjne 	a,#'0'+10,a2n0	;if (a <= #'9'){c=1}
+  725:	  03D2	40 02		a2n0:	jc	a2n1		;
+  726:	  03D4	94 07			subb 	a,#'A'-'0'-10 	;is a letter
+  727:	  03D6			a2n1:
+  728:	  03D6	C3			clr	c
+  729:	  03D7	94 30			subb 	a,#'0'
+  730:	  03D9	75 F0 10		mov 	b,#16
+  731:	  03DC	A4			mul 	ab
+  732:	  03DD	F5 F0			mov 	b,a
+  733:
+  734:	  03DF	08			inc	r0
+  735:	  03E0	E6			mov 	a,@r0		;low
+  736:	  03E1	B4 3A 00		cjne 	a,#'0'+10,a2n2	;if (a <= #'9'){c=1}
+  737:	  03E4	40 02		a2n2:	jc	a2n3		;
+  738:	  03E6	94 07			subb 	a,#'A'-'0'-10 	;is a letter
+  739:	  03E8			a2n3:
+  740:	  03E8	C3			clr	c
+  741:	  03E9	94 30			subb 	a,#'0'
+  742:	  03EB	25 F0			add 	a,b
+  743:	  03ED	D0 F0			pop	b
+  744:	  03EF	18			dec	r0
+  745:	  03F0	22		ret
+  746:
+  747:				$include (i2c.a51)
+  748: 1			;LAMAPROG
+  749: 1			;I2C subroutines v 0.1
+  750: 1			;Jan Parkman (parkmaj@users.sourceforge.net)
+  751: 1			;this software is under GNU license (www.gpl.org)
+  752: 1
+  753: 1			;---- i2c defines
+  754: 1	B      0090	i2c_sda 	equ	p1.0
+  755: 1	B      0091	i2c_scl		equ	p1.1
+  756: 1
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 15
+
+
+
+ Line  I  Addr  Code            Source
+
+  757: 1
+  758: 1			;-----------------------------------------------------------------
+  759: 1			;--- I2C bus routines
+  760: 1
+  761: 1
+  762: 1			;--- initializate bus (set SDA and SCL to high)
+  763: 1  03F1			i2c_init:
+  764: 1  03F1	D2 91			setb i2c_scl
+  765: 1  03F3	D2 90			setb i2c_sda
+  766: 1  03F5	22		ret
+  767: 1
+  768: 1
+  769: 1
+  770: 1			;--- send stop
+  771: 1  03F6			i2c_stop:
+  772: 1  03F6	C2 90			clr	i2c_sda
+  773: 1  03F8	C2 91			clr	i2c_scl
+  774: 1  03FA	00			nop
+  775: 1  03FB	00			nop
+  776: 1  03FC	D2 91			setb	i2c_scl
+  777: 1  03FE	00			nop
+  778: 1  03FF	00			nop
+  779: 1  0400	00			nop
+  780: 1  0401	00			nop
+  781: 1  0402	D2 90			setb 	i2c_sda
+  782: 1  0404	22		ret
+  783: 1
+  784: 1
+  785: 1			;--- send start
+  786: 1  0405			i2c_start:
+  787: 1  0405	D2 91			setb	i2c_scl
+  788: 1  0407	D2 90			setb	i2c_sda
+  789: 1  0409	C2 90			clr	i2c_sda
+  790: 1  040B	00			nop
+  791: 1  040C	00			nop
+  792: 1  040D	00			nop
+  793: 1  040E	00			nop
+  794: 1  040F	C2 91			clr	i2c_scl
+  795: 1  0411	22		ret
+  796: 1
+  797: 1
+  798: 1			;--- send byte (ACK is in c)
+  799: 1  0412			i2c_send:
+  800: 1  0412	C0 00			push	ar0
+  801: 1  0414	78 08			mov	r0,#8
+  802: 1  0416			i2c_send_loop:
+  803: 1  0416	33			rlc	a
+  804: 1  0417	92 90			mov	i2c_sda,c
+  805: 1  0419	00			nop
+  806: 1  041A	D2 91			setb	i2c_scl
+  807: 1  041C	00			nop
+  808: 1  041D	00			nop
+  809: 1  041E	00			nop
+  810: 1  041F	00			nop
+  811: 1  0420	C2 91			clr	i2c_scl
+  812: 1  0422	D8 F2			djnz	r0,i2c_send_loop
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 16
+
+
+
+ Line  I  Addr  Code            Source
+
+  813: 1
+  814: 1  0424	D2 90			setb	i2c_sda
+  815: 1  0426	00			nop
+  816: 1  0427	00			nop
+  817: 1  0428	D2 91			setb	i2c_scl
+  818: 1  042A	00			nop
+  819: 1  042B	00			nop
+  820: 1  042C	00			nop
+  821: 1  042D	A2 90			mov	c,i2c_sda
+  822: 1  042F	C2 91			clr	i2c_scl
+  823: 1
+  824: 1  0431	D0 00			pop	ar0
+  825: 1  0433	22		ret
+  826: 1
+  827: 1
+  828: 1			;--- recv byte
+  829: 1  0434			i2c_recv:
+  830: 1  0434	D2 90			setb	i2c_sda
+  831: 1  0436	C0 00			push	ar0
+  832: 1  0438	78 08			mov	r0,#8
+  833: 1  043A			i2c_recv_loop:
+  834: 1  043A	00			nop
+  835: 1  043B	00			nop
+  836: 1  043C	00			nop
+  837: 1  043D	D2 91			setb	i2c_scl
+  838: 1  043F	00			nop
+  839: 1  0440	00			nop
+  840: 1  0441	A2 90			mov	c,i2c_sda
+  841: 1  0443	33			rlc	a
+  842: 1  0444	C2 91			clr	i2c_scl
+  843: 1  0446	D8 F2			djnz	r0,i2c_recv_loop
+  844: 1
+  845: 1  0448	D0 00			pop	ar0
+  846: 1  044A	22		ret
+  847: 1
+  848: 1
+  849: 1			;--- send ack
+  850: 1  044B			i2c_ack:
+  851: 1  044B	C2 90			clr	i2c_sda
+  852: 1  044D	00			nop
+  853: 1  044E	00			nop
+  854: 1  044F			i2c_ack1:
+  855: 1  044F	D2 91			setb	i2c_scl
+  856: 1  0451	00			nop
+  857: 1  0452	00			nop
+  858: 1  0453	00			nop
+  859: 1  0454	C2 91			clr	i2c_scl
+  860: 1  0456	22		ret
+  861: 1
+  862: 1
+  863: 1			;--- send nak
+  864: 1  0457			i2c_nak:
+  865: 1  0457	D2 90			setb	i2c_sda
+  866: 1  0459	80 F4			jmp	i2c_ack1
+  867: 1			; ----------------------------------------------------------------
+  868: 1
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 17
+
+
+
+ Line  I  Addr  Code            Source
+
+  869: 1
+  870:
+  871:	  045B	4C 61 6D 61	banner:	db "LamaProg v 0.2+",0
+	  045F	50 72 6F 67
+	  0463	20 76 20 30
+	  0467	2E 32 2B 00
+  872:	  046B	4C 61 6D 61	copyleft: db "LamaProg, Jan Parkman, parkmaj@users.sourceforge.net, 2003"
+	  046F	50 72 6F 67
+	  0473	2C 20 4A 61
+	  0477	6E 20 50 61
+	  047B	72 6B 6D 61
+	  047F	6E 2C 20 70
+	  0483	61 72 6B 6D
+	  0487	61 6A 40 75
+	  048B	73 65 72 73
+	  048F	2E 73 6F 75
+	  0493	72 63 65 66
+	  0497	6F 72 67 65
+	  049B	2E 6E 65 74
+	  049F	2C 20 32 30
+	  04A3	30 33
+  873:				end
+
+
+
+
+
+                     register banks used:  0
+
+                     no errors
+
+
+
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 18
+
+
+
+
+
+	       L I S T   O F   S Y M B O L S
+	       =============================
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+??ASEM_51			  NUMBER    8051
+??VERSION			  NUMBER    0130
+A2N0				  CODE	    03D2	 725
+A2N1				  CODE	    03D6	 727
+A2N2				  CODE	    03E4	 737
+A2N3				  CODE	    03E8	 739
+AC				  BIT	      D6
+ACC				  DATA	      E0
+ASCII2NUM			  CODE	    03CC	 721
+B				  DATA	      F0
+BADCOM				  CODE	    0054	  65
+BANNER				  CODE	    045B	 871
+BASE24CR			  NUMBER    00A1	 311
+BASE24CW			  NUMBER    00A0	 312
+CBASESEG			  NUMBER    0000	  16
+COMDEV				  CODE	    033A	 579
+COMDEV1				  CODE	    0341	 587
+COMDEV2				  CODE	    0347	 593
+COMDEV3				  CODE	    034D	 598
+COMDEVEND			  CODE	    0350	 602
+COMVER				  CODE	    0333	 572
+COPYLEFT			  CODE	    046B	 872
+CY				  BIT	      D7
+DEVABAN				  CODE	    0177	 304
+DEVA_ADDR			  CODE	    0074	 112
+DEVA_ADDR_H1			  CODE	    008F	 130
+DEVA_ADDR_H2			  CODE	    0092	 132
+DEVA_ADDR_L			  CODE	    009C	 138
+DEVA_ADDR_L1			  CODE	    00A0	 141
+DEVA_ADDR_L2			  CODE	    00A7	 145
+DEVA_BAD			  CODE	    0171	 298
+DEVA_BAD1			  CODE	    00AC	 150
+DEVA_ERASE			  CODE	    00F7	 207
+DEVA_ERASE1			  CODE	    010C	 221
+DEVA_LOOP			  CODE	    006B	 104
+DEVA_QUIT			  CODE	    016A	 290
+DEVA_READ			  CODE	    00AF	 155
+DEVA_READ_L			  CODE	    00C9	 177
+DEVA_READ_SIG			  CODE	    00C3	 170
+DEVA_SIG			  CODE	    00D9	 188
+DEVA_VER			  CODE	    015F	 283
+DEVA_WRITE			  CODE	    011E	 234
+DEVA_WRITE_2MS			  CODE	    0145	 262
+DEVA_WRITE_LOOP			  CODE	    0138	 251
+DEVA_WRITE_OK			  CODE	    0151	 270
+DEVIBAN				  CODE	    0320	 567
+DEVICE_I			  CODE	    02A0	 473
+DEVICE_I6			  CODE	    031A	 558
+DEVICE_IACK			  CODE	    02DF	 518
+DEVICE_IACK1			  CODE	    02EE	 528
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 19
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+DEVICE_IBAD			  CODE	    031A	 562
+DEVICE_ILOOP			  CODE	    02A6	 477
+DEVICE_IREAD			  CODE	    02B6	 490
+DEVICE_ISTART			  CODE	    0304	 544
+DEVICE_ISTOP			  CODE	    02F9	 536
+DEVICE_IVER			  CODE	    030F	 551
+DEVICE_IWRITE			  CODE	    02C4	 499
+DEVICE_IWRITE1			  CODE	    02D5	 509
+DEVICE_IWRITE2			  CODE	    02D7	 511
+DEVICE_J			  CODE	    0192	 319
+DEVICE_J1			  CODE	    01A1	 327
+DEVICE_J2			  CODE	    01AC	 333
+DEVICE_JBAD			  CODE	    0284	 461
+DEVICE_JLOOP			  CODE	    01B0	 337
+DEVICE_JREAD			  CODE	    01C0	 350
+DEVICE_JREND			  CODE	    021E	 400
+DEVICE_JRLEND			  CODE	    0219	 396
+DEVICE_JRLOOP			  CODE	    020A	 390
+DEVICE_JVER			  CODE	    0279	 455
+DEVICE_JWLOOP			  CODE	    0265	 440
+DEVICE_JWRITE			  CODE	    0226	 407
+DEVI_QUIT			  CODE	    02AF	 484
+DEVJBAN				  CODE	    0289	 468
+DEVJ_B0				  CODE	    0202	 384
+DEVJ_B1				  CODE	    023A	 417
+DEVJ_QUIT			  CODE	    01B9	 344
+DEVJ_READL			  CODE	    01DB	 364
+DEVJ_READS			  CODE	    01EE	 373
+DEVJ_WL				  CODE	    023F	 419
+DEVJ_WS				  CODE	    0253	 429
+DEV_A				  CODE	    0059	  94
+DPH				  DATA	      83
+DPL				  DATA	      82
+EA				  BIT	      AF
+ES				  BIT	      AC
+ET0				  BIT	      A9
+ET1				  BIT	      AB
+EX0				  BIT	      A8
+EX1				  BIT	      AA
+EXTI0				  CODE	    0003
+EXTI1				  CODE	    0013
+F0				  BIT	      D5
+I2C_ACK				  CODE	    044B	 850
+I2C_ACK1			  CODE	    044F	 854
+I2C_INIT			  CODE	    03F1	 763
+I2C_NAK				  CODE	    0457	 864
+I2C_RECV			  CODE	    0434	 829
+I2C_RECV_LOOP			  CODE	    043A	 833
+I2C_SCL				  NUMBER    0091	 755
+I2C_SDA				  NUMBER    0090	 754
+I2C_SEND			  CODE	    0412	 799
+I2C_SEND_LOOP			  CODE	    0416	 802
+I2C_START			  CODE	    0405	 786
+I2C_STOP			  CODE	    03F6	 771
+IE				  DATA	      A8
+IE0				  BIT	      89
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 20
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+IE1				  BIT	      8B
+INIT				  CODE	    0351	 612
+INT0				  BIT	      B2
+INT1				  BIT	      B3
+IP				  DATA	      B8
+IT0				  BIT	      88
+IT1				  BIT	      8A
+J_LARGE				  BIT	      21	 315
+LOOP				  CODE	    0036	  41
+LOOPDEV				  CODE	    004A	  56
+LOOPEND				  CODE	    0052	  62
+OV				  BIT	      D2
+P				  BIT	      D0
+P0				  DATA	      80
+P1				  DATA	      90
+P2				  DATA	      A0
+P3				  DATA	      B0
+PCON				  DATA	      87
+PIN_BSY				  NUMBER    0087	  92
+PIN_P0V				  NUMBER    00B4	  90
+PIN_P33				  NUMBER    0082	  83
+PIN_P34				  NUMBER    0083	  84
+PIN_P35				  NUMBER    0084	  85
+PIN_P37				  NUMBER    0085	  86
+PIN_P5_12V			  NUMBER    00B5	  89
+PIN_PROG			  NUMBER    0086	  88
+PIN_XTAL1			  NUMBER    0081	  91
+PORT_DATA			  NUMBER    00A0	  87
+PS				  BIT	      BC
+PSW				  DATA	      D0
+PT0				  BIT	      B9
+PT1				  BIT	      BB
+PX0				  BIT	      B8
+PX1				  BIT	      BA
+RB8				  BIT	      9A
+RD				  BIT	      B7
+RECV1				  CODE	    0370	 643
+RECVBLOCK			  CODE	    035F	 626
+RECVBLOCK1			  CODE	    035F	 628
+RECVNEXT			  CODE	    0361	 631
+REN				  BIT	      9C
+RESET				  CODE	    0000
+RI				  BIT	      98
+RS0				  BIT	      D3
+RS1				  BIT	      D4
+RXD				  BIT	      B0
+SBUF				  DATA	      99
+SCON				  DATA	      98
+SENDA				  CODE	    038B	 670
+SENDEND				  CODE	    0386	 662
+SENDHEX				  CODE	    03A5	 692
+SENDHEX1			  CODE	    03AE	 698
+SENDHEX10			  CODE	    03B2	 701
+SENDHEX2			  CODE	    03C0	 709
+SENDHEX20			  CODE	    03C4	 712
+SENDLOOP			  CODE	    0378	 653
+
+ASEM-51 V1.3                                        Copyright (c) 2002 by W.W. Heinz                                         PAGE 21
+
+
+
+SYMBOL				  TYPE     VALUE	LINE
+------------------------------------------------------------
+SENDMINUS			  CODE	    0393	 677
+SENDPLUS			  CODE	    039C	 684
+SENDTEXT			  CODE	    0374	 650
+SINT				  CODE	    0023
+SM0				  BIT	      9F
+SM1				  BIT	      9E
+SM2				  BIT	      9D
+SP				  DATA	      81
+START				  CODE	    0030	  37
+T0				  BIT	      B4
+T1				  BIT	      B5
+TB8				  BIT	      9B
+TCON				  DATA	      88
+TF0				  BIT	      8D
+TF1				  BIT	      8F
+TH0				  DATA	      8C
+TH1				  DATA	      8D
+TI				  BIT	      99
+TIMER0				  CODE	    000B
+TIMER1				  CODE	    001B
+TL0				  DATA	      8A
+TL1				  DATA	      8B
+TMOD				  DATA	      89
+TR0				  BIT	      8C
+TR1				  BIT	      8E
+TXD				  BIT	      B1
+WR				  BIT	      B6

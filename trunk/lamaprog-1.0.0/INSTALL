@@ -1,0 +1,36 @@
+LamaProg v 0.2
+
+* Dependencies: This software have no special requirement, it use only standard 
+c libraris (stdio.h, unistd.h, terminos.h, fcntl.h, string.h, stdlib.h, gettext)
+and interlocalication librarys (locale.h, libintl.h)
+
+
+* Instalation:
+
+1) decompress prog-0.2.1.tgz 
+    'tar xzvf prog-0.2.1.tgz'
+
+2) then go to source directory
+    'cd lamaprog-0.2.1/prog-sw'
+    
+3) run make (configuration is made in Makefile)
+    'make'
+   
+4) install
+    'make install'
+    
+* Manual installation:
+If automatic installation (make install) failed make three steps bellow
+
+a) copy prog binary to executable directory (~/bin, /usr/local/bin, /usr/bin, ...)
+    'cp prog ~/bin'
+
+b) if you will use czech localization copy prog.mo to your locale              
+   directiory (/usr/share/locale/cs_CZ/LC_MESSAGES)                            
+    'cp prog.mo /usr/share/locale/cs_CZ/LC_MESSAGES'
+    
+c) User uses the programmer have to have write access to /dev/ttySX (to 
+   serial port device). This is depend on your system, in my system (suse 7.2)
+   I add user to group tty. The simplest way is to give write access to all.
+    'chmod 666 /dev/ttyS0'
+   
