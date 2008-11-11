@@ -1,0 +1,7 @@
+I2C eeproms
+    24c01, 24c02, 24c04, 24c08, 24c16, 24c32, 24c64, 24c128, 24c256, 24c512
+
+Atmel 89c51
+    at89c1051, at89c2051 and at89c4051 
+
+I2C interface (RS232 <-> I2C convertor)

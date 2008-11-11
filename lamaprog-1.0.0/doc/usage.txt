@@ -1,0 +1,15 @@
+LamaProg	v 1.0.0
+
+Usage prog -[rw] file -d device
+
+Options:
+        -h: this help
+        -v: print programmer version
+        -r: read intel hex file from device
+        -w: programm device
+        -d: select programmed device (24c16)
+        -p: communication port (/dev/ttyS0)
+Devices:
+	24c01, 24c02, 24c04, 24c08, 24c16, 24c32, 24c64, 24c128, 24c256, 24c512
+	89c1051, 89c2051, 89c4051
+

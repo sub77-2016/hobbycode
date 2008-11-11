@@ -1,0 +1,18 @@
+LamaProg v 0.2
+
+This is an opensource project for programming microcontrollers and memories.
+
+Features:
+- low cost design
+- easy extensible design
+- serial communication with PC (3wire UART, RS232)
+- input and output files in intel hex format
+- text based communication (commands and data)
+
+Supported devices:
+- i2c eeproms -- at24c01, at24c02 ... at24c512
+- atmel 89cx051 (at89c1051, at89c2051 and at89c4051)
+- in next version 89c5x (89c51)
+					    Jan Parkman
+					    parkmaj@users.sourceforge.net
+					    

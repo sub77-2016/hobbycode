@@ -1,0 +1,55 @@
+LamaProg v 1.0.0
+
+
+    COMMUNICATION PROTOCOL
+
+Communication protocol is UART (8b, 1stop, 9600Bd, without parity)
+     
+All commands - begins with colon (':')
+             - ends with space (' ')
+             - all leters are small caps
+	     - numbers and data are transfered in hexadecimal ascii format,
+	       high byte first, all letters are big (161 = "A1", 43981 = "ABCD")
+	     - returs '+' or '-' by the end of command 
+	       ('+' = positive, '-' = negative); '+' or '-' are the last letter
+	       send via serial chanel
+
+
+Commands depend on selected device. All devices must have implemented these
+two commands
+
+1) Programer version -- ":v " (returns banner ie. "LamaProg v 0.1+")
+2) Go to init state (quit) -- ":q " (returns +)
+
+Recomendet commands
+-read N bytes from address A ":rNNAAAA " (returns data and + or -)
+-write N data bytes form address A ":wNNAAAADDDD... " (returns + or -)
+-chip erase ":e "
+-read signature bytes ":s " (retuns signature and + or -)
+-write lock bytes ":lNN " (returns + or -)
+
+
+
+
+    DEVICE "a" -- Atmel 8051
+erase -- ":e "
+set address AAAA -- ":aAAAA " 
+read NN bytes -- ":rNN "
+write NN data bytes DD...DD -- ":wNNDD...DD "
+read signature -- ":s "
+
+ 
+    DEVICE "j" -- i2c eeproms
+read NN bytes from address AAAA -- ":rNNAAAA "
+write NN bytes DD...DD form address AAAA -- ":wNNAAAADD...DD "
+
+
+    DEVICE "i" -- rs232 <-> i2c convertor
+read data byte -- ":r " (return a+ or n+ (ack / no ack)
+write data byte DD -- ":wDD "
+write ack -- ":a+ "
+wirte nak -- ":a- "
+generate start condition -- ":s "
+generate stop condition -- ":t "
+
+    

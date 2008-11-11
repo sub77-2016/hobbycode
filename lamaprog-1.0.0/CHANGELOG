@@ -1,0 +1,13 @@
+new in 0.2.1
+- Only bug fix: Added resistors R6 and R7 to scheme file...
+
+new in 0.2.0
+- added support atmel 8051 chips (only 89c1051, 89c2051 and 89c4051)
+
+new in 0.1.1
+- interlocalization (en, cs)
+- installation program (make install is now working)
+
+new in 0.1.0
+- all is new... (it is first version)
+- support for i2c eeproms (24c01 -- 24c512)

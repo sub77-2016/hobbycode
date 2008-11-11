@@ -1,0 +1,264 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2004-02-09 18:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "."
+msgstr ""
+
+msgid "/dev/ttyS0"
+msgstr ""
+
+msgid "file.hex"
+msgstr ""
+
+msgid "o_file.hex"
+msgstr ""
+
+msgid "24c01"
+msgstr ""
+
+msgid "24c02"
+msgstr ""
+
+msgid "24c04"
+msgstr ""
+
+msgid "24c08"
+msgstr ""
+
+msgid "24c16"
+msgstr ""
+
+msgid "24c32"
+msgstr ""
+
+msgid "24c64"
+msgstr ""
+
+msgid "24c128"
+msgstr ""
+
+msgid "24c256"
+msgstr ""
+
+msgid "24c512"
+msgstr ""
+
+msgid ":v "
+msgstr ""
+
+#, c-format
+msgid "Version of programmer: %s\n"
+msgstr "Verze programátoru: %s\n"
+
+msgid ":djl "
+msgstr ""
+
+msgid ":djs "
+msgstr ""
+
+msgid "Error...\n"
+msgstr "Chyba...\n"
+
+#, c-format
+msgid "                       %s\n"
+msgstr ""
+
+#, c-format
+msgid ":r%02X%04X "
+msgstr ""
+
+msgid "Reading error"
+msgstr "Chyba pøi ètení"
+
+#, c-format
+msgid "%02X"
+msgstr ""
+
+msgid "\n"
+msgstr ""
+
+msgid "Saving failed...\n"
+msgstr "Chyba pøi ukládání...\n"
+
+#, c-format
+msgid ""
+"\n"
+"Reading complete at adress %d\n"
+msgstr ""
+"\n"
+"Ètení dokonèeno na adrese %d\n"
+
+msgid ":q "
+msgstr ""
+
+msgid "Unknown device... \n"
+msgstr "Neznámé zaøízení...\n"
+
+msgid "Input file not found...\n"
+msgstr "Vstupní soubor nenalezen...\n"
+
+msgid "Input file is corupt...\n"
+msgstr "Vstupní soubor je vadný...\n"
+
+msgid "Hex file loaded...\n"
+msgstr "Soubor naèten...\n"
+
+#, c-format
+msgid ":w%02X%04X"
+msgstr ""
+
+msgid " "
+msgstr ""
+
+msgid "Write error"
+msgstr "Chyba pøi zápisu"
+
+msgid ""
+"\n"
+"Programming complete...\n"
+msgstr ""
+"\n"
+"Programování dokonèeno...\n"
+
+#, c-format
+msgid ""
+"Programmer version:\n"
+"\t\t    software: LamaProg v 0.1\n"
+"                    hardware: %s\n"
+"\n"
+msgstr ""
+"Verze programátoru:\n"
+"\t\t    software: LamaProg v 0.1\n"
+"                    hardware: %s\n"
+"\n"
+
+msgid "prog"
+msgstr ""
+
+msgid "hd:w:r:p:v"
+msgstr ""
+
+#, c-format
+msgid "Unknown device %s\n"
+msgstr "Neznámé zaøízení %s\n"
+
+#, c-format
+msgid "Programm device from %s\n"
+msgstr "Programuji zaøízení ze souboru %s\n"
+
+#, c-format
+msgid "Read content of device to file %s\n"
+msgstr "Ètu obsah zarízení do souboru %s\n"
+
+#, c-format
+msgid "Communication port %s\n"
+msgstr "Port %s\n"
+
+#, c-format
+msgid "Option %c needs a value\n"
+msgstr ""
+
+#, c-format
+msgid "Unknow option: %c\n"
+msgstr ""
+
+#, c-format
+msgid "Unused argument: %s\n"
+msgstr ""
+
+msgid "/usr/share/locale"
+msgstr ""
+
+#, c-format
+msgid ""
+"Programmer version:\n"
+"\t\t    software: LamaProg v 0.1.1\n"
+"                    hardware: %s\n"
+"\n"
+msgstr ""
+"Verze programátoru:\n"
+"\t\t    software: LamaProg v 0.1\n"
+"                    hardware: %s\n"
+"\n"
+
+msgid ""
+"LamaProg\tv 0.2.0\n"
+"\n"
+"Usage prog -[rw] file -d device\n"
+"\n"
+"Options:\n"
+"        -h: this help\n"
+"        -v: print programmer version\n"
+"        -r: read intel hex file from device\n"
+"        -w: programm device\n"
+"        -d: select programmed device (24c16)\n"
+"        -p: communication port (/dev/ttyS0)\n"
+"Devices:\n"
+"\t24c01, 24c02, 24c04, 24c08, 24c16, 24c32, 24c64, 24c128, 24c256, 24c512\n"
+"\t89c1051, 89c2051, 89c4051\n"
+"\n"
+msgstr ""
+"LamaProg\tv 0.2.0\n"
+"\n"
+"Pou¾ití prog -[rw] soubor -d zaøízení\n"
+"\n"
+"Volby:\n"
+"        -h: tato nápovìda\n"
+"        -v: verze programátoru\n"
+"        -r: ètení obsahu zaøízení od souboru ve formátu intel hex\n"
+"        -w: programování zaøízení ze souboru ve formátu intel hex\n"
+"        -d: výbìr programovaného zaøízení (24c16)\n"
+"        -p: výbìr komunikaèního portu (/dev/ttyS0)\n"
+"Zaøízení:\n"
+"\t24c01, 24c02, 24c04, 24c08, 24c16, 24c32, 24c64, 24c128, 24c256, 24c512\n"
+"\t89c1051, 89c2051, 89c4051\n"
+"\n"
+
+msgid "89c1051"
+msgstr ""
+
+msgid "89c2051"
+msgstr ""
+
+msgid "8924051"
+msgstr ""
+
+msgid ":da "
+msgstr ""
+
+msgid ":s "
+msgstr ""
+
+#, c-format
+msgid "Chip signature: %s\n"
+msgstr "Signatura: %s\n"
+
+msgid ":a0000 "
+msgstr ""
+
+#, c-format
+msgid ":r%02X "
+msgstr ""
+
+msgid ":e "
+msgstr ""
+
+msgid "Ereasing complete...\n"
+msgstr "Pamì» vymazána...\n"
+
+#, c-format
+msgid ":w%02X"
+msgstr ""
