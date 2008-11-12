@@ -23,7 +23,7 @@ IMPLEMENT_APP(MainApp) // Initializes the MainApp class...
 bool MainApp::OnInit()
 {
   // Create an instance of our frame, or window
-  MainFrame *MainWin = new MainFrame(_("Edit"), wxPoint(1, 1), wxSize(300, 200));
+  MainFrame *MainWin = new MainFrame(_("Edit"), wxPoint(300, 200), wxSize(300, 200));
   MainWin->Show(TRUE); // show the window
   SetTopWindow(MainWin); // and finally, set it as the main window
   return TRUE;
