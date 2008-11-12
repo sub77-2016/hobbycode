@@ -10,21 +10,21 @@
 class MainFrame: public wxFrame
 {
 public:
-	MainFrame( const wxString &title, const wxPoint &pos, const wxSize &size );
+  MainFrame( const wxString &title, const wxPoint &pos, const wxSize &size );
  
-	void Quit( wxCommandEvent& event );
-	void NewFile( wxCommandEvent& event );
-	void OpenFile( wxCommandEvent& event );
-	void SaveFile( wxCommandEvent& event );
-	void SaveFileAs( wxCommandEvent& event );
-	void CloseFile( wxCommandEvent& event );
+  void Quit( wxCommandEvent& event );
+  void NewFile( wxCommandEvent& event );
+  void OpenFile( wxCommandEvent& event );
+  void SaveFile( wxCommandEvent& event );
+  void SaveFileAs( wxCommandEvent& event );
+  void CloseFile( wxCommandEvent& event );
  
-	wxTextCtrl *MainEditBox;
-	wxMenuBar *MainMenu;
-	// The Path to the file we have open
-	wxString CurrentDocPath;
+  wxTextCtrl *MainEditBox;
+  wxMenuBar *MainMenu;
+  // The Path to the file we have open
+  wxString CurrentDocPath;
  
-	DECLARE_EVENT_TABLE()
+  DECLARE_EVENT_TABLE()
 };
 
 #endif
