@@ -98,6 +98,19 @@ double domainwidth_vert_SD[HMAX];
 double domainwidth_horiz[HMAX];
 double domainwidth_horiz_SD[HMAX];
 
+void init_spin(double spin[XMAX][YMAX]) {
+  int i,j;
+  //Set initial spin configuration
+  for (i=0;i<xdim;i++) {
+    for (j=0;j<ydim;j++) {
+      if ( rnd()<=ratio )
+	spin[i][j] = 1;
+      else 
+	spin[i][j] = -1;	 
+    }
+  }
+}
+
 void init(void) {
   int i, j, n, dE;
 
@@ -108,20 +121,14 @@ void init(void) {
   for (i=0;i<xdim;i++) {
     for (j=0;j<ydim;j++) {  
       phi[i][j] = 0;
-      rho[i][j] = 1;   
+      rho[i][j] = 0;   
       mu[i][j] = 0.; 
     }
   }
 
-  //Set initial moments
-  for (i=0;i<xdim;i++) {
-    for (j=0;j<ydim;j++) {
-      if ( rnd()<=ratio )
-	phi[i][j] = 1;
-      else 
-	phi[i][j] = -1;	 
-    }
-  }//END INIT SPIN
+  //init spin
+  init_spin(phi);
+  init_spin(rho);
 
   //Compute Boltzmann probability ratios
   for (dE = -8; dE <= 8; dE=dE+4)
@@ -250,8 +257,8 @@ void Metropolis(double spin[XMAX][YMAX],int N,int L,double *E,double *M,double *
   for (ispin=1; ispin <= N; ispin++)
     {
       /* random x and y coordinates for trial spin  */
-      x = L*rnd() + 1;
-      y = L*rnd() + 1;
+      x = L*rnd();
+      y = L*rnd();
       dE = DeltaE(spin,x,y,L);
       if (rnd() <= w[dE+8])
 	{
@@ -262,7 +269,6 @@ void Metropolis(double spin[XMAX][YMAX],int N,int L,double *E,double *M,double *
 	}
     }
 }
-
 
 void iteration1(void){
   double E,M,accept;
@@ -304,11 +310,11 @@ void GUI(void){
   //EndMenu();
 
   //StartMenu("Controls",0);
-  DefineDouble("Ratio", &ratio);
-  DefineDouble("Temperature", &T);
   DefineInt("iterations", &iterations);
   DefineInt("repeat", &repeat);
   //DefineInt("stabilize", &stabilize);
+  DefineDouble("Ratio", &ratio);
+  DefineDouble("Temperature", &T);
   //EndMenu();
 
   StartMenu("Secondary Inputs",0);
@@ -346,7 +352,7 @@ main(int argc, char *argv[]){
 
   //printf("%d\n", argc);
   if(argc < 1) {
-    Error("Usage: mono2-noX [GUI 1 or 0]\n");
+    printf("Usage: %s [GUI 1 or 0]\n", argv[0]);
   }
   else {
     //PARAM = atof(argv[1]);
@@ -375,11 +381,11 @@ main(int argc, char *argv[]){
   init();
 
   //Just reset
-  sprintf(name,"data-%f.txt", PARAM);
+  sprintf(name,"data-%f.txt",PARAM);
   out = fopen(name,"w+");
 
  //Write some information
-  gethostname(hname,sizeof(hname));
+  gethostname(hname,(size_t)sizeof(hname));
 
   fprintf(out,"#Size: %dx%d\n#K: %f\n#PARAM: %f\n#itertions: %d\n#Repeat: %d\n#sec/iteration: %s\n#Host: %s\n#PID: %d\n#---BEGIN DATA---\n\n\n",XMAX,YMAX,kappa_,PARAM,iteration_max,repeat,wtime_string( (double)(time(NULL)-BEGIN_T)/10 ), hname, getpid() );
 
