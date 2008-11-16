@@ -17,6 +17,7 @@
 #define YMAX (XMAX)
 #define NMAX (XMAX*YMAX)
 #define TEMPINIT (2.2)
+#define LAMBDAINIT (0.0)
 
 //Maximum History Size
 #define HMAX (100000)
@@ -29,11 +30,6 @@
 #define RANDMAX (2147483647)
 #define PI (3.14159265358979323846264338327)
 //Searchparams
-#define VELMAX  (0.010)
-#define VELMIN  (0.002)
-#define VELMLT  (2.0)
-#define VELSTP  (0.001)
-
 #define TMAX  (0.10)
 #define TMIN1 (0.01)
 #define TSTP1 (0.01)
@@ -50,12 +46,8 @@
 #endif
 
 //Main inputs
-double Amp1 = 1E-4;
-double a_ = -1., b_ = 1., kappa_  = 0.9, PARAM = 0.;
-double T = TEMPINIT, Told=TEMPINIT, ratio = 0.5;
-double tau0 = 1., tau1 = 1.;
-double UX1 = 0.0, UY1 = 0.0;
-double r_zero[2] = {0.,0.};
+double T = TEMPINIT, Told=TEMPINIT, lambda = LAMBDAINIT, lambdaold = LAMBDAINIT, PARAM = 0;
+double r_zero[2] = {0.5,0.5};
 
 //Secondary inputs
 int x_zero = 0;
@@ -88,8 +80,8 @@ int initvert = 10;
 //Global Variables
 double rho[XMAX][YMAX];
 double phi[YMAX][YMAX];
-double mu[XMAX][YMAX];
-double w[17];
+double psi[XMAX][YMAX];
+double w[17][3];
 
 double timepassed[HMAX];
 double totalmass[HMAX];
@@ -98,7 +90,7 @@ double domainwidth_vert_SD[HMAX];
 double domainwidth_horiz[HMAX];
 double domainwidth_horiz_SD[HMAX];
 
-void init_spin(double spin[XMAX][YMAX]) {
+void init_spin(double spin[XMAX][YMAX], double ratio) {
   int i,j;
   //Set initial spin configuration
   for (i=0;i<xdim;i++) {
@@ -108,10 +100,23 @@ void init_spin(double spin[XMAX][YMAX]) {
   }
 }
 
-ComputeBoltzmannProb(void){
+void TotalSpin(double spin1[XMAX][YMAX],double spin2[XMAX][YMAX],double tot[XMAX][YMAX])
+{
+  int i,j;
+  //Total spin
+  for (i=0;i<xdim;i++) {
+    for (j=0;j<ydim;j++) {  
+      tot[i][j] = spin1[i][j] + spin2[i][j]; 
+    }
+  }
+}
+
+void ComputeBoltzmannProb(void){
   int dE;
-  for (dE = -8; dE <= 8; dE=dE+4)
-    w[dE+8] = exp(-(double)dE/T);
+  for (dE = -8; dE <= 8; dE=dE+4) {
+    w[dE+8][0] = exp(-((double)dE-lambda)/T);
+    w[dE+8][2] = exp(-((double)dE+lambda)/T);
+  }
 }
 
 void init(void) {
@@ -123,15 +128,17 @@ void init(void) {
   //Zero arrays
   for (i=0;i<xdim;i++) {
     for (j=0;j<ydim;j++) {  
-      phi[i][j] = 0;
+      phi[i][j] = 0; 
+      psi[i][j] = 0; 
       rho[i][j] = 0;   
-      mu[i][j] = 0.; 
     }
   }
 
   //init spin
-  init_spin(phi);
-  init_spin(rho);
+  init_spin(phi,r_zero[0]);
+  init_spin(psi,r_zero[1]);
+
+  TotalSpin(phi,psi,rho);
 
   //Compute Boltzmann probability ratios
   ComputeBoltzmannProb();
@@ -162,9 +169,10 @@ void init(void) {
 
 void OnTempChange()
 {
-  if (T!=Told) 
+  if ( (T!=Told)||(lambda!=lambdaold) )
     {
       Told = T;
+      lambdaold = lambda;
       //re-compute Boltzmann probability ratios
       ComputeBoltzmannProb();
     }
@@ -191,10 +199,10 @@ int DeltaE(double spin[XMAX][YMAX],int x,int y,int L)
   return dE;
 }
 
-void Metropolis(double spin[XMAX][YMAX],int N,int L,double *E,double *M,double *accept)
+void Metropolis(double spin1[XMAX][YMAX],double spin2[XMAX][YMAX],int N,int L,double *E,double *M,double *accept)
 {
   /*one Monte Carlo step per spin  */
-  int ispin,x,y,dE;
+  int ispin,x,y,dE,choose=0;
   //Check If Temperature
   OnTempChange();
   for (ispin=1; ispin <= N; ispin++)
@@ -202,12 +210,13 @@ void Metropolis(double spin[XMAX][YMAX],int N,int L,double *E,double *M,double *
       /* random x and y coordinates for trial spin  */
       x = L*rnd();
       y = L*rnd();
-      dE = DeltaE(spin,x,y,L);
-      if (rnd() <= w[dE+8])
+      dE = DeltaE(spin1,x,y,L);      
+      choose = lambda != 0 ? 1+(int)(spin1[x][y]*spin2[x][y]): 1+(int)spin1[x][y];
+      if (rnd() <= w[dE+8][choose])
 	{
-	  spin[x][y] = -spin[x][y];
+	  spin1[x][y] = -spin1[x][y];
 	  *accept = *accept + 1;
-	  *M = *M + 2*spin[x][y];
+	  *M = *M + 2*spin1[x][y];
 	  *E = *E + dE;
 	}
     }
@@ -253,7 +262,7 @@ const char* wtime_string(double sec)
 }
 
 void check_unstable(void) {
-  int c = isnormal(rho[xdim/2][ydim/2])&&isnormal(phi[xdim/2][ydim/2]);
+  int c = isnormal(phi[xdim/2][ydim/2])&&isnormal(psi[xdim/2][ydim/2]);
   if (!c) {
     printf("It's not stable\n");
     s -= TSTP1;
@@ -271,9 +280,12 @@ void check_unstable(void) {
 }
 
 void iteration1(void){
-  double E,M,accept;
+  double E=0,M=0,accept=0;
 
-  Metropolis(phi,NMAX,LMAX,&E,&M,&accept);
+  Metropolis(phi,psi,NMAX,LMAX,&E,&M,&accept);
+  Metropolis(psi,phi,NMAX,LMAX,&E,&M,&accept);
+  TotalSpin(phi,psi,rho);
+
   check_unstable();
 }
 
@@ -286,8 +298,8 @@ void GetGraphics(void){
 
 void GUI(void){	
   DefineGraphNxN_R("phi", &phi[0][0], &xdim, &ydim, NULL);
-  DefineGraphNxN_R("rho", &rho[0][0], &xdim, &ydim, NULL);
-  //DefineGraphNxN_R("mu", &mu[0][0], &xdim, &ydim, NULL);
+  DefineGraphNxN_R("psi", &psi[0][0], &xdim, &ydim, NULL);
+  DefineGraphNxN_R("rho", &rho[0][0], &xdim, &ydim, NULL); 
   NewGraph();
 
   StartMenu("Ising Bilayer",1);
@@ -296,8 +308,6 @@ void GUI(void){
   DefineGraph(contour2d_,"Visualize");
 
   //StartMenu("Main Inputs",0);
-  //DefineDouble("phi_zero",&r_zero[0]);
-  //DefineDouble("rho_zero",&r_zero[1]);
   //DefineDouble("Amp",&Amp1);
   //DefineDouble("a",&a_);
   //DefineDouble("b",&b_);
@@ -313,8 +323,10 @@ void GUI(void){
   DefineInt("iterations", &iterations);
   DefineInt("repeat", &repeat);
   //DefineInt("stabilize", &stabilize);
-  DefineDouble("Ratio", &ratio);
+  DefineDouble("phi_init", &r_zero[0]);
+  DefineDouble("psi_init", &r_zero[1]);
   DefineDouble("Temperature", &T);
+  DefineDouble("Lambda", &lambda);
   //EndMenu();
 
   StartMenu("Secondary Inputs",0);
@@ -387,7 +399,7 @@ main(int argc, char *argv[]){
  //Write some information
   gethostname(hname,(size_t)sizeof(hname));
 
-  fprintf(out,"#Size: %dx%d\n#K: %f\n#PARAM: %f\n#itertions: %d\n#Repeat: %d\n#sec/iteration: %s\n#Host: %s\n#PID: %d\n#---BEGIN DATA---\n\n\n",XMAX,YMAX,kappa_,PARAM,iteration_max,repeat,wtime_string( (double)(time(NULL)-BEGIN_T)/10 ), hname, getpid() );
+  fprintf(out,"#Size: %dx%d\n#PARAM: %f\n#itertions: %d\n#Repeat: %d\n#sec/iteration: %s\n#Host: %s\n#PID: %d\n#---BEGIN DATA---\n\n\n",XMAX,YMAX,PARAM,iteration_max,repeat,wtime_string( (double)(time(NULL)-BEGIN_T)/10 ), hname, getpid() );
 
   fclose(out);  
 
