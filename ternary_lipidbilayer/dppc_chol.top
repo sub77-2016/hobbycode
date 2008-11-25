@@ -1,0 +1,13 @@
+#include "martini_v2.0.itp"
+#include "martini_v2.0_lipids.itp"
+#include "martini_v2.0_cholesterol.itp"
+#include "diC18-2_PC.itp"
+
+
+[ system ]
+DPPC/CHOLESTEROL BILAYER
+
+[ molecules ]
+DPPC 38  
+CHOL 16
+W 350
