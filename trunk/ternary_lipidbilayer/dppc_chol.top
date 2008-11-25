@@ -8,6 +8,7 @@
 DPPC/CHOLESTEROL BILAYER
 
 [ molecules ]
-DPPC 38  
+diPC 15
+DPPC 23
 CHOL 16
 W 350
