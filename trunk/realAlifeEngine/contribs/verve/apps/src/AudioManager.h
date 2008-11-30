@@ -27,7 +27,7 @@
 #include <string>
 #include <map>
 
-#include <audiere/audiere.h>
+#include <audiere.h>
 
 /// Use this macro to access the singleton.  For example: 
 /// AUDIO.loadSound("woosh", "data/sounds/woosh.wav");
