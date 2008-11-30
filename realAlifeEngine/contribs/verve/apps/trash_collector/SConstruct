@@ -23,7 +23,7 @@ opts.AddOptions(
 
 env = Environment(
 	ENV = os.environ,
-	LIBS = ['verve', 'opal-ode', 'OgreMain', 'SDL', 'SDLmain', 'audiere'], 
+	LIBS = ['verve', 'opal-ode', 'OgreMain', 'SDL', 'SDLmain', 'audiere', 'OIS'], 
 	options = opts
 )
 
@@ -39,7 +39,7 @@ env.Help(opts.GenerateHelpText(env))
 if env['PLATFORM'] == 'win32':
 	env.Append(CXXFLAGS = ['/O2', '/W3', '/EHsc', '/wd4996'])
 else:
-	env.Append(CXXFLAGS = ['-O2'])
+	env.Append(CXXFLAGS = ['-O2', '/usr/include/ogre'])
 
 # Export the environment for the SConscripts.
 useAudio = True
@@ -48,7 +48,7 @@ Export('env', 'useAudio')
 # Build the executable.
 objects = env.SharedObject(sources)
 #objects += SConscript(dirs = ['../src'], duplicate = 0)
-exe = env.Program('trash_collector', objects)
+exe = env.Program('trash_collector', objects, CCFLAGS='-I/usr/include/ogre', LIBPATH='/usr/lib', CPPPATH = ['/usr/include/ogre', '/usr/include/OIS'])
 
 # Install the executable.
 inst = env.Install('../bin', exe)

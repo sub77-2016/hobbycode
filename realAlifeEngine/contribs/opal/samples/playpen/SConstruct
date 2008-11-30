@@ -16,11 +16,14 @@ env = Environment(
 	options = opts
 )
 
+# For my machine only
+env.Append(CXXFLAGS = ['-I/usr/include', '-I/usr/include/OIS'])
+
 env.Append(CPPPATH = env['extra_include_path'], 
 	LIBPATH = env['extra_lib_path'])
 
-if env['PLATFORM'] != 'win32':
-	env.Append(CXXFLAGS = ['-DGCC_3_1', '-DEXT_HASH'])
+#if env['PLATFORM'] != 'win32':
+#	env.Append(CXXFLAGS = ['-DGCC_3_1', '-DEXT_HASH'])
 
 # Generate command line help text
 env.Help(opts.GenerateHelpText(env))
