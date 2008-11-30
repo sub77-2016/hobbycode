@@ -1,0 +1,10 @@
+import os
+Import('env')
+
+sources = Split("""
+	GridWorld.cpp
+""")
+
+objects = env.SharedObject(sources)
+
+Return('objects')

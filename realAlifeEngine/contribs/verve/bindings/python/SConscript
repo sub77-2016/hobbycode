@@ -1,0 +1,29 @@
+import os
+import os.path
+from os.path import join
+Import('env')
+
+removeStr = ''
+copyStr = ''
+libName = ''
+if env['PLATFORM'] == 'win32':
+	removeStr = 'del /F'
+	copyStr = 'copy'
+	libName = join('..', '..', 'build', 'release', 'verve.dll')
+else:
+	removeStr = 'rm -f'
+	copyStr = 'cp'
+	libName = join('..', '..', 'build', 'release', 'libverve.so')
+
+runSWIG = env.Command('pyverve_wrap.cxx', 'pyverve.i',
+    'cd bindings/python && ' + removeStr + ' pyverve_wrap.cxx && swig -python -shadow -c++ pyverve.i && ' + copyStr + ' pyverve.py pyverve && ' + copyStr + ' ' + libName + ' pyverve && cd ../..')
+env.Default(runSWIG)
+env.AlwaysBuild(runSWIG)
+
+pythonLib = env.SharedLibrary('_pyverve', 'pyverve_wrap.cxx', SHLIBPREFIX='', LIBS=['verve'])
+env.Default(pythonLib)
+env.AlwaysBuild(pythonLib)
+
+inst = env.Install('./pyverve', pythonLib)
+env.Default(inst)
+env.AlwaysBuild(inst)

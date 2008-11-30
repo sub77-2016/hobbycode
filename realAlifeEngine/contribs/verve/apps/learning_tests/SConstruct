@@ -1,0 +1,53 @@
+import os
+
+sources = Split("""
+	CuriosityTest.cpp
+	HotPlateTest.cpp
+	HotPlate2DTest.cpp
+	MazeTest.cpp
+	NArmedBanditTest.cpp
+	SequentialActionsTest.cpp
+	SignaledHotPlateTest.cpp
+	SignaledHotPlate2DTest.cpp
+	learning-tests.cpp
+""")
+
+# Setup options
+opts = Options()
+opts.AddOptions(
+	PathOption('extra_include_path', 'Additional include directory', '.'), 
+	PathOption('extra_lib_path', 'Additional lib directory', '.'))
+
+env = Environment(
+	ENV = os.environ,
+	LIBS = ['verve'], 
+	options = opts
+)
+
+env.Append(CPPPATH = env['extra_include_path'], 
+	LIBPATH = env['extra_lib_path'])
+
+# Generate command line help text
+env.Help(opts.GenerateHelpText(env))
+
+if env['PLATFORM'] == 'win32':
+	env.Append(CXXFLAGS = ['/O2', '/W3', '/EHsc', '/wd4996'])
+else:
+	env.Append(CXXFLAGS = ['-O2'])
+
+# Export the environment for the SConscripts.
+useOpalOgre = False
+Export('env', 'useOpalOgre')
+
+# Build the executable.
+objects = env.SharedObject(sources)
+objects += SConscript(dirs = ['../src'], duplicate = 0)
+objects += SConscript(dirs = ['common'], duplicate = 0)
+exe = env.Program('learning-tests', objects)
+
+# Install the executable.
+inst = env.Install('../bin', exe)
+
+# Tell scons to build and install the executable by default.
+env.Default(exe)
+env.Default(inst)
