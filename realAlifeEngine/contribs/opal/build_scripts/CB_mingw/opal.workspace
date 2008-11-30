@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="OPAL">
+		<Project filename="opal-ode.cbp">
+			<Depends filename="opcode.cbp" />
+			<Depends filename="ode.cbp" />
+		</Project>
+		<Project filename="unittests.cbp" active="1">
+			<Depends filename="opal-ode.cbp" />
+		</Project>
+		<Project filename="opcode.cbp" />
+		<Project filename="ode.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

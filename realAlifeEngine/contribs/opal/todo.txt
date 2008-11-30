@@ -1,0 +1,153 @@
+Note: This file needs to be cleaned up.  A lot of ideas listed here have already been implemented or are no longer applicable.
+
+* per-shape material ERP calculations
+
+* update friction calculations (don't multiply values by maxFriction; use maxFriction as a threshold to cap things to dInfinity)
+
+
+For Version 0.3.2
+=================
+
+* keep track of solids that have moved; allows users to only update visuals when necessary
+	- store a 'isMoving' variable
+	- set 'isMoving' to false each time step?
+	- certain events set 'isMoving' to true
+		- setPosition
+		- solid is awake and dynamic
+	- basically, the only only thing that has 'isMoving' false is a solid that is sleeping or static that hasn't been moved manually via setPosition
+
+* add option for SpringMotor to depend on mass/inertia or not
+
+* maybe add more support for spaces? (support more spaces; support more options for spaces)
+
+* make defaults not const? 
+	- people can then do this: opal::defaults::motor::enabled = false; ... to affect all future motor creation
+
+* remove plane from shapes; just make it a special object?
+	- need a separate Plane tag in xml
+
+* store meshes (at least references) in xml?
+
+For Version 0.4.0
+=================
+
+* private constructors for opal-managed objects?
+
+* handle blown frame cases (important especially for things like big towers of blocks that slow the simulation way down)
+	- desired frame rate (max support through spaces)?
+	- partially complete frame; stop simulation early, resulting in a slow-motion look
+	- complete frame, resulting in a jerky frame rate
+	- Novodex: uses a max # of iterations per frame
+
+* look into automatic shape generation from model files
+
+* check places where we don't have to iterate over every object
+	- have a list of solids that have forces applied and only update those per time step
+
+* make trimeshes work
+	- test basic functionality
+	- add helper functions to make it easier to use
+
+* search and replace existing assert() calls
+	- fatal errors print a message and assert
+	- non-fatal errors just print a warning
+
+* make an OPAL_ASSERT that prints informative messages; replace all assert() calls
+
+* joint motion damping?
+	- useful for ragdolls
+	- one solution: just use a servo in desired vel mode, set desired vel to 0
+
+* dynamic number of contact joints?
+	- depends on types of objects
+	- contact filtering?
+
+* look at (and maybe remove) mass ratio stuff
+	- there may be a problem when you have a tiny object between two massive objects; one massive object should affect the other but can't
+	- removing this also may fix the problem where a huge object dropped on a tiny object traps the smaller one underneath; the small one constantly wriggles around, but the large one doesn't move.
+
+* should all objects with multiple modes of operation (e.g. spring motor, accel sensor) take bit flags?
+	- or just separate objects with different modes into separate types?
+
+* separate Joint back into separate subclasses?
+
+* investigate sleeping for entire islands
+	- this may make stacks a lot more stable
+	- search ode mailing list for "Any BloodRayne 2 developers listening?"
+
+* move includes from headers to cpp files wherever possible
+
+Possible Ideas
+==============
+
+* interpolate position/orientation of solids using leftover dt
+
+* given that the physics engine is known at compile time, just set the opal::real to the physics engine's real value (e.g. ODE's dReal)
+
+* GearedMotor
+	- make more accurate
+
+* collision events
+	- generate collision state (START_COLLISION_STATE, CONTINUE_COLLISION_STATE, END_COLLISION_STATE)
+
+* change the internal_dependsOn functions -> have bidirectional references (dependency lists) so we don't have to search lists for dependencies
+	- dependencies
+		- Solids -> nothing
+		- Joints -> Solids
+		- Motors -> Joints, Solids
+		- Sensors -> Joints, Solids
+
+* contact filtering
+	- averaging
+	- other methods?
+
+* materials
+	- have the simulator store a cached list of named materials
+	- shapes simply use a material name
+
+* resize-shape function
+
+* small objects rotate weirdly
+	- due to small mass not causing deep enough penetrations, thus they have little friction and just slide around?
+
+* make sure everything is stepsize independent
+	- maybe pass dt to all update functions, especially motors
+
+* blueprints could have a single boolean space parameter like "insert the whole bp into a space or not"
+	- this could even just be a bool passed to the instantiate function
+
+* point intersections
+	- ODE already has this feature, so implementation is trivial
+	- either a sensor or just a solid function
+
+Long-term Ideas
+===============
+* Buoyancy ideas
+	- look at ODE mailing list for Tyler's post and responses
+
+* Convex hulls
+	- implement (in ODE)
+
+* make a COLLADA importer/exporter
+
+* move headers into a separate dir
+
+* Automatic collision mesh generation (allows "concave hulls")
+	- load in model (include OBJ loader?), generate octree
+	- create a primitive shape for each leaf in the octree using the leaf's extents as the dimensions of the shape
+	- the primitive shapes can be boxes, spheres, or convex hulls
+	- for XML file spec, add auto shape generation option
+	- opal file exporters could calculate precached collision mesh data (i.e. not using the auto feature)
+
+* LOD disabling
+	- automatically disable solids (e.g. ODE geoms and bodies can be disabled) when they exceed some distance from the camera
+	- doesn't need to be updated every step (maybe once per second)
+
+Miscellaneous Notes
+===================
+* Things to do for new Motors and Sensors:
+	- parse from xml
+	- add to xml example
+	- add to instantiateBlueprint
+	- add to Blueprint finalize function
+	- add to Blueprint addSensor/addMotor function
