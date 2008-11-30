@@ -1,0 +1,17 @@
+Verve
+http://verve-agents.sourceforge.net
+Copyright (c) 2004-2008
+Tyler Streeter (http://www.tylerstreeter.net)
+
+
+Version 0.1.0
+January 24, 2006
+============================================================
+
+Release Notes
+----------------------------------------------------
+This is the initial release.  This version is the one used in Tyler Streeter's master's thesis.  One of the main purposes of this version is to have a record of the code used in Tyler's thesis.  Presently, Verve is quite useable.  Verve agents can be used for a wide variety of reinforcement learning problems, including real-time tasks.  However, it lacks a few things.  The code for one of the features, XML saving/loading, is far out of date, so it has been disabled until a later version.  The main theoretical limitation is its scalability to large state and action spaces.  Later versions will implement hierarchical structures to help it overcome the scalability problem.  For more details, see Tyler's thesis, "Design and Implementation of General Purpose Reinforcement Learning Agents."
+
+Change Log
+----------------------------------------------------
+Initial version.

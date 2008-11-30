@@ -1,0 +1,23 @@
+import os
+Import('env', 'useAudio')
+
+sources = Split("""
+	AgentVisualDebugger.cpp
+	Car.cpp
+	DataCollection.cpp
+	DataFile.cpp
+	LearningTest.cpp
+	PhysicalCamera.cpp
+	PhysicalEntity.cpp
+	SimulationEngine.cpp
+	Timer.cpp
+""")
+
+if useAudio == True:
+	sources += Split("""
+		AudioManager.cpp
+		""")
+
+objects = env.SharedObject(sources)
+
+Return('objects')

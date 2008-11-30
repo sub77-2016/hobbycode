@@ -1,0 +1,42 @@
+rows 20
+columns 20
+
+e   e   e | e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e
+                -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
+e   S   e | e | e   e   e   e   e   e   e   e   e   e   e   e   e   e   e | e
+                    -   -   -   -   -   -   -   -   -   -   -   -   -        
+e | e | e | e | e | e   e   e   e   e   e   e   e   e   e   e   e   e | e | e
+                        -   -   -   -   -   -   -   -   -   -   -            
+e | e | e | e | e | e | e   e   e   e   e   e   e   e   e   e   e | e | e | e
+                            -   -   -   -   -   -   -   -   -                
+e | e | e | e | e | e | e | e   e   e   e   e   e   e   e   e | e | e | e | e
+                                -   -   -   -   -   -   -   -                
+e | e | e | e | e | e | e | e | e   e   e   e   e   e   e | e | e | e | e | e
+                                    -   -   -   -   -                        
+e | e | e | e | e | e | e | e | e | e   e   e   e   e | e | e | e | e | e | e
+                                    -   -   -   -                            
+e | e | e | e | e | e | e | e | e | e   e   e   e | e | e | e | e | e | e | e
+                                    -   -   -                                
+e | e | e | e | e | e | e | e | e | e   e   e | e | e | e | e | e | e | e | e
+                                                                             
+e | e | e | e | e | e | e | e | e | e   e | e | e | e | e | e | e | e | e | e
+                                                                             
+e | e | e | e | e | e | e | e | e | e   G | e | e | e | e | e | e | e | e | e
+                                    -   -                                    
+e | e | e | e | e | e | e | e | e   e   e   e | e | e | e | e | e | e | e | e
+                                -   -   -   -                                
+e | e | e | e | e | e | e | e   e   e   e   e   e | e | e | e | e | e | e | e
+                            -   -   -   -   -   -                            
+e | e | e | e | e | e | e   e   e   e   e   e   e   e | e | e | e | e | e | e
+                        -   -   -   -   -   -   -   -                        
+e | e | e | e | e | e   e   e   e   e   e   e   e   e   e | e | e | e | e | e
+                    -   -   -   -   -   -   -   -   -   -                    
+e | e | e | e | e   e   e   e   e   e   e   e   e   e   e   e | e | e | e | e
+                -   -   -   -   -   -   -   -   -   -   -   -                
+e | e | e | e   e   e   e   e   e   e   e   e   e   e   e   e   e | e | e | e
+            -   -   -   -   -   -   -   -   -   -   -   -   -   -            
+e | e | e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e | e | e
+        -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -        
+e | e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e | e
+    -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -    
+e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e   e

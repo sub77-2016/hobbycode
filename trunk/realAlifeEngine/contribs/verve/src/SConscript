@@ -1,0 +1,59 @@
+import os
+Import('env')
+
+headers = Split("""
+	ActiveTDConnectionList.h
+	Agent.h
+	AgentDescriptor.h
+	Connection.h
+	Defines.h
+	Globals.h
+	Logger.h
+	Neuron.h
+	Observation.h
+	Population.h
+	Platform.h
+	PredictiveModel.h
+	Projection.h
+	RBFInputData.h
+	RBFNeuron.h
+	RBFPopulation.h
+	RLModule.h
+	TDConnection.h
+	TDProjection.h
+	UltraSparseCodePopulation.h
+	verve.h
+	WinnerTakeAllPopulation.h
+""")
+
+sources = Split("""
+	ActiveTDConnectionList.cpp
+	Agent.cpp
+	AgentDescriptor.cpp
+	Connection.cpp
+	Globals.cpp
+	Neuron.cpp
+	Observation.cpp
+	Population.cpp
+	PredictiveModel.cpp
+	Projection.cpp
+	RLModule.cpp
+	RBFInputData.cpp
+	RBFNeuron.cpp
+	RBFPopulation.cpp
+	TDConnection.cpp
+	TDProjection.cpp
+	UltraSparseCodePopulation.cpp
+	WinnerTakeAllPopulation.cpp
+""")
+
+objects = env.SharedObject(sources)
+
+# Add XML-related objects
+objects += SConscript(dirs = ['external/tinyxml'], duplicate = 0)
+
+# Add header installation to 'install' alias
+env.Alias('install', env.Install(os.path.join(env['prefix'], 'include/verve'), headers))
+
+temp = ''
+Return('objects')

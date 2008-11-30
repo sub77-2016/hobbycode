@@ -1,0 +1,35 @@
+import os
+Import('env')
+
+sources = Split("""
+	ActiveTDConnectionListTest.cpp
+	AgentTest.cpp
+	ConnectionTest.cpp
+	GlobalFunctionTest.cpp
+	NeuronTest.cpp
+	ObservationTest.cpp
+	PredictiveModelTest.cpp
+	ProjectionTest.cpp
+	RBFInputDataTest.cpp
+	RBFNeuronTest.cpp
+	RBFPopulationTest.cpp
+	RLModuleTest.cpp
+	TDConnectionTest.cpp
+	UltraSparseCodePopulationTest.cpp
+	WinnerTakeAllPopulationTest.cpp
+	unit-tests.cpp
+""")
+
+# We need to link with the Verve library.
+if env['debug'] == True:
+        env.Append(LIBS = ['verve_d'])
+else:
+        env.Append(LIBS = ['verve'])
+
+exeName = 'unit-tests'
+if env['debug'] == True:
+	exeName = 'unit-tests_d'
+
+exe = env.Program(exeName, sources)
+
+Return('exe')

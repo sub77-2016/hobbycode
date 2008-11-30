@@ -1,0 +1,123 @@
+Plans for Next Version
+======================
+
+
+* maybe recompute the RBF activity sum (and vector length) on each update
+
+* maybe remove discrete sensor support since continuous inputs are the main focus; users can just approximate discrete sensors with continuous ones
+
+* maybe remove non-dynamic RBF setup since dynamic allocation will probably always be necessary
+
+* RBF allocation
+  - 1. test # of RBFs within a nearby sphere
+    2. allocate new RBFs randomly within the sphere (respecting a max # of total RBFs)
+
+* local RBF connectivity for self-organization
+
+* use a hierarchy of RBFs?
+  - useful for generalization
+  - useful for space partitioning?
+
+* set initial RBF output weights near 1.0 / sumRBF, where sumRBF is the **maximum possible sum of RBF activity**; this will make the weighted output (dot product) near 1.0, which is desirable in many cases.
+
+* normalize the learning rates for RBF output weights by the **maximum possible length of the RBF activity vector**; this will ensure that each error/learning vector is the same length.
+
+* extend the RBF arrays past the end of the boundaries to make sure the output sum is the same everywhere
+
+* make videos of the value function changing over time for a simple curious agent
+
+* upgrade curiosity system (see details in blog post on 4-25-06)
+
+* planning
+  - first, make the 2D maze planning task work for continuous sensors
+  - test physical apps with planning
+
+* Make sure the input sum for sigmoidal neurons can reach the extremes of the sigmoid curve.
+
+* Should all action probabilities always be greater than zero? Or should it be possible to learn to ignore a possible action entirely?
+
+* get XML saving/loading working again
+  - save/load all necessary data for each object
+
+<Agent>
+	<Age hours="10" minutes="43" seconds="12"/>
+	<RLModule>
+		<LearningTimeConstant value="0.1"/>
+		...
+		<Population name="state">
+			<Neuron id="0"/>
+			<Neuron id="1"/>
+			...
+			<TDProjection target="actor"/>
+			<TDProjection target="critic"/>
+		</Population>
+		<Population name="actor">
+			<Neuron id="0"/>
+			<Neuron id="1"/>
+			...
+		</Population>
+		<Population name="critic">
+			<Neuron id="0"/>
+		</Population>
+	</RLModule>
+	<PredictiveModel>
+		...
+	</PredictiveModel>
+</Agent>
+
+* profile code
+
+* agent/neural net visualizer
+  - generates an image of the Neurons and Connections from an agent XML file
+    > use OpenGL and Corona; no need to open a window
+    > or maybe use an open source graph visualizer (e.g. graphviz)?
+    > or use gnuplot with SVG
+      + plot points (large circles) for the neurons
+      + plot lines for the connections
+      + somehow plot +/- connections as separate colors
+      + somehow plot connection sizes as different sized lines
+
+* option to disable exploration
+  - actor WTA would choose the best option, not probabilistically (sample method, not distribution method)
+  - this would be useful to ensure deterministic actions (and would maybe give a slight speedup).
+  - there might be a problem if the agent needs random actions in some states
+
+* make a "save value function" function
+  - takes a "resolution level"
+  - computes and outputs the value of each possible state, using the given resolution level
+  - warning: should only be used for small state spaces
+
+* external utility that converts an agent XML file to an image/SVG file
+
+* add a "simulate" function to Agents and/or NeuralNetworks which takes arbitrary dt values and makes multiple steps
+
+* graph learning rate sequences at different dts (graph weight over time) to make sure it works the same in all cases; start by using a constant error value
+
+* try to shrink the memory requirements of things that come in large quantities (like Connections) to reduce overall memory requirements
+
+
+Small, Experimental Apps
+-------------------------------------------------
+* iterated prisoner's dilemma
+* towers of hanoi
+* sliding number game (15 numbered squares in a 4x4 grid w/ one empty space; slide numbers into correct order)
+* card games
+  - black jack (described in RL book)
+  - texas hold 'em
+* physics simulations
+  - standing robots
+  - jumping robots
+  - walking robots
+  - walking 6-legged robot that must adapt after losing a leg
+  - peg insertion with articulated arm/hand
+  - throwing a ball towards a target
+  - robots foraging for food
+  - predator/prey
+  - a simulated hand that explores a piano keyboard
+  - mars rover
+
+
+Large, Interactive Apps
+-------------------------------------------------
+* curious webcam with lights that show interest/boredom
+* dog trainer/virtual pet; users can affect physical environment
