@@ -63,7 +63,7 @@ tcoupl                   = Berendsen
 tc-grps                  = diPC DPPC CHOL W
 ; Time constant (ps) and reference temperature (K) = 
 tau_t                    = 0.1 0.1 0.1 0.1
-ref_t                    = 300 300 300 300
+ref_t                    = 295 295 295 295
 ; Pressure coupling      = 
 Pcoupl                   = berendsen 
 Pcoupltype               = semiisotropic
@@ -90,5 +90,5 @@ lincs_order              = 4
 lincs_warnangle          = 30
 ; Energy minimize
 emtol			 = 100.0
-emstep			 = 0.01
+emstep			 = 0.001
 
