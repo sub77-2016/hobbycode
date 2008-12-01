@@ -1,0 +1,58 @@
+import os
+
+sources = Split("""
+	main.cpp
+	Robot.cpp
+
+	../src/AgentVisualDebugger.cpp
+	../src/AudioManager.cpp
+	../src/Car.cpp
+	../src/DataCollection.cpp
+	../src/DataFile.cpp
+	../src/PhysicalCamera.cpp
+	../src/PhysicalEntity.cpp
+	../src/SimulationEngine.cpp
+	../src/Timer.cpp
+""")
+
+# Setup options
+opts = Options()
+opts.AddOptions(
+	PathOption('extra_include_path', 'Additional include directory', '.'), 
+	PathOption('extra_lib_path', 'Additional lib directory', '.'))
+
+env = Environment(
+	ENV = os.environ,
+	LIBS = ['verve', 'opal-ode', 'OgreMain', 'SDL', 'SDLmain', 'audiere', 'OIS'], 
+	options = opts
+)
+
+env.Append(CPPPATH = env['extra_include_path'], 
+	LIBPATH = env['extra_lib_path'])
+
+#if env['PLATFORM'] != 'win32':
+#	env.Append(CXXFLAGS = ['-DGCC_3_1', '-DEXT_HASH'])
+
+# Generate command line help text
+env.Help(opts.GenerateHelpText(env))
+
+if env['PLATFORM'] == 'win32':
+	env.Append(CXXFLAGS = ['/O2', '/W3', '/EHsc', '/wd4996'])
+else:
+	env.Append(CXXFLAGS = ['-O2', '/usr/include/ogre'])
+
+# Export the environment for the SConscripts.
+useAudio = True
+Export('env', 'useAudio')
+
+# Build the executable.
+objects = env.SharedObject(sources)
+#objects += SConscript(dirs = ['../src'], duplicate = 0)
+exe = env.Program('trash_collector', objects, CCFLAGS='-I/usr/include/ogre', LIBPATH='/usr/lib', CPPPATH = ['/usr/include/ogre', '/usr/include/OIS'])
+
+# Install the executable.
+inst = env.Install('../bin', exe)
+
+# Tell scons to build and install the executable by default.
+env.Default(exe)
+env.Default(inst)

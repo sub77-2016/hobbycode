@@ -1,0 +1,86 @@
+verveVIC sequentialActions-valueData.dat sequentialActions-valueData.png
+verveVIC 2DHotPlateDisc-valueData.dat 2DHotPlateDisc-valueData.png
+verveVIC 2DHotPlateCont-valueData.dat 2DHotPlateCont-valueData.png
+verveVIC signaledHotPlateDisc-valueData.dat signaledHotPlateDisc-valueData.png
+verveVIC signaledHotPlateCont-valueData.dat signaledHotPlateCont-valueData.png
+
+verveVIC hotPlateDisc-trial0-value.dat hotPlateDisc-trial0-value.png
+verveVIC hotPlateDisc-trial4-value.dat hotPlateDisc-trial4-value.png
+verveVIC hotPlateDisc-trial9-value.dat hotPlateDisc-trial9-value.png
+verveVIC hotPlateDisc-trial29-value.dat hotPlateDisc-trial29-value.png
+verveVIC hotPlateCont-trial0-value.dat hotPlateCont-trial0-value.png
+verveVIC hotPlateCont-trial4-value.dat hotPlateCont-trial4-value.png
+verveVIC hotPlateCont-trial9-value.dat hotPlateCont-trial9-value.png
+verveVIC hotPlateCont-trial29-value.dat hotPlateCont-trial29-value.png
+
+verveVIC signaledHotPlateDisc-trial1-value.dat signaledHotPlateDisc-trial1-value.png
+verveVIC signaledHotPlateDisc-trial4-value.dat signaledHotPlateDisc-trial4-value.png
+verveVIC signaledHotPlateDisc-trial9-value.dat signaledHotPlateDisc-trial9-value.png
+verveVIC signaledHotPlateDisc-trial79-value.dat signaledHotPlateDisc-trial79-value.png
+verveVIC signaledHotPlateCont-trial1-value.dat signaledHotPlateCont-trial1-value.png
+verveVIC signaledHotPlateCont-trial4-value.dat signaledHotPlateCont-trial4-value.png
+verveVIC signaledHotPlateCont-trial9-value.dat signaledHotPlateCont-trial9-value.png
+verveVIC signaledHotPlateCont-trial79-value.dat signaledHotPlateCont-trial79-value.png
+
+verveVIC 2DHotPlateDisc-trial1-value.dat 2DHotPlateDisc-trial1-value.png
+verveVIC 2DHotPlateDisc-trial9-value.dat 2DHotPlateDisc-trial9-value.png
+verveVIC 2DHotPlateDisc-trial49-value.dat 2DHotPlateDisc-trial49-value.png
+verveVIC 2DHotPlateDisc-trial299-value.dat 2DHotPlateDisc-trial299-value.png
+verveVIC 2DHotPlateCont-trial1-value.dat 2DHotPlateCont-trial1-value.png
+verveVIC 2DHotPlateCont-trial9-value.dat 2DHotPlateCont-trial9-value.png
+verveVIC 2DHotPlateCont-trial49-value.dat 2DHotPlateCont-trial49-value.png
+verveVIC 2DHotPlateCont-trial299-value.dat 2DHotPlateCont-trial299-value.png
+
+verveVIC mazeCont-trial0-value.dat mazeCont-trial0-value.png
+verveVIC mazeCont-trial1-value.dat mazeCont-trial1-value.png
+verveVIC mazeCont-trial2-value.dat mazeCont-trial2-value.png
+verveVIC mazeCont-trial3-value.dat mazeCont-trial3-value.png
+verveVIC mazeCont-trial4-value.dat mazeCont-trial4-value.png
+verveVIC mazeCont-trial5-value.dat mazeCont-trial5-value.png
+verveVIC mazeCont-trial6-value.dat mazeCont-trial6-value.png
+verveVIC mazeCont-trial7-value.dat mazeCont-trial7-value.png
+verveVIC mazeCont-trial8-value.dat mazeCont-trial8-value.png
+verveVIC mazeCont-trial9-value.dat mazeCont-trial9-value.png
+verveVIC mazeCont-trial49-value.dat mazeCont-trial49-value.png
+verveVIC mazeCont-trial99-value.dat mazeCont-trial99-value.png
+verveVIC mazeCont-trial149-value.dat mazeCont-trial149-value.png
+verveVIC mazeCont-trial199-value.dat mazeCont-trial199-value.png
+verveVIC mazeCont-trial249-value.dat mazeCont-trial249-value.png
+verveVIC mazeCont-trial299-value.dat mazeCont-trial299-value.png
+verveVIC mazeCont-trial349-value.dat mazeCont-trial349-value.png
+verveVIC mazeCont-trial399-value.dat mazeCont-trial399-value.png
+verveVIC mazeCont-trial449-value.dat mazeCont-trial449-value.png
+verveVIC mazeCont-trial499-value.dat mazeCont-trial499-value.png
+
+verveVIC mazeDisc-trial0-value.dat mazeDisc-trial0-value.png
+verveVIC mazeDisc-trial1-value.dat mazeDisc-trial1-value.png
+verveVIC mazeDisc-trial2-value.dat mazeDisc-trial2-value.png
+verveVIC mazeDisc-trial3-value.dat mazeDisc-trial3-value.png
+verveVIC mazeDisc-trial4-value.dat mazeDisc-trial4-value.png
+verveVIC mazeDisc-trial5-value.dat mazeDisc-trial5-value.png
+verveVIC mazeDisc-trial6-value.dat mazeDisc-trial6-value.png
+verveVIC mazeDisc-trial7-value.dat mazeDisc-trial7-value.png
+verveVIC mazeDisc-trial8-value.dat mazeDisc-trial8-value.png
+verveVIC mazeDisc-trial9-value.dat mazeDisc-trial9-value.png
+verveVIC mazeDisc-trial49-value.dat mazeDisc-trial49-value.png
+verveVIC mazeDisc-trial79-value.dat mazeDisc-trial79-value.png
+verveVIC mazeDisc-trial99-value.dat mazeDisc-trial99-value.png
+verveVIC mazeDisc-trial139-value.dat mazeDisc-trial139-value.png
+verveVIC mazeDisc-trial149-value.dat mazeDisc-trial149-value.png
+verveVIC mazeDisc-trial199-value.dat mazeDisc-trial199-value.png
+verveVIC mazeDisc-trial249-value.dat mazeDisc-trial249-value.png
+verveVIC mazeDisc-trial299-value.dat mazeDisc-trial299-value.png
+verveVIC mazeDisc-trial349-value.dat mazeDisc-trial349-value.png
+verveVIC mazeDisc-trial399-value.dat mazeDisc-trial399-value.png
+verveVIC mazeDisc-trial449-value.dat mazeDisc-trial449-value.png
+verveVIC mazeDisc-trial499-value.dat mazeDisc-trial499-value.png
+
+verveVIC curiosity-trial1-value.dat curiosity-trial1-value.png
+verveVIC curiosity-trial9-value.dat curiosity-trial9-value.png
+verveVIC curiosity-trial49-value.dat curiosity-trial49-value.png
+verveVIC curiosity-trial79-value.dat curiosity-trial79-value.png
+
+verveVIC pendulum-trial0-value.dat pendulum-trial0-value.png
+verveVIC pendulum-trial4-value.dat pendulum-trial4-value.png
+verveVIC pendulum-trial19-value.dat pendulum-trial19-value.png
+verveVIC pendulum-trial99-value.dat pendulum-trial99-value.png

@@ -1,0 +1,5 @@
+The purpose of this file is to keep track of the current versions of Windows dll files kept in the repository.
+
+audiere - 1.9.4
+OPAL - svn (9-22-06)
+Ogre (and accompanying dlls) - 1.2.3

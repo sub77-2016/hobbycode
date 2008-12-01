@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<OpalBlueprint>
+
+    <Solid>
+        <Name value="curtainBase" />
+        <Offset>
+            <Transform type="translate" x="0" y="3" z="0" />
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="7" y="0.5" z="0.5" />
+	        <Offset>
+	            <Transform type="translate" x="0" y="3" z="0" />
+	        </Offset>
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="6" y="0.3" z="0.3" />
+	        <Offset>
+	            <Transform type="translate" x="-3.5" y="0" z="0" />
+			<Transform type="rotate" angle="90" x="0" y="0" z="1"/>
+	        </Offset>
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="6" y="0.3" z="0.3" />
+	        <Offset>
+	            <Transform type="translate" x="3.5" y="0" z="0" />
+			<Transform type="rotate" angle="90" x="0" y="0" z="1"/>
+	        </Offset>
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+    <Joint>
+        <Name value="curtainBaseGroundJoint" />
+        <Type value="fixed" />
+        <References solid0="curtainBase" solid1="" />
+    </Joint>
+
+    <Solid>
+        <Name value="curtainPiece0" />
+        <Static value="false"/>
+        <Sleepiness value="0"/>
+        <Offset>
+            <Transform type="translate" x="-2.5" y="2.8" z="0"/>
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="0.5" y="4.8" z="0.5" />
+            <Material hardness="0.8" friction="0" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+	<Joint>
+		<Name value="curtainPiece0Joint" />
+		<Type value="ball"/>
+		<References solid0="curtainPiece0" solid1="curtainBase"/>
+		<Anchor x="-2.5" y="5.8" z="0"/>
+		<Axis>
+			<AxisNum value="0"/>
+			<Direction x="1" y="0" z="0"/>
+		</Axis>
+		<Axis>
+			<AxisNum value="1"/>
+			<Direction x="0" y="0" z="1"/>
+		</Axis>
+	</Joint>
+
+    <Solid>
+        <Name value="curtainPiece1" />
+        <Static value="false"/>
+        <Sleepiness value="0"/>
+        <Offset>
+            <Transform type="translate" x="-1.5" y="2.8" z="0"/>
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="0.5" y="4.8" z="0.5" />
+            <Material hardness="0.8" friction="0" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+	<Joint>
+		<Name value="curtainPiece1Joint" />
+		<Type value="ball"/>
+		<References solid0="curtainPiece1" solid1="curtainBase"/>
+		<Anchor x="-1.5" y="5.8" z="0"/>
+		<Axis>
+			<AxisNum value="0"/>
+			<Direction x="1" y="0" z="0"/>
+		</Axis>
+		<Axis>
+			<AxisNum value="1"/>
+			<Direction x="0" y="0" z="1"/>
+		</Axis>
+	</Joint>
+
+    <Solid>
+        <Name value="curtainPiece2" />
+        <Static value="false"/>
+        <Sleepiness value="0"/>
+        <Offset>
+            <Transform type="translate" x="-0.5" y="2.8" z="0"/>
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="0.5" y="4.8" z="0.5" />
+            <Material hardness="0.8" friction="0" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+	<Joint>
+		<Name value="curtainPiece2Joint" />
+		<Type value="ball"/>
+		<References solid0="curtainPiece2" solid1="curtainBase"/>
+		<Anchor x="-0.5" y="5.8" z="0"/>
+		<Axis>
+			<AxisNum value="0"/>
+			<Direction x="1" y="0" z="0"/>
+		</Axis>
+		<Axis>
+			<AxisNum value="1"/>
+			<Direction x="0" y="0" z="1"/>
+		</Axis>
+	</Joint>
+
+    <Solid>
+        <Name value="curtainPiece3" />
+        <Static value="false"/>
+        <Sleepiness value="0"/>
+        <Offset>
+            <Transform type="translate" x="0.5" y="2.8" z="0"/>
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="0.5" y="4.8" z="0.5" />
+            <Material hardness="0.8" friction="0" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+	<Joint>
+		<Name value="curtainPiece3Joint" />
+		<Type value="ball"/>
+		<References solid0="curtainPiece3" solid1="curtainBase"/>
+		<Anchor x="0.5" y="5.8" z="0"/>
+		<Axis>
+			<AxisNum value="0"/>
+			<Direction x="1" y="0" z="0"/>
+		</Axis>
+		<Axis>
+			<AxisNum value="1"/>
+			<Direction x="0" y="0" z="1"/>
+		</Axis>
+	</Joint>
+
+    <Solid>
+        <Name value="curtainPiece4" />
+        <Static value="false"/>
+        <Sleepiness value="0"/>
+        <Offset>
+            <Transform type="translate" x="1.5" y="2.8" z="0"/>
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="0.5" y="4.8" z="0.5" />
+            <Material hardness="0.8" friction="0" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+	<Joint>
+		<Name value="curtainPiece4Joint" />
+		<Type value="ball"/>
+		<References solid0="curtainPiece4" solid1="curtainBase"/>
+		<Anchor x="1.5" y="5.8" z="0"/>
+		<Axis>
+			<AxisNum value="0"/>
+			<Direction x="1" y="0" z="0"/>
+		</Axis>
+		<Axis>
+			<AxisNum value="1"/>
+			<Direction x="0" y="0" z="1"/>
+		</Axis>
+	</Joint>
+
+    <Solid>
+        <Name value="curtainPiece5" />
+        <Static value="false"/>
+        <Sleepiness value="0"/>
+        <Offset>
+            <Transform type="translate" x="2.5" y="2.8" z="0"/>
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="0.5" y="4.8" z="0.5" />
+            <Material hardness="0.8" friction="0" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+	<Joint>
+		<Name value="curtainPiece5Joint" />
+		<Type value="ball"/>
+		<References solid0="curtainPiece5" solid1="curtainBase"/>
+		<Anchor x="2.5" y="5.8" z="0"/>
+		<Axis>
+			<AxisNum value="0"/>
+			<Direction x="1" y="0" z="0"/>
+		</Axis>
+		<Axis>
+			<AxisNum value="1"/>
+			<Direction x="0" y="0" z="1"/>
+		</Axis>
+	</Joint>
+
+</OpalBlueprint>

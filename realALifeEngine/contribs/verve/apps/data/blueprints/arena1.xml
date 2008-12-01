@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<OpalBlueprint>
+
+    <Solid>
+        <Name value="staticEnvironment" />
+        <Static value="true" />
+        <Shape type="box">
+            <Dimensions x="30" y="3" z="30" />
+            <Material hardness="0.8" friction="0.001" bounciness="0.15" density="0.2"/>
+            <Offset>
+                <Transform type="translate" x="0" y="-1.5" z="0" />
+            </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="30" y="8" z="1" />
+            <Material hardness="0.8" friction="0.001" bounciness="0.15" density="0.2"/>
+            <Offset>
+                <Transform type="translate" x="0" y="1" z="15.5" />
+            </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="30" y="8" z="1" />
+            <Material hardness="0.8" friction="0.001" bounciness="0.15" density="0.2"/>
+            <Offset>
+                <Transform type="translate" x="0" y="1" z="-15.5" />
+            </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="1" y="8" z="30" />
+            <Material hardness="0.8" friction="0.001" bounciness="0.15" density="0.2"/>
+            <Offset>
+                <Transform type="translate" x="-15.5" y="1" z="0" />
+            </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="1" y="8" z="30" />
+            <Material hardness="0.8" friction="0.001" bounciness="0.15" density="0.2"/>
+            <Offset>
+                <Transform type="translate" x="15.5" y="1" z="0" />
+            </Offset>
+        </Shape>
+    </Solid>
+
+	<Solid>
+		<Name value="toy1" />
+		<Offset>
+			<Transform type="translate" x="2" y="3" z="-6" />
+			<Transform type="rotate" angle="30" x="1" y="0" z="0"/>
+			<Transform type="rotate" angle="30" x="0" y="0" z="1"/>
+		</Offset>
+		<Shape type="box">
+			<Dimensions x="1.5" y="1.5" z="2.5" />
+			<Material hardness="0.8" friction="0.01" bounciness="0.15" density="0.3"/>
+		</Shape>
+	</Solid>
+
+	<Solid>
+		<Name value="toy2" />
+		<Offset>
+			<Transform type="translate" x="3" y="3" z="8" />
+			<Transform type="rotate" angle="30" x="0" y="1" z="0"/>
+			<Transform type="rotate" angle="30" x="0" y="0" z="1"/>
+		</Offset>
+		<Shape type="capsule">
+			<Dimensions radius="0.8" length="2"/>
+			<Material hardness="0.8" friction="0.01" bounciness="0.15" density="0.3"/>
+		</Shape>
+	</Solid>
+
+	<Solid>
+		<Name value="toy3" />
+		<Offset>
+			<Transform type="translate" x="-3" y="3" z="8" />
+		</Offset>
+		<Shape type="sphere">
+			<Dimensions radius="0.8"/>
+			<Material hardness="0.8" friction="0.01" bounciness="0.15" density="0.3"/>
+		</Shape>
+	</Solid>
+
+    <Solid>
+        <Name value="merryGoRound" />
+        <Offset>
+            <Transform type="translate" x="-7" y="0.05" z="-7" />
+        </Offset>
+        <Shape type="box">
+            <Dimensions x="8" y="0.05" z="8" />
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+    <Joint>
+        <Name value="merryGoRoundHinge" />
+        <Type value="hinge" />
+        <References solid0="merryGoRound" solid1="" />
+        <Anchor x="-7" y="0.05" z="-7"/>
+        <Axis>
+            <AxisNum value="0" />
+            <Direction x="0" y="1" z="0" />
+            <LimitsEnabled value="false" />
+        </Axis>
+    </Joint>
+	<Motor>
+		<Name value="merryGoRoundMotor"/>
+		<Type value="geared"/>
+		<References joint="merryGoRoundHinge"/>
+		<JointAxisNum value="0"/>
+		<MaxTorque value="20"/>
+		<MaxVelocity value="30"/>
+		<Throttle value="1"/>
+	</Motor>
+
+</OpalBlueprint>

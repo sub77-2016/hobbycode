@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "verve", "verve.vcproj", "{0760EDA5-2988-4E85-84F3-AF0A4F6C7F0D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unit-tests", "unit-tests.vcproj", "{CC5DE1A4-D7ED-418D-A0EA-018190B596D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0760EDA5-2988-4E85-84F3-AF0A4F6C7F0D} = {0760EDA5-2988-4E85-84F3-AF0A4F6C7F0D}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0760EDA5-2988-4E85-84F3-AF0A4F6C7F0D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0760EDA5-2988-4E85-84F3-AF0A4F6C7F0D}.Debug|Win32.Build.0 = Debug|Win32
+		{0760EDA5-2988-4E85-84F3-AF0A4F6C7F0D}.Release|Win32.ActiveCfg = Release|Win32
+		{0760EDA5-2988-4E85-84F3-AF0A4F6C7F0D}.Release|Win32.Build.0 = Release|Win32
+		{CC5DE1A4-D7ED-418D-A0EA-018190B596D2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CC5DE1A4-D7ED-418D-A0EA-018190B596D2}.Debug|Win32.Build.0 = Debug|Win32
+		{CC5DE1A4-D7ED-418D-A0EA-018190B596D2}.Release|Win32.ActiveCfg = Release|Win32
+		{CC5DE1A4-D7ED-418D-A0EA-018190B596D2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

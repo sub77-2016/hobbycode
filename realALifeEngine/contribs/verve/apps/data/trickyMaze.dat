@@ -1,0 +1,22 @@
+rows 10
+columns 10
+
+e   e   e   e   e   e   e   e   e   e
+            -   -   -   -   -   -    
+e   e   e | e   e   e   e   e   e   e
+                -   -   -   -   -   -
+e   e   e | e   e   e   e   e   e   e
+            -   -   -   -   -   -    
+e   e   e | e   e   e   e   e   e   e
+                -   -   -   -   -   -
+e   S   e | e   e   e   e   e   e   e
+                                     
+e   e   e | e   e   e   e   e   e   e
+                                     
+e   e   e | e   e   e   e   e   e   e
+                                     
+e   e   e | e   e   e   G   e   e   e
+                                     
+e   e   e | e   e   e   e   e   e   e
+                                     
+e   e   e | e   e   e   e   e   e   e

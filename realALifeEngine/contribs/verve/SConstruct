@@ -1,0 +1,130 @@
+import os
+
+def printOptions(debugMode, useDouble):
+	print 'Building Verve with the following options: '
+	if debugMode == True:
+		print '  mode = debug'
+	else:
+		print '  mode = release'
+
+	if useDouble == True:
+		print '  use double precision = true'
+	else:
+		print '  use double precision = false'
+
+def setupBaseEnvironment():
+	env = Environment(
+		ENV = os.environ, 
+		options = opts)
+	return env
+
+def setupGenericUNIXEnvironment(env):
+	if env['debug'] == True:
+		env.Append(CXXFLAGS = ['-O0'])
+	else:
+		env.Append(CXXFLAGS = ['-O2'])
+	return env
+
+def setupWin32Environment(env):
+	env.Append(
+		CPPDEFINES = ['/DWIN32', '/D_WIN32', '/DVERVE_DLL_EXPORTING'], 
+		CXXFLAGS = ['/W3', '/EHsc', '/wd4996'], 
+		CPPPATH = [], 
+		LIBPATH = [])
+	if env['debug'] == True:
+		env.Append(CXXFLAGS = ['/MDd', '/Od'], 
+			CPPDEFINES = ['/D_DEBUG'])
+	else:
+		env.Append(CXXFLAGS = ['/MD', '/O2', '/Ob2', '/Oi', '/Ot'], 
+			CPPDEFINES = ['/DNDEBUG'])
+	return env
+
+# Setup options
+opts = Options()
+opts.AddOptions(
+	BoolOption('debug', 'Build in debug mode', False),
+	BoolOption('double', 'Build with reals set to double instead of float (also, you must define VERVE_USE_DOUBLE in your app or in verve.h)', False), 
+	BoolOption('python', 'Generate Python bindings (requires Python headers in include path; requires SWIG)', False), 
+	PathOption('extra_include_path', 'Additional include directory', '.'), 
+	PathOption('extra_include_path2', 'Another additional include directory', '.'), 
+	PathOption('extra_lib_path', 'Additional lib directory', '.'), 
+	PathOption('extra_lib_path2', 'Another additional lib directory', '.'))
+opts.Add('prefix', 'Install directory', '.')
+
+# Setup the base environment
+env = setupBaseEnvironment()
+
+# Add platform-specific stuff
+if env['PLATFORM'] == 'win32':
+	env = setupWin32Environment(env)
+#elif env['PLATFORM'] == 'irix':
+#	env = setupIrixEnvironment(env)
+else:
+	env = setupGenericUNIXEnvironment(env)
+
+env.Append(CPPPATH = env['extra_include_path'], 
+	LIBPATH = env['extra_lib_path'])
+
+# Temporary (until VC8 adds the platform SDK into its include path automatically, 
+# or until we find a way to set the VC8 include path when using the command line).
+env.Append(CPPPATH = env['extra_include_path2'], 
+	LIBPATH = env['extra_lib_path2'])
+
+# Add double floating point precision support if desired.
+if env['double'] == True:
+	env.Append(CPPDEFINES = ['VERVE_USE_DOUBLE'])
+
+# Generate command line help text
+env.Help(opts.GenerateHelpText(env) + 
+	'\nAvailable targets: install, unit, python' + 
+	'\nExample 1 Build debug library: scons debug=true' + 
+	'\nExample 2 Build and install: scons install prefix=/path/to/install/dir' + 
+	'\nExample 3 Build and specify header/lib paths: scons extra_include_path=/path/to/include extra_lib_path=/path/to/lib' + 
+	'\nExample 4 Build and run unit tests (requires prior Verve installation): scons unit' + 
+	#'\nExample 5 Build and run learning tests (requires prior Verve installation): scons learning' + 
+	'\nExample 5 Build with Python bindings: scons python=true extra_include_path=/usr/include/python2.2' + 
+	'\n')
+
+# Setup the buildDir where intermediate and library files will be placed
+buildDir = ''
+if env['debug'] == True:
+	buildDir = 'build/debug'
+else:
+	buildDir = 'build/release'
+
+# Export the environment we just created for the SConscripts
+Export('env', 'buildDir')
+
+# Call the src SConscript.
+objects = SConscript(dirs = ['src'], build_dir = buildDir, duplicate = 0)
+
+libName = 'verve'
+if env['debug'] == True:
+	libName = 'verve_d'
+
+# Setup a build rule for the Verve library.
+verveLib = env.SharedLibrary(buildDir + '/' + libName, objects)
+Default(verveLib) # Make it always build by default.
+
+# If we're building the library (the default), print the build options.
+if len(COMMAND_LINE_TARGETS) == 0:
+	printOptions(env['debug'], env['double'])
+
+if 'install' in COMMAND_LINE_TARGETS:
+	# Setup 'install' alias
+	env.Alias('install', env.Install(os.path.join(env['prefix'], 'lib'), verveLib))
+
+# Link with Verve library for unit tests.
+if 'unit' in COMMAND_LINE_TARGETS:
+	# Setup 'unit' alias (build, install, run tests)
+	unitTestsBuild = SConscript(dirs = ['src/unit_tests'], build_dir = buildDir + '/unit_tests', duplicate = 0)
+	unitTestsInstall = env.Alias('unitTestsInstall', env.Install(buildDir, unitTestsBuild))
+	unitTestAlias = env.Alias('unit', [unitTestsBuild, unitTestsInstall], unitTestsBuild[0].abspath)
+	env.AlwaysBuild(unitTestAlias)
+
+# Generate Python bindings if desired.
+if env['python'] == True:
+	if env['debug'] == True:
+		print "Warning: Debug library for Python bindings will not be generated"
+	else:
+		SConscript('bindings/python/SConscript')
