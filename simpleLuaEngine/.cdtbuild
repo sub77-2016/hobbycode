@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?fileVersion 3.1.0?>
+<ManagedProjectBuildInfo>
+  <project id="ALifeSim-lua.cdt.managedbuild.target.gnu.so.1840935578" name="Shared Library (Gnu)" projectType="cdt.managedbuild.target.gnu.so">
+    <configuration id="cdt.managedbuild.config.gnu.so.debug.2048420088" name="Debug" description="" parent="cdt.managedbuild.config.gnu.so.debug" artifactName="ALifeSim-lua" errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" artifactExtension="so" cleanCommand="rm -rf">
+      <toolChain superClass="cdt.managedbuild.toolchain.gnu.so.debug" id="cdt.managedbuild.toolchain.gnu.so.debug.882320750" name="GCC Tool Chain">
+        <tool superClass="cdt.managedbuild.tool.gnu.cpp.compiler.so.debug" id="cdt.managedbuild.tool.gnu.cpp.compiler.so.debug.1221912814" name="GCC C++ Compiler">
+          <option superClass="gnu.cpp.compiler.so.debug.option.optimization.level" id="gnu.cpp.compiler.so.debug.option.optimization.level.729277382" value="gnu.cpp.compiler.optimization.level.more" valueType="enumerated"/>
+          <option superClass="gnu.cpp.compiler.so.debug.option.debugging.level" id="gnu.cpp.compiler.so.debug.option.debugging.level.666301585" value="gnu.cpp.compiler.debugging.level.default" valueType="enumerated"/>
+          <option superClass="gnu.cpp.compiler.option.other.other" id="gnu.cpp.compiler.option.other.other.1976396737" value="-c -fmessage-length=0 -fPIC" valueType="string"/>
+        </tool>
+        <tool superClass="cdt.managedbuild.tool.gnu.c.compiler.so.debug" id="cdt.managedbuild.tool.gnu.c.compiler.so.debug.1033574356" name="GCC C Compiler"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.c.linker.so.debug" id="cdt.managedbuild.tool.gnu.c.linker.so.debug.1099129452" name="GCC C Linker"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.debug" id="cdt.managedbuild.tool.gnu.cpp.linker.so.debug.1755605767" name="GCC C++ Linker">
+          <option superClass="gnu.cpp.link.option.libs" id="gnu.cpp.link.option.libs.378802484" valueType="libs"/>
+          <option superClass="gnu.cpp.link.option.flags" id="gnu.cpp.link.option.flags.562154179" value="" valueType="string"/>
+        </tool>
+        <tool superClass="cdt.managedbuild.tool.gnu.assembler.so.debug" id="cdt.managedbuild.tool.gnu.assembler.so.debug.183902526" name="GCC Assembler"/>
+        <macros/>
+      </toolChain>
+    </configuration>
+    <configuration id="cdt.managedbuild.config.gnu.so.release.632602547" name="Release" description="" parent="cdt.managedbuild.config.gnu.so.release" artifactName="ALifeSim-lua" errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" artifactExtension="so" cleanCommand="rm -rf">
+      <toolChain superClass="cdt.managedbuild.toolchain.gnu.so.release" id="cdt.managedbuild.toolchain.gnu.so.release.1436380883" name="GCC Tool Chain">
+        <tool superClass="cdt.managedbuild.tool.gnu.cpp.compiler.so.release" id="cdt.managedbuild.tool.gnu.cpp.compiler.so.release.1397055994" name="GCC C++ Compiler"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.c.compiler.so.release" id="cdt.managedbuild.tool.gnu.c.compiler.so.release.1008188576" name="GCC C Compiler"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.c.linker.so.release" id="cdt.managedbuild.tool.gnu.c.linker.so.release.1097980868" name="GCC C Linker"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.release" id="cdt.managedbuild.tool.gnu.cpp.linker.so.release.1304804229" name="GCC C++ Linker"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.assembler.so.release" id="cdt.managedbuild.tool.gnu.assembler.so.release.610621034" name="GCC Assembler"/>
+      </toolChain>
+    </configuration>
+  </project>
+</ManagedProjectBuildInfo>
