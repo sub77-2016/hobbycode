@@ -82,7 +82,7 @@ void createRandomObject();
 /// probability distribution.
 opal::real randomRealUniform(opal::real min, opal::real max);
 
-int main(int argc, char **argv)
+int _main(int argc, char **argv)
 {
 	// 1. Setup a window with an OpenGL context so we can see what's 
 	// happening.

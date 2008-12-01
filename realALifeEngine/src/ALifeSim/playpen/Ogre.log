@@ -1,0 +1,170 @@
+22:32:05: Creating resource group General
+22:32:05: Creating resource group Internal
+22:32:05: Creating resource group Autodetect
+22:32:05: SceneManagerFactory for type 'DefaultSceneManager' registered.
+22:32:05: Registering ResourceManager for type Material
+22:32:05: Registering ResourceManager for type Mesh
+22:32:05: Registering ResourceManager for type Skeleton
+22:32:05: MovableObjectFactory for type 'ParticleSystem' registered.
+22:32:05: OverlayElementFactory for type Panel registered.
+22:32:05: OverlayElementFactory for type BorderPanel registered.
+22:32:05: OverlayElementFactory for type TextArea registered.
+22:32:05: Registering ResourceManager for type Font
+22:32:05: ArchiveFactory for archive type FileSystem registered.
+22:32:05: ArchiveFactory for archive type Zip registered.
+22:32:05: FreeImage version: 3.9.3
+22:32:05: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+22:32:05: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi
+22:32:05: DDS codec registering
+22:32:05: Registering ResourceManager for type HighLevelGpuProgram
+22:32:05: Registering ResourceManager for type Compositor
+22:32:05: MovableObjectFactory for type 'Entity' registered.
+22:32:05: MovableObjectFactory for type 'Light' registered.
+22:32:05: MovableObjectFactory for type 'BillboardSet' registered.
+22:32:05: MovableObjectFactory for type 'ManualObject' registered.
+22:32:05: MovableObjectFactory for type 'BillboardChain' registered.
+22:32:05: MovableObjectFactory for type 'RibbonTrail' registered.
+22:32:05: Loading library /usr/lib/OGRE/RenderSystem_GL.so
+22:32:05: Installing plugin: GL RenderSystem
+22:32:05: OpenGL Rendering Subsystem created.
+22:32:05: Plugin successfully installed
+22:32:05: *-*-* OGRE Initialising
+22:32:05: *-*-* Version 1.4.5 (Eihort)
+22:32:05: Creating resource group Bootstrap
+22:32:05: Added resource location '../data/packs/OgreCore.zip' of type 'Zip' to resource group 'Bootstrap'
+22:32:05: Added resource location '../data/models' of type 'FileSystem' to resource group 'General'
+22:32:05: Added resource location '../data/textures' of type 'FileSystem' to resource group 'General'
+22:32:05: Added resource location '../data/materials' of type 'FileSystem' to resource group 'General'
+22:32:05: Added resource location '../data/overlays' of type 'FileSystem' to resource group 'General'
+22:32:05: OGRE EXCEPTION(6:FileNotFoundException): 'ogre.cfg' file not found! in ConfigFile::load at OgreConfigFile.cpp (line 84)
+22:32:15: CPU Identifier & Features
+22:32:15: -------------------------
+22:32:15:  *   CPU ID: Unknown
+22:32:15: -------------------------
+22:32:15: ******************************
+*** Starting GLX Subsystem ***
+******************************
+22:32:15: GLRenderSystem::createRenderWindow "OPAL-Ogre Sample Application", 800x600 windowed  miscParams: FSAA=0 title=OPAL-Ogre Sample Application 
+22:32:15: GLXWindow::create
+22:32:15: Parsing miscParams
+22:32:15: GLXWindow::create -- Best visual is 36
+22:32:15: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource GLX_icon.png in resource group General or any other group. in ResourceGroupManager::openResource at OgreResourceGroupManager.cpp (line 604)
+22:32:15: GL_VERSION = 2.1.2 NVIDIA 169.12
+22:32:15: GL_VENDOR = NVIDIA Corporation
+22:32:15: GL_RENDERER = GeForce 7500 LE/PCI/SSE2
+22:32:15: GL_EXTENSIONS = GL_ARB_color_buffer_float GL_ARB_depth_texture GL_ARB_draw_buffers GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_half_float_pixel GL_ARB_imaging GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_shadow GL_ARB_shader_objects GL_ARB_shading_language_100 GL_ARB_texture_border_clamp GL_ARB_texture_compression GL_ARB_texture_cube_map GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_dot3 GL_ARB_texture_float GL_ARB_texture_mirrored_repeat GL_ARB_texture_non_power_of_two GL_ARB_texture_rectangle GL_ARB_transpose_matrix GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_window_pos GL_ATI_draw_buffers GL_ATI_texture_float GL_ATI_texture_mirror_once GL_S3_s3tc GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_Cg_shader GL_EXT_depth_bounds_test GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_object GL_EXT_gpu_program_parameters GL_EXT_multi_draw_arrays GL_EXT_packed_depth_stencil GL_EXT_packed_pixels GL_EXT_pixel_buffer_object GL_EXT_point_parameters GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_shadow_funcs GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_texture3D GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_lod GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_sRGB GL_EXT_timer_query GL_EXT_vertex_array GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KTX_buffer_region GL_NV_blend_square GL_NV_copy_depth_to_color GL_NV_depth_clamp GL_NV_fence GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_framebuffer_multisample_coverage GL_NV_half_float GL_NV_light_max_exponent GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_texgen_reflection GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_expand_normal GL_NV_texture_rectangle GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NVX_conditional_render GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum 
+22:32:15: ***************************
+22:32:15: *** GL Renderer Started ***
+22:32:15: ***************************
+22:32:15: Registering ResourceManager for type GpuProgram
+22:32:15: GLSL support detected
+22:32:15: GL: Using GL_EXT_framebuffer_object for rendering to textures (best)
+22:32:15: FBO PF_UNKNOWN depth/stencil support: D16S0 D24S0 D32S0 
+22:32:15: FBO PF_R5G6B5 depth/stencil support: D0S0 D16S0 D24S0 D32S0 
+22:32:15: FBO PF_B5G6R5 depth/stencil support: D0S0 D16S0 D24S0 D32S0 
+22:32:15: FBO PF_R8G8B8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 
+22:32:15: FBO PF_B8G8R8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 
+22:32:15: FBO PF_A8R8G8B8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+22:32:15: FBO PF_B8G8R8A8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+22:32:15: FBO PF_A2R10G10B10 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+22:32:15: FBO PF_A2B10G10R10 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+22:32:16: FBO PF_FLOAT16_RGB depth/stencil support: D0S0 D16S0 
+22:32:16: FBO PF_FLOAT16_RGBA depth/stencil support: D0S0 D16S0 
+22:32:16: FBO PF_FLOAT32_RGB depth/stencil support: D0S0 D16S0 
+22:32:16: FBO PF_FLOAT32_RGBA depth/stencil support: D0S0 D16S0 
+22:32:16: FBO PF_X8R8G8B8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+22:32:16: FBO PF_X8B8G8R8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+22:32:16: FBO PF_SHORT_RGBA depth/stencil support: D0S0 D16S0 D24S0 D32S0 
+22:32:16: FBO PF_R3G3B2 depth/stencil support: D0S0 D16S0 D24S0 D32S0 
+22:32:16: FBO PF_SHORT_RGB depth/stencil support: D0S0 D16S0 D24S0 D32S0 
+22:32:16: [GL] : Valid FBO targets PF_UNKNOWN PF_R5G6B5 PF_B5G6R5 PF_R8G8B8 PF_B8G8R8 PF_A8R8G8B8 PF_B8G8R8A8 PF_A2R10G10B10 PF_A2B10G10R10 PF_FLOAT16_RGB PF_FLOAT16_RGBA PF_FLOAT32_RGB PF_FLOAT32_RGBA PF_X8R8G8B8 PF_X8B8G8R8 PF_SHORT_RGBA PF_R3G3B2 PF_SHORT_RGB 
+22:32:16: RenderSystem capabilities
+22:32:16: -------------------------
+22:32:16:  * Hardware generation of mipmaps: yes
+22:32:16:  * Texture blending: yes
+22:32:16:  * Anisotropic texture filtering: yes
+22:32:16:  * Dot product texture operation: yes
+22:32:16:  * Cube mapping: yes
+22:32:16:  * Hardware stencil buffer: yes
+22:32:16:    - Stencil depth: 8
+22:32:16:    - Two sided stencil support: yes
+22:32:16:    - Wrap stencil values: yes
+22:32:16:  * Hardware vertex / index buffers: yes
+22:32:16:  * Vertex programs: yes
+22:32:16:    - Max vertex program version: vp40
+22:32:16:  * Fragment programs: yes
+22:32:16:    - Max fragment program version: fp40
+22:32:16:  * Texture Compression: yes
+22:32:16:    - DXT: yes
+22:32:16:    - VTC: yes
+22:32:16:  * Scissor Rectangle: yes
+22:32:16:  * Hardware Occlusion Query: yes
+22:32:16:  * User clip planes: yes
+22:32:16:  * VET_UBYTE4 vertex element type: yes
+22:32:16:  * Infinite far plane projection: yes
+22:32:16:  * Hardware render-to-texture: yes
+22:32:16:  * Floating point textures: yes
+22:32:16:  * Non-power-of-two textures: yes
+22:32:16:  * Volume textures: yes
+22:32:16:  * Multiple Render Targets: 4
+22:32:16:  * Point Sprites: yes
+22:32:16:  * Extended point parameters: yes
+22:32:16:  * Max Point Size: 63.375
+22:32:16:  * Vertex texture fetch: yes
+22:32:16:    - Max vertex textures: 4
+22:32:16:    - Vertex textures shared: yes
+22:32:16: Registering ResourceManager for type Texture
+22:32:16: ResourceBackgroundQueue - threading disabled
+22:32:16: Particle Renderer Type 'billboard' registered
+22:32:16: Creating viewport on target 'OPAL-Ogre Sample Application', rendering from camera 'PlayerCam', relative dimensions L: 0.00 T: 0.00 W: 1.00 H: 1.00 ZOrder: 0
+22:32:16: Parsing scripts for resource group Autodetect
+22:32:16: Finished parsing scripts for resource group Autodetect
+22:32:16: Parsing scripts for resource group Bootstrap
+22:32:16: Parsing script OgreProfiler.material
+22:32:16: Parsing script OgreCore.material
+22:32:16: Parsing script Ogre.fontdef
+22:32:16: Parsing script OgreLoadingPanel.overlay
+22:32:16: Texture: New_Ogre_Border_Center.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+22:32:16: Texture: New_Ogre_Border.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+22:32:16: Font TrebuchetMSBoldusing texture size 512x256
+22:32:16: Info: Freetype returned null for character 160 in font TrebuchetMSBold
+22:32:16: Texture: TrebuchetMSBoldTexture: Loading 1 faces(PF_BYTE_LA,512x256x1) with  hardware generated mipmaps from Image. Internal format is PF_BYTE_LA,512x256x1.
+22:32:16: Parsing script OgreDebugPanel.overlay
+22:32:16: Texture: New_Ogre_Border_Break.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+22:32:16: Finished parsing scripts for resource group Bootstrap
+22:32:16: Parsing scripts for resource group General
+22:32:16: Parsing script textured.material
+22:32:16: Parsing script basic.material
+22:32:16: Parsing script skyboxes.material
+22:32:16: Parsing script general.overlay
+22:32:16: Texture: crosshair.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+22:32:16: Finished parsing scripts for resource group General
+22:32:16: Parsing scripts for resource group Internal
+22:32:16: Finished parsing scripts for resource group Internal
+22:32:16: Texture: gray_fr.jpg: Loading 1 faces(PF_R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x32x1.
+22:32:16: Texture: gray_bk.jpg: Loading 1 faces(PF_R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x32x1.
+22:32:16: Texture: gray_lf.jpg: Loading 1 faces(PF_R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x32x1.
+22:32:16: Texture: gray_rt.jpg: Loading 1 faces(PF_R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x32x1.
+22:32:16: Texture: gray_up.jpg: Loading 1 faces(PF_R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x32x1.
+22:32:16: Texture: gray_dn.jpg: Loading 1 faces(PF_R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,32x32x1.
+22:32:16: Mesh: Loading sphere.mesh.
+22:32:16: Mesh: Loading cylinder.mesh.
+22:32:16: Mesh: Loading cube.mesh.
+22:32:16: *** Initializing OIS ***
+22:32:16: Texture: spot_shadow_fade.png: Loading 1 faces(PF_R8G8B8,128x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+22:32:30: *-*-* OGRE Shutdown
+22:32:30: Unregistering ResourceManager for type Compositor
+22:32:30: Unregistering ResourceManager for type Font
+22:32:30: Unregistering ResourceManager for type Skeleton
+22:32:30: Unregistering ResourceManager for type Mesh
+22:32:30: Unregistering ResourceManager for type HighLevelGpuProgram
+22:32:30: Uninstalling plugin: GL RenderSystem
+22:32:30: Render Target 'OPAL-Ogre Sample Application' Average FPS: 167.613 Best FPS: 224.104 Worst FPS: 129.225
+22:32:30: Unregistering ResourceManager for type GpuProgram
+22:32:30: ******************************
+*** Stopping GLX Subsystem ***
+******************************
+22:32:30: Unregistering ResourceManager for type Texture
+22:32:30: Plugin successfully uninstalled
+22:32:30: Unloading library /usr/lib/OGRE/RenderSystem_GL.so
+22:32:30: Unregistering ResourceManager for type Material
