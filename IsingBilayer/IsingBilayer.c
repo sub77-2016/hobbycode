@@ -297,6 +297,7 @@ void GetGraphics(void){
 }
 
 void GUI(void){	
+  SetDefaultLineType(0);
   DefineGraphNxN_R("phi", &phi[0][0], &xdim, &ydim, NULL);
   DefineGraphNxN_R("psi", &psi[0][0], &xdim, &ydim, NULL);
   DefineGraphNxN_R("rho", &rho[0][0], &xdim, &ydim, NULL); 
