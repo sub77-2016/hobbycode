@@ -1,0 +1,38 @@
+import os
+
+
+# Setup the base environment.
+opts = Options()
+opts.Add('prefix', 'Install directory', '/usr/local')
+env = Environment(ENV=os.environ, options=opts)
+
+# Add platform-specific stuff.
+if env['PLATFORM'] == 'win32':
+    env.Append(CPPDEFINES = ['/DWIN32', '/D_WIN32', '/W3', '/DNDEBUG', '/DOPAL_DLL_EXPORTING'])
+    env.Append(CXXFLAGS = ['/O2', '/MD', '/Ob2', '/Oi', '/Ot', '/EHsc', '/wd4996'])
+else:
+    # All unix platforms.
+    # -fno-strict-aliasing is necessary for OPCODE trimesh collisions.
+    env.Append(CXXFLAGS = ['-O2', '-fno-strict-aliasing'])    
+    
+    if env['PLATFORM'] == 'irix':
+        env.Append(CXXFLAGS = ['-ansi', '-LANG:std', '-n32'])
+
+# Export the environment for the SConscripts.
+Export('env')
+
+# Call all the SConscripts in the source directories.
+objects = SConscript('src/SConscript', duplicate=0)
+objects += SConscript('src/external/ode/src/SConscript', duplicate=0)
+objects += SConscript('src/external/opcode/SConscript', duplicate=0)
+objects += SConscript('src/external/opcode/Ice/SConscript', duplicate=0)
+objects += SConscript('src/external/tinyxml/SConscript', duplicate=0)
+
+# Build the library.
+buildDir = 'build/' + env['PLATFORM'] + '/release'
+opalLib = env.SharedLibrary(target=buildDir + '/opal-ode', source=objects)
+Default(opalLib)
+
+# Add lib installation to 'install' alias.
+env.Alias('install', env.Install(os.path.join(env['prefix'], 'lib'), opalLib))
+

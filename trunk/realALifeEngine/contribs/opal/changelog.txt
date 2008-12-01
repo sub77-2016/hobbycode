@@ -1,0 +1,517 @@
+Open Physics Abstraction Layer
+http://opal.sourceforge.net
+Copyright (c) 2004-2008
+Alan Fischer (http://www.lightningtoads.com)
+Andres Reinot (http://www.reinot.com)
+Tyler Streeter (http://www.tylerstreeter.net)
+Oleksandr Lozitskiy (http://ox.slug.louisville.edu/~o0lozi01/wiki)
+
+
+Complete SVN repository change log:
+http://opal.svn.sourceforge.net/viewvc/opal/opal/?view=log
+
+
+Version 0.4.0
+May 16, 2006
+============================================================
+
+Release Notes
+----------------------------------------------------
+This release contains numerous bug fixes and an extensive set of unit tests.
+
+Change Log (SVN)
+----------------------------------------------------
+05/02/06:
+
+21:51 Changeset [381] by oleksandr
+    Minor fix for VC8.
+
+05/01/06:
+
+23:06 Changeset [380] by tylerstreeter
+    Updated TinyXML to version 2.4.3
+
+04/30/06:
+
+17:51 Changeset [379] by oleksandr
+    Minor const change.
+
+04/26/06:
+
+13:08 Changeset [378] by oleksandr
+    Updated VC7.1 project files.
+11:50 Changeset [377] by oleksandr
+    Fixing ODE warnings.
+
+04/09/06:
+
+18:38 Changeset [376] by oleksandr
+    Fixed mass of solid after changing static state.
+18:13 Changeset [375] by tylerstreeter
+    simplified the AccelerationSensor? update function
+
+04/08/06:
+
+18:53 Changeset [374] by tylerstreeter
+    fixed a bug which made it impossible to attach joints to the static …
+11:54 Changeset [373] by oleksandr
+    Update C::B projects. Small fix in Joint tests.
+
+03/29/06:
+
+00:55 Changeset [372] by tylerstreeter
+    in 'playpen', fixed a small bug in the picking line's transform that …
+00:09 Changeset [371] by tylerstreeter
+    updated Ogre samples to match the Ogre 1.2.0 API; reorganized the …
+
+03/27/06:
+
+01:04 Changeset [370] by tylerstreeter
+    fixed a bug in the VolumeSensor? related to the order of transform …
+
+03/22/06:
+
+01:17 Changeset [369] by tylerstreeter
+    fixed a bug in the RaycastSensor?: when attaching a RaycastSensor? to a …
+
+03/21/06:
+
+17:39 Changeset [368] by tylerstreeter
+    fixed bug in Simulator::instantiateBlueprint - instantiating a blueprint …
+14:23 Changeset [367] by tylerstreeter
+    fixed naming problem (changed getNumGlobalCollisionEventHandler to …
+
+03/19/06:
+
+19:13 Changeset [366] by pallindo
+    --
+12:57 Changeset [365] by pallindo
+    Updated vc6 files
+
+03/15/06:
+
+12:46 Changeset [364] by oleksandr
+    Cleanups in VC71 and C::B project files.
+12:41 Changeset [363] by oleksandr
+    Updated Code::Blocks and VC7.1 project files.
+
+03/14/06:
+
+19:14 Changeset [362] by oleksandr
+    Updated VC8 project.
+16:33 Changeset [361] by oleksandr
+    Implemented MovementEventHandler?.
+14:28 Changeset [360] by oleksandr
+    Implemented Solid::isMoving()
+12:56 Changeset [359] by oleksandr
+    Implemented global collision handlers.
+
+03/10/06:
+
+16:28 Changeset [358] by oleksandr
+    Added unittest for ThrusterMotor?.
+
+03/09/06:
+
+18:16 Changeset [357] by oleksandr
+    Bugfix in raycast sensor.
+
+03/01/06:
+
+22:59 Changeset [356] by oleksandr
+    Fixes for windows.
+22:32 Changeset [355] by oleksandr
+    Enhancements in post step event handler.
+
+01/31/06:
+
+17:11 Changeset [354] by oleksandr
+    Small bugfix.
+
+01/28/06:
+
+14:29 Changeset [353] by oleksandr
+    Updated.
+
+01/22/06:
+
+18:43 Changeset [352] by oleksandr
+    Enhanced PostStepEventHandlers?.
+
+01/17/06:
+
+10:05 Changeset [351] by oleksandr
+    Added BallJoint? unit test.
+
+01/16/06:
+
+14:23 Changeset [350] by oleksandr
+    Added xml loading blueprint unit test.
+
+01/15/06:
+
+23:23 Changeset [349] by oleksandr
+    Bugfix thanks to ceacy.
+
+01/06/06:
+
+13:35 Changeset [348] by oleksandr
+    New unit test.
+
+01/04/06:
+
+23:10 Changeset [347] by oleksandr
+    Updated and fixed VC8 build.
+
+12/31/05:
+
+12:33 Changeset [346] by oleksandr
+    Fixed RaycastSensor? bug. Added/improved few unit tests. …
+
+12/29/05:
+
+11:55 Changeset [345] by oleksandr
+    Implemented piercing ray.
+
+12/28/05:
+
+17:14 Changeset [344] by oleksandr
+    Added new unit test.
+
+12/25/05:
+
+22:00 Changeset [343] by oleksandr
+    Rotation methods update. Unit tests for opal::angleBetween()
+
+12/23/05:
+
+15:19 Changeset [342] by oleksandr
+    Improved documentation for Matrix44r.
+
+12/18/05:
+
+12:58 Changeset [341] by oleksandr
+    Added successful test for SolidData? updates.
+12:29 Changeset [340] by oleksandr
+    VC8 project updated with missing unit tests. Fix in test of VolumeSensor?.
+11:39 Changeset [339] by oleksandr
+    Maintenance of VC8 project.
+11:36 Changeset [338] by oleksandr
+    Updated VC8 project
+11:34 Changeset [337] by oleksandr
+    Added ODE 0.5 sources.
+
+12/17/05:
+
+23:25 Changeset [336] by oleksandr
+    Fixed Solid destruction that's linked to Joint. …
+
+12/16/05:
+
+22:52 Changeset [335] by oleksandr
+    Tagged OPAL release 0.1.0
+22:50 Changeset [334] by oleksandr
+    Tagged OPAL release 0.2.0
+22:49 Changeset [333] by oleksandr
+    Tagged OPAL release 0.3.0
+22:44 Changeset [332] by oleksandr
+    Tagged OPAL 0.3.1 release.
+22:00 Changeset [331] by oleksandr
+    Fixed Joint involving statis Solids.
+12:47 Changeset [330] by oleksandr
+    SVN access test is complete.
+12:45 Changeset [329] by oleksandr
+    test 4: snv access
+12:43 Changeset [328] by oleksandr
+    test 3: snv access
+12:39 Changeset [327] by oleksandr
+    test2: svn access
+12:31 Changeset [326] by Olex
+    Testing svn access.
+
+12/15/05:
+
+22:57 Changeset [325] by Olex
+    Minor renaming to make test filenames consintent.
+22:49 Changeset [324] by Olex
+    Added missing unit tests.
+22:12 Changeset [323] by Olex
+    Removed old dir.
+22:11 Changeset [322] by Olex
+    Moved files to proper positions.
+00:08 Changeset [321] by oleksandr
+    Added unit tests for VolumeSensor? and Joint. Found a bug with …
+
+12/12/05:
+
+01:13 Changeset [320] by oleksandr
+    Rolled back incorrect changes in ODESimulator. Adjusted unit tests for …
+
+12/11/05:
+
+19:35 Changeset [319] by oleksandr
+    Enhancing BlueprintInstance?. Added new unit tests.
+16:03 Changeset [318] by oleksandr
+    Fix in ODESimulator for contact groups.
+00:17 Changeset [317] by oleksandr
+    Updated vc71 and vc8 project files.
+
+12/10/05:
+
+23:43 Changeset [316] by oleksandr
+    Fixes for Windows linking.
+18:38 Changeset [315] by oleksandr
+    Updated scons script.
+17:41 Changeset [314] by oleksandr
+    Implemented features to track Joint damage.
+00:57 Changeset [313] by oleksandr
+    Updated KDevelop files.
+00:32 Changeset [312] by oleksandr
+    Doxygen fix.
+00:18 Changeset [311] by oleksandr
+    Implemented VelocityMotor? and its unit test. Adjusted QuickTest?. Added …
+
+12/09/05:
+
+13:11 Changeset [310] by oleksandr
+    Deleted project files in old directories.
+13:01 Changeset [309] by oleksandr
+    Test files.
+12:57 Changeset [308] by oleksandr
+    Added missing kdevelop files.
+12:52 Changeset [307] by oleksandr
+    Added vc 8 files.
+12:52 Changeset [306] by oleksandr
+    Added vc 7.1 files.
+12:46 Changeset [305] by oleksandr
+    Added vc6 files.
+12:44 Changeset [304] by oleksandr
+    Added C::B files.
+12:44 Changeset [303] by oleksandr
+    Added kdevelop files.
+10:44 Changeset [302] by oleksandr
+    Moved project files to new place.
+
+12/06/05:
+
+19:44 Changeset [301] by oleksandr
+    Fixed some warnings.
+
+12/04/05:
+
+11:40 Changeset [300] by oleksandr
+    Removed user-specific directories.
+
+12/03/05:
+
+22:27 Changeset [299] by oleksandr
+    Updated vc8 project files. MSVC fixes.
+
+12/02/05:
+
+00:47 Changeset [298] by oleksandr
+    Fixes in ServoMotor?, Vec3r to handle float point errors. Updated unit test …
+
+12/01/05:
+
+20:47 Changeset [297] by oleksandr
+    Updated Scons script.
+18:55 Changeset [296] by oleksandr
+    More Unit tests. Finished opal::Quaternion tests.
+14:34 Changeset [295] by oleksandr
+    Fixed Matrix44r::setQuaternion(). Refactored Quaternion. More unit tests.
+
+11/30/05:
+
+23:54 Changeset [294] by oleksandr
+    Solid::setQuaternion and Matrix44r:setQuaternion initial draft. …
+21:04 Changeset [293] by oleksandr
+    Implemented Solid::setMass, added unit tests to test it. …
+01:28 Changeset [292] by oleksandr
+    Vec3r and Point3r refactored and fixed with unit tests.
+
+11/26/05:
+
+17:40 Changeset [291] by oleksandr
+    Simulator::getRootSpace() Added option for the custom simulator. …
+
+11/21/05:
+
+08:59 Changeset [290] by oleksandr
+    Added more unit tests.
+
+11/20/05:
+
+12:15 Changeset [289] by oleksandr
+    Added missing file.
+
+11/19/05:
+
+13:09 Changeset [288] by oleksandr
+    Fixed some warnings in ODE implementation and tinyxml.
+
+11/14/05:
+
+22:32 Changeset [287] by oleksandr
+    New unit tests.
+
+11/13/05:
+
+13:51 Changeset [286] by oleksandr
+    Added Solid and AccelerationSensor? unit tests. Cosmetic modifications to …
+13:48 Changeset [285] by oleksandr
+    Added Solid and AccelerationSensor? unit tests. Cosmetic modifications to …
+
+11/07/05:
+
+10:04 Changeset [284] by pallindo
+    *** empty log message ***
+
+11/06/05:
+
+12:41 Changeset [283] by oleksandr
+    Added KDevelop project files. Added skeleton for unit tests. …
+00:12 Changeset [282] by oleksandr
+    Refactoring Solid interface. Made a few method const.
+
+11/05/05:
+
+22:20 Changeset [281] by oleksandr
+    Fixed ODESolid::setStatic(). It did not put geoms back into parent space …
+
+11/01/05:
+
+16:58 Changeset [280] by oleksandr
+    Fixed AccelerationSensor?.
+
+
+Version 0.3.1
+October 19, 2005
+============================================================
+
+Release Notes
+----------------------------------------------------
+None.
+
+Change Log
+----------------------------------------------------
+* 8-27-05: Corrected calculation of stress on joints. (Oleksandr Lozitskiy)
+	
+* 8-16-05: Added VC8 project files for sample apps. (Tyler Streeter)
+
+* 8-16-05: Removed iterator from Solid::internal_applyForces to avoid assertions from VC++ 8.0 "Debug Iterator Support." (Tyler Streeter)
+
+* 8-16-05: Added VC8 (i.e. .NET 2005) project file. (Tyler Streeter)
+
+* 8-6-05: Fixed bug in ODE function found by EarthquakeProof - a VolumeSensor using a volume Solid with an offset shape caused a segmentation fault when getting user data from its ODE geomID in ODESimulator::internal_queryVolume.  (Tyler Streeter)
+
+* 7-27-05: Fixed 'simple' sample app's SConstruct to make it install to the right place.  Also, in the same app, changed the SDL.h include to look in <SDL/SDL.h>, not <sdl/SDL.h>.  (Tyler Streeter)
+
+* 7-21-05: Added 'getLocalAABB' function to ShapeData.  Added 'getLocalAABB' and 'getGlobalAABB' functions to Solid. (Tyler Streeter)
+
+* 7-19-05: Performance improvement, especially for simulations with a lot of sleeping Solids.  (In Simulator::simulate(), we were previously copying an updated transform matrix for each dynamic Solid every time step.  Now we only perform this operation for dynamic, awake Solids.) (Tyler Streeter)
+
+* 7-19-05: Cleaned up more Visual Studio warnings in Matrix44r::getQuaternion(). (Tyler Streeter)
+
+* 6-26-05: Fixed ServoMotor's calculation of the angular velocity needed to bring the joint to the desired angle. Cleaned up some warning-generating code in Matrix44r::getQuaternion() (Oleksandr Lozitskiy)
+
+* 6-24-05: Added 'simple' sample app. (Tyler Streeter)
+
+* 6-24-05: Removed the OPAL_USE_MESH compile-time flag because it isn't needed.  (It was originally intended for IRIX usage because ODE's trimesh support doesn't compile on IRIX with certain versions of the MipsPro compiler.  However, the ODE trimesh function calls can still be used without trimeshes compiled into ODE; they just don't do anything.) (Tyler Streeter)
+
+* 6-24-05: Fixed bug where collisions between two static Solids (at least one of them using a CollisionEventHandler) caused a crash in an ODE function call.  Thanks to EarthquakeProof in the forum for catching this.  (Tyler Streeter)
+
+* 6-24-05: Put TinyXml source in with the OPAL source to make it easier to build for everyone. (Tyler Streeter)
+
+* 6-24-05: Added a compile-time flag OPAL_USE_DOUBLE which determines whether OPAL's reals are floats or doubles.  Also added a run-time check when a physics engine-specific Simulator (e.g. ODESimulator) is created to make sure OPAL's reals are the same size as the physics engine's reals. (Tyler Streeter)
+
+* 6-19-05: New Spaces are now automatically children of the Simulator root Space.  Previously, there was no way for new Spaces to be children of the Simulator root Space. (Tyler Streeter)
+
+* 6-4-05: Fixed bug in ServoMotor::init() that kept it from being enabled without explicitly enabling it. (Tyler Streeter)
+
+* 6-4-05: Fixed bugs in MeshShapeData. (Tyler Streeter)
+
+* 6-4-05: Improved mass calculations for mesh Shapes; they are now based on the mesh's bounding box. (Tyler Streeter)
+
+* Fixed bug in Joint class that crashed when applying a force/torque to a Joint connected to a single Solid. (Tyler Streeter)
+
+* Fixed XML loading bug which crashed on missing string attributes. (Tyler Streeter)
+
+* Fixed bugs in Joint::getAnchor and Joint::getAxis.  Previously they returned the initial anchor and axis.  Now they return the current anchor and axis. (Tyler Streeter)
+
+* Fixed bug in Simulator::setupContactGroups; making two groups not generate contacts wasn't working properly. (Tyler Streeter)
+
+
+Version 0.3.0
+April 21, 2005
+============================================================
+
+Release Notes
+----------------------------------------------------
+None.
+
+Change Log
+----------------------------------------------------
+* All objects can now be created from and saved to a data object (Tyler Streeter)
+
+* EventHandler was changed to a base class (Tyler Streeter)
+
+* Added CollisionEventHandler, JointBreakEventHandler, and PostStepEventHandler (Tyler Streeter)
+
+* Collision events now get queued up during collision detection and handled at the end of each time step (Tyler Streeter)
+
+* Added AccelerationSensor, InclineSensor, RaycastSensor, and VolumeSensor (Tyler Streeter)
+
+* Overhauled XML loading system; now all Solid, Joint, Motor, and Sensor data can be loaded from OPAL XML files (Tyler Streeter)
+
+* Increased stability when using ODE for freely-spinning objects with non-symmetric inertia tensors (Tyler Streeter)
+
+* Added contact group system to give users more control over contact generation (Tyler Streeter)
+
+* Joints have a parameter to allow or ignore contacts between connected Solids (Tyler Streeter)
+
+* Added an option to allow or ignore contacts between static and sleeping Solids (Tyler Streeter)
+
+* Numerous API changes (Tyler Streeter)
+
+* Various bug fixes (Alan Fischer, Andres Reinot, Tyler Streeter)
+
+
+Version 0.2.0
+February 11, 2005
+============================================================
+
+Release Notes
+----------------------------------------------------
+None.
+
+Change Log
+----------------------------------------------------
+* Added Scons build system (Tyler Streeter)
+
+* Changed build systems to produce a shared library on all platforms (Tyler Streeter)
+
+* Added XML loading (Tyler Streeter)
+
+* Added garbage collector to allow safe object destruction at any time (Tyler Streeter)
+
+* Added mesh Shapes (Tyler Streeter)
+
+* Added Sensor objects (Tyler Streeter)
+
+* Numerous API changes (Tyler Streeter)
+
+* Various bug fixes (Alan Fischer, Andres Reinot, Tyler Streeter)
+
+
+Version 0.1.0
+November 2, 2004
+============================================================
+
+Release Notes
+----------------------------------------------------
+Initial version (Alan Fischer, Andres Reinot, Tyler Streeter).
+
+Change Log
+----------------------------------------------------
+Initial version (Alan Fischer, Andres Reinot, Tyler Streeter).

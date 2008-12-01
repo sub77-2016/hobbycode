@@ -1,0 +1,6 @@
+import glob
+
+Import('env')
+sources = glob.glob('*.cpp') + glob.glob('*.c')
+objects = env.SharedObject(sources)
+Return('objects')
