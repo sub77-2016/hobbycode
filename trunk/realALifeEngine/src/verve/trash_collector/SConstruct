@@ -2,7 +2,7 @@ import os
 
 sources = Split("""
 	main.cpp
-	Robot.cpp
+	../base/Robot.cpp
 
 	../base/AgentVisualDebugger.cpp
 	../base/AudioManager.cpp
