@@ -12,11 +12,10 @@
 #include <verve/apps/Robot.h>
 #include <verve/apps/Car.h>
 #include <verve/apps/AgentVisualDebugger.h>
-%}
 
-%init {
 using namespace opal;
 %}
+
 
 // Wrapping script 
 %include "opal/Portability.h"

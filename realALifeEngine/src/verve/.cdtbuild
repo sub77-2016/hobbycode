@@ -12,7 +12,6 @@
             <listOptionValue value="GL" builtIn="false"/>
             <listOptionValue value="GLU" builtIn="false"/>
             <listOptionValue value="SDL" builtIn="false"/>
-            <listOptionValue value="SDLmain" builtIn="false"/>
             <listOptionValue value="OgreMain" builtIn="false"/>
             <listOptionValue value="OIS" builtIn="false"/>
             <listOptionValue value="opal-ode" builtIn="false"/>
