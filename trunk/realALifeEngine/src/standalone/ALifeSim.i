@@ -13,15 +13,22 @@
 #include <verve/apps/AgentVisualDebugger.h>
 %}
 
+// Wrapping script 
+%include "opal/Portability.h"
+%include "opal/EventHandler.h"
+%include "opal/CollisionEventHandler.h"
+
 // Agent Layer
-%include "Defines.h"
-%include "Platform.h"
-%include "Observation.h"
-%include "AgentDescriptor.h"
-%include "Agent.h"
+%include "verve/Defines.h"
+%include "verve/Platform.h"
+%include "verve/Observation.h"
+%include "verve/AgentDescriptor.h"
+%include "verve/Agent.h"
 
 // Application Layer
-%include "apps/SimulationEngine.h"
-%include "apps/Robot.h"
-%include "apps/Car.h"
-%include "apps/AgentVisualDebugger.h"
+%include "verve/apps/SimulationEngine.h"
+%include "verve/apps/AgentVisualDebugger.h"
+%include "verve/apps/LearningEntity.h"
+%include "verve/apps/Car.h"
+%include "verve/apps/Robot.h"
+
