@@ -1490,18 +1490,41 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_bool swig_types[0]
-#define SWIGTYPE_p_float swig_types[1]
-#define SWIGTYPE_p_std__string swig_types[2]
-#define SWIGTYPE_p_unsigned_int swig_types[3]
-#define SWIGTYPE_p_verve__Agent swig_types[4]
-#define SWIGTYPE_p_verve__AgentDebugData swig_types[5]
-#define SWIGTYPE_p_verve__AgentDescriptor swig_types[6]
-#define SWIGTYPE_p_verve__ContinuousSensorDescriptor swig_types[7]
-#define SWIGTYPE_p_verve__DiscreteSensorDescriptor swig_types[8]
-#define SWIGTYPE_p_verve__Observation swig_types[9]
-static swig_type_info *swig_types[11];
-static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
+#define SWIGTYPE_p_AgentVisualDebugger swig_types[0]
+#define SWIGTYPE_p_Car swig_types[1]
+#define SWIGTYPE_p_LearningEntity swig_types[2]
+#define SWIGTYPE_p_OIS__Keyboard swig_types[3]
+#define SWIGTYPE_p_OIS__Mouse swig_types[4]
+#define SWIGTYPE_p_Ogre__SceneManager swig_types[5]
+#define SWIGTYPE_p_Ogre__SceneNode swig_types[6]
+#define SWIGTYPE_p_PhysicalCamera swig_types[7]
+#define SWIGTYPE_p_PhysicalCamera__Type swig_types[8]
+#define SWIGTYPE_p_PhysicalEntity swig_types[9]
+#define SWIGTYPE_p_Point3r swig_types[10]
+#define SWIGTYPE_p_Robot swig_types[11]
+#define SWIGTYPE_p_SimulationEngine swig_types[12]
+#define SWIGTYPE_p_Vec3r swig_types[13]
+#define SWIGTYPE_p_bool swig_types[14]
+#define SWIGTYPE_p_float swig_types[15]
+#define SWIGTYPE_p_opal__CollisionEvent swig_types[16]
+#define SWIGTYPE_p_opal__CollisionEventHandler swig_types[17]
+#define SWIGTYPE_p_opal__EventHandler swig_types[18]
+#define SWIGTYPE_p_opal__GearedMotor swig_types[19]
+#define SWIGTYPE_p_opal__Matrix44r swig_types[20]
+#define SWIGTYPE_p_opal__Simulator swig_types[21]
+#define SWIGTYPE_p_opal__Solid swig_types[22]
+#define SWIGTYPE_p_opal__real swig_types[23]
+#define SWIGTYPE_p_real swig_types[24]
+#define SWIGTYPE_p_std__string swig_types[25]
+#define SWIGTYPE_p_unsigned_int swig_types[26]
+#define SWIGTYPE_p_verve__Agent swig_types[27]
+#define SWIGTYPE_p_verve__AgentDebugData swig_types[28]
+#define SWIGTYPE_p_verve__AgentDescriptor swig_types[29]
+#define SWIGTYPE_p_verve__ContinuousSensorDescriptor swig_types[30]
+#define SWIGTYPE_p_verve__DiscreteSensorDescriptor swig_types[31]
+#define SWIGTYPE_p_verve__Observation swig_types[32]
+static swig_type_info *swig_types[34];
+static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1675,11 +1698,470 @@ SWIGINTERN void SWIG_write_ptr_array(lua_State* L,void **array,int size,swig_typ
 
 
 /* Includes the header in the wrapper code */
+#include <SDL/SDL.h>
+#include <ogre/Ogre.h>
+
 #include <verve/Agent.h>
+#include <verve/apps/SimulationEngine.h>
+#include <verve/apps/Robot.h>
+#include <verve/apps/Car.h>
+#include <verve/apps/AgentVisualDebugger.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+static int _wrap_new_EventHandler(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::EventHandler *result = 0 ;
+  
+  SWIG_check_num_args("opal::EventHandler",0,0)
+  result = (opal::EventHandler *)new opal::EventHandler();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__EventHandler,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_EventHandler(void *obj) {
+opal::EventHandler *arg1 = (opal::EventHandler *) obj;
+delete arg1;
+}
+static swig_lua_method swig_opal_EventHandler_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_opal_EventHandler_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_EventHandler_bases[] = {0};
+static const char *swig_opal_EventHandler_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_EventHandler = { "EventHandler", &SWIGTYPE_p_opal__EventHandler,_wrap_new_EventHandler, swig_delete_EventHandler, swig_opal_EventHandler_methods, swig_opal_EventHandler_attributes, swig_opal_EventHandler_bases, swig_opal_EventHandler_base_names };
+
+static int _wrap_new_CollisionEvent(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *result = 0 ;
+  
+  SWIG_check_num_args("opal::CollisionEvent",0,0)
+  result = (opal::CollisionEvent *)new opal::CollisionEvent();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__CollisionEvent,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_thisSolid_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  opal::Solid *arg2 = (opal::Solid *) 0 ;
+  
+  SWIG_check_num_args("thisSolid",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("thisSolid",1,"opal::CollisionEvent *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("thisSolid",2,"opal::Solid *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_thisSolid_set",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Solid,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("CollisionEvent_thisSolid_set",2,SWIGTYPE_p_opal__Solid);
+  }
+  
+  if (arg1) (arg1)->thisSolid = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_thisSolid_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("thisSolid",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("thisSolid",1,"opal::CollisionEvent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_thisSolid_get",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  result = (opal::Solid *) ((arg1)->thisSolid);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_otherSolid_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  opal::Solid *arg2 = (opal::Solid *) 0 ;
+  
+  SWIG_check_num_args("otherSolid",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("otherSolid",1,"opal::CollisionEvent *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("otherSolid",2,"opal::Solid *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_otherSolid_set",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Solid,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("CollisionEvent_otherSolid_set",2,SWIGTYPE_p_opal__Solid);
+  }
+  
+  if (arg1) (arg1)->otherSolid = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_otherSolid_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("otherSolid",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("otherSolid",1,"opal::CollisionEvent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_otherSolid_get",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  result = (opal::Solid *) ((arg1)->otherSolid);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_pos_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  Point3r arg2 ;
+  Point3r *argp2 ;
+  
+  SWIG_check_num_args("pos",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pos",1,"opal::CollisionEvent *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("pos",2,"Point3r");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_pos_set",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_Point3r,0))){
+    SWIG_fail_ptr("CollisionEvent_pos_set",2,SWIGTYPE_p_Point3r);
+  }
+  arg2 = *argp2;
+  
+  if (arg1) (arg1)->pos = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_pos_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  Point3r result;
+  
+  SWIG_check_num_args("pos",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pos",1,"opal::CollisionEvent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_pos_get",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  result =  ((arg1)->pos);
+  {
+    Point3r * resultptr = new Point3r((const Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_normal_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  Vec3r arg2 ;
+  Vec3r *argp2 ;
+  
+  SWIG_check_num_args("normal",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("normal",1,"opal::CollisionEvent *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("normal",2,"Vec3r");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_normal_set",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_Vec3r,0))){
+    SWIG_fail_ptr("CollisionEvent_normal_set",2,SWIGTYPE_p_Vec3r);
+  }
+  arg2 = *argp2;
+  
+  if (arg1) (arg1)->normal = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_normal_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  Vec3r result;
+  
+  SWIG_check_num_args("normal",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("normal",1,"opal::CollisionEvent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_normal_get",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  result =  ((arg1)->normal);
+  {
+    Vec3r * resultptr = new Vec3r((const Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_depth_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  real arg2 ;
+  real *argp2 ;
+  
+  SWIG_check_num_args("depth",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("depth",1,"opal::CollisionEvent *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("depth",2,"real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_depth_set",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_real,0))){
+    SWIG_fail_ptr("CollisionEvent_depth_set",2,SWIGTYPE_p_real);
+  }
+  arg2 = *argp2;
+  
+  if (arg1) (arg1)->depth = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEvent_depth_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEvent *arg1 = (opal::CollisionEvent *) 0 ;
+  real result;
+  
+  SWIG_check_num_args("depth",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("depth",1,"opal::CollisionEvent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEvent_depth_get",1,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  result =  ((arg1)->depth);
+  {
+    real * resultptr = new real((const real &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_real,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_CollisionEvent(void *obj) {
+opal::CollisionEvent *arg1 = (opal::CollisionEvent *) obj;
+delete arg1;
+}
+static swig_lua_method swig_opal_CollisionEvent_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_opal_CollisionEvent_attributes[] = {
+    { "thisSolid", _wrap_CollisionEvent_thisSolid_get, _wrap_CollisionEvent_thisSolid_set},
+    { "otherSolid", _wrap_CollisionEvent_otherSolid_get, _wrap_CollisionEvent_otherSolid_set},
+    { "pos", _wrap_CollisionEvent_pos_get, _wrap_CollisionEvent_pos_set},
+    { "normal", _wrap_CollisionEvent_normal_get, _wrap_CollisionEvent_normal_set},
+    { "depth", _wrap_CollisionEvent_depth_get, _wrap_CollisionEvent_depth_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_CollisionEvent_bases[] = {0};
+static const char *swig_opal_CollisionEvent_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_CollisionEvent = { "CollisionEvent", &SWIGTYPE_p_opal__CollisionEvent,_wrap_new_CollisionEvent, swig_delete_CollisionEvent, swig_opal_CollisionEvent_methods, swig_opal_CollisionEvent_attributes, swig_opal_CollisionEvent_bases, swig_opal_CollisionEvent_base_names };
+
+static int _wrap_CollisionEventHandler_handleCollisionEvent(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEventHandler *arg1 = (opal::CollisionEventHandler *) 0 ;
+  opal::CollisionEvent *arg2 = 0 ;
+  
+  SWIG_check_num_args("handleCollisionEvent",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("handleCollisionEvent",1,"opal::CollisionEventHandler *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("handleCollisionEvent",2,"opal::CollisionEvent const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEventHandler,0))){
+    SWIG_fail_ptr("CollisionEventHandler_handleCollisionEvent",1,SWIGTYPE_p_opal__CollisionEventHandler);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEventHandler_handleCollisionEvent",2,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  (arg1)->handleCollisionEvent((opal::CollisionEvent const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEventHandler_internal_pushCollisionEvent(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEventHandler *arg1 = (opal::CollisionEventHandler *) 0 ;
+  opal::CollisionEvent *arg2 = 0 ;
+  
+  SWIG_check_num_args("internal_pushCollisionEvent",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("internal_pushCollisionEvent",1,"opal::CollisionEventHandler *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("internal_pushCollisionEvent",2,"opal::CollisionEvent const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEventHandler,0))){
+    SWIG_fail_ptr("CollisionEventHandler_internal_pushCollisionEvent",1,SWIGTYPE_p_opal__CollisionEventHandler);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("CollisionEventHandler_internal_pushCollisionEvent",2,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  (arg1)->internal_pushCollisionEvent((opal::CollisionEvent const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_CollisionEventHandler_internal_handlePendingCollisionEvents(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::CollisionEventHandler *arg1 = (opal::CollisionEventHandler *) 0 ;
+  
+  SWIG_check_num_args("internal_handlePendingCollisionEvents",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("internal_handlePendingCollisionEvents",1,"opal::CollisionEventHandler *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__CollisionEventHandler,0))){
+    SWIG_fail_ptr("CollisionEventHandler_internal_handlePendingCollisionEvents",1,SWIGTYPE_p_opal__CollisionEventHandler);
+  }
+  
+  (arg1)->internal_handlePendingCollisionEvents();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_CollisionEventHandler(void *obj) {
+opal::CollisionEventHandler *arg1 = (opal::CollisionEventHandler *) obj;
+delete arg1;
+}
+static swig_lua_method swig_opal_CollisionEventHandler_methods[] = {
+    {"handleCollisionEvent", _wrap_CollisionEventHandler_handleCollisionEvent}, 
+    {"internal_pushCollisionEvent", _wrap_CollisionEventHandler_internal_pushCollisionEvent}, 
+    {"internal_handlePendingCollisionEvents", _wrap_CollisionEventHandler_internal_handlePendingCollisionEvents}, 
+    {0,0}
+};
+static swig_lua_attribute swig_opal_CollisionEventHandler_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_CollisionEventHandler_bases[] = {0,0};
+static const char *swig_opal_CollisionEventHandler_base_names[] = {"opal::EventHandler *",0};
+static swig_lua_class _wrap_class_opal_CollisionEventHandler = { "CollisionEventHandler", &SWIGTYPE_p_opal__CollisionEventHandler,0, swig_delete_CollisionEventHandler, swig_opal_CollisionEventHandler_methods, swig_opal_CollisionEventHandler_attributes, swig_opal_CollisionEventHandler_bases, swig_opal_CollisionEventHandler_base_names };
+
 static int _wrap_VERVE_E_get(lua_State* L) {
   int SWIG_arg = 0;
   verve::real result;
@@ -4332,6 +4814,2295 @@ static swig_lua_class *swig_verve_Agent_bases[] = {0};
 static const char *swig_verve_Agent_base_names[] = {0};
 static swig_lua_class _wrap_class_verve_Agent = { "Agent", &SWIGTYPE_p_verve__Agent,_wrap_new_Agent, swig_delete_Agent, swig_verve_Agent_methods, swig_verve_Agent_attributes, swig_verve_Agent_bases, swig_verve_Agent_base_names };
 
+static int _wrap_new_SimulationEngine(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *result = 0 ;
+  
+  SWIG_check_num_args("SimulationEngine",0,0)
+  result = (SimulationEngine *)new SimulationEngine();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_SimulationEngine,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_init__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  PhysicalCamera::Type arg2 ;
+  opal::real arg3 ;
+  PhysicalCamera::Type *argp2 ;
+  opal::real *argp3 ;
+  bool result;
+  
+  SWIG_check_num_args("init",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"SimulationEngine *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"PhysicalCamera::Type");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_init",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_PhysicalCamera__Type,0))){
+    SWIG_fail_ptr("SimulationEngine_init",2,SWIGTYPE_p_PhysicalCamera__Type);
+  }
+  arg2 = *argp2;
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&argp3,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("SimulationEngine_init",3,SWIGTYPE_p_opal__real);
+  }
+  arg3 = *argp3;
+  
+  result = (bool)(arg1)->init(arg2,arg3);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_init__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  PhysicalCamera::Type arg2 ;
+  PhysicalCamera::Type *argp2 ;
+  bool result;
+  
+  SWIG_check_num_args("init",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"SimulationEngine *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"PhysicalCamera::Type");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_init",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_PhysicalCamera__Type,0))){
+    SWIG_fail_ptr("SimulationEngine_init",2,SWIGTYPE_p_PhysicalCamera__Type);
+  }
+  arg2 = *argp2;
+  
+  result = (bool)(arg1)->init(arg2);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_init__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("init",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"SimulationEngine *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_init",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (bool)(arg1)->init();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_init(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_SimulationEngine, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_SimulationEngine_init__SWIG_2(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_SimulationEngine, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_PhysicalCamera__Type, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_SimulationEngine_init__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_SimulationEngine, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_PhysicalCamera__Type, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_SimulationEngine_init__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'SimulationEngine_init'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    init(SimulationEngine *,PhysicalCamera::Type,opal::real)\n"
+    "    init(SimulationEngine *,PhysicalCamera::Type)\n"
+    "    init(SimulationEngine *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_SimulationEngine_update(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  opal::real *arg2 = 0 ;
+  opal::real *arg3 = 0 ;
+  
+  SWIG_check_num_args("update",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("update",1,"SimulationEngine *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("update",2,"opal::real &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("update",3,"opal::real &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_update",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("SimulationEngine_update",2,SWIGTYPE_p_opal__real);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("SimulationEngine_update",3,SWIGTYPE_p_opal__real);
+  }
+  
+  (arg1)->update(*arg2,*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_quitApp(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("quitApp",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("quitApp",1,"SimulationEngine *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_quitApp",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (bool)(arg1)->quitApp();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getSimulator(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  opal::Simulator *result = 0 ;
+  
+  SWIG_check_num_args("getSimulator",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getSimulator",1,"SimulationEngine const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getSimulator",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (opal::Simulator *)((SimulationEngine const *)arg1)->getSimulator();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Simulator,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getSceneManager(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  Ogre::SceneManager *result = 0 ;
+  
+  SWIG_check_num_args("getSceneManager",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getSceneManager",1,"SimulationEngine const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getSceneManager",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (Ogre::SceneManager *)((SimulationEngine const *)arg1)->getSceneManager();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__SceneManager,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getKeyboard(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  OIS::Keyboard *result = 0 ;
+  
+  SWIG_check_num_args("getKeyboard",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getKeyboard",1,"SimulationEngine const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getKeyboard",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (OIS::Keyboard *)((SimulationEngine const *)arg1)->getKeyboard();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_OIS__Keyboard,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getMouse(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  OIS::Mouse *result = 0 ;
+  
+  SWIG_check_num_args("getMouse",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getMouse",1,"SimulationEngine const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getMouse",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (OIS::Mouse *)((SimulationEngine const *)arg1)->getMouse();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_OIS__Mouse,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getCamera(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  PhysicalCamera *result = 0 ;
+  
+  SWIG_check_num_args("getCamera",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getCamera",1,"SimulationEngine *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getCamera",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (PhysicalCamera *)(arg1)->getCamera();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_PhysicalCamera,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_setCameraMoveSpeed(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  opal::real arg2 ;
+  opal::real *argp2 ;
+  
+  SWIG_check_num_args("setCameraMoveSpeed",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setCameraMoveSpeed",1,"SimulationEngine *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setCameraMoveSpeed",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_setCameraMoveSpeed",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("SimulationEngine_setCameraMoveSpeed",2,SWIGTYPE_p_opal__real);
+  }
+  arg2 = *argp2;
+  
+  (arg1)->setCameraMoveSpeed(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_setUpdateMode(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  SimulationEngine::UpdateMode arg2 ;
+  opal::real arg3 ;
+  opal::real *argp3 ;
+  
+  SWIG_check_num_args("setUpdateMode",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setUpdateMode",1,"SimulationEngine *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setUpdateMode",2,"SimulationEngine::UpdateMode");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("setUpdateMode",3,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_setUpdateMode",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  arg2 = (SimulationEngine::UpdateMode)(int)lua_tonumber(L, 2);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&argp3,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("SimulationEngine_setUpdateMode",3,SWIGTYPE_p_opal__real);
+  }
+  arg3 = *argp3;
+  
+  (arg1)->setUpdateMode(arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getUpdateMode(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  SimulationEngine::UpdateMode result;
+  
+  SWIG_check_num_args("getUpdateMode",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getUpdateMode",1,"SimulationEngine const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getUpdateMode",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (SimulationEngine::UpdateMode)((SimulationEngine const *)arg1)->getUpdateMode();
+  lua_pushnumber(L, (lua_Number)(int)(result)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getUpdateConstant(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getUpdateConstant",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getUpdateConstant",1,"SimulationEngine const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getUpdateConstant",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = ((SimulationEngine const *)arg1)->getUpdateConstant();
+  {
+    opal::real * resultptr = new opal::real((const opal::real &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__real,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_getPhysicalEntity(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  std::string *arg2 = 0 ;
+  PhysicalEntity *result = 0 ;
+  
+  SWIG_check_num_args("getPhysicalEntity",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getPhysicalEntity",1,"SimulationEngine const *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("getPhysicalEntity",2,"std::string const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_getPhysicalEntity",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("SimulationEngine_getPhysicalEntity",2,SWIGTYPE_p_std__string);
+  }
+  
+  result = (PhysicalEntity *)((SimulationEngine const *)arg1)->getPhysicalEntity((std::string const &)*arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_PhysicalEntity,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_destroyPhysicalEntity(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  PhysicalEntity *arg2 = (PhysicalEntity *) 0 ;
+  
+  SWIG_check_num_args("destroyPhysicalEntity",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyPhysicalEntity",1,"SimulationEngine *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("destroyPhysicalEntity",2,"PhysicalEntity *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_destroyPhysicalEntity",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_PhysicalEntity,0))){
+    SWIG_fail_ptr("SimulationEngine_destroyPhysicalEntity",2,SWIGTYPE_p_PhysicalEntity);
+  }
+  
+  (arg1)->destroyPhysicalEntity(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_destroyAllPhysicalEntities(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  
+  SWIG_check_num_args("destroyAllPhysicalEntities",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyAllPhysicalEntities",1,"SimulationEngine *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_destroyAllPhysicalEntities",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  (arg1)->destroyAllPhysicalEntities();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulationEngine_createPhysicalEntity(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = (SimulationEngine *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  opal::Solid *arg4 = (opal::Solid *) 0 ;
+  PhysicalEntity *result = 0 ;
+  
+  SWIG_check_num_args("createPhysicalEntity",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createPhysicalEntity",1,"SimulationEngine *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("createPhysicalEntity",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("createPhysicalEntity",3,"std::string const &");
+  if(!SWIG_isptrtype(L,4)) SWIG_fail_arg("createPhysicalEntity",4,"opal::Solid *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("SimulationEngine_createPhysicalEntity",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("SimulationEngine_createPhysicalEntity",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("SimulationEngine_createPhysicalEntity",3,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&arg4,SWIGTYPE_p_opal__Solid,0))){
+    SWIG_fail_ptr("SimulationEngine_createPhysicalEntity",4,SWIGTYPE_p_opal__Solid);
+  }
+  
+  result = (PhysicalEntity *)(arg1)->createPhysicalEntity((std::string const &)*arg2,(std::string const &)*arg3,arg4);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_PhysicalEntity,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_SimulationEngine(void *obj) {
+SimulationEngine *arg1 = (SimulationEngine *) obj;
+delete arg1;
+}
+static swig_lua_method swig_SimulationEngine_methods[] = {
+    {"init", _wrap_SimulationEngine_init}, 
+    {"update", _wrap_SimulationEngine_update}, 
+    {"quitApp", _wrap_SimulationEngine_quitApp}, 
+    {"getSimulator", _wrap_SimulationEngine_getSimulator}, 
+    {"getSceneManager", _wrap_SimulationEngine_getSceneManager}, 
+    {"getKeyboard", _wrap_SimulationEngine_getKeyboard}, 
+    {"getMouse", _wrap_SimulationEngine_getMouse}, 
+    {"getCamera", _wrap_SimulationEngine_getCamera}, 
+    {"setCameraMoveSpeed", _wrap_SimulationEngine_setCameraMoveSpeed}, 
+    {"setUpdateMode", _wrap_SimulationEngine_setUpdateMode}, 
+    {"getUpdateMode", _wrap_SimulationEngine_getUpdateMode}, 
+    {"getUpdateConstant", _wrap_SimulationEngine_getUpdateConstant}, 
+    {"getPhysicalEntity", _wrap_SimulationEngine_getPhysicalEntity}, 
+    {"destroyPhysicalEntity", _wrap_SimulationEngine_destroyPhysicalEntity}, 
+    {"destroyAllPhysicalEntities", _wrap_SimulationEngine_destroyAllPhysicalEntities}, 
+    {"createPhysicalEntity", _wrap_SimulationEngine_createPhysicalEntity}, 
+    {0,0}
+};
+static swig_lua_attribute swig_SimulationEngine_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_SimulationEngine_bases[] = {0};
+static const char *swig_SimulationEngine_base_names[] = {0};
+static swig_lua_class _wrap_class_SimulationEngine = { "SimulationEngine", &SWIGTYPE_p_SimulationEngine,_wrap_new_SimulationEngine, swig_delete_SimulationEngine, swig_SimulationEngine_methods, swig_SimulationEngine_attributes, swig_SimulationEngine_bases, swig_SimulationEngine_base_names };
+
+static int _wrap_new_AgentVisualDebugger(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::SceneManager *arg1 = (Ogre::SceneManager *) 0 ;
+  AgentVisualDebugger *result = 0 ;
+  
+  SWIG_check_num_args("AgentVisualDebugger",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("AgentVisualDebugger",1,"Ogre::SceneManager *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__SceneManager,0))){
+    SWIG_fail_ptr("new_AgentVisualDebugger",1,SWIGTYPE_p_Ogre__SceneManager);
+  }
+  
+  result = (AgentVisualDebugger *)new AgentVisualDebugger(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_AgentVisualDebugger,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentVisualDebugger_updateVisuals(lua_State* L) {
+  int SWIG_arg = 0;
+  AgentVisualDebugger *arg1 = (AgentVisualDebugger *) 0 ;
+  
+  SWIG_check_num_args("updateVisuals",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("updateVisuals",1,"AgentVisualDebugger *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_AgentVisualDebugger,0))){
+    SWIG_fail_ptr("AgentVisualDebugger_updateVisuals",1,SWIGTYPE_p_AgentVisualDebugger);
+  }
+  
+  (arg1)->updateVisuals();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentVisualDebugger_setDisplayEnabled(lua_State* L) {
+  int SWIG_arg = 0;
+  AgentVisualDebugger *arg1 = (AgentVisualDebugger *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_num_args("setDisplayEnabled",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setDisplayEnabled",1,"AgentVisualDebugger *");
+  if(!lua_isboolean(L,2)) SWIG_fail_arg("setDisplayEnabled",2,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_AgentVisualDebugger,0))){
+    SWIG_fail_ptr("AgentVisualDebugger_setDisplayEnabled",1,SWIGTYPE_p_AgentVisualDebugger);
+  }
+  
+  arg2 = (lua_toboolean(L, 2)!=0);
+  (arg1)->setDisplayEnabled(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentVisualDebugger_setAgent(lua_State* L) {
+  int SWIG_arg = 0;
+  AgentVisualDebugger *arg1 = (AgentVisualDebugger *) 0 ;
+  verve::Agent *arg2 = (verve::Agent *) 0 ;
+  
+  SWIG_check_num_args("setAgent",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setAgent",1,"AgentVisualDebugger *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("setAgent",2,"verve::Agent const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_AgentVisualDebugger,0))){
+    SWIG_fail_ptr("AgentVisualDebugger_setAgent",1,SWIGTYPE_p_AgentVisualDebugger);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("AgentVisualDebugger_setAgent",2,SWIGTYPE_p_verve__Agent);
+  }
+  
+  (arg1)->setAgent((verve::Agent const *)arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_AgentVisualDebugger(void *obj) {
+AgentVisualDebugger *arg1 = (AgentVisualDebugger *) obj;
+delete arg1;
+}
+static swig_lua_method swig_AgentVisualDebugger_methods[] = {
+    {"updateVisuals", _wrap_AgentVisualDebugger_updateVisuals}, 
+    {"setDisplayEnabled", _wrap_AgentVisualDebugger_setDisplayEnabled}, 
+    {"setAgent", _wrap_AgentVisualDebugger_setAgent}, 
+    {0,0}
+};
+static swig_lua_attribute swig_AgentVisualDebugger_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_AgentVisualDebugger_bases[] = {0};
+static const char *swig_AgentVisualDebugger_base_names[] = {0};
+static swig_lua_class _wrap_class_AgentVisualDebugger = { "AgentVisualDebugger", &SWIGTYPE_p_AgentVisualDebugger,_wrap_new_AgentVisualDebugger, swig_delete_AgentVisualDebugger, swig_AgentVisualDebugger_methods, swig_AgentVisualDebugger_attributes, swig_AgentVisualDebugger_bases, swig_AgentVisualDebugger_base_names };
+
+static int _wrap_LearningEntity_resetBodyAndSTM(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningEntity *arg1 = (LearningEntity *) 0 ;
+  
+  SWIG_check_num_args("resetBodyAndSTM",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("resetBodyAndSTM",1,"LearningEntity *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningEntity,0))){
+    SWIG_fail_ptr("LearningEntity_resetBodyAndSTM",1,SWIGTYPE_p_LearningEntity);
+  }
+  
+  (arg1)->resetBodyAndSTM();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LearningEntity_resetBodyAndCreateNewAgent(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningEntity *arg1 = (LearningEntity *) 0 ;
+  
+  SWIG_check_num_args("resetBodyAndCreateNewAgent",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("resetBodyAndCreateNewAgent",1,"LearningEntity *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningEntity,0))){
+    SWIG_fail_ptr("LearningEntity_resetBodyAndCreateNewAgent",1,SWIGTYPE_p_LearningEntity);
+  }
+  
+  (arg1)->resetBodyAndCreateNewAgent();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LearningEntity_randomizeState(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningEntity *arg1 = (LearningEntity *) 0 ;
+  
+  SWIG_check_num_args("randomizeState",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("randomizeState",1,"LearningEntity *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningEntity,0))){
+    SWIG_fail_ptr("LearningEntity_randomizeState",1,SWIGTYPE_p_LearningEntity);
+  }
+  
+  (arg1)->randomizeState();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LearningEntity_update(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningEntity *arg1 = (LearningEntity *) 0 ;
+  verve::real arg2 ;
+  verve::real arg3 ;
+  
+  SWIG_check_num_args("update",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("update",1,"LearningEntity *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("update",2,"verve::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("update",3,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningEntity,0))){
+    SWIG_fail_ptr("LearningEntity_update",1,SWIGTYPE_p_LearningEntity);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  arg3 = (verve::real)lua_tonumber(L, 3);
+  (arg1)->update(arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LearningEntity_getAgent(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningEntity *arg1 = (LearningEntity *) 0 ;
+  verve::Agent *result = 0 ;
+  
+  SWIG_check_num_args("getAgent",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getAgent",1,"LearningEntity const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningEntity,0))){
+    SWIG_fail_ptr("LearningEntity_getAgent",1,SWIGTYPE_p_LearningEntity);
+  }
+  
+  result = (verve::Agent *)((LearningEntity const *)arg1)->getAgent();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__Agent,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LearningEntity_getContinuousInputs(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningEntity *arg1 = (LearningEntity *) 0 ;
+  verve::real *result = 0 ;
+  
+  SWIG_check_num_args("getContinuousInputs",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousInputs",1,"LearningEntity const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningEntity,0))){
+    SWIG_fail_ptr("LearningEntity_getContinuousInputs",1,SWIGTYPE_p_LearningEntity);
+  }
+  
+  result = (verve::real *)((LearningEntity const *)arg1)->getContinuousInputs();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_float,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_LearningEntity(void *obj) {
+LearningEntity *arg1 = (LearningEntity *) obj;
+delete arg1;
+}
+static swig_lua_method swig_LearningEntity_methods[] = {
+    {"resetBodyAndSTM", _wrap_LearningEntity_resetBodyAndSTM}, 
+    {"resetBodyAndCreateNewAgent", _wrap_LearningEntity_resetBodyAndCreateNewAgent}, 
+    {"randomizeState", _wrap_LearningEntity_randomizeState}, 
+    {"update", _wrap_LearningEntity_update}, 
+    {"getAgent", _wrap_LearningEntity_getAgent}, 
+    {"getContinuousInputs", _wrap_LearningEntity_getContinuousInputs}, 
+    {0,0}
+};
+static swig_lua_attribute swig_LearningEntity_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_LearningEntity_bases[] = {0};
+static const char *swig_LearningEntity_base_names[] = {0};
+static swig_lua_class _wrap_class_LearningEntity = { "LearningEntity", &SWIGTYPE_p_LearningEntity,0, swig_delete_LearningEntity, swig_LearningEntity_methods, swig_LearningEntity_attributes, swig_LearningEntity_bases, swig_LearningEntity_base_names };
+
+static int _wrap_new_Car(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = 0 ;
+  Car *result = 0 ;
+  
+  SWIG_check_num_args("Car",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("Car",1,"SimulationEngine &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("new_Car",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  result = (Car *)new Car(*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Car,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_init__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  opal::real arg4 ;
+  opal::Matrix44r *arg5 = 0 ;
+  opal::real arg6 ;
+  opal::real *argp4 ;
+  opal::real *argp6 ;
+  
+  SWIG_check_num_args("init",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("init",4,"opal::real");
+  if(!lua_isuserdata(L,5)) SWIG_fail_arg("init",5,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,6)) SWIG_fail_arg("init",6,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_init",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&argp4,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Car_init",4,SWIGTYPE_p_opal__real);
+  }
+  arg4 = *argp4;
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Car_init",5,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,6,(void**)&argp6,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Car_init",6,SWIGTYPE_p_opal__real);
+  }
+  arg6 = *argp6;
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3,arg4,(opal::Matrix44r const &)*arg5,arg6);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_init__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  opal::real arg4 ;
+  opal::Matrix44r *arg5 = 0 ;
+  opal::real *argp4 ;
+  
+  SWIG_check_num_args("init",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("init",4,"opal::real");
+  if(!lua_isuserdata(L,5)) SWIG_fail_arg("init",5,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_init",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&argp4,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Car_init",4,SWIGTYPE_p_opal__real);
+  }
+  arg4 = *argp4;
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Car_init",5,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3,arg4,(opal::Matrix44r const &)*arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_init__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  opal::real arg4 ;
+  opal::real *argp4 ;
+  
+  SWIG_check_num_args("init",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("init",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_init",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&argp4,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Car_init",4,SWIGTYPE_p_opal__real);
+  }
+  arg4 = *argp4;
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_init__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  
+  SWIG_check_num_args("init",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_init",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Car_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_init(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Car, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_Car_init__SWIG_3(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Car, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            return _wrap_Car_init__SWIG_2(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Car, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (lua_isuserdata(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_Car_init__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Car, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (lua_isuserdata(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                void *ptr;
+                if (lua_isuserdata(L,argv[5])==0 || SWIG_ConvertPtr(L,argv[5], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+                  _v = 0;
+                } else {
+                  _v = 1;
+                }
+              }
+              if (_v) {
+                return _wrap_Car_init__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Car_init'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    init(Car *,std::string const &,std::string const &,opal::real,opal::Matrix44r const &,opal::real)\n"
+    "    init(Car *,std::string const &,std::string const &,opal::real,opal::Matrix44r const &)\n"
+    "    init(Car *,std::string const &,std::string const &,opal::real)\n"
+    "    init(Car *,std::string const &,std::string const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Car_forward(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  
+  SWIG_check_num_args("forward",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("forward",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_forward",1,SWIGTYPE_p_Car);
+  }
+  
+  (arg1)->forward();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_reverse(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  
+  SWIG_check_num_args("reverse",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("reverse",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_reverse",1,SWIGTYPE_p_Car);
+  }
+  
+  (arg1)->reverse();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_idle(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  
+  SWIG_check_num_args("idle",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("idle",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_idle",1,SWIGTYPE_p_Car);
+  }
+  
+  (arg1)->idle();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_setThrottle(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  opal::real arg2 ;
+  opal::real *argp2 ;
+  
+  SWIG_check_num_args("setThrottle",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setThrottle",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setThrottle",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_setThrottle",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Car_setThrottle",2,SWIGTYPE_p_opal__real);
+  }
+  arg2 = *argp2;
+  
+  (arg1)->setThrottle(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_steerLeft(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  
+  SWIG_check_num_args("steerLeft",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("steerLeft",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_steerLeft",1,SWIGTYPE_p_Car);
+  }
+  
+  (arg1)->steerLeft();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_steerRight(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  
+  SWIG_check_num_args("steerRight",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("steerRight",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_steerRight",1,SWIGTYPE_p_Car);
+  }
+  
+  (arg1)->steerRight();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_setSteering(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  opal::real arg2 ;
+  opal::real *argp2 ;
+  
+  SWIG_check_num_args("setSteering",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setSteering",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setSteering",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_setSteering",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Car_setSteering",2,SWIGTYPE_p_opal__real);
+  }
+  arg2 = *argp2;
+  
+  (arg1)->setSteering(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_getChassis(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("getChassis",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getChassis",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_getChassis",1,SWIGTYPE_p_Car);
+  }
+  
+  result = (opal::Solid *)(arg1)->getChassis();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_getFLMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  opal::GearedMotor *result = 0 ;
+  
+  SWIG_check_num_args("getFLMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getFLMotor",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_getFLMotor",1,SWIGTYPE_p_Car);
+  }
+  
+  result = (opal::GearedMotor *)(arg1)->getFLMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__GearedMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_getFRMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  opal::GearedMotor *result = 0 ;
+  
+  SWIG_check_num_args("getFRMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getFRMotor",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_getFRMotor",1,SWIGTYPE_p_Car);
+  }
+  
+  result = (opal::GearedMotor *)(arg1)->getFRMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__GearedMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_getSceneNode(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  Ogre::SceneNode *result = 0 ;
+  
+  SWIG_check_num_args("getSceneNode",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getSceneNode",1,"Car *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_getSceneNode",1,SWIGTYPE_p_Car);
+  }
+  
+  result = (Ogre::SceneNode *)(arg1)->getSceneNode();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__SceneNode,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_updateSoundEffects(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  opal::real arg2 ;
+  opal::real *argp2 ;
+  
+  SWIG_check_num_args("updateSoundEffects",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("updateSoundEffects",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("updateSoundEffects",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_updateSoundEffects",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Car_updateSoundEffects",2,SWIGTYPE_p_opal__real);
+  }
+  arg2 = *argp2;
+  
+  (arg1)->updateSoundEffects(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Car_handleCollisionEvent(lua_State* L) {
+  int SWIG_arg = 0;
+  Car *arg1 = (Car *) 0 ;
+  opal::CollisionEvent *arg2 = 0 ;
+  
+  SWIG_check_num_args("handleCollisionEvent",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("handleCollisionEvent",1,"Car *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("handleCollisionEvent",2,"opal::CollisionEvent const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Car,0))){
+    SWIG_fail_ptr("Car_handleCollisionEvent",1,SWIGTYPE_p_Car);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("Car_handleCollisionEvent",2,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  (arg1)->handleCollisionEvent((opal::CollisionEvent const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Car(void *obj) {
+Car *arg1 = (Car *) obj;
+delete arg1;
+}
+static swig_lua_method swig_Car_methods[] = {
+    {"init", _wrap_Car_init}, 
+    {"forward", _wrap_Car_forward}, 
+    {"reverse", _wrap_Car_reverse}, 
+    {"idle", _wrap_Car_idle}, 
+    {"setThrottle", _wrap_Car_setThrottle}, 
+    {"steerLeft", _wrap_Car_steerLeft}, 
+    {"steerRight", _wrap_Car_steerRight}, 
+    {"setSteering", _wrap_Car_setSteering}, 
+    {"getChassis", _wrap_Car_getChassis}, 
+    {"getFLMotor", _wrap_Car_getFLMotor}, 
+    {"getFRMotor", _wrap_Car_getFRMotor}, 
+    {"getSceneNode", _wrap_Car_getSceneNode}, 
+    {"updateSoundEffects", _wrap_Car_updateSoundEffects}, 
+    {"handleCollisionEvent", _wrap_Car_handleCollisionEvent}, 
+    {0,0}
+};
+static swig_lua_attribute swig_Car_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_Car_bases[] = {0,0};
+static const char *swig_Car_base_names[] = {"opal::CollisionEventHandler *",0};
+static swig_lua_class _wrap_class_Car = { "Car", &SWIGTYPE_p_Car,_wrap_new_Car, swig_delete_Car, swig_Car_methods, swig_Car_attributes, swig_Car_bases, swig_Car_base_names };
+
+static int _wrap_new_Robot(lua_State* L) {
+  int SWIG_arg = 0;
+  SimulationEngine *arg1 = 0 ;
+  verve::real arg2 ;
+  Robot *result = 0 ;
+  
+  SWIG_check_num_args("Robot",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("Robot",1,"SimulationEngine &");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("Robot",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
+    SWIG_fail_ptr("new_Robot",1,SWIGTYPE_p_SimulationEngine);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  result = (Robot *)new Robot(*arg1,arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Robot,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Robot_init__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  Robot *arg1 = (Robot *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  opal::real arg4 ;
+  opal::Matrix44r *arg5 = 0 ;
+  opal::real arg6 ;
+  opal::real *argp4 ;
+  opal::real *argp6 ;
+  
+  SWIG_check_num_args("init",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Robot *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("init",4,"opal::real");
+  if(!lua_isuserdata(L,5)) SWIG_fail_arg("init",5,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,6)) SWIG_fail_arg("init",6,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Robot,0))){
+    SWIG_fail_ptr("Robot_init",1,SWIGTYPE_p_Robot);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&argp4,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Robot_init",4,SWIGTYPE_p_opal__real);
+  }
+  arg4 = *argp4;
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Robot_init",5,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,6,(void**)&argp6,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Robot_init",6,SWIGTYPE_p_opal__real);
+  }
+  arg6 = *argp6;
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3,arg4,(opal::Matrix44r const &)*arg5,arg6);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Robot_init__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  Robot *arg1 = (Robot *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  opal::real arg4 ;
+  opal::Matrix44r *arg5 = 0 ;
+  opal::real *argp4 ;
+  
+  SWIG_check_num_args("init",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Robot *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("init",4,"opal::real");
+  if(!lua_isuserdata(L,5)) SWIG_fail_arg("init",5,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Robot,0))){
+    SWIG_fail_ptr("Robot_init",1,SWIGTYPE_p_Robot);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&argp4,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Robot_init",4,SWIGTYPE_p_opal__real);
+  }
+  arg4 = *argp4;
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Robot_init",5,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3,arg4,(opal::Matrix44r const &)*arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Robot_init__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  Robot *arg1 = (Robot *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  opal::real arg4 ;
+  opal::real *argp4 ;
+  
+  SWIG_check_num_args("init",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Robot *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("init",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Robot,0))){
+    SWIG_fail_ptr("Robot_init",1,SWIGTYPE_p_Robot);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&argp4,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Robot_init",4,SWIGTYPE_p_opal__real);
+  }
+  arg4 = *argp4;
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Robot_init__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  Robot *arg1 = (Robot *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  
+  SWIG_check_num_args("init",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"Robot *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"std::string const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("init",3,"std::string const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Robot,0))){
+    SWIG_fail_ptr("Robot_init",1,SWIGTYPE_p_Robot);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",2,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Robot_init",3,SWIGTYPE_p_std__string);
+  }
+  
+  (arg1)->init((std::string const &)*arg2,(std::string const &)*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Robot_init(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Robot, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_Robot_init__SWIG_3(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Robot, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            return _wrap_Robot_init__SWIG_2(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Robot, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (lua_isuserdata(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_Robot_init__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_Robot, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (lua_isuserdata(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                void *ptr;
+                if (lua_isuserdata(L,argv[5])==0 || SWIG_ConvertPtr(L,argv[5], (void **) &ptr, SWIGTYPE_p_opal__real, 0)) {
+                  _v = 0;
+                } else {
+                  _v = 1;
+                }
+              }
+              if (_v) {
+                return _wrap_Robot_init__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Robot_init'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    init(Robot *,std::string const &,std::string const &,opal::real,opal::Matrix44r const &,opal::real)\n"
+    "    init(Robot *,std::string const &,std::string const &,opal::real,opal::Matrix44r const &)\n"
+    "    init(Robot *,std::string const &,std::string const &,opal::real)\n"
+    "    init(Robot *,std::string const &,std::string const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Robot_randomizeState(lua_State* L) {
+  int SWIG_arg = 0;
+  Robot *arg1 = (Robot *) 0 ;
+  
+  SWIG_check_num_args("randomizeState",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("randomizeState",1,"Robot *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Robot,0))){
+    SWIG_fail_ptr("Robot_randomizeState",1,SWIGTYPE_p_Robot);
+  }
+  
+  (arg1)->randomizeState();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Robot_getCurrentActionName(lua_State* L) {
+  int SWIG_arg = 0;
+  Robot *arg1 = (Robot *) 0 ;
+  std::string result;
+  
+  SWIG_check_num_args("getCurrentActionName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getCurrentActionName",1,"Robot const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Robot,0))){
+    SWIG_fail_ptr("Robot_getCurrentActionName",1,SWIGTYPE_p_Robot);
+  }
+  
+  result = ((Robot const *)arg1)->getCurrentActionName();
+  {
+    std::string * resultptr = new std::string((const std::string &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_std__string,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Robot_updateVisuals(lua_State* L) {
+  int SWIG_arg = 0;
+  Robot *arg1 = (Robot *) 0 ;
+  opal::real arg2 ;
+  opal::real *argp2 ;
+  
+  SWIG_check_num_args("updateVisuals",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("updateVisuals",1,"Robot *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("updateVisuals",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Robot,0))){
+    SWIG_fail_ptr("Robot_updateVisuals",1,SWIGTYPE_p_Robot);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__real,0))){
+    SWIG_fail_ptr("Robot_updateVisuals",2,SWIGTYPE_p_opal__real);
+  }
+  arg2 = *argp2;
+  
+  (arg1)->updateVisuals(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Robot(void *obj) {
+Robot *arg1 = (Robot *) obj;
+delete arg1;
+}
+static swig_lua_method swig_Robot_methods[] = {
+    {"init", _wrap_Robot_init}, 
+    {"randomizeState", _wrap_Robot_randomizeState}, 
+    {"getCurrentActionName", _wrap_Robot_getCurrentActionName}, 
+    {"updateVisuals", _wrap_Robot_updateVisuals}, 
+    {0,0}
+};
+static swig_lua_attribute swig_Robot_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_Robot_bases[] = {0,0,0};
+static const char *swig_Robot_base_names[] = {"LearningEntity *","Car *",0};
+static swig_lua_class _wrap_class_Robot = { "Robot", &SWIGTYPE_p_Robot,_wrap_new_Robot, swig_delete_Robot, swig_Robot_methods, swig_Robot_attributes, swig_Robot_bases, swig_Robot_base_names };
+
 #ifdef __cplusplus
 }
 #endif
@@ -4360,13 +7131,59 @@ static swig_lua_const_info swig_constants[] = {
 { SWIG_LUA_INT,     (char *)"RL", (long) verve::RL, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"MODEL_RL", (long) verve::MODEL_RL, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"CURIOUS_MODEL_RL", (long) verve::CURIOUS_MODEL_RL, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"SimulationEngine_SIMULATE_CONSTANT_CHUNK", (long) SimulationEngine::SIMULATE_CONSTANT_CHUNK, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"SimulationEngine_SIMULATE_REAL_TIME_MULTIPLE", (long) SimulationEngine::SIMULATE_REAL_TIME_MULTIPLE, 0, 0, 0},
     {0,0,0,0,0,0}
 };
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_opal__CollisionEventHandlerTo_p_opal__EventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((opal::EventHandler *)  ((opal::CollisionEventHandler *) x));
+}
+static void *_p_RobotTo_p_opal__EventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((opal::EventHandler *) (opal::CollisionEventHandler *)(Car *) ((Robot *) x));
+}
+static void *_p_CarTo_p_opal__EventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((opal::EventHandler *) (opal::CollisionEventHandler *) ((Car *) x));
+}
+static void *_p_RobotTo_p_opal__CollisionEventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((opal::CollisionEventHandler *) (Car *) ((Robot *) x));
+}
+static void *_p_CarTo_p_opal__CollisionEventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((opal::CollisionEventHandler *)  ((Car *) x));
+}
+static void *_p_RobotTo_p_Car(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((Car *)  ((Robot *) x));
+}
+static void *_p_RobotTo_p_LearningEntity(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((LearningEntity *)  ((Robot *) x));
+}
+static swig_type_info _swigt__p_AgentVisualDebugger = {"_p_AgentVisualDebugger", "AgentVisualDebugger *", 0, 0, (void*)&_wrap_class_AgentVisualDebugger, 0};
+static swig_type_info _swigt__p_Car = {"_p_Car", "Car *", 0, 0, (void*)&_wrap_class_Car, 0};
+static swig_type_info _swigt__p_LearningEntity = {"_p_LearningEntity", "LearningEntity *", 0, 0, (void*)&_wrap_class_LearningEntity, 0};
+static swig_type_info _swigt__p_OIS__Keyboard = {"_p_OIS__Keyboard", "OIS::Keyboard *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_OIS__Mouse = {"_p_OIS__Mouse", "OIS::Mouse *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Ogre__SceneManager = {"_p_Ogre__SceneManager", "Ogre::SceneManager *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Ogre__SceneNode = {"_p_Ogre__SceneNode", "Ogre::SceneNode *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PhysicalCamera = {"_p_PhysicalCamera", "PhysicalCamera *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PhysicalCamera__Type = {"_p_PhysicalCamera__Type", "PhysicalCamera::Type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PhysicalEntity = {"_p_PhysicalEntity", "PhysicalEntity *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Point3r = {"_p_Point3r", "Point3r *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Robot = {"_p_Robot", "Robot *", 0, 0, (void*)&_wrap_class_Robot, 0};
+static swig_type_info _swigt__p_SimulationEngine = {"_p_SimulationEngine", "SimulationEngine *", 0, 0, (void*)&_wrap_class_SimulationEngine, 0};
+static swig_type_info _swigt__p_Vec3r = {"_p_Vec3r", "Vec3r *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "verve::real *|float *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__CollisionEvent = {"_p_opal__CollisionEvent", "opal::CollisionEvent *", 0, 0, (void*)&_wrap_class_opal_CollisionEvent, 0};
+static swig_type_info _swigt__p_opal__CollisionEventHandler = {"_p_opal__CollisionEventHandler", "opal::CollisionEventHandler *", 0, 0, (void*)&_wrap_class_opal_CollisionEventHandler, 0};
+static swig_type_info _swigt__p_opal__EventHandler = {"_p_opal__EventHandler", "opal::EventHandler *", 0, 0, (void*)&_wrap_class_opal_EventHandler, 0};
+static swig_type_info _swigt__p_opal__GearedMotor = {"_p_opal__GearedMotor", "opal::GearedMotor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__Matrix44r = {"_p_opal__Matrix44r", "opal::Matrix44r *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__Simulator = {"_p_opal__Simulator", "opal::Simulator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__Solid = {"_p_opal__Solid", "opal::Solid *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__real = {"_p_opal__real", "opal::real *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_real = {"_p_real", "real *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "unsigned int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_verve__Agent = {"_p_verve__Agent", "verve::Agent *", 0, 0, (void*)&_wrap_class_verve_Agent, 0};
@@ -4377,8 +7194,31 @@ static swig_type_info _swigt__p_verve__DiscreteSensorDescriptor = {"_p_verve__Di
 static swig_type_info _swigt__p_verve__Observation = {"_p_verve__Observation", "verve::Observation *", 0, 0, (void*)&_wrap_class_verve_Observation, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_AgentVisualDebugger,
+  &_swigt__p_Car,
+  &_swigt__p_LearningEntity,
+  &_swigt__p_OIS__Keyboard,
+  &_swigt__p_OIS__Mouse,
+  &_swigt__p_Ogre__SceneManager,
+  &_swigt__p_Ogre__SceneNode,
+  &_swigt__p_PhysicalCamera,
+  &_swigt__p_PhysicalCamera__Type,
+  &_swigt__p_PhysicalEntity,
+  &_swigt__p_Point3r,
+  &_swigt__p_Robot,
+  &_swigt__p_SimulationEngine,
+  &_swigt__p_Vec3r,
   &_swigt__p_bool,
   &_swigt__p_float,
+  &_swigt__p_opal__CollisionEvent,
+  &_swigt__p_opal__CollisionEventHandler,
+  &_swigt__p_opal__EventHandler,
+  &_swigt__p_opal__GearedMotor,
+  &_swigt__p_opal__Matrix44r,
+  &_swigt__p_opal__Simulator,
+  &_swigt__p_opal__Solid,
+  &_swigt__p_opal__real,
+  &_swigt__p_real,
   &_swigt__p_std__string,
   &_swigt__p_unsigned_int,
   &_swigt__p_verve__Agent,
@@ -4389,8 +7229,31 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_verve__Observation,
 };
 
+static swig_cast_info _swigc__p_AgentVisualDebugger[] = {  {&_swigt__p_AgentVisualDebugger, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Car[] = {  {&_swigt__p_Car, 0, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_Car, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LearningEntity[] = {  {&_swigt__p_LearningEntity, 0, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_LearningEntity, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_OIS__Keyboard[] = {  {&_swigt__p_OIS__Keyboard, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_OIS__Mouse[] = {  {&_swigt__p_OIS__Mouse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Ogre__SceneManager[] = {  {&_swigt__p_Ogre__SceneManager, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Ogre__SceneNode[] = {  {&_swigt__p_Ogre__SceneNode, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PhysicalCamera[] = {  {&_swigt__p_PhysicalCamera, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PhysicalCamera__Type[] = {  {&_swigt__p_PhysicalCamera__Type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PhysicalEntity[] = {  {&_swigt__p_PhysicalEntity, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Point3r[] = {  {&_swigt__p_Point3r, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Robot[] = {  {&_swigt__p_Robot, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SimulationEngine[] = {  {&_swigt__p_SimulationEngine, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Vec3r[] = {  {&_swigt__p_Vec3r, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__CollisionEvent[] = {  {&_swigt__p_opal__CollisionEvent, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__CollisionEventHandler[] = {  {&_swigt__p_Car, _p_CarTo_p_opal__CollisionEventHandler, 0, 0},  {&_swigt__p_opal__CollisionEventHandler, 0, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_opal__CollisionEventHandler, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__EventHandler[] = {  {&_swigt__p_Car, _p_CarTo_p_opal__EventHandler, 0, 0},  {&_swigt__p_opal__EventHandler, 0, 0, 0},  {&_swigt__p_opal__CollisionEventHandler, _p_opal__CollisionEventHandlerTo_p_opal__EventHandler, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_opal__EventHandler, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__GearedMotor[] = {  {&_swigt__p_opal__GearedMotor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__Matrix44r[] = {  {&_swigt__p_opal__Matrix44r, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__Simulator[] = {  {&_swigt__p_opal__Simulator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__Solid[] = {  {&_swigt__p_opal__Solid, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__real[] = {  {&_swigt__p_opal__real, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_real[] = {  {&_swigt__p_real, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_verve__Agent[] = {  {&_swigt__p_verve__Agent, 0, 0, 0},{0, 0, 0, 0}};
@@ -4401,8 +7264,31 @@ static swig_cast_info _swigc__p_verve__DiscreteSensorDescriptor[] = {  {&_swigt_
 static swig_cast_info _swigc__p_verve__Observation[] = {  {&_swigt__p_verve__Observation, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_AgentVisualDebugger,
+  _swigc__p_Car,
+  _swigc__p_LearningEntity,
+  _swigc__p_OIS__Keyboard,
+  _swigc__p_OIS__Mouse,
+  _swigc__p_Ogre__SceneManager,
+  _swigc__p_Ogre__SceneNode,
+  _swigc__p_PhysicalCamera,
+  _swigc__p_PhysicalCamera__Type,
+  _swigc__p_PhysicalEntity,
+  _swigc__p_Point3r,
+  _swigc__p_Robot,
+  _swigc__p_SimulationEngine,
+  _swigc__p_Vec3r,
   _swigc__p_bool,
   _swigc__p_float,
+  _swigc__p_opal__CollisionEvent,
+  _swigc__p_opal__CollisionEventHandler,
+  _swigc__p_opal__EventHandler,
+  _swigc__p_opal__GearedMotor,
+  _swigc__p_opal__Matrix44r,
+  _swigc__p_opal__Simulator,
+  _swigc__p_opal__Solid,
+  _swigc__p_opal__real,
+  _swigc__p_real,
   _swigc__p_std__string,
   _swigc__p_unsigned_int,
   _swigc__p_verve__Agent,

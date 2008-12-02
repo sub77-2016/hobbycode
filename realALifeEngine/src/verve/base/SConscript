@@ -6,6 +6,7 @@ headers = Split("""
 	Car.h
 	DataCollection.h
 	DataFile.h
+	LearningEntity.h
 	LearningTest.h
 	PhysicalCamera.h
 	PhysicalEntity.h
