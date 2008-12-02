@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<OpalBlueprint>
+
+    <Solid>
+        <Name value="chassis" />
+        <Shape type="box">
+            <Dimensions x="2.5" y="0.4" z="4" />
+            <Material hardness="0.8" friction="0.1" bounciness="0.15" density="0.2"/>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="1.5" y="0.6" z="0.2" />
+            <Material hardness="0.8" friction="0.1" bounciness="0.15" density="0.2"/>
+	        <Offset>
+	            <Transform type="translate" x="-1.3" y="0" z="-2.2" />
+	            <Transform type="rotate" angle="-45" x="0" y="1" z="0" />
+	        </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="1.5" y="0.6" z="0.2" />
+            <Material hardness="0.8" friction="0.1" bounciness="0.15" density="0.2"/>
+	        <Offset>
+	            <Transform type="translate" x="1.3" y="0" z="-2.2" />
+	            <Transform type="rotate" angle="45" x="0" y="1" z="0" />
+	        </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="1.0" y="0.5" z="3.9" />
+            <Material hardness="0.8" friction="0.1" bounciness="0.15" density="1.5"/>
+	        <Offset>
+	            <Transform type="translate" x="0" y="-0.4" z="0" />
+	        </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="0.8" y="0.3" z="3.9" />
+            <Material hardness="0.8" friction="0.1" bounciness="0.15" density="0.2"/>
+	        <Offset>
+	            <Transform type="translate" x="-0.7" y="0.2" z="0" />
+	            <Transform type="rotate" angle="-10" x="0" y="0" z="1" />
+	        </Offset>
+        </Shape>
+        <Shape type="box">
+            <Dimensions x="0.8" y="0.3" z="3.9" />
+            <Material hardness="0.8" friction="0.1" bounciness="0.15" density="0.2"/>
+	        <Offset>
+	            <Transform type="translate" x="0.7" y="0.2" z="0" />
+	            <Transform type="rotate" angle="10" x="0" y="0" z="1" />
+	        </Offset>
+        </Shape>
+    </Solid>
+    <Solid>
+        <Name value="FLWheel" />
+        <Offset>
+            <Transform type="translate" x="-1.13" y="-0.3" z="-1.3" />
+        </Offset>
+        <Shape type="sphere">
+            <Dimensions radius="0.6" />
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+    <Solid>
+        <Name value="FRWheel" />
+        <Offset>
+            <Transform type="translate" x="1.13" y="-0.3" z="-1.3" />
+        </Offset>
+        <Shape type="sphere">
+            <Dimensions radius="0.6" />
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+    <Solid>
+        <Name value="RLWheel" />
+        <Offset>
+            <Transform type="translate" x="-1.13" y="-0.3" z="1.3" />
+        </Offset>
+        <Shape type="sphere">
+            <Dimensions radius="0.6" />
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+    <Solid>
+        <Name value="RRWheel" />
+        <Offset>
+            <Transform type="translate" x="1.13" y="-0.3" z="1.3" />
+        </Offset>
+        <Shape type="sphere">
+            <Dimensions radius="0.6" />
+            <Material hardness="0.8" friction="1" bounciness="0.15" density="0.2"/>
+        </Shape>
+    </Solid>
+    <Joint>
+        <Name value="FLJoint" />
+        <Type value="wheel" />
+        <References solid0="chassis" solid1="FLWheel" />
+        <Anchor x="-1.13" y="-0.3" z="-1.3" />
+        <Axis>
+            <AxisNum value="0" />
+            <Direction x="0" y="1" z="0" />
+            <LimitsEnabled value="true" />
+        </Axis>
+        <Axis>
+            <AxisNum value="1" />
+            <Direction x="1" y="0" z="0" />
+        </Axis>
+    </Joint>
+    <Joint>
+        <Name value="FRJoint" />
+        <Type value="wheel" />
+        <References solid0="chassis" solid1="FRWheel" />
+        <Anchor x="1.13" y="-0.3" z="-1.3" />
+        <Axis>
+            <AxisNum value="0" />
+            <Direction x="0" y="1" z="0" />
+            <LimitsEnabled value="true" />
+        </Axis>
+        <Axis>
+            <AxisNum value="1" />
+            <Direction x="1" y="0" z="0" />
+        </Axis>
+    </Joint>
+    <Joint>
+        <Name value="RLJoint" />
+        <Type value="wheel" />
+        <References solid0="chassis" solid1="RLWheel" />
+        <Anchor x="-1.13" y="-0.3" z="1.3" />
+        <Axis>
+            <AxisNum value="0" />
+            <Direction x="0" y="1" z="0" />
+            <LimitsEnabled value="true" />
+        </Axis>
+        <Axis>
+            <AxisNum value="1" />
+            <Direction x="1" y="0" z="0" />
+        </Axis>
+    </Joint>
+    <Joint>
+        <Name value="RRJoint" />
+        <Type value="wheel" />
+        <References solid0="chassis" solid1="RRWheel" />
+        <Anchor x="1.13" y="-0.3" z="1.3" />
+        <Axis>
+            <AxisNum value="0" />
+            <Direction x="0" y="1" z="0" />
+            <LimitsEnabled value="true" />
+        </Axis>
+        <Axis>
+            <AxisNum value="1" />
+            <Direction x="1" y="0" z="0" />
+        </Axis>
+    </Joint>
+
+	<Motor>
+		<Name value="FLMotor"/>
+		<Type value="geared"/>
+		<References joint="FLJoint"/>
+		<JointAxisNum value="1"/>
+		<MaxTorque value="10"/>
+		<MaxVelocity value="2000"/>
+	</Motor>
+
+	<Motor>
+		<Name value="FRMotor"/>
+		<Type value="geared"/>
+		<References joint="FRJoint"/>
+		<JointAxisNum value="1"/>
+		<MaxTorque value="10"/>
+		<MaxVelocity value="2000"/>
+	</Motor>
+
+	<Sensor>
+		<Name value="rangefinder0"/>
+		<Type value="raycast"/>
+		<References solid="chassis"/>
+		<Offset>
+			<Transform type="translate" x="-0.8" y="0.0" z="-2.0"/>
+			<Transform type="rotate" angle="40" x="0" y="1" z="0"/>
+		</Offset>
+		<Ray originx="0" originy="0" originz="0" dirx="0" diry="0" dirz="-1"/>
+	</Sensor>
+
+	<Sensor>
+		<Name value="rangefinder1"/>
+		<Type value="raycast"/>
+		<References solid="chassis"/>
+		<Offset>
+			<Transform type="translate" x="0" y="0.0" z="-2.0"/>
+			<Transform type="rotate" angle="0" x="0" y="1" z="0"/>
+		</Offset>
+		<Ray originx="0" originy="0" originz="0" dirx="0" diry="0" dirz="-1"/>
+	</Sensor>
+
+	<Sensor>
+		<Name value="rangefinder2"/>
+		<Type value="raycast"/>
+		<References solid="chassis"/>
+		<Offset>
+			<Transform type="translate" x="0.8" y="0.0" z="-2.0"/>
+			<Transform type="rotate" angle="-40" x="0" y="1" z="0"/>
+		</Offset>
+		<Ray originx="0" originy="0" originz="0" dirx="0" diry="0" dirz="-1"/>
+	</Sensor>
+
+</OpalBlueprint>
