@@ -21,8 +21,8 @@
 ************************************************************************/
 
 #include "Robot.h"
-#include "../src/SimulationEngine.h"
-#include "../src/AudioManager.h"
+#include "../base/SimulationEngine.h"
+#include "../base/AudioManager.h"
 
 #include <ogre/Ogre.h>
 
@@ -150,7 +150,7 @@ void Robot::setupVisuals()
 	{
 		// Create a line to represent the laser.
 		char str[32];
-		sprintf(str, "rangefinderLine%d", i);
+		sprintf(str, "rangefinderLine%d", (int)i);
 		Ogre::SceneNode* lineNode = sm->getRootSceneNode()->
 			createChildSceneNode(str);
 		Ogre::Entity* lineEntity = sm->createEntity(str, "cylinder.mesh");
@@ -159,7 +159,7 @@ void Robot::setupVisuals()
 		lineNode->attachObject(lineEntity);
 
 		// Create a sphere to represent ray intersections.
-		sprintf(str, "rangefinderSphere%d", i);
+		sprintf(str, "rangefinderSphere%d", (int)i);
 		Ogre::SceneNode* sphereNode = sm->getRootSceneNode()->
 			createChildSceneNode(str);
 		sphereNode->scale(0.2, 0.2, 0.2);

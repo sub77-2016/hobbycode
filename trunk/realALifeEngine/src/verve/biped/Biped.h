@@ -23,7 +23,7 @@
 #ifndef BIPED_H
 #define BIPED_H
 
-#include "../../src/Base3DObject.h"
+#include "../base/Base3DObject.h"
 
 class Biped : public Base3DObject
 {

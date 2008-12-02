@@ -143,7 +143,7 @@ void testRewardPredictionLearning()
 	file.close();
 }
 
-int main(int argc, char **argv)
+int _main(int argc, char **argv)
 {
 	std::cout << "===============================================================" << std::endl;
 	std::cout << "Verve temporal_difference test" << std::endl;

@@ -7,8 +7,21 @@
         <tool superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug" id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.1517507000" name="GCC C++ Compiler"/>
         <tool superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug" id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.2125897825" name="GCC C Compiler"/>
         <tool superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug" id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.449887339" name="GCC C Linker"/>
-        <tool superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug" id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1048148895" name="GCC C++ Linker"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug" id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.1048148895" name="GCC C++ Linker">
+          <option superClass="gnu.cpp.link.option.libs" id="gnu.cpp.link.option.libs.1919076760" valueType="libs">
+            <listOptionValue value="GL" builtIn="false"/>
+            <listOptionValue value="GLU" builtIn="false"/>
+            <listOptionValue value="SDL" builtIn="false"/>
+            <listOptionValue value="SDLmain" builtIn="false"/>
+            <listOptionValue value="OgreMain" builtIn="false"/>
+            <listOptionValue value="OIS" builtIn="false"/>
+            <listOptionValue value="opal-ode" builtIn="false"/>
+            <listOptionValue value="verve" builtIn="false"/>
+            <listOptionValue value="audiere" builtIn="false"/>
+          </option>
+        </tool>
         <tool superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug" id="cdt.managedbuild.tool.gnu.assembler.exe.debug.534533459" name="GCC Assembler"/>
+        <macros/>
       </toolChain>
     </configuration>
     <configuration id="cdt.managedbuild.config.gnu.exe.release.912846548" name="Release" description="" parent="cdt.managedbuild.config.gnu.exe.release" artifactName="ALifeSim-verve" errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" cleanCommand="rm -rf">

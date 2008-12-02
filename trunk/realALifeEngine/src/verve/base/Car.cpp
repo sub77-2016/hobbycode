@@ -21,8 +21,8 @@
 ************************************************************************/
 
 #include "Car.h"
-#include "../src/SimulationEngine.h"
-#include "../src/AudioManager.h"
+#include "SimulationEngine.h"
+#include "AudioManager.h"
 
 Car::Car(SimulationEngine& engine)
 : mSteeringLimit(16)
