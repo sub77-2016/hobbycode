@@ -1,0 +1,34 @@
+#Tue Dec 02 12:13:20 GMT+07:00 2008
+environment/project/cdt.managedbuild.config.gnu.exe.debug.792836397=<?xml version\="1.0"?>\n<environment/>
+cdt.managedbuild.config.gnu.exe.debug.792836397/internalBuilder/ignoreErr=true
+cdt.managedbuild.config.gnu.exe.release.459141772/internalBuilder/ignoreErr=true
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.1668681844=<?xml version\="1.0"?>\n<environment>\n  <variable name\="CPLUS_INCLUDE_PATH" operation\="remove"/>\n  <variable name\="CPATH" operation\="remove"/>\n  <variable name\="C_INCLUDE_PATH" operation\="remove"/>\n</environment>
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.298636322=<?xml version\="1.0"?>\n<environment>\n  <variable name\="CPLUS_INCLUDE_PATH" operation\="remove"/>\n  <variable name\="CPATH" operation\="remove"/>\n  <variable name\="C_INCLUDE_PATH" operation\="remove"/>\n</environment>
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.792836397=<?xml version\="1.0"?>\n<environment>\n  <variable name\="CPLUS_INCLUDE_PATH" operation\="remove"/>\n  <variable name\="CPATH" operation\="remove"/>\n  <variable name\="C_INCLUDE_PATH" operation\="remove"/>\n</environment>
+cdt.managedbuild.config.gnu.exe.release.1056500940/internalBuilder/ignoreErr=true
+eclipse.preferences.version=1
+cdt.managedbuild.config.gnu.exe.debug.199659078/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.debug.892594160/internalBuilder/ignoreErr=true
+cdt.managedbuild.config.gnu.exe.release.2032400390/internalBuilder/enabled=false
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.298636322=<?xml version\="1.0"?>\n<environment>\n  <variable name\="LIBRARY_PATH" operation\="remove"/>\n</environment>
+cdt.managedbuild.config.gnu.exe.debug.298636322/internalBuilder/ignoreErr=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.199659078=<?xml version\="1.0"?>\n<environment>\n  <variable name\="LIBRARY_PATH" operation\="remove"/>\n</environment>
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.892594160=<?xml version\="1.0"?>\n<environment>\n  <variable name\="LIBRARY_PATH" operation\="remove"/>\n</environment>
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.199659078=<?xml version\="1.0"?>\n<environment>\n  <variable name\="CPLUS_INCLUDE_PATH" operation\="remove"/>\n  <variable name\="CPATH" operation\="remove"/>\n  <variable name\="C_INCLUDE_PATH" operation\="remove"/>\n</environment>
+cdt.managedbuild.config.gnu.exe.release.2026540170/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.release.1056500940/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.debug.1668681844/internalBuilder/ignoreErr=true
+cdt.managedbuild.config.gnu.exe.release.2032400390/internalBuilder/ignoreErr=true
+cdt.managedbuild.config.gnu.exe.debug.892594160/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.debug.298636322/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.debug.1668681844/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.debug.792836397/internalBuilder/enabled=false
+cdt.managedbuild.config.gnu.exe.release.2024545743/internalBuilder/ignoreErr=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.792836397=<?xml version\="1.0"?>\n<environment>\n  <variable name\="LIBRARY_PATH" operation\="remove"/>\n</environment>
+cdt.managedbuild.config.gnu.exe.release.2026540170/internalBuilder/ignoreErr=true
+cdt.managedbuild.config.gnu.exe.debug.199659078/internalBuilder/ignoreErr=true
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.1668681844=<?xml version\="1.0"?>\n<environment>\n  <variable name\="LIBRARY_PATH" operation\="remove"/>\n</environment>
+environment/project=<?xml version\="1.0"?>\n<environment/>
+cdt.managedbuild.config.gnu.exe.release.2024545743/internalBuilder/enabled=false
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.892594160=<?xml version\="1.0"?>\n<environment>\n  <variable name\="CPLUS_INCLUDE_PATH" operation\="remove"/>\n  <variable name\="CPATH" operation\="remove"/>\n  <variable name\="C_INCLUDE_PATH" operation\="remove"/>\n</environment>
+cdt.managedbuild.config.gnu.exe.release.459141772/internalBuilder/enabled=false
