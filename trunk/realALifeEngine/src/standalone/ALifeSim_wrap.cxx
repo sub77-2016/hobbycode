@@ -1490,8 +1490,18 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-static swig_type_info *swig_types[1];
-static swig_module_info swig_module = {swig_types, 0, 0, 0, 0, 0};
+#define SWIGTYPE_p_bool swig_types[0]
+#define SWIGTYPE_p_float swig_types[1]
+#define SWIGTYPE_p_std__string swig_types[2]
+#define SWIGTYPE_p_unsigned_int swig_types[3]
+#define SWIGTYPE_p_verve__Agent swig_types[4]
+#define SWIGTYPE_p_verve__AgentDebugData swig_types[5]
+#define SWIGTYPE_p_verve__AgentDescriptor swig_types[6]
+#define SWIGTYPE_p_verve__ContinuousSensorDescriptor swig_types[7]
+#define SWIGTYPE_p_verve__DiscreteSensorDescriptor swig_types[8]
+#define SWIGTYPE_p_verve__Observation swig_types[9]
+static swig_type_info *swig_types[11];
+static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1664,11 +1674,2664 @@ SWIGINTERN void SWIG_write_ptr_array(lua_State* L,void **array,int size,swig_typ
 }
 
 
-//#include "Singleton.h"
+/* Includes the header in the wrapper code */
+#include <verve/Agent.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+static int _wrap_VERVE_E_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::VERVE_E",0,0)
+  result = (verve::real)(verve::real)verve::VERVE_E;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_stepSize_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::stepSize",0,0)
+  result = (verve::real)(verve::real)verve::defaults::stepSize;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_eTraceTimeConstant_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::eTraceTimeConstant",0,0)
+  result = (verve::real)(verve::real)verve::defaults::eTraceTimeConstant;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_TDDiscountTimeConstant_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::TDDiscountTimeConstant",0,0)
+  result = (verve::real)(verve::real)verve::defaults::TDDiscountTimeConstant;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_valueFunctionLearningTimeConstant_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::valueFunctionLearningTimeConstant",0,0)
+  result = (verve::real)(verve::real)verve::defaults::valueFunctionLearningTimeConstant;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_policyLearningMultiplier_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::policyLearningMultiplier",0,0)
+  result = (verve::real)(verve::real)verve::defaults::policyLearningMultiplier;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_modelLearningTimeConstant_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::modelLearningTimeConstant",0,0)
+  result = (verve::real)(verve::real)verve::defaults::modelLearningTimeConstant;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_activeETraceThreshold_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::activeETraceThreshold",0,0)
+  result = (verve::real)(verve::real)verve::defaults::activeETraceThreshold;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_minActionSelectionProb_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::minActionSelectionProb",0,0)
+  result = (verve::real)(verve::real)verve::defaults::minActionSelectionProb;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_agentArchitecture_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentArchitecture result;
+  
+  SWIG_check_num_args("verve::defaults::agentArchitecture",0,0)
+  result = (verve::AgentArchitecture)(verve::AgentArchitecture)verve::defaults::agentArchitecture;
+  lua_pushnumber(L, (lua_Number)(int)(result)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_maxNumPlanningSteps_get(lua_State* L) {
+  int SWIG_arg = 0;
+  unsigned int result;
+  
+  SWIG_check_num_args("verve::defaults::maxNumPlanningSteps",0,0)
+  result = (unsigned int)(unsigned int)verve::defaults::maxNumPlanningSteps;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_planningUncertaintyThreshold_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::real result;
+  
+  SWIG_check_num_args("verve::defaults::planningUncertaintyThreshold",0,0)
+  result = (verve::real)(verve::real)verve::defaults::planningUncertaintyThreshold;
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Observation(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *result = 0 ;
+  
+  SWIG_check_num_args("verve::Observation",0,0)
+  result = (verve::Observation *)new verve::Observation();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__Observation,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_init__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  verve::Agent *arg2 = 0 ;
+  
+  SWIG_check_num_args("init",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"verve::Observation *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"verve::Agent const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_init",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Observation_init",2,SWIGTYPE_p_verve__Agent);
+  }
+  
+  (arg1)->init((verve::Agent const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_init__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  verve::Observation *arg2 = 0 ;
+  
+  SWIG_check_num_args("init",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"verve::Observation *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"verve::Observation const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_init",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_init",2,SWIGTYPE_p_verve__Observation);
+  }
+  
+  (arg1)->init((verve::Observation const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_init(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__Observation, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_verve__Agent, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_Observation_init__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__Observation, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_verve__Observation, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_Observation_init__SWIG_1(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Observation_init'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    init(verve::Observation *,verve::Agent const &)\n"
+    "    init(verve::Observation *,verve::Observation const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Observation_zeroInputData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  
+  SWIG_check_num_args("zeroInputData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("zeroInputData",1,"verve::Observation *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_zeroInputData",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  (arg1)->zeroInputData();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_copyInputData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  verve::Observation *arg2 = 0 ;
+  
+  SWIG_check_num_args("copyInputData",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("copyInputData",1,"verve::Observation *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("copyInputData",2,"verve::Observation const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_copyInputData",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_copyInputData",2,SWIGTYPE_p_verve__Observation);
+  }
+  
+  (arg1)->copyInputData((verve::Observation const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getNumDiscreteInputs(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumDiscreteInputs",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumDiscreteInputs",1,"verve::Observation const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getNumDiscreteInputs",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (unsigned int)((verve::Observation const *)arg1)->getNumDiscreteInputs();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getNumContinuousInputs(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumContinuousInputs",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumContinuousInputs",1,"verve::Observation const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getNumContinuousInputs",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (unsigned int)((verve::Observation const *)arg1)->getNumContinuousInputs();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_setDiscreteValue(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  
+  SWIG_check_num_args("setDiscreteValue",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setDiscreteValue",1,"verve::Observation *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setDiscreteValue",2,"unsigned int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setDiscreteValue",3,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_setDiscreteValue",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (unsigned int)lua_tonumber(L, 3);
+  (arg1)->setDiscreteValue(arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getDiscreteValue(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int arg2 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getDiscreteValue",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDiscreteValue",1,"verve::Observation const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getDiscreteValue",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getDiscreteValue",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (unsigned int)((verve::Observation const *)arg1)->getDiscreteValue(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getDiscreteInputData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int *result = 0 ;
+  
+  SWIG_check_num_args("getDiscreteInputData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDiscreteInputData",1,"verve::Observation const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getDiscreteInputData",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (unsigned int *)((verve::Observation const *)arg1)->getDiscreteInputData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_unsigned_int,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getDiscreteNumOptionsData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int *result = 0 ;
+  
+  SWIG_check_num_args("getDiscreteNumOptionsData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDiscreteNumOptionsData",1,"verve::Observation const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getDiscreteNumOptionsData",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (unsigned int *)((verve::Observation const *)arg1)->getDiscreteNumOptionsData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_unsigned_int,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_setContinuousValue(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int arg2 ;
+  verve::real arg3 ;
+  
+  SWIG_check_num_args("setContinuousValue",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setContinuousValue",1,"verve::Observation *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setContinuousValue",2,"unsigned int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setContinuousValue",3,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_setContinuousValue",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (verve::real)lua_tonumber(L, 3);
+  (arg1)->setContinuousValue(arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getContinuousValue(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int arg2 ;
+  verve::real result;
+  
+  SWIG_check_num_args("getContinuousValue",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousValue",1,"verve::Observation const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getContinuousValue",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getContinuousValue",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (verve::real)((verve::Observation const *)arg1)->getContinuousValue(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getContinuousInputData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  verve::real *result = 0 ;
+  
+  SWIG_check_num_args("getContinuousInputData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousInputData",1,"verve::Observation const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getContinuousInputData",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (verve::real *)((verve::Observation const *)arg1)->getContinuousInputData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_float,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getContinuousCircularData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  bool *result = 0 ;
+  
+  SWIG_check_num_args("getContinuousCircularData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousCircularData",1,"verve::Observation const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getContinuousCircularData",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (bool *)((verve::Observation const *)arg1)->getContinuousCircularData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_bool,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getDiscreteInputNumOptions(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int arg2 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getDiscreteInputNumOptions",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDiscreteInputNumOptions",1,"verve::Observation const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getDiscreteInputNumOptions",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getDiscreteInputNumOptions",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (unsigned int)((verve::Observation const *)arg1)->getDiscreteInputNumOptions(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getContinuousInputIsCircular(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int arg2 ;
+  bool result;
+  
+  SWIG_check_num_args("getContinuousInputIsCircular",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousInputIsCircular",1,"verve::Observation const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getContinuousInputIsCircular",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getContinuousInputIsCircular",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (bool)((verve::Observation const *)arg1)->getContinuousInputIsCircular(arg2);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Observation_getContinuousResolution(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Observation *arg1 = (verve::Observation *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getContinuousResolution",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousResolution",1,"verve::Observation const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Observation_getContinuousResolution",1,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (unsigned int)((verve::Observation const *)arg1)->getContinuousResolution();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Observation(void *obj) {
+verve::Observation *arg1 = (verve::Observation *) obj;
+delete arg1;
+}
+static swig_lua_method swig_verve_Observation_methods[] = {
+    {"init", _wrap_Observation_init}, 
+    {"zeroInputData", _wrap_Observation_zeroInputData}, 
+    {"copyInputData", _wrap_Observation_copyInputData}, 
+    {"getNumDiscreteInputs", _wrap_Observation_getNumDiscreteInputs}, 
+    {"getNumContinuousInputs", _wrap_Observation_getNumContinuousInputs}, 
+    {"setDiscreteValue", _wrap_Observation_setDiscreteValue}, 
+    {"getDiscreteValue", _wrap_Observation_getDiscreteValue}, 
+    {"getDiscreteInputData", _wrap_Observation_getDiscreteInputData}, 
+    {"getDiscreteNumOptionsData", _wrap_Observation_getDiscreteNumOptionsData}, 
+    {"setContinuousValue", _wrap_Observation_setContinuousValue}, 
+    {"getContinuousValue", _wrap_Observation_getContinuousValue}, 
+    {"getContinuousInputData", _wrap_Observation_getContinuousInputData}, 
+    {"getContinuousCircularData", _wrap_Observation_getContinuousCircularData}, 
+    {"getDiscreteInputNumOptions", _wrap_Observation_getDiscreteInputNumOptions}, 
+    {"getContinuousInputIsCircular", _wrap_Observation_getContinuousInputIsCircular}, 
+    {"getContinuousResolution", _wrap_Observation_getContinuousResolution}, 
+    {0,0}
+};
+static swig_lua_attribute swig_verve_Observation_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_verve_Observation_bases[] = {0};
+static const char *swig_verve_Observation_base_names[] = {0};
+static swig_lua_class _wrap_class_verve_Observation = { "Observation", &SWIGTYPE_p_verve__Observation,_wrap_new_Observation, swig_delete_Observation, swig_verve_Observation_methods, swig_verve_Observation_attributes, swig_verve_Observation_bases, swig_verve_Observation_base_names };
+
+static int _wrap_new_ContinuousSensorDescriptor(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::ContinuousSensorDescriptor *result = 0 ;
+  
+  SWIG_check_num_args("verve::ContinuousSensorDescriptor",0,0)
+  result = (verve::ContinuousSensorDescriptor *)new verve::ContinuousSensorDescriptor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__ContinuousSensorDescriptor,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_ContinuousSensorDescriptor_isCircular_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::ContinuousSensorDescriptor *arg1 = (verve::ContinuousSensorDescriptor *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_num_args("isCircular",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isCircular",1,"verve::ContinuousSensorDescriptor *");
+  if(!lua_isboolean(L,2)) SWIG_fail_arg("isCircular",2,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__ContinuousSensorDescriptor,0))){
+    SWIG_fail_ptr("ContinuousSensorDescriptor_isCircular_set",1,SWIGTYPE_p_verve__ContinuousSensorDescriptor);
+  }
+  
+  arg2 = (lua_toboolean(L, 2)!=0);
+  if (arg1) (arg1)->isCircular = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_ContinuousSensorDescriptor_isCircular_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::ContinuousSensorDescriptor *arg1 = (verve::ContinuousSensorDescriptor *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("isCircular",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isCircular",1,"verve::ContinuousSensorDescriptor *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__ContinuousSensorDescriptor,0))){
+    SWIG_fail_ptr("ContinuousSensorDescriptor_isCircular_get",1,SWIGTYPE_p_verve__ContinuousSensorDescriptor);
+  }
+  
+  result = (bool) ((arg1)->isCircular);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_ContinuousSensorDescriptor(void *obj) {
+verve::ContinuousSensorDescriptor *arg1 = (verve::ContinuousSensorDescriptor *) obj;
+delete arg1;
+}
+static swig_lua_method swig_verve_ContinuousSensorDescriptor_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_verve_ContinuousSensorDescriptor_attributes[] = {
+    { "isCircular", _wrap_ContinuousSensorDescriptor_isCircular_get, _wrap_ContinuousSensorDescriptor_isCircular_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_verve_ContinuousSensorDescriptor_bases[] = {0};
+static const char *swig_verve_ContinuousSensorDescriptor_base_names[] = {0};
+static swig_lua_class _wrap_class_verve_ContinuousSensorDescriptor = { "ContinuousSensorDescriptor", &SWIGTYPE_p_verve__ContinuousSensorDescriptor,_wrap_new_ContinuousSensorDescriptor, swig_delete_ContinuousSensorDescriptor, swig_verve_ContinuousSensorDescriptor_methods, swig_verve_ContinuousSensorDescriptor_attributes, swig_verve_ContinuousSensorDescriptor_bases, swig_verve_ContinuousSensorDescriptor_base_names };
+
+static int _wrap_new_DiscreteSensorDescriptor(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::DiscreteSensorDescriptor *result = 0 ;
+  
+  SWIG_check_num_args("verve::DiscreteSensorDescriptor",0,0)
+  result = (verve::DiscreteSensorDescriptor *)new verve::DiscreteSensorDescriptor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__DiscreteSensorDescriptor,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DiscreteSensorDescriptor_numOptions_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::DiscreteSensorDescriptor *arg1 = (verve::DiscreteSensorDescriptor *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("numOptions",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("numOptions",1,"verve::DiscreteSensorDescriptor *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("numOptions",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__DiscreteSensorDescriptor,0))){
+    SWIG_fail_ptr("DiscreteSensorDescriptor_numOptions_set",1,SWIGTYPE_p_verve__DiscreteSensorDescriptor);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->numOptions = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DiscreteSensorDescriptor_numOptions_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::DiscreteSensorDescriptor *arg1 = (verve::DiscreteSensorDescriptor *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("numOptions",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("numOptions",1,"verve::DiscreteSensorDescriptor *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__DiscreteSensorDescriptor,0))){
+    SWIG_fail_ptr("DiscreteSensorDescriptor_numOptions_get",1,SWIGTYPE_p_verve__DiscreteSensorDescriptor);
+  }
+  
+  result = (unsigned int) ((arg1)->numOptions);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_DiscreteSensorDescriptor(void *obj) {
+verve::DiscreteSensorDescriptor *arg1 = (verve::DiscreteSensorDescriptor *) obj;
+delete arg1;
+}
+static swig_lua_method swig_verve_DiscreteSensorDescriptor_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_verve_DiscreteSensorDescriptor_attributes[] = {
+    { "numOptions", _wrap_DiscreteSensorDescriptor_numOptions_get, _wrap_DiscreteSensorDescriptor_numOptions_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_verve_DiscreteSensorDescriptor_bases[] = {0};
+static const char *swig_verve_DiscreteSensorDescriptor_base_names[] = {0};
+static swig_lua_class _wrap_class_verve_DiscreteSensorDescriptor = { "DiscreteSensorDescriptor", &SWIGTYPE_p_verve__DiscreteSensorDescriptor,_wrap_new_DiscreteSensorDescriptor, swig_delete_DiscreteSensorDescriptor, swig_verve_DiscreteSensorDescriptor_methods, swig_verve_DiscreteSensorDescriptor_attributes, swig_verve_DiscreteSensorDescriptor_bases, swig_verve_DiscreteSensorDescriptor_base_names };
+
+static int _wrap_new_AgentDescriptor__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *result = 0 ;
+  
+  SWIG_check_num_args("verve::AgentDescriptor",0,0)
+  result = (verve::AgentDescriptor *)new verve::AgentDescriptor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__AgentDescriptor,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_AgentDescriptor__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = 0 ;
+  verve::AgentDescriptor *result = 0 ;
+  
+  SWIG_check_num_args("verve::AgentDescriptor",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("verve::AgentDescriptor",1,"verve::AgentDescriptor const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("new_AgentDescriptor",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (verve::AgentDescriptor *)new verve::AgentDescriptor((verve::AgentDescriptor const &)*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__AgentDescriptor,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_AgentDescriptor(lua_State* L) {
+  int argc;
+  int argv[2]={
+    1,2
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 0) {
+    return _wrap_new_AgentDescriptor__SWIG_0(L);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__AgentDescriptor, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_new_AgentDescriptor__SWIG_1(L);
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'new_AgentDescriptor'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    verve::AgentDescriptor()\n"
+    "    verve::AgentDescriptor(verve::AgentDescriptor const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_AgentDescriptor_addDiscreteSensor(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("addDiscreteSensor",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("addDiscreteSensor",1,"verve::AgentDescriptor *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("addDiscreteSensor",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_addDiscreteSensor",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  (arg1)->addDiscreteSensor(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getNumDiscreteSensors(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumDiscreteSensors",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumDiscreteSensors",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getNumDiscreteSensors",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (unsigned int)((verve::AgentDescriptor const *)arg1)->getNumDiscreteSensors();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getDiscreteSensorNumOptions(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int arg2 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getDiscreteSensorNumOptions",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDiscreteSensorNumOptions",1,"verve::AgentDescriptor const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getDiscreteSensorNumOptions",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getDiscreteSensorNumOptions",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (unsigned int)((verve::AgentDescriptor const *)arg1)->getDiscreteSensorNumOptions(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_addContinuousSensor__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_num_args("addContinuousSensor",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("addContinuousSensor",1,"verve::AgentDescriptor *");
+  if(!lua_isboolean(L,2)) SWIG_fail_arg("addContinuousSensor",2,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_addContinuousSensor",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (lua_toboolean(L, 2)!=0);
+  (arg1)->addContinuousSensor(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_addContinuousSensor__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  
+  SWIG_check_num_args("addContinuousSensor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("addContinuousSensor",1,"verve::AgentDescriptor *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_addContinuousSensor",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  (arg1)->addContinuousSensor();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_addContinuousSensor(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__AgentDescriptor, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_AgentDescriptor_addContinuousSensor__SWIG_1(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__AgentDescriptor, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isboolean(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_AgentDescriptor_addContinuousSensor__SWIG_0(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'AgentDescriptor_addContinuousSensor'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    addContinuousSensor(verve::AgentDescriptor *,bool)\n"
+    "    addContinuousSensor(verve::AgentDescriptor *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_AgentDescriptor_getNumContinuousSensors(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumContinuousSensors",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumContinuousSensors",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getNumContinuousSensors",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (unsigned int)((verve::AgentDescriptor const *)arg1)->getNumContinuousSensors();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getContinuousSensorIsCircular(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int arg2 ;
+  bool result;
+  
+  SWIG_check_num_args("getContinuousSensorIsCircular",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousSensorIsCircular",1,"verve::AgentDescriptor const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getContinuousSensorIsCircular",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getContinuousSensorIsCircular",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (bool)((verve::AgentDescriptor const *)arg1)->getContinuousSensorIsCircular(arg2);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_setNumOutputs(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("setNumOutputs",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setNumOutputs",1,"verve::AgentDescriptor *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setNumOutputs",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_setNumOutputs",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  (arg1)->setNumOutputs(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getNumOutputs(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumOutputs",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumOutputs",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getNumOutputs",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (unsigned int)((verve::AgentDescriptor const *)arg1)->getNumOutputs();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_setContinuousSensorResolution(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("setContinuousSensorResolution",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setContinuousSensorResolution",1,"verve::AgentDescriptor *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setContinuousSensorResolution",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_setContinuousSensorResolution",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  (arg1)->setContinuousSensorResolution(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getContinuousSensorResolution(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getContinuousSensorResolution",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getContinuousSensorResolution",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getContinuousSensorResolution",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (unsigned int)((verve::AgentDescriptor const *)arg1)->getContinuousSensorResolution();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_setDynamicRBFEnabled(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_num_args("setDynamicRBFEnabled",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setDynamicRBFEnabled",1,"verve::AgentDescriptor *");
+  if(!lua_isboolean(L,2)) SWIG_fail_arg("setDynamicRBFEnabled",2,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_setDynamicRBFEnabled",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (lua_toboolean(L, 2)!=0);
+  (arg1)->setDynamicRBFEnabled(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_isDynamicRBFEnabled(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("isDynamicRBFEnabled",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isDynamicRBFEnabled",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_isDynamicRBFEnabled",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (bool)((verve::AgentDescriptor const *)arg1)->isDynamicRBFEnabled();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_setArchitecture(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  verve::AgentArchitecture arg2 ;
+  
+  SWIG_check_num_args("setArchitecture",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setArchitecture",1,"verve::AgentDescriptor *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setArchitecture",2,"verve::AgentArchitecture");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_setArchitecture",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (verve::AgentArchitecture)(int)lua_tonumber(L, 2);
+  (arg1)->setArchitecture(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getArchitecture(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  verve::AgentArchitecture result;
+  
+  SWIG_check_num_args("getArchitecture",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getArchitecture",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getArchitecture",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (verve::AgentArchitecture)((verve::AgentDescriptor const *)arg1)->getArchitecture();
+  lua_pushnumber(L, (lua_Number)(int)(result)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_setMaxNumPlanningSteps(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("setMaxNumPlanningSteps",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setMaxNumPlanningSteps",1,"verve::AgentDescriptor *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setMaxNumPlanningSteps",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_setMaxNumPlanningSteps",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  (arg1)->setMaxNumPlanningSteps(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getMaxNumPlanningSteps(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getMaxNumPlanningSteps",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getMaxNumPlanningSteps",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getMaxNumPlanningSteps",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (unsigned int)((verve::AgentDescriptor const *)arg1)->getMaxNumPlanningSteps();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_setPlanningUncertaintyThreshold(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("setPlanningUncertaintyThreshold",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setPlanningUncertaintyThreshold",1,"verve::AgentDescriptor *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setPlanningUncertaintyThreshold",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_setPlanningUncertaintyThreshold",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  (arg1)->setPlanningUncertaintyThreshold(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDescriptor_getPlanningUncertaintyThreshold(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("getPlanningUncertaintyThreshold",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getPlanningUncertaintyThreshold",1,"verve::AgentDescriptor const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("AgentDescriptor_getPlanningUncertaintyThreshold",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (verve::real)((verve::AgentDescriptor const *)arg1)->getPlanningUncertaintyThreshold();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_AgentDescriptor(void *obj) {
+verve::AgentDescriptor *arg1 = (verve::AgentDescriptor *) obj;
+delete arg1;
+}
+static swig_lua_method swig_verve_AgentDescriptor_methods[] = {
+    {"addDiscreteSensor", _wrap_AgentDescriptor_addDiscreteSensor}, 
+    {"getNumDiscreteSensors", _wrap_AgentDescriptor_getNumDiscreteSensors}, 
+    {"getDiscreteSensorNumOptions", _wrap_AgentDescriptor_getDiscreteSensorNumOptions}, 
+    {"addContinuousSensor", _wrap_AgentDescriptor_addContinuousSensor}, 
+    {"getNumContinuousSensors", _wrap_AgentDescriptor_getNumContinuousSensors}, 
+    {"getContinuousSensorIsCircular", _wrap_AgentDescriptor_getContinuousSensorIsCircular}, 
+    {"setNumOutputs", _wrap_AgentDescriptor_setNumOutputs}, 
+    {"getNumOutputs", _wrap_AgentDescriptor_getNumOutputs}, 
+    {"setContinuousSensorResolution", _wrap_AgentDescriptor_setContinuousSensorResolution}, 
+    {"getContinuousSensorResolution", _wrap_AgentDescriptor_getContinuousSensorResolution}, 
+    {"setDynamicRBFEnabled", _wrap_AgentDescriptor_setDynamicRBFEnabled}, 
+    {"isDynamicRBFEnabled", _wrap_AgentDescriptor_isDynamicRBFEnabled}, 
+    {"setArchitecture", _wrap_AgentDescriptor_setArchitecture}, 
+    {"getArchitecture", _wrap_AgentDescriptor_getArchitecture}, 
+    {"setMaxNumPlanningSteps", _wrap_AgentDescriptor_setMaxNumPlanningSteps}, 
+    {"getMaxNumPlanningSteps", _wrap_AgentDescriptor_getMaxNumPlanningSteps}, 
+    {"setPlanningUncertaintyThreshold", _wrap_AgentDescriptor_setPlanningUncertaintyThreshold}, 
+    {"getPlanningUncertaintyThreshold", _wrap_AgentDescriptor_getPlanningUncertaintyThreshold}, 
+    {0,0}
+};
+static swig_lua_attribute swig_verve_AgentDescriptor_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_verve_AgentDescriptor_bases[] = {0};
+static const char *swig_verve_AgentDescriptor_base_names[] = {0};
+static swig_lua_class _wrap_class_verve_AgentDescriptor = { "AgentDescriptor", &SWIGTYPE_p_verve__AgentDescriptor,_wrap_new_AgentDescriptor, swig_delete_AgentDescriptor, swig_verve_AgentDescriptor_methods, swig_verve_AgentDescriptor_attributes, swig_verve_AgentDescriptor_bases, swig_verve_AgentDescriptor_base_names };
+
+static int _wrap_new_AgentDebugData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *result = 0 ;
+  
+  SWIG_check_num_args("verve::AgentDebugData",0,0)
+  result = (verve::AgentDebugData *)new verve::AgentDebugData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__AgentDebugData,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_reset(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  
+  SWIG_check_num_args("reset",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("reset",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_reset",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  (arg1)->reset();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_reward_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("reward",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("reward",1,"verve::AgentDebugData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("reward",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_reward_set",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->reward = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_reward_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("reward",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("reward",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_reward_get",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  result = (verve::real) ((arg1)->reward);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_valueEstimation_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("valueEstimation",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("valueEstimation",1,"verve::AgentDebugData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("valueEstimation",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_valueEstimation_set",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->valueEstimation = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_valueEstimation_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("valueEstimation",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("valueEstimation",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_valueEstimation_get",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  result = (verve::real) ((arg1)->valueEstimation);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_TDError_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("TDError",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("TDError",1,"verve::AgentDebugData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("TDError",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_TDError_set",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->TDError = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_TDError_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("TDError",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("TDError",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_TDError_get",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  result = (verve::real) ((arg1)->TDError);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_curiosityReward_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("curiosityReward",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("curiosityReward",1,"verve::AgentDebugData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("curiosityReward",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_curiosityReward_set",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->curiosityReward = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_curiosityReward_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("curiosityReward",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("curiosityReward",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_curiosityReward_get",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  result = (verve::real) ((arg1)->curiosityReward);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_predictionUncertaintyEstimation_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("predictionUncertaintyEstimation",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("predictionUncertaintyEstimation",1,"verve::AgentDebugData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("predictionUncertaintyEstimation",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_predictionUncertaintyEstimation_set",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->predictionUncertaintyEstimation = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_predictionUncertaintyEstimation_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("predictionUncertaintyEstimation",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("predictionUncertaintyEstimation",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_predictionUncertaintyEstimation_get",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  result = (verve::real) ((arg1)->predictionUncertaintyEstimation);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_modelPredictionError_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("modelPredictionError",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("modelPredictionError",1,"verve::AgentDebugData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("modelPredictionError",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_modelPredictionError_set",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->modelPredictionError = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_modelPredictionError_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("modelPredictionError",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("modelPredictionError",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_modelPredictionError_get",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  result = (verve::real) ((arg1)->modelPredictionError);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_planLength_set(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("planLength",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("planLength",1,"verve::AgentDebugData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("planLength",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_planLength_set",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->planLength = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_AgentDebugData_planLength_get(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDebugData *arg1 = (verve::AgentDebugData *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("planLength",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("planLength",1,"verve::AgentDebugData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDebugData,0))){
+    SWIG_fail_ptr("AgentDebugData_planLength_get",1,SWIGTYPE_p_verve__AgentDebugData);
+  }
+  
+  result = (unsigned int) ((arg1)->planLength);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_AgentDebugData(void *obj) {
+verve::AgentDebugData *arg1 = (verve::AgentDebugData *) obj;
+delete arg1;
+}
+static swig_lua_method swig_verve_AgentDebugData_methods[] = {
+    {"reset", _wrap_AgentDebugData_reset}, 
+    {0,0}
+};
+static swig_lua_attribute swig_verve_AgentDebugData_attributes[] = {
+    { "reward", _wrap_AgentDebugData_reward_get, _wrap_AgentDebugData_reward_set},
+    { "valueEstimation", _wrap_AgentDebugData_valueEstimation_get, _wrap_AgentDebugData_valueEstimation_set},
+    { "TDError", _wrap_AgentDebugData_TDError_get, _wrap_AgentDebugData_TDError_set},
+    { "curiosityReward", _wrap_AgentDebugData_curiosityReward_get, _wrap_AgentDebugData_curiosityReward_set},
+    { "predictionUncertaintyEstimation", _wrap_AgentDebugData_predictionUncertaintyEstimation_get, _wrap_AgentDebugData_predictionUncertaintyEstimation_set},
+    { "modelPredictionError", _wrap_AgentDebugData_modelPredictionError_get, _wrap_AgentDebugData_modelPredictionError_set},
+    { "planLength", _wrap_AgentDebugData_planLength_get, _wrap_AgentDebugData_planLength_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_verve_AgentDebugData_bases[] = {0};
+static const char *swig_verve_AgentDebugData_base_names[] = {0};
+static swig_lua_class _wrap_class_verve_AgentDebugData = { "AgentDebugData", &SWIGTYPE_p_verve__AgentDebugData,_wrap_new_AgentDebugData, swig_delete_AgentDebugData, swig_verve_AgentDebugData_methods, swig_verve_AgentDebugData_attributes, swig_verve_AgentDebugData_bases, swig_verve_AgentDebugData_base_names };
+
+static int _wrap_new_Agent(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::AgentDescriptor *arg1 = 0 ;
+  verve::Agent *result = 0 ;
+  
+  SWIG_check_num_args("verve::Agent",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("verve::Agent",1,"verve::AgentDescriptor const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__AgentDescriptor,0))){
+    SWIG_fail_ptr("new_Agent",1,SWIGTYPE_p_verve__AgentDescriptor);
+  }
+  
+  result = (verve::Agent *)new verve::Agent((verve::AgentDescriptor const &)*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__Agent,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_destroy(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  
+  SWIG_check_num_args("destroy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"verve::Agent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_destroy",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  (arg1)->destroy();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_resetShortTermMemory(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  
+  SWIG_check_num_args("resetShortTermMemory",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("resetShortTermMemory",1,"verve::Agent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_resetShortTermMemory",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  (arg1)->resetShortTermMemory();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_update(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::real arg2 ;
+  verve::Observation *arg3 = 0 ;
+  verve::real arg4 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("update",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("update",1,"verve::Agent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("update",2,"verve::real");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("update",3,"verve::Observation const &");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("update",4,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_update",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Agent_update",3,SWIGTYPE_p_verve__Observation);
+  }
+  
+  arg4 = (verve::real)lua_tonumber(L, 4);
+  result = (unsigned int)(arg1)->update(arg2,(verve::Observation const &)*arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_getNumDiscreteSensors(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumDiscreteSensors",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumDiscreteSensors",1,"verve::Agent const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_getNumDiscreteSensors",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  result = (unsigned int)((verve::Agent const *)arg1)->getNumDiscreteSensors();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_getNumContinuousSensors(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumContinuousSensors",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumContinuousSensors",1,"verve::Agent const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_getNumContinuousSensors",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  result = (unsigned int)((verve::Agent const *)arg1)->getNumContinuousSensors();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_setETraceTimeConstant(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("setETraceTimeConstant",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setETraceTimeConstant",1,"verve::Agent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setETraceTimeConstant",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_setETraceTimeConstant",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  (arg1)->setETraceTimeConstant(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_setTDDiscountTimeConstant(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("setTDDiscountTimeConstant",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setTDDiscountTimeConstant",1,"verve::Agent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setTDDiscountTimeConstant",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_setTDDiscountTimeConstant",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  (arg1)->setTDDiscountTimeConstant(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_setTDLearningRate(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::real arg2 ;
+  verve::real arg3 ;
+  
+  SWIG_check_num_args("setTDLearningRate",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setTDLearningRate",1,"verve::Agent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setTDLearningRate",2,"verve::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setTDLearningRate",3,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_setTDLearningRate",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  arg3 = (verve::real)lua_tonumber(L, 3);
+  (arg1)->setTDLearningRate(arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_setModelLearningRate(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::real arg2 ;
+  
+  SWIG_check_num_args("setModelLearningRate",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setModelLearningRate",1,"verve::Agent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setModelLearningRate",2,"verve::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_setModelLearningRate",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (verve::real)lua_tonumber(L, 2);
+  (arg1)->setModelLearningRate(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_setLearningEnabled(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_num_args("setLearningEnabled",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setLearningEnabled",1,"verve::Agent *");
+  if(!lua_isboolean(L,2)) SWIG_fail_arg("setLearningEnabled",2,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_setLearningEnabled",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (lua_toboolean(L, 2)!=0);
+  (arg1)->setLearningEnabled(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_getAge(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  unsigned long result;
+  
+  SWIG_check_num_args("getAge",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getAge",1,"verve::Agent const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_getAge",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  result = (unsigned long)((verve::Agent const *)arg1)->getAge();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_getAgeString(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  std::string result;
+  
+  SWIG_check_num_args("getAgeString",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getAgeString",1,"verve::Agent const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_getAgeString",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  result = ((verve::Agent const *)arg1)->getAgeString();
+  {
+    std::string * resultptr = new std::string((const std::string &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_std__string,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_computeValueEstimation(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::Observation *arg2 = 0 ;
+  verve::real result;
+  
+  SWIG_check_num_args("computeValueEstimation",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("computeValueEstimation",1,"verve::Agent *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("computeValueEstimation",2,"verve::Observation const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_computeValueEstimation",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_verve__Observation,0))){
+    SWIG_fail_ptr("Agent_computeValueEstimation",2,SWIGTYPE_p_verve__Observation);
+  }
+  
+  result = (verve::real)(arg1)->computeValueEstimation((verve::Observation const &)*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_getDescriptor(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::AgentDescriptor *result = 0 ;
+  
+  SWIG_check_num_args("getDescriptor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDescriptor",1,"verve::Agent const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_getDescriptor",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  result = (verve::AgentDescriptor *)((verve::Agent const *)arg1)->getDescriptor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__AgentDescriptor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_saveValueData__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  unsigned int arg2 ;
+  std::string *arg3 = 0 ;
+  
+  SWIG_check_num_args("saveValueData",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("saveValueData",1,"verve::Agent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("saveValueData",2,"unsigned int");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("saveValueData",3,"std::string const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_saveValueData",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Agent_saveValueData",3,SWIGTYPE_p_std__string);
+  }
+  
+  (arg1)->saveValueData(arg2,(std::string const &)*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_saveValueData__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("saveValueData",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("saveValueData",1,"verve::Agent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("saveValueData",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_saveValueData",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  (arg1)->saveValueData(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_saveValueData(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__Agent, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_Agent_saveValueData__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__Agent, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_Agent_saveValueData__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Agent_saveValueData'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    saveValueData(verve::Agent *,unsigned int,std::string const &)\n"
+    "    saveValueData(verve::Agent *,unsigned int)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Agent_saveStateRBFData__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  SWIG_check_num_args("saveStateRBFData",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("saveStateRBFData",1,"verve::Agent *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("saveStateRBFData",2,"std::string const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_saveStateRBFData",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("Agent_saveStateRBFData",2,SWIGTYPE_p_std__string);
+  }
+  
+  (arg1)->saveStateRBFData((std::string const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_saveStateRBFData__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  
+  SWIG_check_num_args("saveStateRBFData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("saveStateRBFData",1,"verve::Agent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_saveStateRBFData",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  (arg1)->saveStateRBFData();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Agent_saveStateRBFData(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__Agent, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_Agent_saveStateRBFData__SWIG_1(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_verve__Agent, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_Agent_saveStateRBFData__SWIG_0(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Agent_saveStateRBFData'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    saveStateRBFData(verve::Agent *,std::string const &)\n"
+    "    saveStateRBFData(verve::Agent *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Agent_getDebugData(lua_State* L) {
+  int SWIG_arg = 0;
+  verve::Agent *arg1 = (verve::Agent *) 0 ;
+  verve::AgentDebugData *result = 0 ;
+  
+  SWIG_check_num_args("getDebugData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDebugData",1,"verve::Agent const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_verve__Agent,0))){
+    SWIG_fail_ptr("Agent_getDebugData",1,SWIGTYPE_p_verve__Agent);
+  }
+  
+  {
+    verve::AgentDebugData const &_result_ref = ((verve::Agent const *)arg1)->getDebugData();
+    result = (verve::AgentDebugData *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_verve__AgentDebugData,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Agent(void *obj) {
+verve::Agent *arg1 = (verve::Agent *) obj;
+delete arg1;
+}
+static swig_lua_method swig_verve_Agent_methods[] = {
+    {"destroy", _wrap_Agent_destroy}, 
+    {"resetShortTermMemory", _wrap_Agent_resetShortTermMemory}, 
+    {"update", _wrap_Agent_update}, 
+    {"getNumDiscreteSensors", _wrap_Agent_getNumDiscreteSensors}, 
+    {"getNumContinuousSensors", _wrap_Agent_getNumContinuousSensors}, 
+    {"setETraceTimeConstant", _wrap_Agent_setETraceTimeConstant}, 
+    {"setTDDiscountTimeConstant", _wrap_Agent_setTDDiscountTimeConstant}, 
+    {"setTDLearningRate", _wrap_Agent_setTDLearningRate}, 
+    {"setModelLearningRate", _wrap_Agent_setModelLearningRate}, 
+    {"setLearningEnabled", _wrap_Agent_setLearningEnabled}, 
+    {"getAge", _wrap_Agent_getAge}, 
+    {"getAgeString", _wrap_Agent_getAgeString}, 
+    {"computeValueEstimation", _wrap_Agent_computeValueEstimation}, 
+    {"getDescriptor", _wrap_Agent_getDescriptor}, 
+    {"saveValueData", _wrap_Agent_saveValueData}, 
+    {"saveStateRBFData", _wrap_Agent_saveStateRBFData}, 
+    {"getDebugData", _wrap_Agent_getDebugData}, 
+    {0,0}
+};
+static swig_lua_attribute swig_verve_Agent_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_verve_Agent_bases[] = {0};
+static const char *swig_verve_Agent_base_names[] = {0};
+static swig_lua_class _wrap_class_verve_Agent = { "Agent", &SWIGTYPE_p_verve__Agent,_wrap_new_Agent, swig_delete_Agent, swig_verve_Agent_methods, swig_verve_Agent_attributes, swig_verve_Agent_bases, swig_verve_Agent_base_names };
+
 #ifdef __cplusplus
 }
 #endif
@@ -1678,23 +4341,76 @@ static const struct luaL_reg swig_commands[] = {
 };
 
 static swig_lua_var_info swig_variables[] = {
+    { "VERVE_E", _wrap_VERVE_E_get, SWIG_Lua_set_immutable },
+    { "stepSize", _wrap_stepSize_get, SWIG_Lua_set_immutable },
+    { "eTraceTimeConstant", _wrap_eTraceTimeConstant_get, SWIG_Lua_set_immutable },
+    { "TDDiscountTimeConstant", _wrap_TDDiscountTimeConstant_get, SWIG_Lua_set_immutable },
+    { "valueFunctionLearningTimeConstant", _wrap_valueFunctionLearningTimeConstant_get, SWIG_Lua_set_immutable },
+    { "policyLearningMultiplier", _wrap_policyLearningMultiplier_get, SWIG_Lua_set_immutable },
+    { "modelLearningTimeConstant", _wrap_modelLearningTimeConstant_get, SWIG_Lua_set_immutable },
+    { "activeETraceThreshold", _wrap_activeETraceThreshold_get, SWIG_Lua_set_immutable },
+    { "minActionSelectionProb", _wrap_minActionSelectionProb_get, SWIG_Lua_set_immutable },
+    { "agentArchitecture", _wrap_agentArchitecture_get, SWIG_Lua_set_immutable },
+    { "maxNumPlanningSteps", _wrap_maxNumPlanningSteps_get, SWIG_Lua_set_immutable },
+    { "planningUncertaintyThreshold", _wrap_planningUncertaintyThreshold_get, SWIG_Lua_set_immutable },
     {0,0,0}
 };
 
 static swig_lua_const_info swig_constants[] = {
+{ SWIG_LUA_INT,     (char *)"RL", (long) verve::RL, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"MODEL_RL", (long) verve::MODEL_RL, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"CURIOUS_MODEL_RL", (long) verve::CURIOUS_MODEL_RL, 0, 0, 0},
     {0,0,0,0,0,0}
 };
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_float = {"_p_float", "verve::real *|float *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "unsigned int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_verve__Agent = {"_p_verve__Agent", "verve::Agent *", 0, 0, (void*)&_wrap_class_verve_Agent, 0};
+static swig_type_info _swigt__p_verve__AgentDebugData = {"_p_verve__AgentDebugData", "verve::AgentDebugData *", 0, 0, (void*)&_wrap_class_verve_AgentDebugData, 0};
+static swig_type_info _swigt__p_verve__AgentDescriptor = {"_p_verve__AgentDescriptor", "verve::AgentDescriptor *", 0, 0, (void*)&_wrap_class_verve_AgentDescriptor, 0};
+static swig_type_info _swigt__p_verve__ContinuousSensorDescriptor = {"_p_verve__ContinuousSensorDescriptor", "verve::ContinuousSensorDescriptor *", 0, 0, (void*)&_wrap_class_verve_ContinuousSensorDescriptor, 0};
+static swig_type_info _swigt__p_verve__DiscreteSensorDescriptor = {"_p_verve__DiscreteSensorDescriptor", "verve::DiscreteSensorDescriptor *", 0, 0, (void*)&_wrap_class_verve_DiscreteSensorDescriptor, 0};
+static swig_type_info _swigt__p_verve__Observation = {"_p_verve__Observation", "verve::Observation *", 0, 0, (void*)&_wrap_class_verve_Observation, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  NULL
+  &_swigt__p_bool,
+  &_swigt__p_float,
+  &_swigt__p_std__string,
+  &_swigt__p_unsigned_int,
+  &_swigt__p_verve__Agent,
+  &_swigt__p_verve__AgentDebugData,
+  &_swigt__p_verve__AgentDescriptor,
+  &_swigt__p_verve__ContinuousSensorDescriptor,
+  &_swigt__p_verve__DiscreteSensorDescriptor,
+  &_swigt__p_verve__Observation,
 };
 
+static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_verve__Agent[] = {  {&_swigt__p_verve__Agent, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_verve__AgentDebugData[] = {  {&_swigt__p_verve__AgentDebugData, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_verve__AgentDescriptor[] = {  {&_swigt__p_verve__AgentDescriptor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_verve__ContinuousSensorDescriptor[] = {  {&_swigt__p_verve__ContinuousSensorDescriptor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_verve__DiscreteSensorDescriptor[] = {  {&_swigt__p_verve__DiscreteSensorDescriptor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_verve__Observation[] = {  {&_swigt__p_verve__Observation, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  NULL
+  _swigc__p_bool,
+  _swigc__p_float,
+  _swigc__p_std__string,
+  _swigc__p_unsigned_int,
+  _swigc__p_verve__Agent,
+  _swigc__p_verve__AgentDebugData,
+  _swigc__p_verve__AgentDescriptor,
+  _swigc__p_verve__ContinuousSensorDescriptor,
+  _swigc__p_verve__DiscreteSensorDescriptor,
+  _swigc__p_verve__Observation,
 };
 
 
