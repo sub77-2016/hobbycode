@@ -4,13 +4,19 @@
   <project id="ALifeSim-standalone.cdt.managedbuild.target.gnu.exe.2124710756" name="Executable (Gnu)" projectType="cdt.managedbuild.target.gnu.exe">
     <configuration id="cdt.managedbuild.config.gnu.exe.debug.1354158363" name="Debug" description="" parent="cdt.managedbuild.config.gnu.exe.debug" artifactName="ALifeRun" errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" cleanCommand="rm -rf">
       <toolChain superClass="cdt.managedbuild.toolchain.gnu.exe.debug" id="cdt.managedbuild.toolchain.gnu.exe.debug.413121787" name="GCC Tool Chain">
-        <tool superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug" id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.965424853" name="GCC C++ Compiler"/>
+        <tool superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug" id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.965424853" name="GCC C++ Compiler">
+          <option superClass="gnu.cpp.compiler.option.other.other" id="gnu.cpp.compiler.option.other.other.640088945" value="-c -fmessage-length=0 -DLUA_USE_LINUX" valueType="string"/>
+        </tool>
         <tool superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug" id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1783723992" name="GCC C Compiler"/>
         <tool superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug" id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.720443216" name="GCC C Linker"/>
         <tool superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug" id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.272852643" name="GCC C++ Linker">
           <option superClass="gnu.cpp.link.option.libs" id="gnu.cpp.link.option.libs.581435153" valueType="libs">
+            <listOptionValue value="verve" builtIn="false"/>
             <listOptionValue value="lua" builtIn="false"/>
             <listOptionValue value="dl" builtIn="false"/>
+            <listOptionValue value="readline" builtIn="false"/>
+            <listOptionValue value="history" builtIn="false"/>
+            <listOptionValue value="ncurses" builtIn="false"/>
           </option>
         </tool>
         <tool superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug" id="cdt.managedbuild.tool.gnu.assembler.exe.debug.1352983313" name="GCC Assembler"/>

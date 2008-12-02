@@ -95,12 +95,16 @@ else:
 # Export the environment we just created for the SConscripts
 Export('env', 'buildDir')
 
-# Call the src SConscript.
-objects = SConscript(dirs = ['src'], build_dir = buildDir, duplicate = 0)
+# Export the environment for the SConscripts.
+useAudio = True
+Export('env', 'useAudio')
 
-libName = 'verve'
+# Call the src SConscript.
+objects = SConscript(dirs = ['base'], build_dir = buildDir, duplicate = 0)
+
+libName = 'verve-apps'
 if env['debug'] == True:
-	libName = 'verve_d'
+	libName = 'verve-apps_d'
 
 # Setup a build rule for the Verve library.
 verveLib = env.SharedLibrary(buildDir + '/' + libName, objects)
