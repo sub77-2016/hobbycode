@@ -24,7 +24,7 @@
 #define PENDULUM_H
 
 #include <opal/opal.h>
-#include "../src/LearningEntity.h"
+#include "../base/LearningEntity.h"
 
 class SimulationEngine;
 

@@ -21,7 +21,7 @@
 ************************************************************************/
 
 #include "CartPole.h"
-#include "../src/SimulationEngine.h"
+#include "../base/SimulationEngine.h"
 
 CartPole::CartPole(SimulationEngine& engine, const opal::Matrix44r& transform)
 : LearningEntity(20),

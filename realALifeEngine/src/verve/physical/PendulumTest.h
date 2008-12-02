@@ -23,8 +23,8 @@
 #ifndef PENDULUM_TEST_H
 #define PENDULUM_TEST_H
 
-#include "../src/LearningTest.h"
-#include "../src/SimulationEngine.h"
+#include "../base/LearningTest.h"
+#include "../base/SimulationEngine.h"
 
 // The pendulum task is that of getting a freely-swinging pendulum to 
 // hold itself upright and stay balanced.  The Agent has two continuous 

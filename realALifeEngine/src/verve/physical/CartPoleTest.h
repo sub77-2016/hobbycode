@@ -23,8 +23,8 @@
 #ifndef CART_POLE_TEST_H
 #define CART_POLE_TEST_H
 
-#include "../src/LearningTest.h"
-#include "../src/SimulationEngine.h"
+#include "../base/LearningTest.h"
+#include "../base/SimulationEngine.h"
 
 // The cart-pole task is that of learning to balance a pole attached 
 // to a cart by applying forces to the cart alone.  The Agent has four 

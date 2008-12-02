@@ -22,7 +22,7 @@
 
 #include "PendulumTest.h"
 #include "Pendulum.h"
-#include "../src/AgentVisualDebugger.h"
+#include "../base/AgentVisualDebugger.h"
 
 #include <ogre/Ogre.h>
 
