@@ -1,3 +1,3 @@
 #!/bin/bash
-swig -Wall -c++ -lua ALifeSim.i
+swig -Wall -c++ -lua -I/usr/local/include/verve ALifeSim.i
 
