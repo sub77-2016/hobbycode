@@ -22,7 +22,7 @@
 
 #include "CartPoleTest.h"
 #include "CartPole.h"
-#include "../src/AgentVisualDebugger.h"
+#include "../base/AgentVisualDebugger.h"
 
 #include <ogre/Ogre.h>
 

@@ -21,7 +21,7 @@
 ************************************************************************/
 
 #include "Pendulum.h"
-#include "../src/SimulationEngine.h"
+#include "../base/SimulationEngine.h"
 
 Pendulum::Pendulum(SimulationEngine& engine, const opal::Matrix44r& transform)
 : LearningEntity(10),

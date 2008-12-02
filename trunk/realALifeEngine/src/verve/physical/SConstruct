@@ -6,14 +6,14 @@ sources = Split("""
 	main.cpp
 	Pendulum.cpp
 	PendulumTest.cpp
-	../src/AgentVisualDebugger.cpp
-	../src/DataCollection.cpp
-	../src/DataFile.cpp
-	../src/LearningTest.cpp
-	../src/PhysicalCamera.cpp
-	../src/PhysicalEntity.cpp
-	../src/SimulationEngine.cpp
-	../src/Timer.cpp
+	../base/AgentVisualDebugger.cpp
+	../base/DataCollection.cpp
+	../base/DataFile.cpp
+	../base/LearningTest.cpp
+	../base/PhysicalCamera.cpp
+	../base/PhysicalEntity.cpp
+	../base/SimulationEngine.cpp
+	../base/Timer.cpp
 """)
 
 # Setup options
@@ -24,7 +24,7 @@ opts.AddOptions(
 
 env = Environment(
 	ENV = os.environ,
-	LIBS = ['verve', 'opal-ode', 'OgreMain'], 
+	LIBS = ['verve', 'opal-ode', 'OgreMain', 'OIS', 'SDL', 'SDLmain', 'GL', 'GLU'], 
 	options = opts
 )
 
@@ -48,7 +48,7 @@ Export('env', 'useAudio')
 
 # Build the executable.
 objects = env.SharedObject(sources)
-#objects += SConscript(dirs = ['../src'], duplicate = 0)
+#objects += SConscript(dirs = ['../base'], duplicate = 0)
 exe = env.Program('physical', objects)
 
 # Install the executable.
