@@ -47,7 +47,7 @@ verve::Neuron* gSensorNeuron = NULL;
 verve::Neuron* gOutputNeuron = NULL;
 verve::Connection* gConnection = NULL;
 
-int main(int argc, char **argv)
+int _main(int argc, char **argv)
 {
 	std::cout << "===============================================================" << std::endl;
 	std::cout << "Verve leaky_neuron test" << std::endl;

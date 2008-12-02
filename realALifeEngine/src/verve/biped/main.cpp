@@ -45,7 +45,7 @@
 //#include "CarObject.h"
 #include <opal/opal.h>
 #include <opal/Matrix44r.h>
-#include <sdl/SDL.h>
+#include <SDL/SDL.h>
 
 #define SDL_SYSTEMS_USED SDL_INIT_VIDEO
 #define INITIAL_WINDOW_WIDTH 800
@@ -91,7 +91,7 @@ inline int randint(int x,int y) {return rand()%(y-x+1)+x;}
 //Return random value between 0.0 and 1.0.
 inline double randfloat() {return (rand())/(RAND_MAX+1.0);}
 
-int main(int argc, char **argv)
+int _main(int argc, char **argv)
 {
 	InitializeVariables();
 	gCameraRotX = 10.0;

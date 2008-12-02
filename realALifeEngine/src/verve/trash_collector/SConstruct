@@ -4,15 +4,15 @@ sources = Split("""
 	main.cpp
 	Robot.cpp
 
-	../src/AgentVisualDebugger.cpp
-	../src/AudioManager.cpp
-	../src/Car.cpp
-	../src/DataCollection.cpp
-	../src/DataFile.cpp
-	../src/PhysicalCamera.cpp
-	../src/PhysicalEntity.cpp
-	../src/SimulationEngine.cpp
-	../src/Timer.cpp
+	../base/AgentVisualDebugger.cpp
+	../base/AudioManager.cpp
+	../base/Car.cpp
+	../base/DataCollection.cpp
+	../base/DataFile.cpp
+	../base/PhysicalCamera.cpp
+	../base/PhysicalEntity.cpp
+	../base/SimulationEngine.cpp
+	../base/Timer.cpp
 """)
 
 # Setup options

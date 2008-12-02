@@ -56,7 +56,7 @@ int getUserOption(int minAcceptableValue, int maxAcceptableValue)
 	return option;
 }
 
-int main(int argc, char* argv[])
+int _main(int argc, char* argv[])
 {
 	srand((unsigned int)time(NULL));
 

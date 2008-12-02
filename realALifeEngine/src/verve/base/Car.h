@@ -25,7 +25,8 @@
 
 #include <opal/opal.h>
 
-class SimulationEngine;
+#include "SimulationEngine.h"
+//class SimulationEngine;
 
 namespace Ogre
 {

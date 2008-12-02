@@ -35,7 +35,7 @@
 //Use this define to signify OIS will be used as a DLL
 //(so that dll import/export macros are in effect)
 #define OIS_DYNAMIC_LIB
-#include <ogre/OIS/OIS.h>
+#include <OIS/OIS.h>
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 namespace Ogre

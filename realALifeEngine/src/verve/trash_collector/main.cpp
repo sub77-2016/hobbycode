@@ -24,9 +24,9 @@
 #include <ogre/Ogre.h>
 
 #include "Robot.h"
-#include "../src/Car.h"
-#include "../src/AgentVisualDebugger.h"
-#include "../src/SimulationEngine.h"
+#include "../base/Car.h"
+#include "../base/AgentVisualDebugger.h"
+#include "../base/SimulationEngine.h"
 
 void setupEnvironment();
 void mainLoop();
