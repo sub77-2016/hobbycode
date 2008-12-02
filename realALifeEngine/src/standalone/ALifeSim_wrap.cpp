@@ -1700,6 +1700,7 @@ SWIGINTERN void SWIG_write_ptr_array(lua_State* L,void **array,int size,swig_typ
 /* Includes the header in the wrapper code */
 #include <SDL/SDL.h>
 #include <ogre/Ogre.h>
+#include <opal/opal.h>
 
 #include <verve/Agent.h>
 #include <verve/apps/SimulationEngine.h>
@@ -7604,6 +7605,8 @@ const char* SWIG_LUACODE=
 
 void SWIG_init_user(lua_State* L)
 {
+  using namespace opal;
+  %
   /* exec Lua code if applicable */
   SWIG_Lua_dostring(L,SWIG_LUACODE);
 }
