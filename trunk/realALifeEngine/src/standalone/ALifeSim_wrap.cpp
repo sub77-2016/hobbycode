@@ -1708,6 +1708,8 @@ SWIGINTERN void SWIG_write_ptr_array(lua_State* L,void **array,int size,swig_typ
 #include <verve/apps/Car.h>
 #include <verve/apps/AgentVisualDebugger.h>
 
+using namespace opal;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -7605,8 +7607,6 @@ const char* SWIG_LUACODE=
 
 void SWIG_init_user(lua_State* L)
 {
-  using namespace opal;
-  %
   /* exec Lua code if applicable */
   SWIG_Lua_dostring(L,SWIG_LUACODE);
 }
