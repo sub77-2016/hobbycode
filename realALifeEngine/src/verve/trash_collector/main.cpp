@@ -23,7 +23,7 @@
 #include <SDL/SDL.h>
 #include <ogre/Ogre.h>
 
-#include "Robot.h"
+#include "../base/Robot.h"
 #include "../base/Car.h"
 #include "../base/AgentVisualDebugger.h"
 #include "../base/SimulationEngine.h"

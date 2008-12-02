@@ -23,8 +23,8 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include "../base/LearningEntity.h"
-#include "../base/Car.h"
+#include "LearningEntity.h"
+#include "Car.h"
 
 class SimulationEngine;
 
