@@ -5,12 +5,17 @@
 /* Includes the header in the wrapper code */
 #include <SDL/SDL.h>
 #include <ogre/Ogre.h>
+#include <opal/opal.h>
 
 #include <verve/Agent.h>
 #include <verve/apps/SimulationEngine.h>
 #include <verve/apps/Robot.h>
 #include <verve/apps/Car.h>
 #include <verve/apps/AgentVisualDebugger.h>
+%}
+
+%init {
+using namespace opal;
 %}
 
 // Wrapping script 
