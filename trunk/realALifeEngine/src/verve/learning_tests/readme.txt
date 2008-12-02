@@ -1,1 +1,0 @@
-This directory contains an ever growing suite of "learning tests" designed to test the performance of Verve Agents.  Some tests are designed as general benchmarks.  Other tests focus on specific learning abilities (e.g. combining multiple sensory inputs, planning, scalability to complex tasks, etc.).
