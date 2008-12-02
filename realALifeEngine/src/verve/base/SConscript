@@ -1,6 +1,19 @@
 import os
 Import('env', 'useAudio')
 
+headers = Split("""
+	AgentVisualDebugger.h
+	Car.h
+	DataCollection.h
+	DataFile.h
+	LearningTest.h
+	PhysicalCamera.h
+	PhysicalEntity.h
+	Robot.h
+	SimulationEngine.h
+	Timer.h
+""")
+
 sources = Split("""
 	AgentVisualDebugger.cpp
 	Car.cpp
@@ -9,15 +22,24 @@ sources = Split("""
 	LearningTest.cpp
 	PhysicalCamera.cpp
 	PhysicalEntity.cpp
+	Robot.cpp
 	SimulationEngine.cpp
 	Timer.cpp
 """)
 
 if useAudio == True:
+	headers += Split("""
+		AudioManager.h
+		""")
 	sources += Split("""
 		AudioManager.cpp
 		""")
 
 objects = env.SharedObject(sources)
 
+# Add header installation to 'install' alias
+env.Alias('install', env.Install(os.path.join(env['prefix'], 'include/verve/apps'), headers))
+
+temp = ''
 Return('objects')
+
