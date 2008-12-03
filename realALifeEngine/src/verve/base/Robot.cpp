@@ -21,8 +21,8 @@
 ************************************************************************/
 
 #include "Robot.h"
-#include "../base/SimulationEngine.h"
-#include "../base/AudioManager.h"
+#include "SimulationEngine.h"
+#include "AudioManager.h"
 
 #include <ogre/Ogre.h>
 
