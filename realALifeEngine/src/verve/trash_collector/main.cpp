@@ -21,7 +21,7 @@
 ************************************************************************/
 
 #include <SDL/SDL.h>
-#include <ogre/Ogre.h>
+#include <OGRE/Ogre.h>
 
 #include "verve/apps/Robot.h"
 #include "verve/apps/Car.h"
@@ -147,6 +147,8 @@ int main(int argc, char* argv[])
 	gEngine.setCameraMoveSpeed(15);
 
 	setupEnvironment();
+	
+	gEngine.go();
 
 	mainLoop();
 

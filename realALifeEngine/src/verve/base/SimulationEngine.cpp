@@ -23,8 +23,8 @@
 #include "SimulationEngine.h"
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-#include <ogre/Ogre.h>
-#include <ogre/OgreConfigFile.h>
+#include <OGRE/Ogre.h>
+#include <OGRE/OgreConfigFile.h>
 #endif
 
 SimulationEngine::SimulationEngine()
@@ -659,7 +659,7 @@ void SimulationEngine::setupDefaultVisualScene()
 		mOgreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_NONE);
 	}
 
-	//mOgreSceneMgr->showBoundingBoxes(true);
+	mOgreSceneMgr->showBoundingBoxes(true);
 
 	// Set the ambient light level.
 	mOgreSceneMgr->setAmbientLight(Ogre::ColourValue(0.3, 0.3, 0.3));
@@ -708,9 +708,11 @@ void SimulationEngine::setupDefaultVisualScene()
 	lineNode->attachObject(lineEntity);
 
 	//// Make a crosshairs for picking.
-	//Ogre::Overlay* overlay = 
-	//	OverlayManager::getSingleton().getByName("General/Crosshair");
-	//overlay->show();
+	/*
+	Ogre::Overlay* overlay = 
+		OverlayManager::getSingleton().getByName("General/Crosshair");
+	overlay->show();
+	*/
 }
 
 void SimulationEngine::setPickingGraphicsEnabled(bool e)
@@ -1108,6 +1110,16 @@ void SimulationEngine::updateOgreStats()
 		Ogre::OverlayManager::getSingleton().getOverlayElement(
 		"Core/DebugText");
 	guiDbg->setCaption(mDebugText);
+}
+
+void SimulationEngine::go(void)
+{
+	//if (!setup())
+		//return;
+	mOgreRoot->startRendering();
+
+	// clean up
+    //destroyScene();
 }
 #endif
 
