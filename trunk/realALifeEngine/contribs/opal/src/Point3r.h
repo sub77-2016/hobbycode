@@ -50,7 +50,7 @@ namespace opal
     inline real distance(const Point3r& p1, const Point3r& p2);
 
     /// Prints the Point3r to the given output stream.
-    inline std::ostream& operator<<(std::ostream& o, const Point3r& p);
+    inline std::ostream& operator<<(std::ostream& o, const Point3r& p); 
 
     class Point3r
     {

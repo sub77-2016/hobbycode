@@ -19,9 +19,9 @@ extern "C" {
 #include "lualib.h"
 }
 
-#define LUA_EXTRA_LIB(l) luaopen_ALifeSim(l)
+#define LUA_EXTRA_LIB(l) luaopen_al(l)
 
-extern "C" int luaopen_ALifeSim(lua_State* L);
+extern "C" int luaopen_al(lua_State* L);
 
 
 static lua_State *globalL = NULL;

@@ -63,7 +63,7 @@ namespace opal
     inline bool areCollinear(const Vec3r& u, const Vec3r& v);
 
     /// Prints the Vec3r to the given output stream.
-    inline std::ostream& operator<<(std::ostream& o, const Vec3r& v);
+    inline std::ostream& operator<<(std::ostream& o, const Vec3r& v); 
 
     class Vec3r
     {

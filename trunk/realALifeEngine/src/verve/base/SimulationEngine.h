@@ -109,6 +109,9 @@ public:
 	///// when capturing frames.  Also, note that the runtime performance 
 	///// will probably decrease substantially as frames are being captured.
 	//void setCaptureFramesEnabled(bool capture);
+	
+	/// Start the example
+	void go(void);
 #endif
 
 	/// Sets the type of update to use.  The extra real parameter is used 
