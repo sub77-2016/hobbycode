@@ -3,6 +3,7 @@ Import('env', 'useAudio')
 
 headers = Split("""
 	AgentVisualDebugger.h
+	AudioManager.h
 	Car.h
 	DataCollection.h
 	DataFile.h
@@ -29,9 +30,6 @@ sources = Split("""
 """)
 
 if useAudio == True:
-	headers += Split("""
-		AudioManager.h
-		""")
 	sources += Split("""
 		AudioManager.cpp
 		""")

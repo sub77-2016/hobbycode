@@ -23,10 +23,10 @@
 #include <SDL/SDL.h>
 #include <ogre/Ogre.h>
 
-#include "../base/Robot.h"
-#include "../base/Car.h"
-#include "../base/AgentVisualDebugger.h"
-#include "../base/SimulationEngine.h"
+#include "verve/apps/Robot.h"
+#include "verve/apps/Car.h"
+#include "verve/apps/AgentVisualDebugger.h"
+#include "verve/apps/SimulationEngine.h"
 
 void setupEnvironment();
 void mainLoop();
