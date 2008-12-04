@@ -1491,45 +1491,75 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_AgentVisualDebugger swig_types[0]
-#define SWIGTYPE_p_Car swig_types[1]
-#define SWIGTYPE_p_LearningEntity swig_types[2]
-#define SWIGTYPE_p_OIS__Keyboard swig_types[3]
-#define SWIGTYPE_p_OIS__Mouse swig_types[4]
-#define SWIGTYPE_p_Ogre__FrameEvent swig_types[5]
-#define SWIGTYPE_p_Ogre__FrameListener swig_types[6]
-#define SWIGTYPE_p_Ogre__SceneManager swig_types[7]
-#define SWIGTYPE_p_Ogre__SceneNode swig_types[8]
-#define SWIGTYPE_p_PhysicalCamera swig_types[9]
-#define SWIGTYPE_p_PhysicalCamera__Type swig_types[10]
-#define SWIGTYPE_p_PhysicalEntity swig_types[11]
-#define SWIGTYPE_p_Point3r swig_types[12]
-#define SWIGTYPE_p_Robot swig_types[13]
-#define SWIGTYPE_p_SimulationEngine swig_types[14]
-#define SWIGTYPE_p_Vec3r swig_types[15]
-#define SWIGTYPE_p_bool swig_types[16]
-#define SWIGTYPE_p_float swig_types[17]
-#define SWIGTYPE_p_opal__CollisionEvent swig_types[18]
-#define SWIGTYPE_p_opal__CollisionEventHandler swig_types[19]
-#define SWIGTYPE_p_opal__EventHandler swig_types[20]
-#define SWIGTYPE_p_opal__GearedMotor swig_types[21]
-#define SWIGTYPE_p_opal__Matrix44r swig_types[22]
-#define SWIGTYPE_p_opal__Point3r swig_types[23]
-#define SWIGTYPE_p_opal__Simulator swig_types[24]
-#define SWIGTYPE_p_opal__Solid swig_types[25]
-#define SWIGTYPE_p_opal__Vec3r swig_types[26]
-#define SWIGTYPE_p_real swig_types[27]
-#define SWIGTYPE_p_std__string swig_types[28]
-#define SWIGTYPE_p_unsigned_char swig_types[29]
-#define SWIGTYPE_p_unsigned_int swig_types[30]
-#define SWIGTYPE_p_unsigned_short swig_types[31]
-#define SWIGTYPE_p_verve__Agent swig_types[32]
-#define SWIGTYPE_p_verve__AgentDebugData swig_types[33]
-#define SWIGTYPE_p_verve__AgentDescriptor swig_types[34]
-#define SWIGTYPE_p_verve__ContinuousSensorDescriptor swig_types[35]
-#define SWIGTYPE_p_verve__DiscreteSensorDescriptor swig_types[36]
-#define SWIGTYPE_p_verve__Observation swig_types[37]
-static swig_type_info *swig_types[39];
-static swig_module_info swig_module = {swig_types, 38, 0, 0, 0, 0};
+#define SWIGTYPE_p_Blueprint swig_types[1]
+#define SWIGTYPE_p_Car swig_types[2]
+#define SWIGTYPE_p_DataCollection swig_types[3]
+#define SWIGTYPE_p_DataFile swig_types[4]
+#define SWIGTYPE_p_Joint swig_types[5]
+#define SWIGTYPE_p_LearningEntity swig_types[6]
+#define SWIGTYPE_p_LearningTest swig_types[7]
+#define SWIGTYPE_p_Material swig_types[8]
+#define SWIGTYPE_p_Motor swig_types[9]
+#define SWIGTYPE_p_OIS__Keyboard swig_types[10]
+#define SWIGTYPE_p_OIS__Mouse swig_types[11]
+#define SWIGTYPE_p_Ogre__Camera swig_types[12]
+#define SWIGTYPE_p_Ogre__FrameEvent swig_types[13]
+#define SWIGTYPE_p_Ogre__FrameListener swig_types[14]
+#define SWIGTYPE_p_Ogre__SceneManager swig_types[15]
+#define SWIGTYPE_p_Ogre__SceneNode swig_types[16]
+#define SWIGTYPE_p_PhysicalCamera swig_types[17]
+#define SWIGTYPE_p_PhysicalEntity swig_types[18]
+#define SWIGTYPE_p_Point3r swig_types[19]
+#define SWIGTYPE_p_Robot swig_types[20]
+#define SWIGTYPE_p_Sensor swig_types[21]
+#define SWIGTYPE_p_SimulationEngine swig_types[22]
+#define SWIGTYPE_p_SolverAccuracyLevel swig_types[23]
+#define SWIGTYPE_p_Space swig_types[24]
+#define SWIGTYPE_p_Timer swig_types[25]
+#define SWIGTYPE_p_Vec3r swig_types[26]
+#define SWIGTYPE_p_bool swig_types[27]
+#define SWIGTYPE_p_double swig_types[28]
+#define SWIGTYPE_p_float swig_types[29]
+#define SWIGTYPE_p_opal__AccelerationSensor swig_types[30]
+#define SWIGTYPE_p_opal__AttractorMotor swig_types[31]
+#define SWIGTYPE_p_opal__BlueprintInstance swig_types[32]
+#define SWIGTYPE_p_opal__CollisionEvent swig_types[33]
+#define SWIGTYPE_p_opal__CollisionEventHandler swig_types[34]
+#define SWIGTYPE_p_opal__EventHandler swig_types[35]
+#define SWIGTYPE_p_opal__GearedMotor swig_types[36]
+#define SWIGTYPE_p_opal__InclineSensor swig_types[37]
+#define SWIGTYPE_p_opal__Matrix44r swig_types[38]
+#define SWIGTYPE_p_opal__Point3r swig_types[39]
+#define SWIGTYPE_p_opal__PostStepEventHandler swig_types[40]
+#define SWIGTYPE_p_opal__Quaternion swig_types[41]
+#define SWIGTYPE_p_opal__RaycastSensor swig_types[42]
+#define SWIGTYPE_p_opal__Rayr swig_types[43]
+#define SWIGTYPE_p_opal__ServoMotor swig_types[44]
+#define SWIGTYPE_p_opal__Simulator swig_types[45]
+#define SWIGTYPE_p_opal__SimulatorData swig_types[46]
+#define SWIGTYPE_p_opal__Solid swig_types[47]
+#define SWIGTYPE_p_opal__SpringMotor swig_types[48]
+#define SWIGTYPE_p_opal__SpringMotorMode swig_types[49]
+#define SWIGTYPE_p_opal__ThrusterMotor swig_types[50]
+#define SWIGTYPE_p_opal__Vec3r swig_types[51]
+#define SWIGTYPE_p_opal__VelocityMotor swig_types[52]
+#define SWIGTYPE_p_opal__VolumeQueryResult swig_types[53]
+#define SWIGTYPE_p_opal__VolumeSensor swig_types[54]
+#define SWIGTYPE_p_real swig_types[55]
+#define SWIGTYPE_p_std__string swig_types[56]
+#define SWIGTYPE_p_std__vectorT_opal__RaycastResult_t swig_types[57]
+#define SWIGTYPE_p_unsigned_char swig_types[58]
+#define SWIGTYPE_p_unsigned_int swig_types[59]
+#define SWIGTYPE_p_unsigned_short swig_types[60]
+#define SWIGTYPE_p_verve__Agent swig_types[61]
+#define SWIGTYPE_p_verve__AgentDebugData swig_types[62]
+#define SWIGTYPE_p_verve__AgentDescriptor swig_types[63]
+#define SWIGTYPE_p_verve__ContinuousSensorDescriptor swig_types[64]
+#define SWIGTYPE_p_verve__DiscreteSensorDescriptor swig_types[65]
+#define SWIGTYPE_p_verve__Observation swig_types[66]
+#define SWIGTYPE_p_void swig_types[67]
+static swig_type_info *swig_types[69];
+static swig_module_info swig_module = {swig_types, 68, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1722,7 +1752,6 @@ SWIGINTERN void SWIG_write_ptr_array(lua_State* L,void **array,int size,swig_typ
 #include <verve/apps/Timer.h>
 
 using namespace opal;
-//using namespace Ogre;
 
 #ifdef __cplusplus
 extern "C" {
@@ -2350,46 +2379,94 @@ fail:
 }
 
 
-static int _wrap_Point3r_x_set(lua_State* L) {
+static int _wrap___add__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("opal::operator +",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator +",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator +",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__add",1,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__add",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::operator +((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___sub__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("opal::operator -",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator -",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator -",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__sub",1,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__sub",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::operator -((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___mul__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
   opal::real arg2 ;
+  opal::Vec3r result;
   
-  SWIG_check_num_args("x",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("x",1,"opal::Point3r *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("x",2,"opal::real");
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::Vec3r const &");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::real");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_x_set",1,SWIGTYPE_p_opal__Point3r);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__mul",1,SWIGTYPE_p_opal__Vec3r);
   }
   
   arg2 = (opal::real)lua_tonumber(L, 2);
-  if (arg1) (arg1)->x = arg2;
-  
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_Point3r_x_get(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
-  opal::real result;
-  
-  SWIG_check_num_args("x",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("x",1,"opal::Point3r *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_x_get",1,SWIGTYPE_p_opal__Point3r);
+  result = opal::operator *((opal::Vec3r const &)*arg1,arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
   }
-  
-  result = (opal::real) ((arg1)->x);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2400,163 +2477,26 @@ fail:
 }
 
 
-static int _wrap_Point3r_y_set(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
-  opal::real arg2 ;
-  
-  SWIG_check_num_args("y",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("y",1,"opal::Point3r *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("y",2,"opal::real");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_y_set",1,SWIGTYPE_p_opal__Point3r);
-  }
-  
-  arg2 = (opal::real)lua_tonumber(L, 2);
-  if (arg1) (arg1)->y = arg2;
-  
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_Point3r_y_get(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
-  opal::real result;
-  
-  SWIG_check_num_args("y",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("y",1,"opal::Point3r *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_y_get",1,SWIGTYPE_p_opal__Point3r);
-  }
-  
-  result = (opal::real) ((arg1)->y);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_Point3r_z_set(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
-  opal::real arg2 ;
-  
-  SWIG_check_num_args("z",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("z",1,"opal::Point3r *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("z",2,"opal::real");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_z_set",1,SWIGTYPE_p_opal__Point3r);
-  }
-  
-  arg2 = (opal::real)lua_tonumber(L, 2);
-  if (arg1) (arg1)->z = arg2;
-  
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_Point3r_z_get(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
-  opal::real result;
-  
-  SWIG_check_num_args("z",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("z",1,"opal::Point3r *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_z_get",1,SWIGTYPE_p_opal__Point3r);
-  }
-  
-  result = (opal::real) ((arg1)->z);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_new_Point3r__SWIG_0(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *result = 0 ;
-  
-  SWIG_check_num_args("opal::Point3r",0,0)
-  result = (opal::Point3r *)new opal::Point3r();
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_new_Point3r__SWIG_1(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *arg1 = 0 ;
-  opal::Point3r *result = 0 ;
-  
-  SWIG_check_num_args("opal::Point3r",1,1)
-  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::Point3r",1,"opal::Point3r const &");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("new_Point3r",1,SWIGTYPE_p_opal__Point3r);
-  }
-  
-  result = (opal::Point3r *)new opal::Point3r((opal::Point3r const &)*arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_new_Point3r__SWIG_2(lua_State* L) {
+static int _wrap___mul__SWIG_1(lua_State* L) {
   int SWIG_arg = 0;
   opal::real arg1 ;
-  opal::real arg2 ;
-  opal::real arg3 ;
-  opal::Point3r *result = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Vec3r result;
   
-  SWIG_check_num_args("opal::Point3r",3,3)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::Point3r",1,"opal::real");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::Point3r",2,"opal::real");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("opal::Point3r",3,"opal::real");
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::real");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Vec3r const &");
   arg1 = (opal::real)lua_tonumber(L, 1);
-  arg2 = (opal::real)lua_tonumber(L, 2);
-  arg3 = (opal::real)lua_tonumber(L, 3);
-  result = (opal::Point3r *)new opal::Point3r(arg1,arg2,arg3);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::operator *(arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2567,119 +2507,26 @@ fail:
 }
 
 
-static int _wrap_new_Point3r__SWIG_3(lua_State* L) {
+static int _wrap___div__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
-  opal::real *arg1 = (opal::real *) 0 ;
-  opal::real temp1 ;
-  opal::Point3r *result = 0 ;
-  
-  SWIG_check_num_args("opal::Point3r",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::Point3r",1,"opal::real const *");
-  temp1 = (opal::real)lua_tonumber(L,1);
-  arg1 = &temp1; 
-  result = (opal::Point3r *)new opal::Point3r((opal::real const *)arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
-  lua_pushnumber(L, (lua_Number) *arg1); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_new_Point3r(lua_State* L) {
-  int argc;
-  int argv[4]={
-    1,2,3,4
-  };
-  
-  argc = lua_gettop(L);
-  if (argc == 0) {
-    return _wrap_new_Point3r__SWIG_0(L);
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      void *ptr;
-      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
-        _v = 0;
-      } else {
-        _v = 1;
-      }
-    }
-    if (_v) {
-      return _wrap_new_Point3r__SWIG_1(L);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_float, 0)) {
-        _v = 0;
-      } else {
-        _v = 1;
-      }
-    }
-    if (_v) {
-      return _wrap_new_Point3r__SWIG_3(L);
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      _v = lua_isnumber(L,argv[0]);
-    }
-    if (_v) {
-      {
-        _v = lua_isnumber(L,argv[1]);
-      }
-      if (_v) {
-        {
-          _v = lua_isnumber(L,argv[2]);
-        }
-        if (_v) {
-          return _wrap_new_Point3r__SWIG_2(L);
-        }
-      }
-    }
-  }
-  
-  lua_pushstring(L,"Wrong arguments for overloaded function 'new_Point3r'\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    opal::Point3r()\n"
-    "    opal::Point3r(opal::Point3r const &)\n"
-    "    opal::Point3r(opal::real,opal::real,opal::real)\n"
-    "    opal::Point3r(opal::real const *)\n");
-  lua_error(L);return 0;
-}
-
-
-static int _wrap_Point3r_set__SWIG_0(lua_State* L) {
-  int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::Vec3r *arg1 = 0 ;
   opal::real arg2 ;
-  opal::real arg3 ;
-  opal::real arg4 ;
+  opal::Vec3r result;
   
-  SWIG_check_num_args("set",4,4)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Point3r *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"opal::real");
-  if(!lua_isnumber(L,3)) SWIG_fail_arg("set",3,"opal::real");
-  if(!lua_isnumber(L,4)) SWIG_fail_arg("set",4,"opal::real");
+  SWIG_check_num_args("opal::operator /",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator /",1,"opal::Vec3r const &");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::operator /",2,"opal::real");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_set",1,SWIGTYPE_p_opal__Point3r);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__div",1,SWIGTYPE_p_opal__Vec3r);
   }
   
   arg2 = (opal::real)lua_tonumber(L, 2);
-  arg3 = (opal::real)lua_tonumber(L, 3);
-  arg4 = (opal::real)lua_tonumber(L, 4);
-  (arg1)->set(arg2,arg3,arg4);
-  
+  result = opal::operator /((opal::Vec3r const &)*arg1,arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2690,25 +2537,23 @@ fail:
 }
 
 
-static int _wrap_Point3r_set__SWIG_1(lua_State* L) {
+static int _wrap___sub__SWIG_1(lua_State* L) {
   int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
-  opal::real *arg2 = (opal::real *) 0 ;
-  opal::real temp2 ;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r result;
   
-  SWIG_check_num_args("set",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Point3r *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"opal::real *");
+  SWIG_check_num_args("opal::operator -",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator -",1,"opal::Vec3r const &");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r_set",1,SWIGTYPE_p_opal__Point3r);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__sub",1,SWIGTYPE_p_opal__Vec3r);
   }
   
-  temp2 = (opal::real)lua_tonumber(L,2);
-  arg2 = &temp2; 
-  (arg1)->set(arg2);
-  
-  lua_pushnumber(L, (lua_Number) *arg2); SWIG_arg++;
+  result = opal::operator -((opal::Vec3r const &)*arg1);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -2719,95 +2564,221 @@ fail:
 }
 
 
-static int _wrap_Point3r_set(lua_State* L) {
-  int argc;
-  int argv[5]={
-    1,2,3,4,5
-  };
+static int _wrap_dot(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::real result;
   
-  argc = lua_gettop(L);
-  if (argc == 2) {
-    int _v;
-    {
-      void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
-        _v = 0;
-      } else {
-        _v = 1;
-      }
-    }
-    if (_v) {
-      {
-        void *ptr;
-        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_float, 0)) {
-          _v = 0;
-        } else {
-          _v = 1;
-        }
-      }
-      if (_v) {
-        return _wrap_Point3r_set__SWIG_1(L);
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    {
-      void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
-        _v = 0;
-      } else {
-        _v = 1;
-      }
-    }
-    if (_v) {
-      {
-        _v = lua_isnumber(L,argv[1]);
-      }
-      if (_v) {
-        {
-          _v = lua_isnumber(L,argv[2]);
-        }
-        if (_v) {
-          {
-            _v = lua_isnumber(L,argv[3]);
-          }
-          if (_v) {
-            return _wrap_Point3r_set__SWIG_0(L);
-          }
-        }
-      }
-    }
+  SWIG_check_num_args("opal::dot",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::dot",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::dot",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("dot",1,SWIGTYPE_p_opal__Vec3r);
   }
   
-  lua_pushstring(L,"Wrong arguments for overloaded function 'Point3r_set'\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    set(opal::Point3r *,opal::real,opal::real,opal::real)\n"
-    "    set(opal::Point3r *,opal::real *)\n");
-  lua_error(L);return 0;
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("dot",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = (opal::real)opal::dot((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
 }
 
 
-static int _wrap_Point3r___eq(lua_State* L) {
+static int _wrap_cross(lua_State* L) {
   int SWIG_arg = 0;
-  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
-  opal::Point3r *arg2 = 0 ;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("opal::cross",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::cross",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::cross",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("cross",1,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("cross",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::cross((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_project(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("opal::project",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::project",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::project",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("project",1,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("project",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::project((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_projectPreNorm(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("opal::projectPreNorm",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::projectPreNorm",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::projectPreNorm",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("projectPreNorm",1,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("projectPreNorm",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::projectPreNorm((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_angleBetween(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("opal::angleBetween",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::angleBetween",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::angleBetween",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("angleBetween",1,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("angleBetween",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = (opal::real)opal::angleBetween((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_angleBetweenPreNorm(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("opal::angleBetweenPreNorm",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::angleBetweenPreNorm",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::angleBetweenPreNorm",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("angleBetweenPreNorm",1,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("angleBetweenPreNorm",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = (opal::real)opal::angleBetweenPreNorm((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_areCollinear(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Vec3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
   bool result;
   
-  SWIG_check_num_args("operator ==",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("operator ==",1,"opal::Point3r const *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("operator ==",2,"opal::Point3r const &");
+  SWIG_check_num_args("opal::areCollinear",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::areCollinear",1,"opal::Vec3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::areCollinear",2,"opal::Vec3r const &");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r___eq",1,SWIGTYPE_p_opal__Point3r);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("areCollinear",1,SWIGTYPE_p_opal__Vec3r);
   }
   
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
-    SWIG_fail_ptr("Point3r___eq",2,SWIGTYPE_p_opal__Point3r);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("areCollinear",2,SWIGTYPE_p_opal__Vec3r);
   }
   
-  result = (bool)((opal::Point3r const *)arg1)->operator ==((opal::Point3r const &)*arg2);
+  result = (bool)opal::areCollinear((opal::Vec3r const &)*arg1,(opal::Vec3r const &)*arg2);
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
   return SWIG_arg;
   
@@ -2818,25 +2789,6 @@ fail:
   return SWIG_arg;
 }
 
-
-static void swig_delete_Point3r(void *obj) {
-opal::Point3r *arg1 = (opal::Point3r *) obj;
-delete arg1;
-}
-static swig_lua_method swig_opal_Point3r_methods[] = {
-    {"set", _wrap_Point3r_set}, 
-    {"__eq", _wrap_Point3r___eq}, 
-    {0,0}
-};
-static swig_lua_attribute swig_opal_Point3r_attributes[] = {
-    { "x", _wrap_Point3r_x_get, _wrap_Point3r_x_set},
-    { "y", _wrap_Point3r_y_get, _wrap_Point3r_y_set},
-    { "z", _wrap_Point3r_z_get, _wrap_Point3r_z_set},
-    {0,0,0}
-};
-static swig_lua_class *swig_opal_Point3r_bases[] = {0};
-static const char *swig_opal_Point3r_base_names[] = {0};
-static swig_lua_class _wrap_class_opal_Point3r = { "Point3r", &SWIGTYPE_p_opal__Point3r,_wrap_new_Point3r, swig_delete_Point3r, swig_opal_Point3r_methods, swig_opal_Point3r_attributes, swig_opal_Point3r_bases, swig_opal_Point3r_base_names };
 
 static int _wrap_Vec3r_x_set(lua_State* L) {
   int SWIG_arg = 0;
@@ -3428,22 +3380,30 @@ static swig_lua_class *swig_opal_Vec3r_bases[] = {0};
 static const char *swig_opal_Vec3r_base_names[] = {0};
 static swig_lua_class _wrap_class_opal_Vec3r = { "Vec3r", &SWIGTYPE_p_opal__Vec3r,_wrap_new_Vec3r, swig_delete_Vec3r, swig_opal_Vec3r_methods, swig_opal_Vec3r_attributes, swig_opal_Vec3r_bases, swig_opal_Vec3r_base_names };
 
-static int _wrap_FrameEvent_timeSinceLastEvent_set(lua_State* L) {
+static int _wrap___add__SWIG_1(lua_State* L) {
   int SWIG_arg = 0;
-  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
-  Ogre::Real arg2 ;
+  opal::Point3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Point3r result;
   
-  SWIG_check_num_args("timeSinceLastEvent",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastEvent",1,"Ogre::FrameEvent *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("timeSinceLastEvent",2,"Ogre::Real");
+  SWIG_check_num_args("opal::operator +",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator +",1,"opal::Point3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator +",2,"opal::Vec3r const &");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
-    SWIG_fail_ptr("FrameEvent_timeSinceLastEvent_set",1,SWIGTYPE_p_Ogre__FrameEvent);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__add",1,SWIGTYPE_p_opal__Point3r);
   }
   
-  arg2 = (Ogre::Real)lua_tonumber(L, 2);
-  if (arg1) (arg1)->timeSinceLastEvent = arg2;
   
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__add",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::operator +((opal::Point3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -3454,19 +3414,265 @@ fail:
 }
 
 
-static int _wrap_FrameEvent_timeSinceLastEvent_get(lua_State* L) {
+static int _wrap___sub__SWIG_2(lua_State* L) {
   int SWIG_arg = 0;
-  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
-  Ogre::Real result;
+  opal::Point3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Point3r result;
   
-  SWIG_check_num_args("timeSinceLastEvent",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastEvent",1,"Ogre::FrameEvent *");
+  SWIG_check_num_args("opal::operator -",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator -",1,"opal::Point3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator -",2,"opal::Vec3r const &");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
-    SWIG_fail_ptr("FrameEvent_timeSinceLastEvent_get",1,SWIGTYPE_p_Ogre__FrameEvent);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__sub",1,SWIGTYPE_p_opal__Point3r);
   }
   
-  result = (Ogre::Real) ((arg1)->timeSinceLastEvent);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__sub",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::operator -((opal::Point3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___sub__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = 0 ;
+  opal::Point3r *arg2 = 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("opal::operator -",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator -",1,"opal::Point3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator -",2,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__sub",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__sub",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = opal::operator -((opal::Point3r const &)*arg1,(opal::Point3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___mul__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = 0 ;
+  opal::real arg2 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::Point3r const &");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__mul",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  result = opal::operator *((opal::Point3r const &)*arg1,arg2);
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___mul__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real arg1 ;
+  opal::Point3r *arg2 = 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::real");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Point3r const &");
+  arg1 = (opal::real)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = opal::operator *(arg1,(opal::Point3r const &)*arg2);
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___div__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = 0 ;
+  opal::real arg2 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("opal::operator /",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator /",1,"opal::Point3r const &");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::operator /",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__div",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  result = opal::operator /((opal::Point3r const &)*arg1,arg2);
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___div(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap___div__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap___div__SWIG_1(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function '__div'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::operator /(opal::Vec3r const &,opal::real)\n"
+    "    opal::operator /(opal::Point3r const &,opal::real)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap___sub__SWIG_4(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("opal::operator -",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator -",1,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__sub",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = opal::operator -((opal::Point3r const &)*arg1);
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_distanceSqr(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = 0 ;
+  opal::Point3r *arg2 = 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("opal::distanceSqr",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::distanceSqr",1,"opal::Point3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::distanceSqr",2,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("distanceSqr",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("distanceSqr",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = (opal::real)opal::distanceSqr((opal::Point3r const &)*arg1,(opal::Point3r const &)*arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -3478,45 +3684,26 @@ fail:
 }
 
 
-static int _wrap_FrameEvent_timeSinceLastFrame_set(lua_State* L) {
+static int _wrap_distance(lua_State* L) {
   int SWIG_arg = 0;
-  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
-  Ogre::Real arg2 ;
+  opal::Point3r *arg1 = 0 ;
+  opal::Point3r *arg2 = 0 ;
+  opal::real result;
   
-  SWIG_check_num_args("timeSinceLastFrame",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastFrame",1,"Ogre::FrameEvent *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("timeSinceLastFrame",2,"Ogre::Real");
+  SWIG_check_num_args("opal::distance",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::distance",1,"opal::Point3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::distance",2,"opal::Point3r const &");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
-    SWIG_fail_ptr("FrameEvent_timeSinceLastFrame_set",1,SWIGTYPE_p_Ogre__FrameEvent);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("distance",1,SWIGTYPE_p_opal__Point3r);
   }
   
-  arg2 = (Ogre::Real)lua_tonumber(L, 2);
-  if (arg1) (arg1)->timeSinceLastFrame = arg2;
   
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_FrameEvent_timeSinceLastFrame_get(lua_State* L) {
-  int SWIG_arg = 0;
-  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
-  Ogre::Real result;
-  
-  SWIG_check_num_args("timeSinceLastFrame",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastFrame",1,"Ogre::FrameEvent *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
-    SWIG_fail_ptr("FrameEvent_timeSinceLastFrame_get",1,SWIGTYPE_p_Ogre__FrameEvent);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("distance",2,SWIGTYPE_p_opal__Point3r);
   }
   
-  result = (Ogre::Real) ((arg1)->timeSinceLastFrame);
+  result = (opal::real)opal::distance((opal::Point3r const &)*arg1,(opal::Point3r const &)*arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -3528,13 +3715,22 @@ fail:
 }
 
 
-static int _wrap_new_FrameEvent(lua_State* L) {
+static int _wrap_Point3r_x_set(lua_State* L) {
   int SWIG_arg = 0;
-  Ogre::FrameEvent *result = 0 ;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real arg2 ;
   
-  SWIG_check_num_args("Ogre::FrameEvent::FrameEvent",0,0)
-  result = (Ogre::FrameEvent *)new Ogre::FrameEvent();
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__FrameEvent,1); SWIG_arg++; 
+  SWIG_check_num_args("x",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("x",1,"opal::Point3r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("x",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_x_set",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->x = arg2;
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -3545,42 +3741,438 @@ fail:
 }
 
 
-static void swig_delete_FrameEvent(void *obj) {
-Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) obj;
-delete arg1;
-}
-static swig_lua_method swig_Ogre_FrameEvent_methods[] = {
-    {0,0}
-};
-static swig_lua_attribute swig_Ogre_FrameEvent_attributes[] = {
-    { "timeSinceLastEvent", _wrap_FrameEvent_timeSinceLastEvent_get, _wrap_FrameEvent_timeSinceLastEvent_set},
-    { "timeSinceLastFrame", _wrap_FrameEvent_timeSinceLastFrame_get, _wrap_FrameEvent_timeSinceLastFrame_set},
-    {0,0,0}
-};
-static swig_lua_class *swig_Ogre_FrameEvent_bases[] = {0};
-static const char *swig_Ogre_FrameEvent_base_names[] = {0};
-static swig_lua_class _wrap_class_Ogre_FrameEvent = { "FrameEvent", &SWIGTYPE_p_Ogre__FrameEvent,_wrap_new_FrameEvent, swig_delete_FrameEvent, swig_Ogre_FrameEvent_methods, swig_Ogre_FrameEvent_attributes, swig_Ogre_FrameEvent_bases, swig_Ogre_FrameEvent_base_names };
-
-static int _wrap_FrameListener_frameStarted(lua_State* L) {
+static int _wrap_Point3r_x_get(lua_State* L) {
   int SWIG_arg = 0;
-  Ogre::FrameListener *arg1 = (Ogre::FrameListener *) 0 ;
-  Ogre::FrameEvent *arg2 = 0 ;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("x",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("x",1,"opal::Point3r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_x_get",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = (opal::real) ((arg1)->x);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Point3r_y_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("y",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("y",1,"opal::Point3r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("y",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_y_set",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->y = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Point3r_y_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("y",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("y",1,"opal::Point3r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_y_get",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = (opal::real) ((arg1)->y);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Point3r_z_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("z",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("z",1,"opal::Point3r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("z",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_z_set",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->z = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Point3r_z_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("z",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("z",1,"opal::Point3r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_z_get",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = (opal::real) ((arg1)->z);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Point3r__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Point3r",0,0)
+  result = (opal::Point3r *)new opal::Point3r();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Point3r__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = 0 ;
+  opal::Point3r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Point3r",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::Point3r",1,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("new_Point3r",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = (opal::Point3r *)new opal::Point3r((opal::Point3r const &)*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Point3r__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real arg1 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::Point3r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Point3r",3,3)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::Point3r",1,"opal::real");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::Point3r",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("opal::Point3r",3,"opal::real");
+  arg1 = (opal::real)lua_tonumber(L, 1);
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  result = (opal::Point3r *)new opal::Point3r(arg1,arg2,arg3);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Point3r__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real *arg1 = (opal::real *) 0 ;
+  opal::real temp1 ;
+  opal::Point3r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Point3r",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::Point3r",1,"opal::real const *");
+  temp1 = (opal::real)lua_tonumber(L,1);
+  arg1 = &temp1; 
+  result = (opal::Point3r *)new opal::Point3r((opal::real const *)arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++; 
+  lua_pushnumber(L, (lua_Number) *arg1); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Point3r(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 0) {
+    return _wrap_new_Point3r__SWIG_0(L);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_new_Point3r__SWIG_1(L);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_float, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_new_Point3r__SWIG_3(L);
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_new_Point3r__SWIG_2(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'new_Point3r'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::Point3r()\n"
+    "    opal::Point3r(opal::Point3r const &)\n"
+    "    opal::Point3r(opal::real,opal::real,opal::real)\n"
+    "    opal::Point3r(opal::real const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Point3r_set__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("set",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Point3r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("set",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("set",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_set",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->set(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Point3r_set__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::real *arg2 = (opal::real *) 0 ;
+  opal::real temp2 ;
+  
+  SWIG_check_num_args("set",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Point3r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"opal::real *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r_set",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  temp2 = (opal::real)lua_tonumber(L,2);
+  arg2 = &temp2; 
+  (arg1)->set(arg2);
+  
+  lua_pushnumber(L, (lua_Number) *arg2); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Point3r_set(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_float, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_Point3r_set__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_Point3r_set__SWIG_0(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Point3r_set'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    set(opal::Point3r *,opal::real,opal::real,opal::real)\n"
+    "    set(opal::Point3r *,opal::real *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Point3r___eq(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = (opal::Point3r *) 0 ;
+  opal::Point3r *arg2 = 0 ;
   bool result;
   
-  SWIG_check_num_args("frameStarted",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("frameStarted",1,"Ogre::FrameListener *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("frameStarted",2,"Ogre::FrameEvent const &");
+  SWIG_check_num_args("operator ==",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("operator ==",1,"opal::Point3r const *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("operator ==",2,"opal::Point3r const &");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameListener,0))){
-    SWIG_fail_ptr("FrameListener_frameStarted",1,SWIGTYPE_p_Ogre__FrameListener);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r___eq",1,SWIGTYPE_p_opal__Point3r);
   }
   
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Ogre__FrameEvent,0))){
-    SWIG_fail_ptr("FrameListener_frameStarted",2,SWIGTYPE_p_Ogre__FrameEvent);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Point3r___eq",2,SWIGTYPE_p_opal__Point3r);
   }
   
-  result = (bool)(arg1)->frameStarted((Ogre::FrameEvent const &)*arg2);
+  result = (bool)((opal::Point3r const *)arg1)->operator ==((opal::Point3r const &)*arg2);
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
   return SWIG_arg;
   
@@ -3592,26 +4184,1005 @@ fail:
 }
 
 
-static int _wrap_FrameListener_frameEnded(lua_State* L) {
+static void swig_delete_Point3r(void *obj) {
+opal::Point3r *arg1 = (opal::Point3r *) obj;
+delete arg1;
+}
+static swig_lua_method swig_opal_Point3r_methods[] = {
+    {"set", _wrap_Point3r_set}, 
+    {"__eq", _wrap_Point3r___eq}, 
+    {0,0}
+};
+static swig_lua_attribute swig_opal_Point3r_attributes[] = {
+    { "x", _wrap_Point3r_x_get, _wrap_Point3r_x_set},
+    { "y", _wrap_Point3r_y_get, _wrap_Point3r_y_set},
+    { "z", _wrap_Point3r_z_get, _wrap_Point3r_z_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_Point3r_bases[] = {0};
+static const char *swig_opal_Point3r_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_Point3r = { "Point3r", &SWIGTYPE_p_opal__Point3r,_wrap_new_Point3r, swig_delete_Point3r, swig_opal_Point3r_methods, swig_opal_Point3r_attributes, swig_opal_Point3r_bases, swig_opal_Point3r_base_names };
+
+static int _wrap_new_Rayr__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
-  Ogre::FrameListener *arg1 = (Ogre::FrameListener *) 0 ;
-  Ogre::FrameEvent *arg2 = 0 ;
+  opal::Rayr *result = 0 ;
+  
+  SWIG_check_num_args("opal::Rayr",0,0)
+  result = (opal::Rayr *)new opal::Rayr();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Rayr,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Rayr__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Rayr *arg1 = 0 ;
+  opal::Rayr *result = 0 ;
+  
+  SWIG_check_num_args("opal::Rayr",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::Rayr",1,"opal::Rayr const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("new_Rayr",1,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  result = (opal::Rayr *)new opal::Rayr((opal::Rayr const &)*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Rayr,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Rayr__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Point3r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Rayr *result = 0 ;
+  
+  SWIG_check_num_args("opal::Rayr",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::Rayr",1,"opal::Point3r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::Rayr",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("new_Rayr",1,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("new_Rayr",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = (opal::Rayr *)new opal::Rayr((opal::Point3r const &)*arg1,(opal::Vec3r const &)*arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Rayr,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Rayr(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 0) {
+    return _wrap_new_Rayr__SWIG_0(L);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Rayr, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_new_Rayr__SWIG_1(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_new_Rayr__SWIG_2(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'new_Rayr'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::Rayr()\n"
+    "    opal::Rayr(opal::Rayr const &)\n"
+    "    opal::Rayr(opal::Point3r const &,opal::Vec3r const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Rayr_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Rayr *arg1 = (opal::Rayr *) 0 ;
+  opal::Point3r *arg2 = 0 ;
+  opal::Vec3r *arg3 = 0 ;
+  
+  SWIG_check_num_args("set",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Rayr *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("set",2,"opal::Point3r const &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("set",3,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("Rayr_set",1,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Rayr_set",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("Rayr_set",3,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  (arg1)->set((opal::Point3r const &)*arg2,(opal::Vec3r const &)*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Rayr_getDir(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Rayr *arg1 = (opal::Rayr *) 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("getDir",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDir",1,"opal::Rayr const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("Rayr_getDir",1,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  result = ((opal::Rayr const *)arg1)->getDir();
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Rayr_getOrigin(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Rayr *arg1 = (opal::Rayr *) 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("getOrigin",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getOrigin",1,"opal::Rayr const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("Rayr_getOrigin",1,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  result = ((opal::Rayr const *)arg1)->getOrigin();
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Rayr_getLength(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Rayr *arg1 = (opal::Rayr *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getLength",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getLength",1,"opal::Rayr const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("Rayr_getLength",1,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  result = (opal::real)((opal::Rayr const *)arg1)->getLength();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Rayr_setOrigin(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Rayr *arg1 = (opal::Rayr *) 0 ;
+  opal::Point3r *arg2 = 0 ;
+  
+  SWIG_check_num_args("setOrigin",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setOrigin",1,"opal::Rayr *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setOrigin",2,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("Rayr_setOrigin",1,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("Rayr_setOrigin",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  (arg1)->setOrigin((opal::Point3r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Rayr_setDir(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Rayr *arg1 = (opal::Rayr *) 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  
+  SWIG_check_num_args("setDir",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setDir",1,"opal::Rayr *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setDir",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("Rayr_setDir",1,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("Rayr_setDir",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  (arg1)->setDir((opal::Vec3r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Rayr(void *obj) {
+opal::Rayr *arg1 = (opal::Rayr *) obj;
+delete arg1;
+}
+static swig_lua_method swig_opal_Rayr_methods[] = {
+    {"set", _wrap_Rayr_set}, 
+    {"getDir", _wrap_Rayr_getDir}, 
+    {"getOrigin", _wrap_Rayr_getOrigin}, 
+    {"getLength", _wrap_Rayr_getLength}, 
+    {"setOrigin", _wrap_Rayr_setOrigin}, 
+    {"setDir", _wrap_Rayr_setDir}, 
+    {0,0}
+};
+static swig_lua_attribute swig_opal_Rayr_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_Rayr_bases[] = {0};
+static const char *swig_opal_Rayr_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_Rayr = { "Rayr", &SWIGTYPE_p_opal__Rayr,_wrap_new_Rayr, swig_delete_Rayr, swig_opal_Rayr_methods, swig_opal_Rayr_attributes, swig_opal_Rayr_bases, swig_opal_Rayr_base_names };
+
+static int _wrap_Quaternion_w_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("w",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("w",1,"opal::Quaternion *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("w",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_w_set",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->w = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_w_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("w",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("w",1,"opal::Quaternion *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_w_get",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real) ((arg1)->w);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_x_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("x",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("x",1,"opal::Quaternion *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("x",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_x_set",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->x = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_x_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("x",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("x",1,"opal::Quaternion *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_x_get",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real) ((arg1)->x);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_y_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("y",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("y",1,"opal::Quaternion *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("y",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_y_set",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->y = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_y_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("y",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("y",1,"opal::Quaternion *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_y_get",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real) ((arg1)->y);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_z_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("z",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("z",1,"opal::Quaternion *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("z",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_z_set",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->z = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_z_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("z",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("z",1,"opal::Quaternion *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_z_get",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real) ((arg1)->z);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Quaternion__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *result = 0 ;
+  
+  SWIG_check_num_args("opal::Quaternion",0,0)
+  result = (opal::Quaternion *)new opal::Quaternion();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Quaternion__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real arg1 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::Quaternion *result = 0 ;
+  
+  SWIG_check_num_args("opal::Quaternion",4,4)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::Quaternion",1,"opal::real");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::Quaternion",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("opal::Quaternion",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("opal::Quaternion",4,"opal::real");
+  arg1 = (opal::real)lua_tonumber(L, 1);
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  result = (opal::Quaternion *)new opal::Quaternion(arg1,arg2,arg3,arg4);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Quaternion__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = 0 ;
+  opal::Quaternion *result = 0 ;
+  
+  SWIG_check_num_args("opal::Quaternion",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::Quaternion",1,"opal::Quaternion const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("new_Quaternion",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::Quaternion *)new opal::Quaternion((opal::Quaternion const &)*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Quaternion(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 0) {
+    return _wrap_new_Quaternion__SWIG_0(L);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_new_Quaternion__SWIG_2(L);
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_new_Quaternion__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'new_Quaternion'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::Quaternion()\n"
+    "    opal::Quaternion(opal::real,opal::real,opal::real,opal::real)\n"
+    "    opal::Quaternion(opal::Quaternion const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Quaternion_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  
+  SWIG_check_num_args("set",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Quaternion *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("set",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("set",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("set",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_set",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  (arg1)->set(arg2,arg3,arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_lengthSquared(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("lengthSquared",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lengthSquared",1,"opal::Quaternion const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_lengthSquared",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real)((opal::Quaternion const *)arg1)->lengthSquared();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_length(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("length",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("length",1,"opal::Quaternion const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_length",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real)((opal::Quaternion const *)arg1)->length();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_normalize(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  
+  SWIG_check_num_args("normalize",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("normalize",1,"opal::Quaternion *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_normalize",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  (arg1)->normalize();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_getAngleAxis(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real *arg2 = 0 ;
+  opal::Vec3r *arg3 = 0 ;
+  opal::real temp2 ;
+  
+  SWIG_check_num_args("getAngleAxis",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getAngleAxis",1,"opal::Quaternion const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getAngleAxis",2,"opal::real &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("getAngleAxis",3,"opal::Vec3r &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_getAngleAxis",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  temp2 = (opal::real)lua_tonumber(L,2);
+  arg2 = &temp2; 
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("Quaternion_getAngleAxis",3,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  ((opal::Quaternion const *)arg1)->getAngleAxis(*arg2,*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_getRoll(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getRoll",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getRoll",1,"opal::Quaternion const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_getRoll",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real)((opal::Quaternion const *)arg1)->getRoll();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_getPitch(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getPitch",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getPitch",1,"opal::Quaternion const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_getPitch",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real)((opal::Quaternion const *)arg1)->getPitch();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Quaternion_getYaw(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = (opal::Quaternion *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getYaw",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getYaw",1,"opal::Quaternion const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Quaternion_getYaw",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = (opal::real)((opal::Quaternion const *)arg1)->getYaw();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Quaternion(void *obj) {
+opal::Quaternion *arg1 = (opal::Quaternion *) obj;
+delete arg1;
+}
+static swig_lua_method swig_opal_Quaternion_methods[] = {
+    {"set", _wrap_Quaternion_set}, 
+    {"lengthSquared", _wrap_Quaternion_lengthSquared}, 
+    {"length", _wrap_Quaternion_length}, 
+    {"normalize", _wrap_Quaternion_normalize}, 
+    {"getAngleAxis", _wrap_Quaternion_getAngleAxis}, 
+    {"getRoll", _wrap_Quaternion_getRoll}, 
+    {"getPitch", _wrap_Quaternion_getPitch}, 
+    {"getYaw", _wrap_Quaternion_getYaw}, 
+    {0,0}
+};
+static swig_lua_attribute swig_opal_Quaternion_attributes[] = {
+    { "w", _wrap_Quaternion_w_get, _wrap_Quaternion_w_set},
+    { "x", _wrap_Quaternion_x_get, _wrap_Quaternion_x_set},
+    { "y", _wrap_Quaternion_y_get, _wrap_Quaternion_y_set},
+    { "z", _wrap_Quaternion_z_get, _wrap_Quaternion_z_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_Quaternion_bases[] = {0};
+static const char *swig_opal_Quaternion_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_Quaternion = { "Quaternion", &SWIGTYPE_p_opal__Quaternion,_wrap_new_Quaternion, swig_delete_Quaternion, swig_opal_Quaternion_methods, swig_opal_Quaternion_attributes, swig_opal_Quaternion_bases, swig_opal_Quaternion_base_names };
+
+static int _wrap___add__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = 0 ;
+  opal::Quaternion *arg2 = 0 ;
+  opal::Quaternion result;
+  
+  SWIG_check_num_args("opal::operator +",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator +",1,"opal::Quaternion const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator +",2,"opal::Quaternion const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__add",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__add",2,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = opal::operator +((opal::Quaternion const &)*arg1,(opal::Quaternion const &)*arg2);
+  {
+    opal::Quaternion * resultptr = new opal::Quaternion((const opal::Quaternion &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___sub__SWIG_5(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = 0 ;
+  opal::Quaternion *arg2 = 0 ;
+  opal::Quaternion result;
+  
+  SWIG_check_num_args("opal::operator -",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator -",1,"opal::Quaternion const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator -",2,"opal::Quaternion const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__sub",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__sub",2,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = opal::operator -((opal::Quaternion const &)*arg1,(opal::Quaternion const &)*arg2);
+  {
+    opal::Quaternion * resultptr = new opal::Quaternion((const opal::Quaternion &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___eq(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Quaternion *arg1 = 0 ;
+  opal::Quaternion *arg2 = 0 ;
   bool result;
   
-  SWIG_check_num_args("frameEnded",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("frameEnded",1,"Ogre::FrameListener *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("frameEnded",2,"Ogre::FrameEvent const &");
+  SWIG_check_num_args("opal::operator ==",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator ==",1,"opal::Quaternion const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator ==",2,"opal::Quaternion const &");
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameListener,0))){
-    SWIG_fail_ptr("FrameListener_frameEnded",1,SWIGTYPE_p_Ogre__FrameListener);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__eq",1,SWIGTYPE_p_opal__Quaternion);
   }
   
   
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Ogre__FrameEvent,0))){
-    SWIG_fail_ptr("FrameListener_frameEnded",2,SWIGTYPE_p_Ogre__FrameEvent);
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__eq",2,SWIGTYPE_p_opal__Quaternion);
   }
   
-  result = (bool)(arg1)->frameEnded((Ogre::FrameEvent const &)*arg2);
+  result = (bool)opal::operator ==((opal::Quaternion const &)*arg1,(opal::Quaternion const &)*arg2);
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
   return SWIG_arg;
   
@@ -3623,13 +5194,26 @@ fail:
 }
 
 
-static int _wrap_new_FrameListener(lua_State* L) {
+static int _wrap___mul__SWIG_4(lua_State* L) {
   int SWIG_arg = 0;
-  Ogre::FrameListener *result = 0 ;
+  opal::Quaternion *arg1 = 0 ;
+  opal::real arg2 ;
+  opal::Quaternion result;
   
-  SWIG_check_num_args("Ogre::FrameListener::FrameListener",0,0)
-  result = (Ogre::FrameListener *)new Ogre::FrameListener();
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__FrameListener,1); SWIG_arg++; 
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::Quaternion const &");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__mul",1,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  result = opal::operator *((opal::Quaternion const &)*arg1,arg2);
+  {
+    opal::Quaternion * resultptr = new opal::Quaternion((const opal::Quaternion &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++;
+  }
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -3640,21 +5224,5235 @@ fail:
 }
 
 
-static void swig_delete_FrameListener(void *obj) {
-Ogre::FrameListener *arg1 = (Ogre::FrameListener *) obj;
+static int _wrap___mul__SWIG_5(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real arg1 ;
+  opal::Quaternion *arg2 = 0 ;
+  opal::Quaternion result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::real");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Quaternion const &");
+  arg1 = (opal::real)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  result = opal::operator *(arg1,(opal::Quaternion const &)*arg2);
+  {
+    opal::Quaternion * resultptr = new opal::Quaternion((const opal::Quaternion &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___mul__SWIG_6(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Matrix44r *arg2 = 0 ;
+  opal::Matrix44r result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__mul",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = opal::operator *((opal::Matrix44r const &)*arg1,(opal::Matrix44r const &)*arg2);
+  {
+    opal::Matrix44r * resultptr = new opal::Matrix44r((const opal::Matrix44r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___mul__SWIG_7(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__mul",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  result = opal::operator *((opal::Matrix44r const &)*arg1,(opal::Vec3r const &)*arg2);
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___add__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Matrix44r *arg2 = 0 ;
+  opal::Matrix44r result;
+  
+  SWIG_check_num_args("opal::operator +",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator +",1,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator +",2,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__add",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__add",2,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = opal::operator +((opal::Matrix44r const &)*arg1,(opal::Matrix44r const &)*arg2);
+  {
+    opal::Matrix44r * resultptr = new opal::Matrix44r((const opal::Matrix44r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___add(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___add__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___add__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___add__SWIG_2(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___add__SWIG_3(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function '__add'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::operator +(opal::Vec3r const &,opal::Vec3r const &)\n"
+    "    opal::operator +(opal::Point3r const &,opal::Vec3r const &)\n"
+    "    opal::operator +(opal::Quaternion const &,opal::Quaternion const &)\n"
+    "    opal::operator +(opal::Matrix44r const &,opal::Matrix44r const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap___sub__SWIG_6(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Matrix44r *arg2 = 0 ;
+  opal::Matrix44r result;
+  
+  SWIG_check_num_args("opal::operator -",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator -",1,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator -",2,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__sub",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__sub",2,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = opal::operator -((opal::Matrix44r const &)*arg1,(opal::Matrix44r const &)*arg2);
+  {
+    opal::Matrix44r * resultptr = new opal::Matrix44r((const opal::Matrix44r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___sub(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap___sub__SWIG_1(L);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap___sub__SWIG_4(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___sub__SWIG_2(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___sub__SWIG_3(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___sub__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___sub__SWIG_5(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___sub__SWIG_6(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function '__sub'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::operator -(opal::Vec3r const &,opal::Vec3r const &)\n"
+    "    opal::operator -(opal::Vec3r const &)\n"
+    "    opal::operator -(opal::Point3r const &,opal::Vec3r const &)\n"
+    "    opal::operator -(opal::Point3r const &,opal::Point3r const &)\n"
+    "    opal::operator -(opal::Point3r const &)\n"
+    "    opal::operator -(opal::Quaternion const &,opal::Quaternion const &)\n"
+    "    opal::operator -(opal::Matrix44r const &,opal::Matrix44r const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap___mul__SWIG_8(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Point3r *arg2 = 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__mul",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  result = opal::operator *((opal::Matrix44r const &)*arg1,(opal::Point3r const &)*arg2);
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___mul__SWIG_9(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Rayr *arg2 = 0 ;
+  opal::Rayr result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::Matrix44r const &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Rayr const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__mul",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  result = opal::operator *((opal::Matrix44r const &)*arg1,(opal::Rayr const &)*arg2);
+  {
+    opal::Rayr * resultptr = new opal::Rayr((const opal::Rayr &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Rayr,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_inverse(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Matrix44r *arg2 = 0 ;
+  
+  SWIG_check_num_args("opal::inverse",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::inverse",1,"opal::Matrix44r &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::inverse",2,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("inverse",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("inverse",2,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  opal::inverse(*arg1,(opal::Matrix44r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_inverseAffine(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Matrix44r *arg2 = 0 ;
+  
+  SWIG_check_num_args("opal::inverseAffine",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::inverseAffine",1,"opal::Matrix44r &");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::inverseAffine",2,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("inverseAffine",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("inverseAffine",2,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  opal::inverseAffine(*arg1,(opal::Matrix44r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Matrix44r__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Matrix44r",0,0)
+  result = (opal::Matrix44r *)new opal::Matrix44r();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Matrix44r__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = 0 ;
+  opal::Matrix44r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Matrix44r",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("opal::Matrix44r",1,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("new_Matrix44r",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = (opal::Matrix44r *)new opal::Matrix44r((opal::Matrix44r const &)*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Matrix44r__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real arg1 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  opal::real arg6 ;
+  opal::real arg7 ;
+  opal::real arg8 ;
+  opal::real arg9 ;
+  opal::real arg10 ;
+  opal::real arg11 ;
+  opal::real arg12 ;
+  opal::real arg13 ;
+  opal::real arg14 ;
+  opal::real arg15 ;
+  opal::real arg16 ;
+  opal::Matrix44r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Matrix44r",16,16)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::Matrix44r",1,"opal::real");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("opal::Matrix44r",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("opal::Matrix44r",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("opal::Matrix44r",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("opal::Matrix44r",5,"opal::real");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("opal::Matrix44r",6,"opal::real");
+  if(!lua_isnumber(L,7)) SWIG_fail_arg("opal::Matrix44r",7,"opal::real");
+  if(!lua_isnumber(L,8)) SWIG_fail_arg("opal::Matrix44r",8,"opal::real");
+  if(!lua_isnumber(L,9)) SWIG_fail_arg("opal::Matrix44r",9,"opal::real");
+  if(!lua_isnumber(L,10)) SWIG_fail_arg("opal::Matrix44r",10,"opal::real");
+  if(!lua_isnumber(L,11)) SWIG_fail_arg("opal::Matrix44r",11,"opal::real");
+  if(!lua_isnumber(L,12)) SWIG_fail_arg("opal::Matrix44r",12,"opal::real");
+  if(!lua_isnumber(L,13)) SWIG_fail_arg("opal::Matrix44r",13,"opal::real");
+  if(!lua_isnumber(L,14)) SWIG_fail_arg("opal::Matrix44r",14,"opal::real");
+  if(!lua_isnumber(L,15)) SWIG_fail_arg("opal::Matrix44r",15,"opal::real");
+  if(!lua_isnumber(L,16)) SWIG_fail_arg("opal::Matrix44r",16,"opal::real");
+  arg1 = (opal::real)lua_tonumber(L, 1);
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  arg6 = (opal::real)lua_tonumber(L, 6);
+  arg7 = (opal::real)lua_tonumber(L, 7);
+  arg8 = (opal::real)lua_tonumber(L, 8);
+  arg9 = (opal::real)lua_tonumber(L, 9);
+  arg10 = (opal::real)lua_tonumber(L, 10);
+  arg11 = (opal::real)lua_tonumber(L, 11);
+  arg12 = (opal::real)lua_tonumber(L, 12);
+  arg13 = (opal::real)lua_tonumber(L, 13);
+  arg14 = (opal::real)lua_tonumber(L, 14);
+  arg15 = (opal::real)lua_tonumber(L, 15);
+  arg16 = (opal::real)lua_tonumber(L, 16);
+  result = (opal::Matrix44r *)new opal::Matrix44r(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Matrix44r__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real *arg1 = (opal::real *) 0 ;
+  opal::real temp1 ;
+  opal::Matrix44r *result = 0 ;
+  
+  SWIG_check_num_args("opal::Matrix44r",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::Matrix44r",1,"opal::real const *");
+  temp1 = (opal::real)lua_tonumber(L,1);
+  arg1 = &temp1; 
+  result = (opal::Matrix44r *)new opal::Matrix44r((opal::real const *)arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++; 
+  lua_pushnumber(L, (lua_Number) *arg1); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_Matrix44r(lua_State* L) {
+  int argc;
+  int argv[17]={
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 0) {
+    return _wrap_new_Matrix44r__SWIG_0(L);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_new_Matrix44r__SWIG_1(L);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_float, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_new_Matrix44r__SWIG_3(L);
+    }
+  }
+  if (argc == 16) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                {
+                  _v = lua_isnumber(L,argv[6]);
+                }
+                if (_v) {
+                  {
+                    _v = lua_isnumber(L,argv[7]);
+                  }
+                  if (_v) {
+                    {
+                      _v = lua_isnumber(L,argv[8]);
+                    }
+                    if (_v) {
+                      {
+                        _v = lua_isnumber(L,argv[9]);
+                      }
+                      if (_v) {
+                        {
+                          _v = lua_isnumber(L,argv[10]);
+                        }
+                        if (_v) {
+                          {
+                            _v = lua_isnumber(L,argv[11]);
+                          }
+                          if (_v) {
+                            {
+                              _v = lua_isnumber(L,argv[12]);
+                            }
+                            if (_v) {
+                              {
+                                _v = lua_isnumber(L,argv[13]);
+                              }
+                              if (_v) {
+                                {
+                                  _v = lua_isnumber(L,argv[14]);
+                                }
+                                if (_v) {
+                                  {
+                                    _v = lua_isnumber(L,argv[15]);
+                                  }
+                                  if (_v) {
+                                    return _wrap_new_Matrix44r__SWIG_2(L);
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'new_Matrix44r'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::Matrix44r()\n"
+    "    opal::Matrix44r(opal::Matrix44r const &)\n"
+    "    opal::Matrix44r(opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real)\n"
+    "    opal::Matrix44r(opal::real const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r_setPosition(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("setPosition",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setPosition",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setPosition",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setPosition",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("setPosition",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_setPosition",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->setPosition(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getPosition(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("getPosition",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getPosition",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getPosition",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = ((opal::Matrix44r const *)arg1)->getPosition();
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getTranslation(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("getTranslation",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getTranslation",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getTranslation",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = ((opal::Matrix44r const *)arg1)->getTranslation();
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_set__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  opal::real arg6 ;
+  opal::real arg7 ;
+  opal::real arg8 ;
+  opal::real arg9 ;
+  opal::real arg10 ;
+  opal::real arg11 ;
+  opal::real arg12 ;
+  opal::real arg13 ;
+  opal::real arg14 ;
+  opal::real arg15 ;
+  opal::real arg16 ;
+  opal::real arg17 ;
+  
+  SWIG_check_num_args("set",17,17)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("set",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("set",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("set",5,"opal::real");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("set",6,"opal::real");
+  if(!lua_isnumber(L,7)) SWIG_fail_arg("set",7,"opal::real");
+  if(!lua_isnumber(L,8)) SWIG_fail_arg("set",8,"opal::real");
+  if(!lua_isnumber(L,9)) SWIG_fail_arg("set",9,"opal::real");
+  if(!lua_isnumber(L,10)) SWIG_fail_arg("set",10,"opal::real");
+  if(!lua_isnumber(L,11)) SWIG_fail_arg("set",11,"opal::real");
+  if(!lua_isnumber(L,12)) SWIG_fail_arg("set",12,"opal::real");
+  if(!lua_isnumber(L,13)) SWIG_fail_arg("set",13,"opal::real");
+  if(!lua_isnumber(L,14)) SWIG_fail_arg("set",14,"opal::real");
+  if(!lua_isnumber(L,15)) SWIG_fail_arg("set",15,"opal::real");
+  if(!lua_isnumber(L,16)) SWIG_fail_arg("set",16,"opal::real");
+  if(!lua_isnumber(L,17)) SWIG_fail_arg("set",17,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_set",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  arg6 = (opal::real)lua_tonumber(L, 6);
+  arg7 = (opal::real)lua_tonumber(L, 7);
+  arg8 = (opal::real)lua_tonumber(L, 8);
+  arg9 = (opal::real)lua_tonumber(L, 9);
+  arg10 = (opal::real)lua_tonumber(L, 10);
+  arg11 = (opal::real)lua_tonumber(L, 11);
+  arg12 = (opal::real)lua_tonumber(L, 12);
+  arg13 = (opal::real)lua_tonumber(L, 13);
+  arg14 = (opal::real)lua_tonumber(L, 14);
+  arg15 = (opal::real)lua_tonumber(L, 15);
+  arg16 = (opal::real)lua_tonumber(L, 16);
+  arg17 = (opal::real)lua_tonumber(L, 17);
+  (arg1)->set(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12,arg13,arg14,arg15,arg16,arg17);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_set__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real *arg2 = (opal::real *) 0 ;
+  opal::real temp2 ;
+  
+  SWIG_check_num_args("set",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("set",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("set",2,"opal::real const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_set",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  temp2 = (opal::real)lua_tonumber(L,2);
+  arg2 = &temp2; 
+  (arg1)->set((opal::real const *)arg2);
+  
+  lua_pushnumber(L, (lua_Number) *arg2); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_set(lua_State* L) {
+  int argc;
+  int argv[18]={
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_float, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_Matrix44r_set__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 17) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                {
+                  _v = lua_isnumber(L,argv[6]);
+                }
+                if (_v) {
+                  {
+                    _v = lua_isnumber(L,argv[7]);
+                  }
+                  if (_v) {
+                    {
+                      _v = lua_isnumber(L,argv[8]);
+                    }
+                    if (_v) {
+                      {
+                        _v = lua_isnumber(L,argv[9]);
+                      }
+                      if (_v) {
+                        {
+                          _v = lua_isnumber(L,argv[10]);
+                        }
+                        if (_v) {
+                          {
+                            _v = lua_isnumber(L,argv[11]);
+                          }
+                          if (_v) {
+                            {
+                              _v = lua_isnumber(L,argv[12]);
+                            }
+                            if (_v) {
+                              {
+                                _v = lua_isnumber(L,argv[13]);
+                              }
+                              if (_v) {
+                                {
+                                  _v = lua_isnumber(L,argv[14]);
+                                }
+                                if (_v) {
+                                  {
+                                    _v = lua_isnumber(L,argv[15]);
+                                  }
+                                  if (_v) {
+                                    {
+                                      _v = lua_isnumber(L,argv[16]);
+                                    }
+                                    if (_v) {
+                                      return _wrap_Matrix44r_set__SWIG_0(L);
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Matrix44r_set'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    set(opal::Matrix44r *,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real,opal::real)\n"
+    "    set(opal::Matrix44r *,opal::real const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r_makeZero(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  
+  SWIG_check_num_args("makeZero",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("makeZero",1,"opal::Matrix44r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_makeZero",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->makeZero();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_makeIdentity(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  
+  SWIG_check_num_args("makeIdentity",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("makeIdentity",1,"opal::Matrix44r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_makeIdentity",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->makeIdentity();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_makeScale__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("makeScale",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("makeScale",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("makeScale",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_makeScale",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->makeScale(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_makeScale__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("makeScale",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("makeScale",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("makeScale",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("makeScale",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("makeScale",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_makeScale",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->makeScale(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_makeScale(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_Matrix44r_makeScale__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_Matrix44r_makeScale__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Matrix44r_makeScale'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    makeScale(opal::Matrix44r *,opal::real)\n"
+    "    makeScale(opal::Matrix44r *,opal::real,opal::real,opal::real)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r_makeRotation(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  
+  SWIG_check_num_args("makeRotation",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("makeRotation",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("makeRotation",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("makeRotation",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("makeRotation",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("makeRotation",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_makeRotation",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  (arg1)->makeRotation(arg2,arg3,arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_setQuaternion__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  
+  SWIG_check_num_args("setQuaternion",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setQuaternion",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setQuaternion",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setQuaternion",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("setQuaternion",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("setQuaternion",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_setQuaternion",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  (arg1)->setQuaternion(arg2,arg3,arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_setQuaternion__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Quaternion *arg2 = 0 ;
+  
+  SWIG_check_num_args("setQuaternion",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setQuaternion",1,"opal::Matrix44r *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setQuaternion",2,"opal::Quaternion const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_setQuaternion",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Quaternion,0))){
+    SWIG_fail_ptr("Matrix44r_setQuaternion",2,SWIGTYPE_p_opal__Quaternion);
+  }
+  
+  (arg1)->setQuaternion((opal::Quaternion const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_setQuaternion(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_Matrix44r_setQuaternion__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_Matrix44r_setQuaternion__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Matrix44r_setQuaternion'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    setQuaternion(opal::Matrix44r *,opal::real,opal::real,opal::real,opal::real)\n"
+    "    setQuaternion(opal::Matrix44r *,opal::Quaternion const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r_setRotation(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  
+  SWIG_check_num_args("setRotation",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setRotation",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setRotation",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setRotation",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("setRotation",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("setRotation",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_setRotation",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  (arg1)->setRotation(arg2,arg3,arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_makeTranslation(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("makeTranslation",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("makeTranslation",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("makeTranslation",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("makeTranslation",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("makeTranslation",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_makeTranslation",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->makeTranslation(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_scale__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("scale",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("scale",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("scale",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_scale",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->scale(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_scale__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("scale",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("scale",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("scale",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("scale",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("scale",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_scale",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->scale(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_scale(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_Matrix44r_scale__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_Matrix44r_scale__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Matrix44r_scale'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    scale(opal::Matrix44r *,opal::real)\n"
+    "    scale(opal::Matrix44r *,opal::real,opal::real,opal::real)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r_getQuaternion(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Quaternion result;
+  
+  SWIG_check_num_args("getQuaternion",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getQuaternion",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getQuaternion",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = ((opal::Matrix44r const *)arg1)->getQuaternion();
+  {
+    opal::Quaternion * resultptr = new opal::Quaternion((const opal::Quaternion &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Quaternion,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getEulerXYZ(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("getEulerXYZ",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getEulerXYZ",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getEulerXYZ",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = ((opal::Matrix44r const *)arg1)->getEulerXYZ();
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_preScale__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("preScale",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("preScale",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("preScale",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_preScale",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->preScale(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_preScale__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("preScale",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("preScale",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("preScale",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("preScale",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("preScale",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_preScale",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->preScale(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_preScale(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_Matrix44r_preScale__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_Matrix44r_preScale__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Matrix44r_preScale'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    preScale(opal::Matrix44r *,opal::real)\n"
+    "    preScale(opal::Matrix44r *,opal::real,opal::real,opal::real)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r_rotate(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  
+  SWIG_check_num_args("rotate",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rotate",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rotate",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rotate",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rotate",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("rotate",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_rotate",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  (arg1)->rotate(arg2,arg3,arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_preRotate(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  
+  SWIG_check_num_args("preRotate",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("preRotate",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("preRotate",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("preRotate",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("preRotate",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("preRotate",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_preRotate",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  (arg1)->preRotate(arg2,arg3,arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_translate(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("translate",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("translate",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("translate",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("translate",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("translate",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_translate",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->translate(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_preTranslate(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  
+  SWIG_check_num_args("preTranslate",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("preTranslate",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("preTranslate",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("preTranslate",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("preTranslate",4,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_preTranslate",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  (arg1)->preTranslate(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getData__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real *result = 0 ;
+  
+  SWIG_check_num_args("getData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getData",1,"opal::Matrix44r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getData",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = (opal::real *)(arg1)->getData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_float,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getData__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real *result = 0 ;
+  
+  SWIG_check_num_args("getData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getData",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getData",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = (opal::real *)((opal::Matrix44r const *)arg1)->getData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_float,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getData(lua_State* L) {
+  int argc;
+  int argv[2]={
+    1,2
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_Matrix44r_getData__SWIG_0(L);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_Matrix44r_getData__SWIG_1(L);
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Matrix44r_getData'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    getData(opal::Matrix44r *)\n"
+    "    getData(opal::Matrix44r const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r___call__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  opal::real *result = 0 ;
+  
+  SWIG_check_num_args("operator ()",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("operator ()",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("operator ()",2,"unsigned int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("operator ()",3,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r___call",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (unsigned int)lua_tonumber(L, 3);
+  {
+    opal::real &_result_ref = (arg1)->operator ()(arg2,arg3);
+    result = (opal::real *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_float,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r___call__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  opal::real *result = 0 ;
+  
+  SWIG_check_num_args("operator ()",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("operator ()",1,"opal::Matrix44r const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("operator ()",2,"unsigned int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("operator ()",3,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r___call",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (unsigned int)lua_tonumber(L, 3);
+  {
+    opal::real const &_result_ref = ((opal::Matrix44r const *)arg1)->operator ()(arg2,arg3);
+    result = (opal::real *) &_result_ref;
+  }
+  lua_pushnumber(L, (lua_Number) *result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r___call(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_Matrix44r___call__SWIG_0(L);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_Matrix44r___call__SWIG_1(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Matrix44r___call'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    operator ()(opal::Matrix44r *,unsigned int,unsigned int)\n"
+    "    operator ()(opal::Matrix44r const *,unsigned int,unsigned int)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Matrix44r___eq(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Matrix44r *arg2 = 0 ;
+  bool result;
+  
+  SWIG_check_num_args("operator ==",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("operator ==",1,"opal::Matrix44r const *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("operator ==",2,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r___eq",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r___eq",2,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = (bool)((opal::Matrix44r const *)arg1)->operator ==((opal::Matrix44r const &)*arg2);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_swap(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real *arg2 = 0 ;
+  opal::real *arg3 = 0 ;
+  opal::real temp2 ;
+  opal::real temp3 ;
+  
+  SWIG_check_num_args("swap",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("swap",1,"opal::Matrix44r *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("swap",2,"opal::real &");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("swap",3,"opal::real &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_swap",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  temp2 = (opal::real)lua_tonumber(L,2);
+  arg2 = &temp2; 
+  temp3 = (opal::real)lua_tonumber(L,3);
+  arg3 = &temp3; 
+  (arg1)->swap(*arg2,*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_transpose(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  
+  SWIG_check_num_args("transpose",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("transpose",1,"opal::Matrix44r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_transpose",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->transpose();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_isAffine(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("isAffine",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isAffine",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_isAffine",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = (bool)((opal::Matrix44r const *)arg1)->isAffine();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_determinant(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("determinant",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("determinant",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_determinant",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = (opal::real)((opal::Matrix44r const *)arg1)->determinant();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_determinantAffine(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("determinantAffine",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("determinantAffine",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_determinantAffine",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = (opal::real)((opal::Matrix44r const *)arg1)->determinantAffine();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_invert(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  
+  SWIG_check_num_args("invert",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("invert",1,"opal::Matrix44r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_invert",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->invert();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_invertAffine(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  
+  SWIG_check_num_args("invertAffine",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("invertAffine",1,"opal::Matrix44r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_invertAffine",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->invertAffine();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getForward(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("getForward",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getForward",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getForward",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = ((opal::Matrix44r const *)arg1)->getForward();
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getUp(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("getUp",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getUp",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getUp",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = ((opal::Matrix44r const *)arg1)->getUp();
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Matrix44r_getRight(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Matrix44r *arg1 = (opal::Matrix44r *) 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("getRight",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getRight",1,"opal::Matrix44r const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Matrix44r_getRight",1,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  result = ((opal::Matrix44r const *)arg1)->getRight();
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Matrix44r(void *obj) {
+opal::Matrix44r *arg1 = (opal::Matrix44r *) obj;
 delete arg1;
 }
-static swig_lua_method swig_Ogre_FrameListener_methods[] = {
-    {"frameStarted", _wrap_FrameListener_frameStarted}, 
-    {"frameEnded", _wrap_FrameListener_frameEnded}, 
+static swig_lua_method swig_opal_Matrix44r_methods[] = {
+    {"setPosition", _wrap_Matrix44r_setPosition}, 
+    {"getPosition", _wrap_Matrix44r_getPosition}, 
+    {"getTranslation", _wrap_Matrix44r_getTranslation}, 
+    {"set", _wrap_Matrix44r_set}, 
+    {"makeZero", _wrap_Matrix44r_makeZero}, 
+    {"makeIdentity", _wrap_Matrix44r_makeIdentity}, 
+    {"makeScale", _wrap_Matrix44r_makeScale}, 
+    {"makeRotation", _wrap_Matrix44r_makeRotation}, 
+    {"setQuaternion", _wrap_Matrix44r_setQuaternion}, 
+    {"setRotation", _wrap_Matrix44r_setRotation}, 
+    {"makeTranslation", _wrap_Matrix44r_makeTranslation}, 
+    {"scale", _wrap_Matrix44r_scale}, 
+    {"getQuaternion", _wrap_Matrix44r_getQuaternion}, 
+    {"getEulerXYZ", _wrap_Matrix44r_getEulerXYZ}, 
+    {"preScale", _wrap_Matrix44r_preScale}, 
+    {"rotate", _wrap_Matrix44r_rotate}, 
+    {"preRotate", _wrap_Matrix44r_preRotate}, 
+    {"translate", _wrap_Matrix44r_translate}, 
+    {"preTranslate", _wrap_Matrix44r_preTranslate}, 
+    {"getData", _wrap_Matrix44r_getData}, 
+    {"__call", _wrap_Matrix44r___call}, 
+    {"__eq", _wrap_Matrix44r___eq}, 
+    {"swap", _wrap_Matrix44r_swap}, 
+    {"transpose", _wrap_Matrix44r_transpose}, 
+    {"isAffine", _wrap_Matrix44r_isAffine}, 
+    {"determinant", _wrap_Matrix44r_determinant}, 
+    {"determinantAffine", _wrap_Matrix44r_determinantAffine}, 
+    {"invert", _wrap_Matrix44r_invert}, 
+    {"invertAffine", _wrap_Matrix44r_invertAffine}, 
+    {"getForward", _wrap_Matrix44r_getForward}, 
+    {"getUp", _wrap_Matrix44r_getUp}, 
+    {"getRight", _wrap_Matrix44r_getRight}, 
     {0,0}
 };
-static swig_lua_attribute swig_Ogre_FrameListener_attributes[] = {
+static swig_lua_attribute swig_opal_Matrix44r_attributes[] = {
     {0,0,0}
 };
-static swig_lua_class *swig_Ogre_FrameListener_bases[] = {0};
-static const char *swig_Ogre_FrameListener_base_names[] = {0};
-static swig_lua_class _wrap_class_Ogre_FrameListener = { "FrameListener", &SWIGTYPE_p_Ogre__FrameListener,_wrap_new_FrameListener, swig_delete_FrameListener, swig_Ogre_FrameListener_methods, swig_Ogre_FrameListener_attributes, swig_Ogre_FrameListener_bases, swig_Ogre_FrameListener_base_names };
+static swig_lua_class *swig_opal_Matrix44r_bases[] = {0};
+static const char *swig_opal_Matrix44r_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_Matrix44r = { "Matrix44r", &SWIGTYPE_p_opal__Matrix44r,_wrap_new_Matrix44r, swig_delete_Matrix44r, swig_opal_Matrix44r_methods, swig_opal_Matrix44r_attributes, swig_opal_Matrix44r_bases, swig_opal_Matrix44r_base_names };
+
+static int _wrap___mul__SWIG_10(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::real arg1 ;
+  opal::Matrix44r arg2 ;
+  opal::Matrix44r *argp2 ;
+  opal::Matrix44r result;
+  
+  SWIG_check_num_args("opal::operator *",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("opal::operator *",1,"opal::real");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("opal::operator *",2,"opal::Matrix44r");
+  arg1 = (opal::real)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("__mul",2,SWIGTYPE_p_opal__Matrix44r);
+  }
+  arg2 = *argp2;
+  
+  result = opal::operator *(arg1,arg2);
+  {
+    opal::Matrix44r * resultptr = new opal::Matrix44r((const opal::Matrix44r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Matrix44r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap___mul(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_0(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_2(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_4(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_6(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_7(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_8(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Rayr, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_9(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Vec3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Quaternion, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_5(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Point3r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_3(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap___mul__SWIG_10(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function '__mul'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    opal::operator *(opal::Vec3r const &,opal::real)\n"
+    "    opal::operator *(opal::real,opal::Vec3r const &)\n"
+    "    opal::operator *(opal::Point3r const &,opal::real)\n"
+    "    opal::operator *(opal::real,opal::Point3r const &)\n"
+    "    opal::operator *(opal::Quaternion const &,opal::real)\n"
+    "    opal::operator *(opal::real,opal::Quaternion const &)\n"
+    "    opal::operator *(opal::Matrix44r const &,opal::Matrix44r const &)\n"
+    "    opal::operator *(opal::Matrix44r const &,opal::Vec3r const &)\n"
+    "    opal::operator *(opal::Matrix44r const &,opal::Point3r const &)\n"
+    "    opal::operator *(opal::Matrix44r const &,opal::Rayr const &)\n"
+    "    opal::operator *(opal::real,opal::Matrix44r)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_new_SimulatorData(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *result = 0 ;
+  
+  SWIG_check_num_args("opal::SimulatorData",0,0)
+  result = (opal::SimulatorData *)new opal::SimulatorData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__SimulatorData,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_useOctreeInsteadHash_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_num_args("useOctreeInsteadHash",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("useOctreeInsteadHash",1,"opal::SimulatorData *");
+  if(!lua_isboolean(L,2)) SWIG_fail_arg("useOctreeInsteadHash",2,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_useOctreeInsteadHash_set",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  arg2 = (lua_toboolean(L, 2)!=0);
+  if (arg1) (arg1)->useOctreeInsteadHash = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_useOctreeInsteadHash_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("useOctreeInsteadHash",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("useOctreeInsteadHash",1,"opal::SimulatorData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_useOctreeInsteadHash_get",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  result = (bool) ((arg1)->useOctreeInsteadHash);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_worldSize_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  opal::Vec3r *arg2 = (opal::Vec3r *) 0 ;
+  
+  SWIG_check_num_args("worldSize",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("worldSize",1,"opal::SimulatorData *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("worldSize",2,"opal::Vec3r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_worldSize_set",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("SimulatorData_worldSize_set",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  if (arg1) (arg1)->worldSize = *arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_worldSize_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  opal::Vec3r *result = 0 ;
+  
+  SWIG_check_num_args("worldSize",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("worldSize",1,"opal::SimulatorData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_worldSize_get",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  result = (opal::Vec3r *)& ((arg1)->worldSize);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Vec3r,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_worldCenter_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  opal::Vec3r *arg2 = (opal::Vec3r *) 0 ;
+  
+  SWIG_check_num_args("worldCenter",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("worldCenter",1,"opal::SimulatorData *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("worldCenter",2,"opal::Vec3r *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_worldCenter_set",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("SimulatorData_worldCenter_set",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  if (arg1) (arg1)->worldCenter = *arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_worldCenter_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  opal::Vec3r *result = 0 ;
+  
+  SWIG_check_num_args("worldCenter",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("worldCenter",1,"opal::SimulatorData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_worldCenter_get",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  result = (opal::Vec3r *)& ((arg1)->worldCenter);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Vec3r,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_octreeDepth_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("octreeDepth",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("octreeDepth",1,"opal::SimulatorData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("octreeDepth",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_octreeDepth_set",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->octreeDepth = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_octreeDepth_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("octreeDepth",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("octreeDepth",1,"opal::SimulatorData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_octreeDepth_get",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  result = (int) ((arg1)->octreeDepth);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_hashMinLevel_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("hashMinLevel",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("hashMinLevel",1,"opal::SimulatorData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("hashMinLevel",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_hashMinLevel_set",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->hashMinLevel = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_hashMinLevel_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("hashMinLevel",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("hashMinLevel",1,"opal::SimulatorData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_hashMinLevel_get",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  result = (int) ((arg1)->hashMinLevel);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_hashMaxLevel_set(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("hashMaxLevel",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("hashMaxLevel",1,"opal::SimulatorData *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("hashMaxLevel",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_hashMaxLevel_set",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->hashMaxLevel = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_SimulatorData_hashMaxLevel_get(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::SimulatorData *arg1 = (opal::SimulatorData *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("hashMaxLevel",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("hashMaxLevel",1,"opal::SimulatorData *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("SimulatorData_hashMaxLevel_get",1,SWIGTYPE_p_opal__SimulatorData);
+  }
+  
+  result = (int) ((arg1)->hashMaxLevel);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_SimulatorData(void *obj) {
+opal::SimulatorData *arg1 = (opal::SimulatorData *) obj;
+delete arg1;
+}
+static swig_lua_method swig_opal_SimulatorData_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_opal_SimulatorData_attributes[] = {
+    { "useOctreeInsteadHash", _wrap_SimulatorData_useOctreeInsteadHash_get, _wrap_SimulatorData_useOctreeInsteadHash_set},
+    { "worldSize", _wrap_SimulatorData_worldSize_get, _wrap_SimulatorData_worldSize_set},
+    { "worldCenter", _wrap_SimulatorData_worldCenter_get, _wrap_SimulatorData_worldCenter_set},
+    { "octreeDepth", _wrap_SimulatorData_octreeDepth_get, _wrap_SimulatorData_octreeDepth_set},
+    { "hashMinLevel", _wrap_SimulatorData_hashMinLevel_get, _wrap_SimulatorData_hashMinLevel_set},
+    { "hashMaxLevel", _wrap_SimulatorData_hashMaxLevel_get, _wrap_SimulatorData_hashMaxLevel_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_SimulatorData_bases[] = {0};
+static const char *swig_opal_SimulatorData_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_SimulatorData = { "SimulatorData", &SWIGTYPE_p_opal__SimulatorData,_wrap_new_SimulatorData, swig_delete_SimulatorData, swig_opal_SimulatorData_methods, swig_opal_SimulatorData_attributes, swig_opal_SimulatorData_bases, swig_opal_SimulatorData_base_names };
+
+static int _wrap_Simulator_initData(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::SimulatorData arg2 ;
+  opal::SimulatorData *argp2 ;
+  
+  SWIG_check_num_args("initData",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("initData",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("initData",2,"opal::SimulatorData");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_initData",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__SimulatorData,0))){
+    SWIG_fail_ptr("Simulator_initData",2,SWIGTYPE_p_opal__SimulatorData);
+  }
+  arg2 = *argp2;
+  
+  (arg1)->initData(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroy(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  
+  SWIG_check_num_args("destroy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroy",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  (arg1)->destroy();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_simulate(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real arg2 ;
+  bool result;
+  
+  SWIG_check_num_args("simulate",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("simulate",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("simulate",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_simulate",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  result = (bool)(arg1)->simulate(arg2);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setStepSize(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("setStepSize",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setStepSize",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setStepSize",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setStepSize",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->setStepSize(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getStepSize(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getStepSize",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getStepSize",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getStepSize",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::real)(arg1)->getStepSize();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_addPostStepEventHandler(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::PostStepEventHandler *arg2 = (opal::PostStepEventHandler *) 0 ;
+  
+  SWIG_check_num_args("addPostStepEventHandler",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("addPostStepEventHandler",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("addPostStepEventHandler",2,"opal::PostStepEventHandler *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_addPostStepEventHandler",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__PostStepEventHandler,0))){
+    SWIG_fail_ptr("Simulator_addPostStepEventHandler",2,SWIGTYPE_p_opal__PostStepEventHandler);
+  }
+  
+  (arg1)->addPostStepEventHandler(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_removePostStepEventHandler(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::PostStepEventHandler *arg2 = (opal::PostStepEventHandler *) 0 ;
+  
+  SWIG_check_num_args("removePostStepEventHandler",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("removePostStepEventHandler",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("removePostStepEventHandler",2,"opal::PostStepEventHandler *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_removePostStepEventHandler",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__PostStepEventHandler,0))){
+    SWIG_fail_ptr("Simulator_removePostStepEventHandler",2,SWIGTYPE_p_opal__PostStepEventHandler);
+  }
+  
+  (arg1)->removePostStepEventHandler(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getNumPostStepEventHandlers(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  size_t result;
+  
+  SWIG_check_num_args("getNumPostStepEventHandlers",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumPostStepEventHandlers",1,"opal::Simulator const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getNumPostStepEventHandlers",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = ((opal::Simulator const *)arg1)->getNumPostStepEventHandlers();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getPostStepEventHandler(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  opal::PostStepEventHandler *result = 0 ;
+  
+  SWIG_check_num_args("getPostStepEventHandler",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getPostStepEventHandler",1,"opal::Simulator const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getPostStepEventHandler",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getPostStepEventHandler",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (opal::PostStepEventHandler *)((opal::Simulator const *)arg1)->getPostStepEventHandler(arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__PostStepEventHandler,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_addGlobalCollisionEventHandler(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::CollisionEventHandler *arg2 = (opal::CollisionEventHandler *) 0 ;
+  
+  SWIG_check_num_args("addGlobalCollisionEventHandler",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("addGlobalCollisionEventHandler",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("addGlobalCollisionEventHandler",2,"opal::CollisionEventHandler *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_addGlobalCollisionEventHandler",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__CollisionEventHandler,0))){
+    SWIG_fail_ptr("Simulator_addGlobalCollisionEventHandler",2,SWIGTYPE_p_opal__CollisionEventHandler);
+  }
+  
+  (arg1)->addGlobalCollisionEventHandler(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_removeGlobalCollisionEventHandler(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::CollisionEventHandler *arg2 = (opal::CollisionEventHandler *) 0 ;
+  
+  SWIG_check_num_args("removeGlobalCollisionEventHandler",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("removeGlobalCollisionEventHandler",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("removeGlobalCollisionEventHandler",2,"opal::CollisionEventHandler *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_removeGlobalCollisionEventHandler",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__CollisionEventHandler,0))){
+    SWIG_fail_ptr("Simulator_removeGlobalCollisionEventHandler",2,SWIGTYPE_p_opal__CollisionEventHandler);
+  }
+  
+  (arg1)->removeGlobalCollisionEventHandler(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getNumGlobalCollisionEventHandlers(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  size_t result;
+  
+  SWIG_check_num_args("getNumGlobalCollisionEventHandlers",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumGlobalCollisionEventHandlers",1,"opal::Simulator const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getNumGlobalCollisionEventHandlers",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = ((opal::Simulator const *)arg1)->getNumGlobalCollisionEventHandlers();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getGlobalCollisionEventHandler(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  opal::CollisionEventHandler *result = 0 ;
+  
+  SWIG_check_num_args("getGlobalCollisionEventHandler",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getGlobalCollisionEventHandler",1,"opal::Simulator const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getGlobalCollisionEventHandler",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getGlobalCollisionEventHandler",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (opal::CollisionEventHandler *)((opal::Simulator const *)arg1)->getGlobalCollisionEventHandler(arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__CollisionEventHandler,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_instantiateBlueprint__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::BlueprintInstance *arg2 = 0 ;
+  Blueprint *arg3 = 0 ;
+  opal::Matrix44r *arg4 = 0 ;
+  opal::real arg5 ;
+  
+  SWIG_check_num_args("instantiateBlueprint",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("instantiateBlueprint",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("instantiateBlueprint",2,"opal::BlueprintInstance &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("instantiateBlueprint",3,"Blueprint const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("instantiateBlueprint",4,"opal::Matrix44r const &");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("instantiateBlueprint",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__BlueprintInstance,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",2,SWIGTYPE_p_opal__BlueprintInstance);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_Blueprint,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",3,SWIGTYPE_p_Blueprint);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&arg4,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",4,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  (arg1)->instantiateBlueprint(*arg2,(Blueprint const &)*arg3,(opal::Matrix44r const &)*arg4,arg5);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_instantiateBlueprint__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::BlueprintInstance *arg2 = 0 ;
+  Blueprint *arg3 = 0 ;
+  opal::Matrix44r *arg4 = 0 ;
+  
+  SWIG_check_num_args("instantiateBlueprint",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("instantiateBlueprint",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("instantiateBlueprint",2,"opal::BlueprintInstance &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("instantiateBlueprint",3,"Blueprint const &");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("instantiateBlueprint",4,"opal::Matrix44r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__BlueprintInstance,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",2,SWIGTYPE_p_opal__BlueprintInstance);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_Blueprint,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",3,SWIGTYPE_p_Blueprint);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&arg4,SWIGTYPE_p_opal__Matrix44r,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",4,SWIGTYPE_p_opal__Matrix44r);
+  }
+  
+  (arg1)->instantiateBlueprint(*arg2,(Blueprint const &)*arg3,(opal::Matrix44r const &)*arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_instantiateBlueprint__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::BlueprintInstance *arg2 = 0 ;
+  Blueprint *arg3 = 0 ;
+  
+  SWIG_check_num_args("instantiateBlueprint",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("instantiateBlueprint",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("instantiateBlueprint",2,"opal::BlueprintInstance &");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("instantiateBlueprint",3,"Blueprint const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__BlueprintInstance,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",2,SWIGTYPE_p_opal__BlueprintInstance);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_Blueprint,0))){
+    SWIG_fail_ptr("Simulator_instantiateBlueprint",3,SWIGTYPE_p_Blueprint);
+  }
+  
+  (arg1)->instantiateBlueprint(*arg2,(Blueprint const &)*arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_instantiateBlueprint(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Simulator, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__BlueprintInstance, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_Blueprint, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_Simulator_instantiateBlueprint__SWIG_2(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Simulator, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__BlueprintInstance, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_Blueprint, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            return _wrap_Simulator_instantiateBlueprint__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Simulator, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__BlueprintInstance, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (lua_isuserdata(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_Blueprint, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (lua_isuserdata(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, SWIGTYPE_p_opal__Matrix44r, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_Simulator_instantiateBlueprint__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Simulator_instantiateBlueprint'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    instantiateBlueprint(opal::Simulator *,opal::BlueprintInstance &,Blueprint const &,opal::Matrix44r const &,opal::real)\n"
+    "    instantiateBlueprint(opal::Simulator *,opal::BlueprintInstance &,Blueprint const &,opal::Matrix44r const &)\n"
+    "    instantiateBlueprint(opal::Simulator *,opal::BlueprintInstance &,Blueprint const &)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Simulator_setGravity(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  
+  SWIG_check_num_args("setGravity",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setGravity",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setGravity",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setGravity",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("Simulator_setGravity",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  (arg1)->setGravity((opal::Vec3r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getGravity(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::Vec3r result;
+  
+  SWIG_check_num_args("getGravity",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getGravity",1,"opal::Simulator const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getGravity",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = ((opal::Simulator const *)arg1)->getGravity();
+  {
+    opal::Vec3r * resultptr = new opal::Vec3r((const opal::Vec3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Vec3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setSolverAccuracy(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  SolverAccuracyLevel arg2 ;
+  SolverAccuracyLevel *argp2 ;
+  
+  SWIG_check_num_args("setSolverAccuracy",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setSolverAccuracy",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setSolverAccuracy",2,"SolverAccuracyLevel");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setSolverAccuracy",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_SolverAccuracyLevel,0))){
+    SWIG_fail_ptr("Simulator_setSolverAccuracy",2,SWIGTYPE_p_SolverAccuracyLevel);
+  }
+  arg2 = *argp2;
+  
+  (arg1)->setSolverAccuracy(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getSolverAccuracy(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  SolverAccuracyLevel result;
+  
+  SWIG_check_num_args("getSolverAccuracy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getSolverAccuracy",1,"opal::Simulator const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getSolverAccuracy",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = ((opal::Simulator const *)arg1)->getSolverAccuracy();
+  {
+    SolverAccuracyLevel * resultptr = new SolverAccuracyLevel((const SolverAccuracyLevel &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_SolverAccuracyLevel,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setGlobalStability(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("setGlobalStability",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setGlobalStability",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setGlobalStability",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setGlobalStability",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->setGlobalStability(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setMaxCorrectingVel(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("setMaxCorrectingVel",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setMaxCorrectingVel",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setMaxCorrectingVel",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setMaxCorrectingVel",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->setMaxCorrectingVel(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getMaxCorrectingVel(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getMaxCorrectingVel",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getMaxCorrectingVel",1,"opal::Simulator const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getMaxCorrectingVel",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::real)((opal::Simulator const *)arg1)->getMaxCorrectingVel();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setMaxContacts(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  
+  SWIG_check_num_args("setMaxContacts",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setMaxContacts",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setMaxContacts",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setMaxContacts",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  (arg1)->setMaxContacts(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getMaxContacts(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getMaxContacts",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getMaxContacts",1,"opal::Simulator const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getMaxContacts",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (unsigned int)((opal::Simulator const *)arg1)->getMaxContacts();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setUserData(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  void *arg2 = (void *) 0 ;
+  
+  SWIG_check_num_args("setUserData",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setUserData",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("setUserData",2,"void *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setUserData",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2=(void *)SWIG_MustGetPtr(L,2,0,0,2,"Simulator_setUserData");
+  (arg1)->setUserData(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getUserData(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  void *result = 0 ;
+  
+  SWIG_check_num_args("getUserData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getUserData",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getUserData",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (void *)(arg1)->getUserData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_void,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setupContactGroups(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  bool arg4 ;
+  
+  SWIG_check_num_args("setupContactGroups",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setupContactGroups",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setupContactGroups",2,"unsigned int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setupContactGroups",3,"unsigned int");
+  if(!lua_isboolean(L,4)) SWIG_fail_arg("setupContactGroups",4,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setupContactGroups",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (unsigned int)lua_tonumber(L, 3);
+  arg4 = (lua_toboolean(L, 4)!=0);
+  (arg1)->setupContactGroups(arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setupContactGroup(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  bool arg3 ;
+  
+  SWIG_check_num_args("setupContactGroup",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setupContactGroup",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setupContactGroup",2,"unsigned int");
+  if(!lua_isboolean(L,3)) SWIG_fail_arg("setupContactGroup",3,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setupContactGroup",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (lua_toboolean(L, 3)!=0);
+  (arg1)->setupContactGroup(arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_groupsMakeContacts(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  bool result;
+  
+  SWIG_check_num_args("groupsMakeContacts",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("groupsMakeContacts",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("groupsMakeContacts",2,"unsigned int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("groupsMakeContacts",3,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_groupsMakeContacts",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (unsigned int)lua_tonumber(L, 3);
+  result = (bool)(arg1)->groupsMakeContacts(arg2,arg3);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_setStaticSleepingContactsEnabled(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_num_args("setStaticSleepingContactsEnabled",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setStaticSleepingContactsEnabled",1,"opal::Simulator *");
+  if(!lua_isboolean(L,2)) SWIG_fail_arg("setStaticSleepingContactsEnabled",2,"bool");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_setStaticSleepingContactsEnabled",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (lua_toboolean(L, 2)!=0);
+  (arg1)->setStaticSleepingContactsEnabled(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_areStaticSleepingContactsEnabled(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("areStaticSleepingContactsEnabled",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("areStaticSleepingContactsEnabled",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_areStaticSleepingContactsEnabled",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (bool)(arg1)->areStaticSleepingContactsEnabled();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createSolid(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("createSolid",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createSolid",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createSolid",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::Solid *)(arg1)->createSolid();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createPlane__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  Material *arg6 = 0 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("createPlane",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createPlane",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("createPlane",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("createPlane",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("createPlane",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("createPlane",5,"opal::real");
+  if(!lua_isuserdata(L,6)) SWIG_fail_arg("createPlane",6,"Material const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createPlane",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,6,(void**)&arg6,SWIGTYPE_p_Material,0))){
+    SWIG_fail_ptr("Simulator_createPlane",6,SWIGTYPE_p_Material);
+  }
+  
+  result = (opal::Solid *)(arg1)->createPlane(arg2,arg3,arg4,arg5,(Material const &)*arg6);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createPlane__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::real arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("createPlane",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createPlane",1,"opal::Simulator *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("createPlane",2,"opal::real");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("createPlane",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("createPlane",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("createPlane",5,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createPlane",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  result = (opal::Solid *)(arg1)->createPlane(arg2,arg3,arg4,arg5);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createPlane(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Simulator, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_Simulator_createPlane__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_opal__Simulator, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              {
+                void *ptr;
+                if (lua_isuserdata(L,argv[5])==0 || SWIG_ConvertPtr(L,argv[5], (void **) &ptr, SWIGTYPE_p_Material, 0)) {
+                  _v = 0;
+                } else {
+                  _v = 1;
+                }
+              }
+              if (_v) {
+                return _wrap_Simulator_createPlane__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'Simulator_createPlane'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    createPlane(opal::Simulator *,opal::real,opal::real,opal::real,opal::real,Material const &)\n"
+    "    createPlane(opal::Simulator *,opal::real,opal::real,opal::real,opal::real)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_Simulator_getNumSolids(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumSolids",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumSolids",1,"opal::Simulator const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getNumSolids",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (unsigned int)((opal::Simulator const *)arg1)->getNumSolids();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getSolid(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("getSolid",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getSolid",1,"opal::Simulator const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getSolid",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getSolid",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (opal::Solid *)((opal::Simulator const *)arg1)->getSolid(arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroySolid(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::Solid *arg2 = (opal::Solid *) 0 ;
+  
+  SWIG_check_num_args("destroySolid",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroySolid",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("destroySolid",2,"opal::Solid *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroySolid",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Solid,0))){
+    SWIG_fail_ptr("Simulator_destroySolid",2,SWIGTYPE_p_opal__Solid);
+  }
+  
+  (arg1)->destroySolid(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroyAllSolids(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  
+  SWIG_check_num_args("destroyAllSolids",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyAllSolids",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroyAllSolids",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  (arg1)->destroyAllSolids();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createJoint(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  Joint *result = 0 ;
+  
+  SWIG_check_num_args("createJoint",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createJoint",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createJoint",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (Joint *)(arg1)->createJoint();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Joint,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroyJoint(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  Joint *arg2 = (Joint *) 0 ;
+  
+  SWIG_check_num_args("destroyJoint",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyJoint",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("destroyJoint",2,"Joint *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroyJoint",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Joint,0))){
+    SWIG_fail_ptr("Simulator_destroyJoint",2,SWIGTYPE_p_Joint);
+  }
+  
+  (arg1)->destroyJoint(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroyAllJoints(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  
+  SWIG_check_num_args("destroyAllJoints",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyAllJoints",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroyAllJoints",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  (arg1)->destroyAllJoints();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createThrusterMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::ThrusterMotor *result = 0 ;
+  
+  SWIG_check_num_args("createThrusterMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createThrusterMotor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createThrusterMotor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::ThrusterMotor *)(arg1)->createThrusterMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__ThrusterMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createVelocityMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::VelocityMotor *result = 0 ;
+  
+  SWIG_check_num_args("createVelocityMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createVelocityMotor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createVelocityMotor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::VelocityMotor *)(arg1)->createVelocityMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__VelocityMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createGearedMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::GearedMotor *result = 0 ;
+  
+  SWIG_check_num_args("createGearedMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createGearedMotor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createGearedMotor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::GearedMotor *)(arg1)->createGearedMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__GearedMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createServoMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::ServoMotor *result = 0 ;
+  
+  SWIG_check_num_args("createServoMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createServoMotor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createServoMotor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::ServoMotor *)(arg1)->createServoMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__ServoMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createAttractorMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::AttractorMotor *result = 0 ;
+  
+  SWIG_check_num_args("createAttractorMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createAttractorMotor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createAttractorMotor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::AttractorMotor *)(arg1)->createAttractorMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__AttractorMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createSpringMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::SpringMotor *result = 0 ;
+  
+  SWIG_check_num_args("createSpringMotor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createSpringMotor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createSpringMotor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::SpringMotor *)(arg1)->createSpringMotor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__SpringMotor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroyMotor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  Motor *arg2 = (Motor *) 0 ;
+  
+  SWIG_check_num_args("destroyMotor",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyMotor",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("destroyMotor",2,"Motor *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroyMotor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Motor,0))){
+    SWIG_fail_ptr("Simulator_destroyMotor",2,SWIGTYPE_p_Motor);
+  }
+  
+  (arg1)->destroyMotor(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroyAllMotors(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  
+  SWIG_check_num_args("destroyAllMotors",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyAllMotors",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroyAllMotors",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  (arg1)->destroyAllMotors();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createAccelerationSensor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::AccelerationSensor *result = 0 ;
+  
+  SWIG_check_num_args("createAccelerationSensor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createAccelerationSensor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createAccelerationSensor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::AccelerationSensor *)(arg1)->createAccelerationSensor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__AccelerationSensor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createInclineSensor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::InclineSensor *result = 0 ;
+  
+  SWIG_check_num_args("createInclineSensor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createInclineSensor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createInclineSensor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::InclineSensor *)(arg1)->createInclineSensor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__InclineSensor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createRaycastSensor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::RaycastSensor *result = 0 ;
+  
+  SWIG_check_num_args("createRaycastSensor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createRaycastSensor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createRaycastSensor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::RaycastSensor *)(arg1)->createRaycastSensor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__RaycastSensor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createVolumeSensor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::VolumeSensor *result = 0 ;
+  
+  SWIG_check_num_args("createVolumeSensor",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createVolumeSensor",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createVolumeSensor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (opal::VolumeSensor *)(arg1)->createVolumeSensor();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__VolumeSensor,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroySensor(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  Sensor *arg2 = (Sensor *) 0 ;
+  
+  SWIG_check_num_args("destroySensor",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroySensor",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("destroySensor",2,"Sensor *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroySensor",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Sensor,0))){
+    SWIG_fail_ptr("Simulator_destroySensor",2,SWIGTYPE_p_Sensor);
+  }
+  
+  (arg1)->destroySensor(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_destroyAllSensors(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  
+  SWIG_check_num_args("destroyAllSensors",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroyAllSensors",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_destroyAllSensors",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  (arg1)->destroyAllSensors();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_createSpace(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  Space *result = 0 ;
+  
+  SWIG_check_num_args("createSpace",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("createSpace",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_createSpace",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (Space *)(arg1)->createSpace();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Space,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_getRootSpace(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  Space *result = 0 ;
+  
+  SWIG_check_num_args("getRootSpace",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getRootSpace",1,"opal::Simulator *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_getRootSpace",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  result = (Space *)(arg1)->getRootSpace();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Space,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_internal_fireRay(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::Rayr *arg2 = 0 ;
+  opal::real arg3 ;
+  opal::Solid *arg4 = (opal::Solid *) 0 ;
+  unsigned int arg5 ;
+  std::vector< opal::RaycastResult > *result = 0 ;
+  
+  SWIG_check_num_args("internal_fireRay",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("internal_fireRay",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("internal_fireRay",2,"opal::Rayr const &");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("internal_fireRay",3,"opal::real");
+  if(!SWIG_isptrtype(L,4)) SWIG_fail_arg("internal_fireRay",4,"opal::Solid const *");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("internal_fireRay",5,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_internal_fireRay",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Rayr,0))){
+    SWIG_fail_ptr("Simulator_internal_fireRay",2,SWIGTYPE_p_opal__Rayr);
+  }
+  
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&arg4,SWIGTYPE_p_opal__Solid,0))){
+    SWIG_fail_ptr("Simulator_internal_fireRay",4,SWIGTYPE_p_opal__Solid);
+  }
+  
+  arg5 = (unsigned int)lua_tonumber(L, 5);
+  {
+    std::vector< opal::RaycastResult > &_result_ref = (arg1)->internal_fireRay((opal::Rayr const &)*arg2,arg3,(opal::Solid const *)arg4,arg5);
+    result = (std::vector< opal::RaycastResult > *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_std__vectorT_opal__RaycastResult_t,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_internal_queryVolume(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::Solid *arg2 = (opal::Solid *) 0 ;
+  opal::Solid *arg3 = (opal::Solid *) 0 ;
+  opal::VolumeQueryResult *result = 0 ;
+  
+  SWIG_check_num_args("internal_queryVolume",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("internal_queryVolume",1,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("internal_queryVolume",2,"opal::Solid const *");
+  if(!SWIG_isptrtype(L,3)) SWIG_fail_arg("internal_queryVolume",3,"opal::Solid const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_internal_queryVolume",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Solid,0))){
+    SWIG_fail_ptr("Simulator_internal_queryVolume",2,SWIGTYPE_p_opal__Solid);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_opal__Solid,0))){
+    SWIG_fail_ptr("Simulator_internal_queryVolume",3,SWIGTYPE_p_opal__Solid);
+  }
+  
+  {
+    opal::VolumeQueryResult const &_result_ref = (arg1)->internal_queryVolume((opal::Solid const *)arg2,(opal::Solid const *)arg3);
+    result = (opal::VolumeQueryResult *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__VolumeQueryResult,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_internal_getContactGroupFlags(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  unsigned int arg2 ;
+  unsigned long result;
+  
+  SWIG_check_num_args("internal_getContactGroupFlags",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("internal_getContactGroupFlags",1,"opal::Simulator const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("internal_getContactGroupFlags",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_internal_getContactGroupFlags",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (unsigned long)((opal::Simulator const *)arg1)->internal_getContactGroupFlags(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Simulator_internal_recordCollision(lua_State* L) {
+  int SWIG_arg = 0;
+  opal::Simulator *arg1 = (opal::Simulator *) 0 ;
+  opal::CollisionEvent *arg2 = 0 ;
+  
+  SWIG_check_num_args("internal_recordCollision",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("internal_recordCollision",1,"opal::Simulator *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("internal_recordCollision",2,"opal::CollisionEvent const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("Simulator_internal_recordCollision",1,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__CollisionEvent,0))){
+    SWIG_fail_ptr("Simulator_internal_recordCollision",2,SWIGTYPE_p_opal__CollisionEvent);
+  }
+  
+  (arg1)->internal_recordCollision((opal::CollisionEvent const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static swig_lua_method swig_opal_Simulator_methods[] = {
+    {"initData", _wrap_Simulator_initData}, 
+    {"destroy", _wrap_Simulator_destroy}, 
+    {"simulate", _wrap_Simulator_simulate}, 
+    {"setStepSize", _wrap_Simulator_setStepSize}, 
+    {"getStepSize", _wrap_Simulator_getStepSize}, 
+    {"addPostStepEventHandler", _wrap_Simulator_addPostStepEventHandler}, 
+    {"removePostStepEventHandler", _wrap_Simulator_removePostStepEventHandler}, 
+    {"getNumPostStepEventHandlers", _wrap_Simulator_getNumPostStepEventHandlers}, 
+    {"getPostStepEventHandler", _wrap_Simulator_getPostStepEventHandler}, 
+    {"addGlobalCollisionEventHandler", _wrap_Simulator_addGlobalCollisionEventHandler}, 
+    {"removeGlobalCollisionEventHandler", _wrap_Simulator_removeGlobalCollisionEventHandler}, 
+    {"getNumGlobalCollisionEventHandlers", _wrap_Simulator_getNumGlobalCollisionEventHandlers}, 
+    {"getGlobalCollisionEventHandler", _wrap_Simulator_getGlobalCollisionEventHandler}, 
+    {"instantiateBlueprint", _wrap_Simulator_instantiateBlueprint}, 
+    {"setGravity", _wrap_Simulator_setGravity}, 
+    {"getGravity", _wrap_Simulator_getGravity}, 
+    {"setSolverAccuracy", _wrap_Simulator_setSolverAccuracy}, 
+    {"getSolverAccuracy", _wrap_Simulator_getSolverAccuracy}, 
+    {"setGlobalStability", _wrap_Simulator_setGlobalStability}, 
+    {"setMaxCorrectingVel", _wrap_Simulator_setMaxCorrectingVel}, 
+    {"getMaxCorrectingVel", _wrap_Simulator_getMaxCorrectingVel}, 
+    {"setMaxContacts", _wrap_Simulator_setMaxContacts}, 
+    {"getMaxContacts", _wrap_Simulator_getMaxContacts}, 
+    {"setUserData", _wrap_Simulator_setUserData}, 
+    {"getUserData", _wrap_Simulator_getUserData}, 
+    {"setupContactGroups", _wrap_Simulator_setupContactGroups}, 
+    {"setupContactGroup", _wrap_Simulator_setupContactGroup}, 
+    {"groupsMakeContacts", _wrap_Simulator_groupsMakeContacts}, 
+    {"setStaticSleepingContactsEnabled", _wrap_Simulator_setStaticSleepingContactsEnabled}, 
+    {"areStaticSleepingContactsEnabled", _wrap_Simulator_areStaticSleepingContactsEnabled}, 
+    {"createSolid", _wrap_Simulator_createSolid}, 
+    {"createPlane", _wrap_Simulator_createPlane}, 
+    {"getNumSolids", _wrap_Simulator_getNumSolids}, 
+    {"getSolid", _wrap_Simulator_getSolid}, 
+    {"destroySolid", _wrap_Simulator_destroySolid}, 
+    {"destroyAllSolids", _wrap_Simulator_destroyAllSolids}, 
+    {"createJoint", _wrap_Simulator_createJoint}, 
+    {"destroyJoint", _wrap_Simulator_destroyJoint}, 
+    {"destroyAllJoints", _wrap_Simulator_destroyAllJoints}, 
+    {"createThrusterMotor", _wrap_Simulator_createThrusterMotor}, 
+    {"createVelocityMotor", _wrap_Simulator_createVelocityMotor}, 
+    {"createGearedMotor", _wrap_Simulator_createGearedMotor}, 
+    {"createServoMotor", _wrap_Simulator_createServoMotor}, 
+    {"createAttractorMotor", _wrap_Simulator_createAttractorMotor}, 
+    {"createSpringMotor", _wrap_Simulator_createSpringMotor}, 
+    {"destroyMotor", _wrap_Simulator_destroyMotor}, 
+    {"destroyAllMotors", _wrap_Simulator_destroyAllMotors}, 
+    {"createAccelerationSensor", _wrap_Simulator_createAccelerationSensor}, 
+    {"createInclineSensor", _wrap_Simulator_createInclineSensor}, 
+    {"createRaycastSensor", _wrap_Simulator_createRaycastSensor}, 
+    {"createVolumeSensor", _wrap_Simulator_createVolumeSensor}, 
+    {"destroySensor", _wrap_Simulator_destroySensor}, 
+    {"destroyAllSensors", _wrap_Simulator_destroyAllSensors}, 
+    {"createSpace", _wrap_Simulator_createSpace}, 
+    {"getRootSpace", _wrap_Simulator_getRootSpace}, 
+    {"internal_fireRay", _wrap_Simulator_internal_fireRay}, 
+    {"internal_queryVolume", _wrap_Simulator_internal_queryVolume}, 
+    {"internal_getContactGroupFlags", _wrap_Simulator_internal_getContactGroupFlags}, 
+    {"internal_recordCollision", _wrap_Simulator_internal_recordCollision}, 
+    {0,0}
+};
+static swig_lua_attribute swig_opal_Simulator_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_opal_Simulator_bases[] = {0};
+static const char *swig_opal_Simulator_base_names[] = {0};
+static swig_lua_class _wrap_class_opal_Simulator = { "Simulator", &SWIGTYPE_p_opal__Simulator,0,0, swig_opal_Simulator_methods, swig_opal_Simulator_attributes, swig_opal_Simulator_bases, swig_opal_Simulator_base_names };
 
 static int _wrap_VERVE_E_get(lua_State* L) {
   int SWIG_arg = 0;
@@ -6308,6 +13106,234 @@ static swig_lua_class *swig_verve_Agent_bases[] = {0};
 static const char *swig_verve_Agent_base_names[] = {0};
 static swig_lua_class _wrap_class_verve_Agent = { "Agent", &SWIGTYPE_p_verve__Agent,_wrap_new_Agent, swig_delete_Agent, swig_verve_Agent_methods, swig_verve_Agent_attributes, swig_verve_Agent_bases, swig_verve_Agent_base_names };
 
+static int _wrap_FrameEvent_timeSinceLastEvent_set(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
+  Ogre::Real arg2 ;
+  
+  SWIG_check_num_args("timeSinceLastEvent",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastEvent",1,"Ogre::FrameEvent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("timeSinceLastEvent",2,"Ogre::Real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
+    SWIG_fail_ptr("FrameEvent_timeSinceLastEvent_set",1,SWIGTYPE_p_Ogre__FrameEvent);
+  }
+  
+  arg2 = (Ogre::Real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->timeSinceLastEvent = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_FrameEvent_timeSinceLastEvent_get(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
+  Ogre::Real result;
+  
+  SWIG_check_num_args("timeSinceLastEvent",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastEvent",1,"Ogre::FrameEvent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
+    SWIG_fail_ptr("FrameEvent_timeSinceLastEvent_get",1,SWIGTYPE_p_Ogre__FrameEvent);
+  }
+  
+  result = (Ogre::Real) ((arg1)->timeSinceLastEvent);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_FrameEvent_timeSinceLastFrame_set(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
+  Ogre::Real arg2 ;
+  
+  SWIG_check_num_args("timeSinceLastFrame",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastFrame",1,"Ogre::FrameEvent *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("timeSinceLastFrame",2,"Ogre::Real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
+    SWIG_fail_ptr("FrameEvent_timeSinceLastFrame_set",1,SWIGTYPE_p_Ogre__FrameEvent);
+  }
+  
+  arg2 = (Ogre::Real)lua_tonumber(L, 2);
+  if (arg1) (arg1)->timeSinceLastFrame = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_FrameEvent_timeSinceLastFrame_get(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) 0 ;
+  Ogre::Real result;
+  
+  SWIG_check_num_args("timeSinceLastFrame",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("timeSinceLastFrame",1,"Ogre::FrameEvent *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameEvent,0))){
+    SWIG_fail_ptr("FrameEvent_timeSinceLastFrame_get",1,SWIGTYPE_p_Ogre__FrameEvent);
+  }
+  
+  result = (Ogre::Real) ((arg1)->timeSinceLastFrame);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_FrameEvent(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameEvent *result = 0 ;
+  
+  SWIG_check_num_args("Ogre::FrameEvent::FrameEvent",0,0)
+  result = (Ogre::FrameEvent *)new Ogre::FrameEvent();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__FrameEvent,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_FrameEvent(void *obj) {
+Ogre::FrameEvent *arg1 = (Ogre::FrameEvent *) obj;
+delete arg1;
+}
+static swig_lua_method swig_Ogre_FrameEvent_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_Ogre_FrameEvent_attributes[] = {
+    { "timeSinceLastEvent", _wrap_FrameEvent_timeSinceLastEvent_get, _wrap_FrameEvent_timeSinceLastEvent_set},
+    { "timeSinceLastFrame", _wrap_FrameEvent_timeSinceLastFrame_get, _wrap_FrameEvent_timeSinceLastFrame_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_Ogre_FrameEvent_bases[] = {0};
+static const char *swig_Ogre_FrameEvent_base_names[] = {0};
+static swig_lua_class _wrap_class_Ogre_FrameEvent = { "FrameEvent", &SWIGTYPE_p_Ogre__FrameEvent,_wrap_new_FrameEvent, swig_delete_FrameEvent, swig_Ogre_FrameEvent_methods, swig_Ogre_FrameEvent_attributes, swig_Ogre_FrameEvent_bases, swig_Ogre_FrameEvent_base_names };
+
+static int _wrap_FrameListener_frameStarted(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameListener *arg1 = (Ogre::FrameListener *) 0 ;
+  Ogre::FrameEvent *arg2 = 0 ;
+  bool result;
+  
+  SWIG_check_num_args("frameStarted",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("frameStarted",1,"Ogre::FrameListener *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("frameStarted",2,"Ogre::FrameEvent const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameListener,0))){
+    SWIG_fail_ptr("FrameListener_frameStarted",1,SWIGTYPE_p_Ogre__FrameListener);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Ogre__FrameEvent,0))){
+    SWIG_fail_ptr("FrameListener_frameStarted",2,SWIGTYPE_p_Ogre__FrameEvent);
+  }
+  
+  result = (bool)(arg1)->frameStarted((Ogre::FrameEvent const &)*arg2);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_FrameListener_frameEnded(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameListener *arg1 = (Ogre::FrameListener *) 0 ;
+  Ogre::FrameEvent *arg2 = 0 ;
+  bool result;
+  
+  SWIG_check_num_args("frameEnded",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("frameEnded",1,"Ogre::FrameListener *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("frameEnded",2,"Ogre::FrameEvent const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Ogre__FrameListener,0))){
+    SWIG_fail_ptr("FrameListener_frameEnded",1,SWIGTYPE_p_Ogre__FrameListener);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Ogre__FrameEvent,0))){
+    SWIG_fail_ptr("FrameListener_frameEnded",2,SWIGTYPE_p_Ogre__FrameEvent);
+  }
+  
+  result = (bool)(arg1)->frameEnded((Ogre::FrameEvent const &)*arg2);
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_FrameListener(lua_State* L) {
+  int SWIG_arg = 0;
+  Ogre::FrameListener *result = 0 ;
+  
+  SWIG_check_num_args("Ogre::FrameListener::FrameListener",0,0)
+  result = (Ogre::FrameListener *)new Ogre::FrameListener();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__FrameListener,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_FrameListener(void *obj) {
+Ogre::FrameListener *arg1 = (Ogre::FrameListener *) obj;
+delete arg1;
+}
+static swig_lua_method swig_Ogre_FrameListener_methods[] = {
+    {"frameStarted", _wrap_FrameListener_frameStarted}, 
+    {"frameEnded", _wrap_FrameListener_frameEnded}, 
+    {0,0}
+};
+static swig_lua_attribute swig_Ogre_FrameListener_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_Ogre_FrameListener_bases[] = {0};
+static const char *swig_Ogre_FrameListener_base_names[] = {0};
+static swig_lua_class _wrap_class_Ogre_FrameListener = { "FrameListener", &SWIGTYPE_p_Ogre__FrameListener,_wrap_new_FrameListener, swig_delete_FrameListener, swig_Ogre_FrameListener_methods, swig_Ogre_FrameListener_attributes, swig_Ogre_FrameListener_bases, swig_Ogre_FrameListener_base_names };
+
 static int _wrap_new_SimulationEngine(lua_State* L) {
   int SWIG_arg = 0;
   SimulationEngine *result = 0 ;
@@ -6330,24 +13356,18 @@ static int _wrap_SimulationEngine_init__SWIG_0(lua_State* L) {
   SimulationEngine *arg1 = (SimulationEngine *) 0 ;
   PhysicalCamera::Type arg2 ;
   opal::real arg3 ;
-  PhysicalCamera::Type *argp2 ;
   bool result;
   
   SWIG_check_num_args("init",3,3)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"SimulationEngine *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"PhysicalCamera::Type");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("init",2,"PhysicalCamera::Type");
   if(!lua_isnumber(L,3)) SWIG_fail_arg("init",3,"opal::real");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
     SWIG_fail_ptr("SimulationEngine_init",1,SWIGTYPE_p_SimulationEngine);
   }
   
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_PhysicalCamera__Type,0))){
-    SWIG_fail_ptr("SimulationEngine_init",2,SWIGTYPE_p_PhysicalCamera__Type);
-  }
-  arg2 = *argp2;
-  
+  arg2 = (PhysicalCamera::Type)(int)lua_tonumber(L, 2);
   arg3 = (opal::real)lua_tonumber(L, 3);
   result = (bool)(arg1)->init(arg2,arg3);
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
@@ -6365,23 +13385,17 @@ static int _wrap_SimulationEngine_init__SWIG_1(lua_State* L) {
   int SWIG_arg = 0;
   SimulationEngine *arg1 = (SimulationEngine *) 0 ;
   PhysicalCamera::Type arg2 ;
-  PhysicalCamera::Type *argp2 ;
   bool result;
   
   SWIG_check_num_args("init",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"SimulationEngine *");
-  if(!lua_isuserdata(L,2)) SWIG_fail_arg("init",2,"PhysicalCamera::Type");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("init",2,"PhysicalCamera::Type");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_SimulationEngine,0))){
     SWIG_fail_ptr("SimulationEngine_init",1,SWIGTYPE_p_SimulationEngine);
   }
   
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_PhysicalCamera__Type,0))){
-    SWIG_fail_ptr("SimulationEngine_init",2,SWIGTYPE_p_PhysicalCamera__Type);
-  }
-  arg2 = *argp2;
-  
+  arg2 = (PhysicalCamera::Type)(int)lua_tonumber(L, 2);
   result = (bool)(arg1)->init(arg2);
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
   return SWIG_arg;
@@ -6451,12 +13465,7 @@ static int _wrap_SimulationEngine_init(lua_State* L) {
     }
     if (_v) {
       {
-        void *ptr;
-        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_PhysicalCamera__Type, 0)) {
-          _v = 0;
-        } else {
-          _v = 1;
-        }
+        _v = lua_isnumber(L,argv[1]);
       }
       if (_v) {
         return _wrap_SimulationEngine_init__SWIG_1(L);
@@ -6475,12 +13484,7 @@ static int _wrap_SimulationEngine_init(lua_State* L) {
     }
     if (_v) {
       {
-        void *ptr;
-        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_PhysicalCamera__Type, 0)) {
-          _v = 0;
-        } else {
-          _v = 1;
-        }
+        _v = lua_isnumber(L,argv[1]);
       }
       if (_v) {
         {
@@ -8479,6 +15483,1661 @@ static swig_lua_class *swig_Robot_bases[] = {0,0,0};
 static const char *swig_Robot_base_names[] = {"LearningEntity *","Car *",0};
 static swig_lua_class _wrap_class_Robot = { "Robot", &SWIGTYPE_p_Robot,_wrap_new_Robot, swig_delete_Robot, swig_Robot_methods, swig_Robot_attributes, swig_Robot_bases, swig_Robot_base_names };
 
+static int _wrap_new_DataCollection(lua_State* L) {
+  int SWIG_arg = 0;
+  std::string *arg1 = 0 ;
+  unsigned int arg2 ;
+  DataCollection *result = 0 ;
+  
+  SWIG_check_num_args("DataCollection",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("DataCollection",1,"std::string const &");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("DataCollection",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("new_DataCollection",1,SWIGTYPE_p_std__string);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (DataCollection *)new DataCollection((std::string const &)*arg1,arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_DataCollection,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataCollection_storeData(lua_State* L) {
+  int SWIG_arg = 0;
+  DataCollection *arg1 = (DataCollection *) 0 ;
+  unsigned int arg2 ;
+  double arg3 ;
+  
+  SWIG_check_num_args("storeData",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("storeData",1,"DataCollection *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("storeData",2,"unsigned int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("storeData",3,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataCollection,0))){
+    SWIG_fail_ptr("DataCollection_storeData",1,SWIGTYPE_p_DataCollection);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  arg3 = (double)lua_tonumber(L, 3);
+  (arg1)->storeData(arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataCollection_retrieveData(lua_State* L) {
+  int SWIG_arg = 0;
+  DataCollection *arg1 = (DataCollection *) 0 ;
+  unsigned int arg2 ;
+  double result;
+  
+  SWIG_check_num_args("retrieveData",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("retrieveData",1,"DataCollection const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("retrieveData",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataCollection,0))){
+    SWIG_fail_ptr("DataCollection_retrieveData",1,SWIGTYPE_p_DataCollection);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (double)((DataCollection const *)arg1)->retrieveData(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataCollection_getNumRepetitions(lua_State* L) {
+  int SWIG_arg = 0;
+  DataCollection *arg1 = (DataCollection *) 0 ;
+  unsigned int arg2 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumRepetitions",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumRepetitions",1,"DataCollection const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("getNumRepetitions",2,"unsigned int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataCollection,0))){
+    SWIG_fail_ptr("DataCollection_getNumRepetitions",1,SWIGTYPE_p_DataCollection);
+  }
+  
+  arg2 = (unsigned int)lua_tonumber(L, 2);
+  result = (unsigned int)((DataCollection const *)arg1)->getNumRepetitions(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataCollection_getName(lua_State* L) {
+  int SWIG_arg = 0;
+  DataCollection *arg1 = (DataCollection *) 0 ;
+  std::string *result = 0 ;
+  
+  SWIG_check_num_args("getName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getName",1,"DataCollection const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataCollection,0))){
+    SWIG_fail_ptr("DataCollection_getName",1,SWIGTYPE_p_DataCollection);
+  }
+  
+  {
+    std::string const &_result_ref = ((DataCollection const *)arg1)->getName();
+    result = (std::string *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_std__string,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataCollection_getNumEntries(lua_State* L) {
+  int SWIG_arg = 0;
+  DataCollection *arg1 = (DataCollection *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumEntries",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumEntries",1,"DataCollection const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataCollection,0))){
+    SWIG_fail_ptr("DataCollection_getNumEntries",1,SWIGTYPE_p_DataCollection);
+  }
+  
+  result = (unsigned int)((DataCollection const *)arg1)->getNumEntries();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataCollection_getData(lua_State* L) {
+  int SWIG_arg = 0;
+  DataCollection *arg1 = (DataCollection *) 0 ;
+  double *result = 0 ;
+  
+  SWIG_check_num_args("getData",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getData",1,"DataCollection const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataCollection,0))){
+    SWIG_fail_ptr("DataCollection_getData",1,SWIGTYPE_p_DataCollection);
+  }
+  
+  result = (double *)((DataCollection const *)arg1)->getData();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_double,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_DataCollection(void *obj) {
+DataCollection *arg1 = (DataCollection *) obj;
+delete arg1;
+}
+static swig_lua_method swig_DataCollection_methods[] = {
+    {"storeData", _wrap_DataCollection_storeData}, 
+    {"retrieveData", _wrap_DataCollection_retrieveData}, 
+    {"getNumRepetitions", _wrap_DataCollection_getNumRepetitions}, 
+    {"getName", _wrap_DataCollection_getName}, 
+    {"getNumEntries", _wrap_DataCollection_getNumEntries}, 
+    {"getData", _wrap_DataCollection_getData}, 
+    {0,0}
+};
+static swig_lua_attribute swig_DataCollection_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_DataCollection_bases[] = {0};
+static const char *swig_DataCollection_base_names[] = {0};
+static swig_lua_class _wrap_class_DataCollection = { "DataCollection", &SWIGTYPE_p_DataCollection,_wrap_new_DataCollection, swig_delete_DataCollection, swig_DataCollection_methods, swig_DataCollection_attributes, swig_DataCollection_bases, swig_DataCollection_base_names };
+
+static int _wrap_new_DataFile(lua_State* L) {
+  int SWIG_arg = 0;
+  unsigned int arg1 ;
+  DataFile *result = 0 ;
+  
+  SWIG_check_num_args("DataFile",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("DataFile",1,"unsigned int");
+  arg1 = (unsigned int)lua_tonumber(L, 1);
+  result = (DataFile *)new DataFile(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_DataFile,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataFile_storeData(lua_State* L) {
+  int SWIG_arg = 0;
+  DataFile *arg1 = (DataFile *) 0 ;
+  std::string *arg2 = 0 ;
+  unsigned int arg3 ;
+  double arg4 ;
+  
+  SWIG_check_num_args("storeData",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("storeData",1,"DataFile *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("storeData",2,"std::string const &");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("storeData",3,"unsigned int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("storeData",4,"double");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataFile,0))){
+    SWIG_fail_ptr("DataFile_storeData",1,SWIGTYPE_p_DataFile);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("DataFile_storeData",2,SWIGTYPE_p_std__string);
+  }
+  
+  arg3 = (unsigned int)lua_tonumber(L, 3);
+  arg4 = (double)lua_tonumber(L, 4);
+  (arg1)->storeData((std::string const &)*arg2,arg3,arg4);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataFile_getDataCollection(lua_State* L) {
+  int SWIG_arg = 0;
+  DataFile *arg1 = (DataFile *) 0 ;
+  std::string *arg2 = 0 ;
+  DataCollection *result = 0 ;
+  
+  SWIG_check_num_args("getDataCollection",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getDataCollection",1,"DataFile *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("getDataCollection",2,"std::string const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataFile,0))){
+    SWIG_fail_ptr("DataFile_getDataCollection",1,SWIGTYPE_p_DataFile);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("DataFile_getDataCollection",2,SWIGTYPE_p_std__string);
+  }
+  
+  result = (DataCollection *)(arg1)->getDataCollection((std::string const &)*arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_DataCollection,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataFile_getNumEntries(lua_State* L) {
+  int SWIG_arg = 0;
+  DataFile *arg1 = (DataFile *) 0 ;
+  unsigned int result;
+  
+  SWIG_check_num_args("getNumEntries",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getNumEntries",1,"DataFile const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataFile,0))){
+    SWIG_fail_ptr("DataFile_getNumEntries",1,SWIGTYPE_p_DataFile);
+  }
+  
+  result = (unsigned int)((DataFile const *)arg1)->getNumEntries();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_DataFile_printToFile(lua_State* L) {
+  int SWIG_arg = 0;
+  DataFile *arg1 = (DataFile *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  SWIG_check_num_args("printToFile",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("printToFile",1,"DataFile *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("printToFile",2,"std::string const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_DataFile,0))){
+    SWIG_fail_ptr("DataFile_printToFile",1,SWIGTYPE_p_DataFile);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("DataFile_printToFile",2,SWIGTYPE_p_std__string);
+  }
+  
+  (arg1)->printToFile((std::string const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_DataFile(void *obj) {
+DataFile *arg1 = (DataFile *) obj;
+delete arg1;
+}
+static swig_lua_method swig_DataFile_methods[] = {
+    {"storeData", _wrap_DataFile_storeData}, 
+    {"getDataCollection", _wrap_DataFile_getDataCollection}, 
+    {"getNumEntries", _wrap_DataFile_getNumEntries}, 
+    {"printToFile", _wrap_DataFile_printToFile}, 
+    {0,0}
+};
+static swig_lua_attribute swig_DataFile_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_DataFile_bases[] = {0};
+static const char *swig_DataFile_base_names[] = {0};
+static swig_lua_class _wrap_class_DataFile = { "DataFile", &SWIGTYPE_p_DataFile,_wrap_new_DataFile, swig_delete_DataFile, swig_DataFile_methods, swig_DataFile_attributes, swig_DataFile_bases, swig_DataFile_base_names };
+
+static int _wrap_LearningTest_run(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningTest *arg1 = (LearningTest *) 0 ;
+  
+  SWIG_check_num_args("run",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("run",1,"LearningTest *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningTest,0))){
+    SWIG_fail_ptr("LearningTest_run",1,SWIGTYPE_p_LearningTest);
+  }
+  
+  (arg1)->run();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LearningTest_destroy(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningTest *arg1 = (LearningTest *) 0 ;
+  
+  SWIG_check_num_args("destroy",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("destroy",1,"LearningTest *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningTest,0))){
+    SWIG_fail_ptr("LearningTest_destroy",1,SWIGTYPE_p_LearningTest);
+  }
+  
+  (arg1)->destroy();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_LearningTest_getTestName(lua_State* L) {
+  int SWIG_arg = 0;
+  LearningTest *arg1 = (LearningTest *) 0 ;
+  std::string *result = 0 ;
+  
+  SWIG_check_num_args("getTestName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getTestName",1,"LearningTest const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_LearningTest,0))){
+    SWIG_fail_ptr("LearningTest_getTestName",1,SWIGTYPE_p_LearningTest);
+  }
+  
+  {
+    std::string const &_result_ref = ((LearningTest const *)arg1)->getTestName();
+    result = (std::string *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_std__string,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static swig_lua_method swig_LearningTest_methods[] = {
+    {"run", _wrap_LearningTest_run}, 
+    {"destroy", _wrap_LearningTest_destroy}, 
+    {"getTestName", _wrap_LearningTest_getTestName}, 
+    {0,0}
+};
+static swig_lua_attribute swig_LearningTest_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_LearningTest_bases[] = {0};
+static const char *swig_LearningTest_base_names[] = {0};
+static swig_lua_class _wrap_class_LearningTest = { "LearningTest", &SWIGTYPE_p_LearningTest,0,0, swig_LearningTest_methods, swig_LearningTest_attributes, swig_LearningTest_bases, swig_LearningTest_base_names };
+
+static int _wrap_new_PhysicalCamera__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera::Type arg1 ;
+  opal::Simulator *arg2 = (opal::Simulator *) 0 ;
+  Ogre::Camera *arg3 = (Ogre::Camera *) 0 ;
+  opal::real arg4 ;
+  PhysicalCamera *result = 0 ;
+  
+  SWIG_check_num_args("PhysicalCamera",4,4)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("PhysicalCamera",1,"PhysicalCamera::Type");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("PhysicalCamera",2,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,3)) SWIG_fail_arg("PhysicalCamera",3,"Ogre::Camera *");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("PhysicalCamera",4,"opal::real");
+  arg1 = (PhysicalCamera::Type)(int)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("new_PhysicalCamera",2,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_Ogre__Camera,0))){
+    SWIG_fail_ptr("new_PhysicalCamera",3,SWIGTYPE_p_Ogre__Camera);
+  }
+  
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  result = (PhysicalCamera *)new PhysicalCamera(arg1,arg2,arg3,arg4);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_PhysicalCamera,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_PhysicalCamera__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera::Type arg1 ;
+  opal::Simulator *arg2 = (opal::Simulator *) 0 ;
+  Ogre::Camera *arg3 = (Ogre::Camera *) 0 ;
+  PhysicalCamera *result = 0 ;
+  
+  SWIG_check_num_args("PhysicalCamera",3,3)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("PhysicalCamera",1,"PhysicalCamera::Type");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("PhysicalCamera",2,"opal::Simulator *");
+  if(!SWIG_isptrtype(L,3)) SWIG_fail_arg("PhysicalCamera",3,"Ogre::Camera *");
+  arg1 = (PhysicalCamera::Type)(int)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Simulator,0))){
+    SWIG_fail_ptr("new_PhysicalCamera",2,SWIGTYPE_p_opal__Simulator);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_Ogre__Camera,0))){
+    SWIG_fail_ptr("new_PhysicalCamera",3,SWIGTYPE_p_Ogre__Camera);
+  }
+  
+  result = (PhysicalCamera *)new PhysicalCamera(arg1,arg2,arg3);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_PhysicalCamera,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_PhysicalCamera(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Simulator, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (SWIG_isptrtype(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_Ogre__Camera, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_new_PhysicalCamera__SWIG_1(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Simulator, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (SWIG_isptrtype(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_Ogre__Camera, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_new_PhysicalCamera__SWIG_0(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'new_PhysicalCamera'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    PhysicalCamera(PhysicalCamera::Type,opal::Simulator *,Ogre::Camera *,opal::real)\n"
+    "    PhysicalCamera(PhysicalCamera::Type,opal::Simulator *,Ogre::Camera *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_PhysicalCamera_update(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("update",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("update",1,"PhysicalCamera *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("update",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_update",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->update(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_getOgreCamera(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  Ogre::Camera *result = 0 ;
+  
+  SWIG_check_num_args("getOgreCamera",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getOgreCamera",1,"PhysicalCamera const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_getOgreCamera",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  result = (Ogre::Camera *)((PhysicalCamera const *)arg1)->getOgreCamera();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__Camera,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_getOgreSceneNode(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  Ogre::SceneNode *result = 0 ;
+  
+  SWIG_check_num_args("getOgreSceneNode",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getOgreSceneNode",1,"PhysicalCamera const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_getOgreSceneNode",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  result = (Ogre::SceneNode *)((PhysicalCamera const *)arg1)->getOgreSceneNode();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__SceneNode,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_setPosition(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Point3r *arg2 = 0 ;
+  
+  SWIG_check_num_args("setPosition",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setPosition",1,"PhysicalCamera *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setPosition",2,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_setPosition",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("PhysicalCamera_setPosition",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  (arg1)->setPosition((opal::Point3r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_getPosition(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("getPosition",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getPosition",1,"PhysicalCamera const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_getPosition",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  result = ((PhysicalCamera const *)arg1)->getPosition();
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_setTranslateSpeed(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("setTranslateSpeed",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setTranslateSpeed",1,"PhysicalCamera *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setTranslateSpeed",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_setTranslateSpeed",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->setTranslateSpeed(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_setRotateSpeed(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("setRotateSpeed",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setRotateSpeed",1,"PhysicalCamera *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setRotateSpeed",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_setRotateSpeed",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->setRotateSpeed(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_lookAt(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Point3r *arg2 = 0 ;
+  
+  SWIG_check_num_args("lookAt",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("lookAt",1,"PhysicalCamera *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("lookAt",2,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_lookAt",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("PhysicalCamera_lookAt",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  (arg1)->lookAt((opal::Point3r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_setOrbitCenter(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Point3r *arg2 = 0 ;
+  
+  SWIG_check_num_args("setOrbitCenter",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setOrbitCenter",1,"PhysicalCamera *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setOrbitCenter",2,"opal::Point3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_setOrbitCenter",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Point3r,0))){
+    SWIG_fail_ptr("PhysicalCamera_setOrbitCenter",2,SWIGTYPE_p_opal__Point3r);
+  }
+  
+  (arg1)->setOrbitCenter((opal::Point3r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_moveRelative(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  opal::real arg3 ;
+  
+  SWIG_check_num_args("moveRelative",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("moveRelative",1,"PhysicalCamera *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("moveRelative",2,"opal::Vec3r const &");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("moveRelative",3,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_moveRelative",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("PhysicalCamera_moveRelative",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  (arg1)->moveRelative((opal::Vec3r const &)*arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_grasp(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  
+  SWIG_check_num_args("grasp",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("grasp",1,"PhysicalCamera *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_grasp",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  (arg1)->grasp();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_release(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  
+  SWIG_check_num_args("release",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("release",1,"PhysicalCamera *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_release",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  (arg1)->release();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_isGrasping(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("isGrasping",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isGrasping",1,"PhysicalCamera *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_isGrasping",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  result = (bool)(arg1)->isGrasping();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_yawRelative(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("yawRelative",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("yawRelative",1,"PhysicalCamera *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("yawRelative",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_yawRelative",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->yawRelative(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_pitchRelative(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("pitchRelative",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pitchRelative",1,"PhysicalCamera *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pitchRelative",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_pitchRelative",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->pitchRelative(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_setPhysicalGraspOffset(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Vec3r *arg2 = 0 ;
+  
+  SWIG_check_num_args("setPhysicalGraspOffset",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setPhysicalGraspOffset",1,"PhysicalCamera *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setPhysicalGraspOffset",2,"opal::Vec3r const &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_setPhysicalGraspOffset",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Vec3r,0))){
+    SWIG_fail_ptr("PhysicalCamera_setPhysicalGraspOffset",2,SWIGTYPE_p_opal__Vec3r);
+  }
+  
+  (arg1)->setPhysicalGraspOffset((opal::Vec3r const &)*arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_getPhysicalGraspOffset(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Vec3r *result = 0 ;
+  
+  SWIG_check_num_args("getPhysicalGraspOffset",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getPhysicalGraspOffset",1,"PhysicalCamera const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_getPhysicalGraspOffset",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  {
+    opal::Vec3r const &_result_ref = ((PhysicalCamera const *)arg1)->getPhysicalGraspOffset();
+    result = (opal::Vec3r *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Vec3r,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_setGraspingConstants(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::SpringMotorMode arg2 ;
+  opal::real arg3 ;
+  opal::real arg4 ;
+  opal::real arg5 ;
+  opal::real arg6 ;
+  opal::SpringMotorMode *argp2 ;
+  
+  SWIG_check_num_args("setGraspingConstants",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setGraspingConstants",1,"PhysicalCamera *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("setGraspingConstants",2,"opal::SpringMotorMode");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("setGraspingConstants",3,"opal::real");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("setGraspingConstants",4,"opal::real");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("setGraspingConstants",5,"opal::real");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("setGraspingConstants",6,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_setGraspingConstants",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_opal__SpringMotorMode,0))){
+    SWIG_fail_ptr("PhysicalCamera_setGraspingConstants",2,SWIGTYPE_p_opal__SpringMotorMode);
+  }
+  arg2 = *argp2;
+  
+  arg3 = (opal::real)lua_tonumber(L, 3);
+  arg4 = (opal::real)lua_tonumber(L, 4);
+  arg5 = (opal::real)lua_tonumber(L, 5);
+  arg6 = (opal::real)lua_tonumber(L, 6);
+  (arg1)->setGraspingConstants(arg2,arg3,arg4,arg5,arg6);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_getAttachGlobalPos(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("getAttachGlobalPos",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getAttachGlobalPos",1,"PhysicalCamera const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_getAttachGlobalPos",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  result = ((PhysicalCamera const *)arg1)->getAttachGlobalPos();
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_getGraspGlobalPos(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::Point3r result;
+  
+  SWIG_check_num_args("getGraspGlobalPos",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getGraspGlobalPos",1,"PhysicalCamera const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_getGraspGlobalPos",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  result = ((PhysicalCamera const *)arg1)->getGraspGlobalPos();
+  {
+    opal::Point3r * resultptr = new opal::Point3r((const opal::Point3r &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_opal__Point3r,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_setMaxReach(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("setMaxReach",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setMaxReach",1,"PhysicalCamera *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("setMaxReach",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_setMaxReach",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->setMaxReach(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalCamera_getMaxReach(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalCamera *arg1 = (PhysicalCamera *) 0 ;
+  opal::real result;
+  
+  SWIG_check_num_args("getMaxReach",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getMaxReach",1,"PhysicalCamera const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalCamera,0))){
+    SWIG_fail_ptr("PhysicalCamera_getMaxReach",1,SWIGTYPE_p_PhysicalCamera);
+  }
+  
+  result = (opal::real)((PhysicalCamera const *)arg1)->getMaxReach();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_PhysicalCamera(void *obj) {
+PhysicalCamera *arg1 = (PhysicalCamera *) obj;
+delete arg1;
+}
+static swig_lua_method swig_PhysicalCamera_methods[] = {
+    {"update", _wrap_PhysicalCamera_update}, 
+    {"getOgreCamera", _wrap_PhysicalCamera_getOgreCamera}, 
+    {"getOgreSceneNode", _wrap_PhysicalCamera_getOgreSceneNode}, 
+    {"setPosition", _wrap_PhysicalCamera_setPosition}, 
+    {"getPosition", _wrap_PhysicalCamera_getPosition}, 
+    {"setTranslateSpeed", _wrap_PhysicalCamera_setTranslateSpeed}, 
+    {"setRotateSpeed", _wrap_PhysicalCamera_setRotateSpeed}, 
+    {"lookAt", _wrap_PhysicalCamera_lookAt}, 
+    {"setOrbitCenter", _wrap_PhysicalCamera_setOrbitCenter}, 
+    {"moveRelative", _wrap_PhysicalCamera_moveRelative}, 
+    {"grasp", _wrap_PhysicalCamera_grasp}, 
+    {"release", _wrap_PhysicalCamera_release}, 
+    {"isGrasping", _wrap_PhysicalCamera_isGrasping}, 
+    {"yawRelative", _wrap_PhysicalCamera_yawRelative}, 
+    {"pitchRelative", _wrap_PhysicalCamera_pitchRelative}, 
+    {"setPhysicalGraspOffset", _wrap_PhysicalCamera_setPhysicalGraspOffset}, 
+    {"getPhysicalGraspOffset", _wrap_PhysicalCamera_getPhysicalGraspOffset}, 
+    {"setGraspingConstants", _wrap_PhysicalCamera_setGraspingConstants}, 
+    {"getAttachGlobalPos", _wrap_PhysicalCamera_getAttachGlobalPos}, 
+    {"getGraspGlobalPos", _wrap_PhysicalCamera_getGraspGlobalPos}, 
+    {"setMaxReach", _wrap_PhysicalCamera_setMaxReach}, 
+    {"getMaxReach", _wrap_PhysicalCamera_getMaxReach}, 
+    {0,0}
+};
+static swig_lua_attribute swig_PhysicalCamera_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_PhysicalCamera_bases[] = {0};
+static const char *swig_PhysicalCamera_base_names[] = {0};
+static swig_lua_class _wrap_class_PhysicalCamera = { "PhysicalCamera", &SWIGTYPE_p_PhysicalCamera,_wrap_new_PhysicalCamera, swig_delete_PhysicalCamera, swig_PhysicalCamera_methods, swig_PhysicalCamera_attributes, swig_PhysicalCamera_bases, swig_PhysicalCamera_base_names };
+
+static int _wrap_new_PhysicalEntity__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  std::string *arg1 = 0 ;
+  Ogre::SceneNode *arg2 = (Ogre::SceneNode *) 0 ;
+  opal::Solid *arg3 = (opal::Solid *) 0 ;
+  PhysicalEntity *result = 0 ;
+  
+  SWIG_check_num_args("PhysicalEntity",3,3)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("PhysicalEntity",1,"std::string const &");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("PhysicalEntity",2,"Ogre::SceneNode *");
+  if(!SWIG_isptrtype(L,3)) SWIG_fail_arg("PhysicalEntity",3,"opal::Solid *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("new_PhysicalEntity",1,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_Ogre__SceneNode,0))){
+    SWIG_fail_ptr("new_PhysicalEntity",2,SWIGTYPE_p_Ogre__SceneNode);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_opal__Solid,0))){
+    SWIG_fail_ptr("new_PhysicalEntity",3,SWIGTYPE_p_opal__Solid);
+  }
+  
+  result = (PhysicalEntity *)new PhysicalEntity((std::string const &)*arg1,arg2,arg3);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_PhysicalEntity,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_PhysicalEntity__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  std::string *arg1 = 0 ;
+  opal::Solid *arg2 = (opal::Solid *) 0 ;
+  PhysicalEntity *result = 0 ;
+  
+  SWIG_check_num_args("PhysicalEntity",2,2)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("PhysicalEntity",1,"std::string const &");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("PhysicalEntity",2,"opal::Solid *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_std__string,0))){
+    SWIG_fail_ptr("new_PhysicalEntity",1,SWIGTYPE_p_std__string);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_opal__Solid,0))){
+    SWIG_fail_ptr("new_PhysicalEntity",2,SWIGTYPE_p_opal__Solid);
+  }
+  
+  result = (PhysicalEntity *)new PhysicalEntity((std::string const &)*arg1,arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_PhysicalEntity,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_PhysicalEntity(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_opal__Solid, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_new_PhysicalEntity__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_std__string, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_Ogre__SceneNode, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (SWIG_isptrtype(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_opal__Solid, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_new_PhysicalEntity__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'new_PhysicalEntity'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    PhysicalEntity(std::string const &,Ogre::SceneNode *,opal::Solid *)\n"
+    "    PhysicalEntity(std::string const &,opal::Solid *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_PhysicalEntity_getName(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalEntity *arg1 = (PhysicalEntity *) 0 ;
+  std::string *result = 0 ;
+  
+  SWIG_check_num_args("getName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getName",1,"PhysicalEntity const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalEntity,0))){
+    SWIG_fail_ptr("PhysicalEntity_getName",1,SWIGTYPE_p_PhysicalEntity);
+  }
+  
+  {
+    std::string const &_result_ref = ((PhysicalEntity const *)arg1)->getName();
+    result = (std::string *) &_result_ref;
+  }
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_std__string,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalEntity_isVisual(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalEntity *arg1 = (PhysicalEntity *) 0 ;
+  bool result;
+  
+  SWIG_check_num_args("isVisual",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isVisual",1,"PhysicalEntity const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalEntity,0))){
+    SWIG_fail_ptr("PhysicalEntity_isVisual",1,SWIGTYPE_p_PhysicalEntity);
+  }
+  
+  result = (bool)((PhysicalEntity const *)arg1)->isVisual();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalEntity_update(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalEntity *arg1 = (PhysicalEntity *) 0 ;
+  opal::real arg2 ;
+  
+  SWIG_check_num_args("update",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("update",1,"PhysicalEntity *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("update",2,"opal::real");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalEntity,0))){
+    SWIG_fail_ptr("PhysicalEntity_update",1,SWIGTYPE_p_PhysicalEntity);
+  }
+  
+  arg2 = (opal::real)lua_tonumber(L, 2);
+  (arg1)->update(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalEntity_updateOgreSceneNode(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalEntity *arg1 = (PhysicalEntity *) 0 ;
+  
+  SWIG_check_num_args("updateOgreSceneNode",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("updateOgreSceneNode",1,"PhysicalEntity *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalEntity,0))){
+    SWIG_fail_ptr("PhysicalEntity_updateOgreSceneNode",1,SWIGTYPE_p_PhysicalEntity);
+  }
+  
+  (arg1)->updateOgreSceneNode();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalEntity_getSceneNode(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalEntity *arg1 = (PhysicalEntity *) 0 ;
+  Ogre::SceneNode *result = 0 ;
+  
+  SWIG_check_num_args("getSceneNode",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getSceneNode",1,"PhysicalEntity const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalEntity,0))){
+    SWIG_fail_ptr("PhysicalEntity_getSceneNode",1,SWIGTYPE_p_PhysicalEntity);
+  }
+  
+  result = (Ogre::SceneNode *)((PhysicalEntity const *)arg1)->getSceneNode();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Ogre__SceneNode,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PhysicalEntity_getSolid(lua_State* L) {
+  int SWIG_arg = 0;
+  PhysicalEntity *arg1 = (PhysicalEntity *) 0 ;
+  opal::Solid *result = 0 ;
+  
+  SWIG_check_num_args("getSolid",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getSolid",1,"PhysicalEntity const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_PhysicalEntity,0))){
+    SWIG_fail_ptr("PhysicalEntity_getSolid",1,SWIGTYPE_p_PhysicalEntity);
+  }
+  
+  result = (opal::Solid *)((PhysicalEntity const *)arg1)->getSolid();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_opal__Solid,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_PhysicalEntity(void *obj) {
+PhysicalEntity *arg1 = (PhysicalEntity *) obj;
+delete arg1;
+}
+static swig_lua_method swig_PhysicalEntity_methods[] = {
+    {"getName", _wrap_PhysicalEntity_getName}, 
+    {"isVisual", _wrap_PhysicalEntity_isVisual}, 
+    {"update", _wrap_PhysicalEntity_update}, 
+    {"updateOgreSceneNode", _wrap_PhysicalEntity_updateOgreSceneNode}, 
+    {"getSceneNode", _wrap_PhysicalEntity_getSceneNode}, 
+    {"getSolid", _wrap_PhysicalEntity_getSolid}, 
+    {0,0}
+};
+static swig_lua_attribute swig_PhysicalEntity_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_PhysicalEntity_bases[] = {0};
+static const char *swig_PhysicalEntity_base_names[] = {0};
+static swig_lua_class _wrap_class_PhysicalEntity = { "PhysicalEntity", &SWIGTYPE_p_PhysicalEntity,_wrap_new_PhysicalEntity, swig_delete_PhysicalEntity, swig_PhysicalEntity_methods, swig_PhysicalEntity_attributes, swig_PhysicalEntity_bases, swig_PhysicalEntity_base_names };
+
+static int _wrap_new_Timer(lua_State* L) {
+  int SWIG_arg = 0;
+  Timer *result = 0 ;
+  
+  SWIG_check_num_args("Timer",0,0)
+  result = (Timer *)new Timer();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_Timer,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Timer_reset(lua_State* L) {
+  int SWIG_arg = 0;
+  Timer *arg1 = (Timer *) 0 ;
+  
+  SWIG_check_num_args("reset",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("reset",1,"Timer *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Timer,0))){
+    SWIG_fail_ptr("Timer_reset",1,SWIGTYPE_p_Timer);
+  }
+  
+  (arg1)->reset();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Timer_getTimeMilliseconds(lua_State* L) {
+  int SWIG_arg = 0;
+  Timer *arg1 = (Timer *) 0 ;
+  unsigned long result;
+  
+  SWIG_check_num_args("getTimeMilliseconds",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getTimeMilliseconds",1,"Timer *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Timer,0))){
+    SWIG_fail_ptr("Timer_getTimeMilliseconds",1,SWIGTYPE_p_Timer);
+  }
+  
+  result = (unsigned long)(arg1)->getTimeMilliseconds();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_Timer_getTimeMicroseconds(lua_State* L) {
+  int SWIG_arg = 0;
+  Timer *arg1 = (Timer *) 0 ;
+  unsigned long result;
+  
+  SWIG_check_num_args("getTimeMicroseconds",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("getTimeMicroseconds",1,"Timer *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_Timer,0))){
+    SWIG_fail_ptr("Timer_getTimeMicroseconds",1,SWIGTYPE_p_Timer);
+  }
+  
+  result = (unsigned long)(arg1)->getTimeMicroseconds();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_Timer(void *obj) {
+Timer *arg1 = (Timer *) obj;
+delete arg1;
+}
+static swig_lua_method swig_Timer_methods[] = {
+    {"reset", _wrap_Timer_reset}, 
+    {"getTimeMilliseconds", _wrap_Timer_getTimeMilliseconds}, 
+    {"getTimeMicroseconds", _wrap_Timer_getTimeMicroseconds}, 
+    {0,0}
+};
+static swig_lua_attribute swig_Timer_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_Timer_bases[] = {0};
+static const char *swig_Timer_base_names[] = {0};
+static swig_lua_class _wrap_class_Timer = { "Timer", &SWIGTYPE_p_Timer,_wrap_new_Timer, swig_delete_Timer, swig_Timer_methods, swig_Timer_attributes, swig_Timer_bases, swig_Timer_base_names };
+
 #ifdef __cplusplus
 }
 #endif
@@ -8489,6 +17148,22 @@ static const struct luaL_reg swig_commands[] = {
     { "abs", _wrap_abs},
     { "areEqual", _wrap_areEqual},
     { "normalizeDegrees", _wrap_normalizeDegrees},
+    { "dot", _wrap_dot},
+    { "cross", _wrap_cross},
+    { "project", _wrap_project},
+    { "projectPreNorm", _wrap_projectPreNorm},
+    { "angleBetween", _wrap_angleBetween},
+    { "angleBetweenPreNorm", _wrap_angleBetweenPreNorm},
+    { "areCollinear", _wrap_areCollinear},
+    { "__div",_wrap___div},
+    { "distanceSqr", _wrap_distanceSqr},
+    { "distance", _wrap_distance},
+    { "__eq", _wrap___eq},
+    { "__add",_wrap___add},
+    { "__sub",_wrap___sub},
+    { "inverse", _wrap_inverse},
+    { "inverseAffine", _wrap_inverseAffine},
+    { "__mul",_wrap___mul},
     {0,0}
 };
 
@@ -8513,6 +17188,9 @@ static swig_lua_var_info swig_variables[] = {
 };
 
 static swig_lua_const_info swig_constants[] = {
+{ SWIG_LUA_INT,     (char *)"RL", (long) verve::RL, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"MODEL_RL", (long) verve::MODEL_RL, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"CURIOUS_MODEL_RL", (long) verve::CURIOUS_MODEL_RL, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"OGRE_PLATFORM_WIN32", (long) 1, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"OGRE_PLATFORM_LINUX", (long) 2, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"OGRE_PLATFORM_APPLE", (long) 3, 0, 0, 0},
@@ -8529,18 +17207,24 @@ static swig_lua_const_info swig_constants[] = {
 { SWIG_LUA_STRING,  (char *)"OGRE_PLATFORM_LIB", 0, 0, (void *)"libOgrePlatform.so", 0},
 { SWIG_LUA_INT,     (char *)"OGRE_UNICODE_SUPPORT", (long) 1, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"OGRE_ENDIAN", (long) 1, 0, 0, 0},
-{ SWIG_LUA_INT,     (char *)"RL", (long) verve::RL, 0, 0, 0},
-{ SWIG_LUA_INT,     (char *)"MODEL_RL", (long) verve::MODEL_RL, 0, 0, 0},
-{ SWIG_LUA_INT,     (char *)"CURIOUS_MODEL_RL", (long) verve::CURIOUS_MODEL_RL, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"SimulationEngine_SIMULATE_CONSTANT_CHUNK", (long) SimulationEngine::SIMULATE_CONSTANT_CHUNK, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"SimulationEngine_SIMULATE_REAL_TIME_MULTIPLE", (long) SimulationEngine::SIMULATE_REAL_TIME_MULTIPLE, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"PhysicalCamera_PHYSICAL", (long) PhysicalCamera::PHYSICAL, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"PhysicalCamera_NON_CLIPPING", (long) PhysicalCamera::NON_CLIPPING, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"PhysicalCamera_NON_CLIPPING_ORBIT", (long) PhysicalCamera::NON_CLIPPING_ORBIT, 0, 0, 0},
     {0,0,0,0,0,0}
 };
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_SimulationEngineTo_p_Ogre__FrameListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((Ogre::FrameListener *)  ((SimulationEngine *) x));
+static void *_p_RobotTo_p_Car(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((Car *)  ((Robot *) x));
+}
+static void *_p_RobotTo_p_opal__CollisionEventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((opal::CollisionEventHandler *) (Car *) ((Robot *) x));
+}
+static void *_p_CarTo_p_opal__CollisionEventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((opal::CollisionEventHandler *)  ((Car *) x));
 }
 static void *_p_opal__CollisionEventHandlerTo_p_opal__EventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((opal::EventHandler *)  ((opal::CollisionEventHandler *) x));
@@ -8551,47 +17235,70 @@ static void *_p_RobotTo_p_opal__EventHandler(void *x, int *SWIGUNUSEDPARM(newmem
 static void *_p_CarTo_p_opal__EventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((opal::EventHandler *) (opal::CollisionEventHandler *) ((Car *) x));
 }
-static void *_p_RobotTo_p_opal__CollisionEventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((opal::CollisionEventHandler *) (Car *) ((Robot *) x));
-}
-static void *_p_CarTo_p_opal__CollisionEventHandler(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((opal::CollisionEventHandler *)  ((Car *) x));
-}
-static void *_p_RobotTo_p_Car(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((Car *)  ((Robot *) x));
+static void *_p_SimulationEngineTo_p_Ogre__FrameListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((Ogre::FrameListener *)  ((SimulationEngine *) x));
 }
 static void *_p_RobotTo_p_LearningEntity(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((LearningEntity *)  ((Robot *) x));
 }
 static swig_type_info _swigt__p_AgentVisualDebugger = {"_p_AgentVisualDebugger", "AgentVisualDebugger *", 0, 0, (void*)&_wrap_class_AgentVisualDebugger, 0};
+static swig_type_info _swigt__p_Blueprint = {"_p_Blueprint", "Blueprint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Car = {"_p_Car", "Car *", 0, 0, (void*)&_wrap_class_Car, 0};
+static swig_type_info _swigt__p_DataCollection = {"_p_DataCollection", "DataCollection *", 0, 0, (void*)&_wrap_class_DataCollection, 0};
+static swig_type_info _swigt__p_DataFile = {"_p_DataFile", "DataFile *", 0, 0, (void*)&_wrap_class_DataFile, 0};
+static swig_type_info _swigt__p_Joint = {"_p_Joint", "Joint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_LearningEntity = {"_p_LearningEntity", "LearningEntity *", 0, 0, (void*)&_wrap_class_LearningEntity, 0};
+static swig_type_info _swigt__p_LearningTest = {"_p_LearningTest", "LearningTest *", 0, 0, (void*)&_wrap_class_LearningTest, 0};
+static swig_type_info _swigt__p_Material = {"_p_Material", "Material *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Motor = {"_p_Motor", "Motor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_OIS__Keyboard = {"_p_OIS__Keyboard", "OIS::Keyboard *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_OIS__Mouse = {"_p_OIS__Mouse", "OIS::Mouse *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Ogre__Camera = {"_p_Ogre__Camera", "Ogre::Camera *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Ogre__FrameEvent = {"_p_Ogre__FrameEvent", "Ogre::FrameEvent *", 0, 0, (void*)&_wrap_class_Ogre_FrameEvent, 0};
 static swig_type_info _swigt__p_Ogre__FrameListener = {"_p_Ogre__FrameListener", "Ogre::FrameListener *", 0, 0, (void*)&_wrap_class_Ogre_FrameListener, 0};
 static swig_type_info _swigt__p_Ogre__SceneManager = {"_p_Ogre__SceneManager", "Ogre::SceneManager *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Ogre__SceneNode = {"_p_Ogre__SceneNode", "Ogre::SceneNode *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_PhysicalCamera = {"_p_PhysicalCamera", "PhysicalCamera *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_PhysicalCamera__Type = {"_p_PhysicalCamera__Type", "PhysicalCamera::Type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_PhysicalEntity = {"_p_PhysicalEntity", "PhysicalEntity *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PhysicalCamera = {"_p_PhysicalCamera", "PhysicalCamera *", 0, 0, (void*)&_wrap_class_PhysicalCamera, 0};
+static swig_type_info _swigt__p_PhysicalEntity = {"_p_PhysicalEntity", "PhysicalEntity *", 0, 0, (void*)&_wrap_class_PhysicalEntity, 0};
 static swig_type_info _swigt__p_Point3r = {"_p_Point3r", "Point3r *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Robot = {"_p_Robot", "Robot *", 0, 0, (void*)&_wrap_class_Robot, 0};
+static swig_type_info _swigt__p_Sensor = {"_p_Sensor", "Sensor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SimulationEngine = {"_p_SimulationEngine", "SimulationEngine *", 0, 0, (void*)&_wrap_class_SimulationEngine, 0};
+static swig_type_info _swigt__p_SolverAccuracyLevel = {"_p_SolverAccuracyLevel", "SolverAccuracyLevel *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Space = {"_p_Space", "Space *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Timer = {"_p_Timer", "Timer *", 0, 0, (void*)&_wrap_class_Timer, 0};
 static swig_type_info _swigt__p_Vec3r = {"_p_Vec3r", "Vec3r *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "verve::real *|opal::real *|float *|Ogre::Real *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__AccelerationSensor = {"_p_opal__AccelerationSensor", "opal::AccelerationSensor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__AttractorMotor = {"_p_opal__AttractorMotor", "opal::AttractorMotor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__BlueprintInstance = {"_p_opal__BlueprintInstance", "opal::BlueprintInstance *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_opal__CollisionEvent = {"_p_opal__CollisionEvent", "opal::CollisionEvent *", 0, 0, (void*)&_wrap_class_opal_CollisionEvent, 0};
 static swig_type_info _swigt__p_opal__CollisionEventHandler = {"_p_opal__CollisionEventHandler", "opal::CollisionEventHandler *", 0, 0, (void*)&_wrap_class_opal_CollisionEventHandler, 0};
 static swig_type_info _swigt__p_opal__EventHandler = {"_p_opal__EventHandler", "opal::EventHandler *", 0, 0, (void*)&_wrap_class_opal_EventHandler, 0};
 static swig_type_info _swigt__p_opal__GearedMotor = {"_p_opal__GearedMotor", "opal::GearedMotor *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_opal__Matrix44r = {"_p_opal__Matrix44r", "opal::Matrix44r *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__InclineSensor = {"_p_opal__InclineSensor", "opal::InclineSensor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__Matrix44r = {"_p_opal__Matrix44r", "opal::Matrix44r *", 0, 0, (void*)&_wrap_class_opal_Matrix44r, 0};
 static swig_type_info _swigt__p_opal__Point3r = {"_p_opal__Point3r", "opal::Point3r *", 0, 0, (void*)&_wrap_class_opal_Point3r, 0};
-static swig_type_info _swigt__p_opal__Simulator = {"_p_opal__Simulator", "opal::Simulator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__PostStepEventHandler = {"_p_opal__PostStepEventHandler", "opal::PostStepEventHandler *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__Quaternion = {"_p_opal__Quaternion", "opal::Quaternion *", 0, 0, (void*)&_wrap_class_opal_Quaternion, 0};
+static swig_type_info _swigt__p_opal__RaycastSensor = {"_p_opal__RaycastSensor", "opal::RaycastSensor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__Rayr = {"_p_opal__Rayr", "opal::Rayr *", 0, 0, (void*)&_wrap_class_opal_Rayr, 0};
+static swig_type_info _swigt__p_opal__ServoMotor = {"_p_opal__ServoMotor", "opal::ServoMotor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__Simulator = {"_p_opal__Simulator", "opal::Simulator *", 0, 0, (void*)&_wrap_class_opal_Simulator, 0};
+static swig_type_info _swigt__p_opal__SimulatorData = {"_p_opal__SimulatorData", "opal::SimulatorData *", 0, 0, (void*)&_wrap_class_opal_SimulatorData, 0};
 static swig_type_info _swigt__p_opal__Solid = {"_p_opal__Solid", "opal::Solid *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__SpringMotor = {"_p_opal__SpringMotor", "opal::SpringMotor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__SpringMotorMode = {"_p_opal__SpringMotorMode", "opal::SpringMotorMode *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__ThrusterMotor = {"_p_opal__ThrusterMotor", "opal::ThrusterMotor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_opal__Vec3r = {"_p_opal__Vec3r", "opal::Vec3r *", 0, 0, (void*)&_wrap_class_opal_Vec3r, 0};
+static swig_type_info _swigt__p_opal__VelocityMotor = {"_p_opal__VelocityMotor", "opal::VelocityMotor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__VolumeQueryResult = {"_p_opal__VolumeQueryResult", "opal::VolumeQueryResult *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_opal__VolumeSensor = {"_p_opal__VolumeSensor", "opal::VolumeSensor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_real = {"_p_real", "real *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_opal__RaycastResult_t = {"_p_std__vectorT_opal__RaycastResult_t", "std::vector< opal::RaycastResult > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|Ogre::uint8 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "Ogre::uint32 *|unsigned int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "Ogre::uint16 *|unsigned short *", 0, 0, (void*)0, 0};
@@ -8601,37 +17308,67 @@ static swig_type_info _swigt__p_verve__AgentDescriptor = {"_p_verve__AgentDescri
 static swig_type_info _swigt__p_verve__ContinuousSensorDescriptor = {"_p_verve__ContinuousSensorDescriptor", "verve::ContinuousSensorDescriptor *", 0, 0, (void*)&_wrap_class_verve_ContinuousSensorDescriptor, 0};
 static swig_type_info _swigt__p_verve__DiscreteSensorDescriptor = {"_p_verve__DiscreteSensorDescriptor", "verve::DiscreteSensorDescriptor *", 0, 0, (void*)&_wrap_class_verve_DiscreteSensorDescriptor, 0};
 static swig_type_info _swigt__p_verve__Observation = {"_p_verve__Observation", "verve::Observation *", 0, 0, (void*)&_wrap_class_verve_Observation, 0};
+static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_AgentVisualDebugger,
+  &_swigt__p_Blueprint,
   &_swigt__p_Car,
+  &_swigt__p_DataCollection,
+  &_swigt__p_DataFile,
+  &_swigt__p_Joint,
   &_swigt__p_LearningEntity,
+  &_swigt__p_LearningTest,
+  &_swigt__p_Material,
+  &_swigt__p_Motor,
   &_swigt__p_OIS__Keyboard,
   &_swigt__p_OIS__Mouse,
+  &_swigt__p_Ogre__Camera,
   &_swigt__p_Ogre__FrameEvent,
   &_swigt__p_Ogre__FrameListener,
   &_swigt__p_Ogre__SceneManager,
   &_swigt__p_Ogre__SceneNode,
   &_swigt__p_PhysicalCamera,
-  &_swigt__p_PhysicalCamera__Type,
   &_swigt__p_PhysicalEntity,
   &_swigt__p_Point3r,
   &_swigt__p_Robot,
+  &_swigt__p_Sensor,
   &_swigt__p_SimulationEngine,
+  &_swigt__p_SolverAccuracyLevel,
+  &_swigt__p_Space,
+  &_swigt__p_Timer,
   &_swigt__p_Vec3r,
   &_swigt__p_bool,
+  &_swigt__p_double,
   &_swigt__p_float,
+  &_swigt__p_opal__AccelerationSensor,
+  &_swigt__p_opal__AttractorMotor,
+  &_swigt__p_opal__BlueprintInstance,
   &_swigt__p_opal__CollisionEvent,
   &_swigt__p_opal__CollisionEventHandler,
   &_swigt__p_opal__EventHandler,
   &_swigt__p_opal__GearedMotor,
+  &_swigt__p_opal__InclineSensor,
   &_swigt__p_opal__Matrix44r,
   &_swigt__p_opal__Point3r,
+  &_swigt__p_opal__PostStepEventHandler,
+  &_swigt__p_opal__Quaternion,
+  &_swigt__p_opal__RaycastSensor,
+  &_swigt__p_opal__Rayr,
+  &_swigt__p_opal__ServoMotor,
   &_swigt__p_opal__Simulator,
+  &_swigt__p_opal__SimulatorData,
   &_swigt__p_opal__Solid,
+  &_swigt__p_opal__SpringMotor,
+  &_swigt__p_opal__SpringMotorMode,
+  &_swigt__p_opal__ThrusterMotor,
   &_swigt__p_opal__Vec3r,
+  &_swigt__p_opal__VelocityMotor,
+  &_swigt__p_opal__VolumeQueryResult,
+  &_swigt__p_opal__VolumeSensor,
   &_swigt__p_real,
   &_swigt__p_std__string,
+  &_swigt__p_std__vectorT_opal__RaycastResult_t,
   &_swigt__p_unsigned_char,
   &_swigt__p_unsigned_int,
   &_swigt__p_unsigned_short,
@@ -8641,37 +17378,67 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_verve__ContinuousSensorDescriptor,
   &_swigt__p_verve__DiscreteSensorDescriptor,
   &_swigt__p_verve__Observation,
+  &_swigt__p_void,
 };
 
 static swig_cast_info _swigc__p_AgentVisualDebugger[] = {  {&_swigt__p_AgentVisualDebugger, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Blueprint[] = {  {&_swigt__p_Blueprint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Car[] = {  {&_swigt__p_Car, 0, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_Car, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DataCollection[] = {  {&_swigt__p_DataCollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DataFile[] = {  {&_swigt__p_DataFile, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Joint[] = {  {&_swigt__p_Joint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LearningEntity[] = {  {&_swigt__p_LearningEntity, 0, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_LearningEntity, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LearningTest[] = {  {&_swigt__p_LearningTest, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Material[] = {  {&_swigt__p_Material, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Motor[] = {  {&_swigt__p_Motor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_OIS__Keyboard[] = {  {&_swigt__p_OIS__Keyboard, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_OIS__Mouse[] = {  {&_swigt__p_OIS__Mouse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Ogre__Camera[] = {  {&_swigt__p_Ogre__Camera, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Ogre__FrameEvent[] = {  {&_swigt__p_Ogre__FrameEvent, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Ogre__FrameListener[] = {  {&_swigt__p_SimulationEngine, _p_SimulationEngineTo_p_Ogre__FrameListener, 0, 0},  {&_swigt__p_Ogre__FrameListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Ogre__SceneManager[] = {  {&_swigt__p_Ogre__SceneManager, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Ogre__SceneNode[] = {  {&_swigt__p_Ogre__SceneNode, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PhysicalCamera[] = {  {&_swigt__p_PhysicalCamera, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_PhysicalCamera__Type[] = {  {&_swigt__p_PhysicalCamera__Type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PhysicalEntity[] = {  {&_swigt__p_PhysicalEntity, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Point3r[] = {  {&_swigt__p_Point3r, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Robot[] = {  {&_swigt__p_Robot, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Sensor[] = {  {&_swigt__p_Sensor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SimulationEngine[] = {  {&_swigt__p_SimulationEngine, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SolverAccuracyLevel[] = {  {&_swigt__p_SolverAccuracyLevel, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Space[] = {  {&_swigt__p_Space, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Timer[] = {  {&_swigt__p_Timer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Vec3r[] = {  {&_swigt__p_Vec3r, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__AccelerationSensor[] = {  {&_swigt__p_opal__AccelerationSensor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__AttractorMotor[] = {  {&_swigt__p_opal__AttractorMotor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__BlueprintInstance[] = {  {&_swigt__p_opal__BlueprintInstance, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__CollisionEvent[] = {  {&_swigt__p_opal__CollisionEvent, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__CollisionEventHandler[] = {  {&_swigt__p_Car, _p_CarTo_p_opal__CollisionEventHandler, 0, 0},  {&_swigt__p_opal__CollisionEventHandler, 0, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_opal__CollisionEventHandler, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__EventHandler[] = {  {&_swigt__p_Car, _p_CarTo_p_opal__EventHandler, 0, 0},  {&_swigt__p_opal__EventHandler, 0, 0, 0},  {&_swigt__p_opal__CollisionEventHandler, _p_opal__CollisionEventHandlerTo_p_opal__EventHandler, 0, 0},  {&_swigt__p_Robot, _p_RobotTo_p_opal__EventHandler, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__GearedMotor[] = {  {&_swigt__p_opal__GearedMotor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__InclineSensor[] = {  {&_swigt__p_opal__InclineSensor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__Matrix44r[] = {  {&_swigt__p_opal__Matrix44r, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__Point3r[] = {  {&_swigt__p_opal__Point3r, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__PostStepEventHandler[] = {  {&_swigt__p_opal__PostStepEventHandler, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__Quaternion[] = {  {&_swigt__p_opal__Quaternion, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__RaycastSensor[] = {  {&_swigt__p_opal__RaycastSensor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__Rayr[] = {  {&_swigt__p_opal__Rayr, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__ServoMotor[] = {  {&_swigt__p_opal__ServoMotor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__Simulator[] = {  {&_swigt__p_opal__Simulator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__SimulatorData[] = {  {&_swigt__p_opal__SimulatorData, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__Solid[] = {  {&_swigt__p_opal__Solid, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__SpringMotor[] = {  {&_swigt__p_opal__SpringMotor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__SpringMotorMode[] = {  {&_swigt__p_opal__SpringMotorMode, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__ThrusterMotor[] = {  {&_swigt__p_opal__ThrusterMotor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_opal__Vec3r[] = {  {&_swigt__p_opal__Vec3r, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__VelocityMotor[] = {  {&_swigt__p_opal__VelocityMotor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__VolumeQueryResult[] = {  {&_swigt__p_opal__VolumeQueryResult, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_opal__VolumeSensor[] = {  {&_swigt__p_opal__VolumeSensor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_real[] = {  {&_swigt__p_real, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_opal__RaycastResult_t[] = {  {&_swigt__p_std__vectorT_opal__RaycastResult_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
@@ -8681,37 +17448,67 @@ static swig_cast_info _swigc__p_verve__AgentDescriptor[] = {  {&_swigt__p_verve_
 static swig_cast_info _swigc__p_verve__ContinuousSensorDescriptor[] = {  {&_swigt__p_verve__ContinuousSensorDescriptor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_verve__DiscreteSensorDescriptor[] = {  {&_swigt__p_verve__DiscreteSensorDescriptor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_verve__Observation[] = {  {&_swigt__p_verve__Observation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_AgentVisualDebugger,
+  _swigc__p_Blueprint,
   _swigc__p_Car,
+  _swigc__p_DataCollection,
+  _swigc__p_DataFile,
+  _swigc__p_Joint,
   _swigc__p_LearningEntity,
+  _swigc__p_LearningTest,
+  _swigc__p_Material,
+  _swigc__p_Motor,
   _swigc__p_OIS__Keyboard,
   _swigc__p_OIS__Mouse,
+  _swigc__p_Ogre__Camera,
   _swigc__p_Ogre__FrameEvent,
   _swigc__p_Ogre__FrameListener,
   _swigc__p_Ogre__SceneManager,
   _swigc__p_Ogre__SceneNode,
   _swigc__p_PhysicalCamera,
-  _swigc__p_PhysicalCamera__Type,
   _swigc__p_PhysicalEntity,
   _swigc__p_Point3r,
   _swigc__p_Robot,
+  _swigc__p_Sensor,
   _swigc__p_SimulationEngine,
+  _swigc__p_SolverAccuracyLevel,
+  _swigc__p_Space,
+  _swigc__p_Timer,
   _swigc__p_Vec3r,
   _swigc__p_bool,
+  _swigc__p_double,
   _swigc__p_float,
+  _swigc__p_opal__AccelerationSensor,
+  _swigc__p_opal__AttractorMotor,
+  _swigc__p_opal__BlueprintInstance,
   _swigc__p_opal__CollisionEvent,
   _swigc__p_opal__CollisionEventHandler,
   _swigc__p_opal__EventHandler,
   _swigc__p_opal__GearedMotor,
+  _swigc__p_opal__InclineSensor,
   _swigc__p_opal__Matrix44r,
   _swigc__p_opal__Point3r,
+  _swigc__p_opal__PostStepEventHandler,
+  _swigc__p_opal__Quaternion,
+  _swigc__p_opal__RaycastSensor,
+  _swigc__p_opal__Rayr,
+  _swigc__p_opal__ServoMotor,
   _swigc__p_opal__Simulator,
+  _swigc__p_opal__SimulatorData,
   _swigc__p_opal__Solid,
+  _swigc__p_opal__SpringMotor,
+  _swigc__p_opal__SpringMotorMode,
+  _swigc__p_opal__ThrusterMotor,
   _swigc__p_opal__Vec3r,
+  _swigc__p_opal__VelocityMotor,
+  _swigc__p_opal__VolumeQueryResult,
+  _swigc__p_opal__VolumeSensor,
   _swigc__p_real,
   _swigc__p_std__string,
+  _swigc__p_std__vectorT_opal__RaycastResult_t,
   _swigc__p_unsigned_char,
   _swigc__p_unsigned_int,
   _swigc__p_unsigned_short,
@@ -8721,6 +17518,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_verve__ContinuousSensorDescriptor,
   _swigc__p_verve__DiscreteSensorDescriptor,
   _swigc__p_verve__Observation,
+  _swigc__p_void,
 };
 
 

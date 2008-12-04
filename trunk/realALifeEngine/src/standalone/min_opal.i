@@ -27,6 +27,9 @@
 %include "opal/CollisionEventHandler.h"
 %include "opal/OpalMath.h"
 
+%include "opal/Blueprint.h"
+%include "opal/BlueprintInstance.h"
+
 %ignore opal::real;
 
 /*
@@ -230,5 +233,5 @@ namespace opal
     
 }
 
-//%include "opal/Simulator.h"
+%include "opal/Simulator.h"
 
