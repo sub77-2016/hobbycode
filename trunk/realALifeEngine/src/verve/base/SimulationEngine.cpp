@@ -100,6 +100,7 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	#endif
 #endif
 
+	// Only One Scene Graph tree
 	mOgreRoot = mOgreRoot->getSingletonPtr();
 	
 	// Load resource paths from config file.  Go through all sections and 
@@ -1136,31 +1137,19 @@ void SimulationEngine::go(void)
 
 bool SimulationEngine::frameStarted(const FrameEvent& evt)
 {
-	if(mOgreWindow->isClosed())
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	if (mOgreWindow->isClosed())
 	{
-     	return false;
+		mQuitApp = true;
+		return false;
 	}
 
-	//Need to capture/update each device
-	mKeyboard->capture();
-	mMouse->capture();
-	
-	// Check if we should quit looping.
-	if(mKeyboard->isKeyDown(OIS::KC_ESCAPE) 
-		|| mKeyboard->isKeyDown(OIS::KC_Q))
+	if (false == handleInput(0))
 	{
+		mQuitApp = true;
 		return false;
 	}
-	
-	if (processUnbufferedKeyInput(0.05) == false)
-	{
-		return false;
-	}
-	
-	if (processUnbufferedMouseInput(0.05) == false)
-	{
-		return false;
-	}
+#endif
 	
    return true;
 }
