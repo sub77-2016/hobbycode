@@ -25,7 +25,7 @@
 #include <opal/opal.h>
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-#include <ogre/Ogre.h>
+#include <OGRE/Ogre.h>
 #endif
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
