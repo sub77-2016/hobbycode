@@ -62,9 +62,11 @@ class MyApplication : public SimulationEngine
 public:
    MyApplication(void);
    virtual ~MyApplication();
+   virtual void go();
 
 protected:
    virtual void createScene();
+   virtual bool frameStarted(const FrameEvent& evt);
 };
 
 MyApplication::MyApplication()
@@ -88,39 +90,6 @@ void MyApplication::createScene()
 
 	// Make sure we get notified at the end of each step.
 	getSimulator()->addPostStepEventHandler(&gPostStepEventHandler);
-
-	/*
-	// Create the robot.
-	opal::Matrix44r robotTransform;
-	robotTransform.translate(0, 1, 0);
-	gRobot = new Robot(this, 5);
-	gRobot->init("../data/blueprints/robot1.xml", "Plastic/LightBlue", 
-		0.5, robotTransform, 2);
-	gRobot->resetBodyAndCreateNewAgent();
-	gRobot->resetBodyAndSTM();
-	gRobot->randomizeState();
-	gRobot->getFLMotor()->setMaxTorque((opal::real)2);
-	gRobot->getFRMotor()->setMaxTorque((opal::real)2);
-	gRobot->getFLMotor()->setMaxVelocity(1000);
-	gRobot->getFRMotor()->setMaxVelocity(1000);
-
-	// Create the car.
-	opal::Matrix44r carTransform;
-	carTransform.translate(-12, 2, 4);
-	gCar = new Car(this);
-	gCar->init("../data/blueprints/car1.xml", "Plastic/Blue", 1, 
-		carTransform, 1);
-	
-
-	//DataFile dataFile(mNumTrialsPerRun);
-	//updateOverlayData(trial);
-	//mAvgRewardPerStep = 0;
-	//mCurrentTrialTime = 0;
-
-	gAgentDebugger = new AgentVisualDebugger(getSceneManager());
-	gAgentDebugger->setAgent(gRobot->getAgent());
-	gAgentDebugger->setDisplayEnabled(false);
-	*/
 
 	Ogre::OverlayManager::getSingleton().getByName("Verve/Debug")->hide();
 	Ogre::OverlayManager::getSingleton().getByName("Core/DebugOverlay")->hide();
@@ -248,7 +217,123 @@ void MyApplication::createScene()
 	 
 }
 
-	MyApplication gEngine;
+
+bool MyApplication::frameStarted(const FrameEvent& evt)
+{
+	if(mOgreWindow->isClosed())
+	{
+     	return false;
+	}
+
+	//Need to capture/update each device
+	mKeyboard->capture();
+	mMouse->capture();
+	
+	// Check if we should quit looping.
+	if(mKeyboard->isKeyDown(OIS::KC_ESCAPE) 
+		|| mKeyboard->isKeyDown(OIS::KC_Q))
+	{
+		return false;
+	}
+	
+		Ogre::Real elapsedSimTime = 0;
+		Ogre::Real elapsedRealTime = 0;
+		//// 
+		//gEngine.update(elapsedSimTime, elapsedRealTime);
+		////
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	if (mOgreWindow->isClosed())
+	{
+		mQuitApp = true;
+		return false;
+	}
+#endif
+
+	// Get the elapsed time in seconds since the last time we were here.
+	elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
+	mFrameTimer.reset();
+	elapsedSimTime = elapsedRealTime;
+
+
+	if (!mPaused)
+	{
+		switch(mUpdateMode)
+		{
+			case SIMULATE_CONSTANT_CHUNK:
+				// Simulate constant chunks of time at once.  Keep in 
+				// mind that this must finish before continuing, so 
+				// if it takes a while to simulate a single chunk 
+				// of time, the input handling might become unresponsive.
+				elapsedSimTime = mUpdateConstant;
+				break;
+			case SIMULATE_REAL_TIME_MULTIPLE:
+				elapsedSimTime *= mUpdateConstant;
+				break;
+			default:
+				assert(false);
+				break;
+		}
+
+		mSimulator->simulate(elapsedSimTime);
+
+		size_t size = mPhysicalEntityList.size();
+		for(size_t i = 0; i<size; ++i)
+		{
+			mPhysicalEntityList.at(i)->update(elapsedSimTime);
+		}
+
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		mPhysicalCamera->update(elapsedSimTime);
+#endif
+	}
+
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	updatePickingGraphics();
+#endif
+		
+		////
+		handleInput(elapsedRealTime);
+		if (quitApp())
+		{
+			return false;
+		}
+
+		// Update sound effects at 50 Hz.
+		const Ogre::Real soundUpdatePeriod = 0.02;
+		static Ogre::Real soundUpdateTimer = 0;
+		soundUpdateTimer -= elapsedSimTime;
+		if (soundUpdateTimer <= 0)
+		{
+			gRobot->updateSoundEffects(soundUpdatePeriod);
+			gCar->updateSoundEffects(soundUpdatePeriod);
+			soundUpdateTimer = soundUpdatePeriod;
+		}
+
+		gRobot->updateVisuals(elapsedSimTime);
+		updateOverlay();
+		gAgentDebugger->updateVisuals();
+	
+	if (processUnbufferedKeyInput(elapsedRealTime) == false)
+	{
+		return false;
+	}
+	
+	if (processUnbufferedMouseInput(elapsedRealTime) == false)
+	{
+		return false;
+	}
+	
+   return true;
+}
+
+
+void MyApplication::go()
+{
+	mOgreRoot->startRendering();
+}
+
+
+MyApplication gEngine;
 
 
 int main(int argc, char* argv[])
@@ -289,12 +374,12 @@ int main(int argc, char* argv[])
 	///// The rewards received during a single trial, in rewards per step.
 	//verve::real mAvgRewardPerStep;
 
-	/*
+	
 	if (!gEngine.init())
 	{
 		return 0;
 	}
-	*/
+	
 
 	/*
 	gEngine.setUpdateMode(SimulationEngine::SIMULATE_REAL_TIME_MULTIPLE, 1);
@@ -312,7 +397,8 @@ int main(int argc, char* argv[])
 	gEngine.getSimulator()->addPostStepEventHandler(&gPostStepEventHandler);
 
 	*/
-	/*
+	
+	
 	// Create the robot.
 	opal::Matrix44r robotTransform;
 	robotTransform.translate(0, 1, 0);
@@ -333,16 +419,17 @@ int main(int argc, char* argv[])
 	gCar = new Car(gEngine);
 	gCar->init("../data/blueprints/car1.xml", "Plastic/Blue", 1, 
 		carTransform, 1);
+	
 
 	//DataFile dataFile(mNumTrialsPerRun);
 	//updateOverlayData(trial);
 	//mAvgRewardPerStep = 0;
 	//mCurrentTrialTime = 0;
-
+	
 	gAgentDebugger = new AgentVisualDebugger(gEngine.getSceneManager());
 	gAgentDebugger->setAgent(gRobot->getAgent());
 	gAgentDebugger->setDisplayEnabled(false);
-	*/
+	
 	
 	/*
 	Ogre::OverlayManager::getSingleton().getByName("Verve/Debug")->hide();
@@ -489,10 +576,6 @@ void mainLoop()
 {
 	//while (mCurrentTrialTime < mTrialLength)
 
-
-		//Root::clearEventTimes();
-
- 
         
 	while (true)
 	{
