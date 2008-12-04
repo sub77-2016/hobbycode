@@ -20,9 +20,9 @@ def setupBaseEnvironment():
 
 def setupGenericUNIXEnvironment(env):
 	if env['debug'] == True:
-		env.Append(CXXFLAGS = ['-O0'])
+		env.Append(CXXFLAGS = ['-O0','-Wall','-g'])
 	else:
-		env.Append(CXXFLAGS = ['-O2'])
+		env.Append(CXXFLAGS = ['-O2','-Wall'])
 	return env
 
 def setupWin32Environment(env):

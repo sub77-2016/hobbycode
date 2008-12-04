@@ -35,6 +35,18 @@ void handlePhysicsPostStepEvent();
 void updateOverlay();
 verve::real computeReward();
 
+unsigned int gNumRuns = 1;
+unsigned int gNumTrialsPerRun = 1;
+verve::real gPhysicsStepSize = (verve::real)0.01;
+//SimulationEngine gEngine;
+Robot* gRobot = NULL;
+Car* gCar = NULL;
+AgentVisualDebugger* gAgentDebugger = NULL;
+
+//opal::VolumeSensor* gGoalSensor = NULL;
+//opal::Solid* gGoalSensorVolume = NULL;
+SDL_Joystick *gGamePad = NULL;
+
 class PhysicsPostStepEventHandler : public opal::PostStepEventHandler
 {
 	virtual void OPAL_CALL handlePostStepEvent()
@@ -43,20 +55,206 @@ class PhysicsPostStepEventHandler : public opal::PostStepEventHandler
 	}
 };
 
-unsigned int gNumRuns = 1;
-unsigned int gNumTrialsPerRun = 1;
-verve::real gPhysicsStepSize = (verve::real)0.01;
-SimulationEngine gEngine;
-Robot* gRobot = NULL;
-Car* gCar = NULL;
-AgentVisualDebugger* gAgentDebugger = NULL;
-PhysicsPostStepEventHandler gPostStepEventHandler;
-//opal::VolumeSensor* gGoalSensor = NULL;
-//opal::Solid* gGoalSensorVolume = NULL;
-SDL_Joystick *gGamePad = NULL;
+	PhysicsPostStepEventHandler gPostStepEventHandler;
+
+class MyApplication : public SimulationEngine
+{
+public:
+   MyApplication(void);
+   virtual ~MyApplication();
+
+protected:
+   virtual void createScene();
+};
+
+MyApplication::MyApplication()
+{
+}
+
+MyApplication::~MyApplication()
+{
+}
+
+void MyApplication::createScene()
+{
+	setUpdateMode(SimulationEngine::SIMULATE_REAL_TIME_MULTIPLE, 1);
+
+	//// Set to capture frames at 29.97 fps.
+	//engine.setUpdateMode(SIMULATE_CONSTANT_CHUNK, 0.0333667);
+
+	// Use feet for this simulation.
+	getSimulator()->setGravity(opal::Vec3r(0, -30, 0));
+	getSimulator()->setStepSize(gPhysicsStepSize);
+
+	// Make sure we get notified at the end of each step.
+	getSimulator()->addPostStepEventHandler(&gPostStepEventHandler);
+
+	/*
+	// Create the robot.
+	opal::Matrix44r robotTransform;
+	robotTransform.translate(0, 1, 0);
+	gRobot = new Robot(this, 5);
+	gRobot->init("../data/blueprints/robot1.xml", "Plastic/LightBlue", 
+		0.5, robotTransform, 2);
+	gRobot->resetBodyAndCreateNewAgent();
+	gRobot->resetBodyAndSTM();
+	gRobot->randomizeState();
+	gRobot->getFLMotor()->setMaxTorque((opal::real)2);
+	gRobot->getFRMotor()->setMaxTorque((opal::real)2);
+	gRobot->getFLMotor()->setMaxVelocity(1000);
+	gRobot->getFRMotor()->setMaxVelocity(1000);
+
+	// Create the car.
+	opal::Matrix44r carTransform;
+	carTransform.translate(-12, 2, 4);
+	gCar = new Car(this);
+	gCar->init("../data/blueprints/car1.xml", "Plastic/Blue", 1, 
+		carTransform, 1);
+	
+
+	//DataFile dataFile(mNumTrialsPerRun);
+	//updateOverlayData(trial);
+	//mAvgRewardPerStep = 0;
+	//mCurrentTrialTime = 0;
+
+	gAgentDebugger = new AgentVisualDebugger(getSceneManager());
+	gAgentDebugger->setAgent(gRobot->getAgent());
+	gAgentDebugger->setDisplayEnabled(false);
+	*/
+
+	Ogre::OverlayManager::getSingleton().getByName("Verve/Debug")->hide();
+	Ogre::OverlayManager::getSingleton().getByName("Core/DebugOverlay")->hide();
+
+	// Setup camera.
+	getCamera()->setPosition(opal::Point3r(0, 25, 25));
+	getCamera()->lookAt(opal::Point3r(0, (opal::real)0.1, 0));
+	setCameraMoveSpeed(15);
+	
+	// Main static arena.
+	opal::Blueprint arenaBlueprint;
+	opal::loadFile(arenaBlueprint, "../data/blueprints/arena1.xml");
+	opal::BlueprintInstance arenaBPInstance;
+	getSimulator()->instantiateBlueprint(arenaBPInstance, 
+		arenaBlueprint, opal::Matrix44r(), 1);
+	createPhysicalEntity("staticEnvironment", "Plastic/Gray", 
+		arenaBPInstance.getSolid("staticEnvironment"));
+	createPhysicalEntity("toy1", "Plastic/Green", 
+		arenaBPInstance.getSolid("toy1"));
+	createPhysicalEntity("toy2", "Plastic/Green", 
+		arenaBPInstance.getSolid("toy2"));
+	createPhysicalEntity("toy3", "Plastic/Green", 
+		arenaBPInstance.getSolid("toy3"));
+
+	// Seesaw.
+	opal::Blueprint seesawBP;
+	opal::loadFile(seesawBP, "../data/blueprints/seesaw.xml");
+	opal::BlueprintInstance seesawBPInstance;
+	opal::Matrix44r seesawTransform;
+	seesawTransform.translate(8, 0, 0);
+	getSimulator()->instantiateBlueprint(seesawBPInstance, 
+		seesawBP, seesawTransform, 1);
+	createPhysicalEntity("seesawSupport", "Plastic/Black", 
+		seesawBPInstance.getSolid("seesawSupport"));
+	createPhysicalEntity("seesawPanel", "Plastic/Orange", 
+		seesawBPInstance.getSolid("seesawPanel"));
+
+	// Add an initial torque to bring one end of the seesaw to the 
+	// ground.
+	seesawBPInstance.getJoint("seesawHinge")->addTorque(0, 100, 0, true);
+
+	// Merry-go-round.
+	createPhysicalEntity("merryGoRound", "Plastic/Yellow", 
+		arenaBPInstance.getSolid("merryGoRound"));
+
+	// Curtains.
+	opal::Blueprint curtainsBP;
+	opal::loadFile(curtainsBP, "../data/blueprints/blockCurtain.xml");
+	opal::BlueprintInstance curtainsBPInstance;
+	opal::Matrix44r curtainsTransform;
+	curtainsTransform.rotate(45, 0, 1, 0);
+	curtainsTransform.translate(-10, 0, 0);
+	getSimulator()->instantiateBlueprint(curtainsBPInstance, 
+		curtainsBP, curtainsTransform, 1);
+	createPhysicalEntity("curtainBase", "Plastic/Red", 
+		curtainsBPInstance.getSolid("curtainBase"));
+	createPhysicalEntity("curtainPiece0", "Plastic/Black", 
+		curtainsBPInstance.getSolid("curtainPiece0"));
+	createPhysicalEntity("curtainPiece1", "Plastic/Black", 
+		curtainsBPInstance.getSolid("curtainPiece1"));
+	createPhysicalEntity("curtainPiece2", "Plastic/Black", 
+		curtainsBPInstance.getSolid("curtainPiece2"));
+	createPhysicalEntity("curtainPiece3", "Plastic/Black", 
+		curtainsBPInstance.getSolid("curtainPiece3"));
+	createPhysicalEntity("curtainPiece4", "Plastic/Black", 
+		curtainsBPInstance.getSolid("curtainPiece4"));
+	createPhysicalEntity("curtainPiece5", "Plastic/Black", 
+		curtainsBPInstance.getSolid("curtainPiece5"));
+
+	//// Ragdoll.
+	//opal::Blueprint ragdollBP;
+	//opal::loadFile(ragdollBP, "../data/blueprints/ragdoll.xml");
+	//opal::BlueprintInstance ragdollBPInstance;
+	//opal::Matrix44r ragdollTransform;
+	//ragdollTransform.translate(10, 5, 0);
+	//getSimulator()->instantiateBlueprint(ragdollBPInstance, 
+	//	ragdollBP, ragdollTransform, 2);
+	//for (unsigned int i = 0; i < ragdollBPInstance.getNumSolids(); ++i)
+	//{
+	//	opal::Solid* s = ragdollBPInstance.getSolid(i);
+	//	createPhysicalEntity(s->getName(), "Plastic/Red", s);
+	//}
+
+	//// TESTING: Simple goal box.
+	//opal::Solid* boxSolid = getSimulator()->createSolid();
+	//boxSolid->setStatic(false);
+	//boxSolid->setSleepiness(0);
+	//boxSolid->setPosition(15.5, 10, -7);
+	//opal::BoxShapeData data;
+	//data.dimensions.set(1.5, 1.5, 1.5);
+	//data.material.friction = 0.1;
+	//data.material.density = 0.5;
+	//boxSolid->addShape(data);
+	//createPhysicalEntity("goal box", "Plastic/Green", boxSolid);
+
+	//// TESTING: Make a volume sensor to detect the goal.
+	//opal::VolumeSensorData goalSensorData;
+	//goalSensorData.solid = gRobot->getChassis();
+	//goalSensorData.transform.makeTranslation(0, 0, -2);
+	//gGoalSensor = getSimulator()->createVolumeSensor();
+	//gGoalSensor->init(goalSensorData);
+
+	//gGoalSensorVolume = getSimulator()->createSolid();
+	//gGoalSensorVolume->setStatic(true);
+	////opal::Matrix44r m = gRobot->getChassis()->getTransform();
+	////m.translate(0, 0, -2);
+	//opal::Matrix44r m;
+	//m.translate(0, 100, 0);
+	//gGoalSensorVolume->setTransform(m);
+	//opal::BoxShapeData sensorVolumeShape;
+	//sensorVolumeShape.dimensions.set(2, 1, 2);
+	////getSimulator()->setupContactGroup(5, false);
+	////sensorVolumeShape.contactGroup = 5;
+	//sensorVolumeShape.material.density = 0.01;
+	//gGoalSensorVolume->addShape(sensorVolumeShape);
+	////createPhysicalEntityBox("goal sensor", "Translucent/Blue", boxDim, 
+	////	gGoalSensorVolume);
+
+	//opal::JointData fixedJointData;
+	//fixedJointData.setType(opal::FIXED_JOINT);
+	//fixedJointData.solid0 = gRobot->getChassis();
+	//fixedJointData.solid1 = gGoalSensorVolume;
+	//opal::Joint* fixedJoint = getSimulator()->createJoint();
+	//fixedJoint->init(fixedJointData);
+	 
+}
+
+	MyApplication gEngine;
+
 
 int main(int argc, char* argv[])
 {
+
+	
 	srand((unsigned int)time(NULL));
 
 	SDL_Init(SDL_INIT_JOYSTICK);
@@ -91,16 +289,21 @@ int main(int argc, char* argv[])
 	///// The rewards received during a single trial, in rewards per step.
 	//verve::real mAvgRewardPerStep;
 
+	/*
 	if (!gEngine.init())
 	{
 		return 0;
 	}
+	*/
 
+	/*
 	gEngine.setUpdateMode(SimulationEngine::SIMULATE_REAL_TIME_MULTIPLE, 1);
+	*/
 
 	//// Set to capture frames at 29.97 fps.
 	//engine.setUpdateMode(SIMULATE_CONSTANT_CHUNK, 0.0333667);
 
+	/*
 	// Use feet for this simulation.
 	gEngine.getSimulator()->setGravity(opal::Vec3r(0, -30, 0));
 	gEngine.getSimulator()->setStepSize(gPhysicsStepSize);
@@ -108,6 +311,8 @@ int main(int argc, char* argv[])
 	// Make sure we get notified at the end of each step.
 	gEngine.getSimulator()->addPostStepEventHandler(&gPostStepEventHandler);
 
+	*/
+	/*
 	// Create the robot.
 	opal::Matrix44r robotTransform;
 	robotTransform.translate(0, 1, 0);
@@ -137,7 +342,9 @@ int main(int argc, char* argv[])
 	gAgentDebugger = new AgentVisualDebugger(gEngine.getSceneManager());
 	gAgentDebugger->setAgent(gRobot->getAgent());
 	gAgentDebugger->setDisplayEnabled(false);
-
+	*/
+	
+	/*
 	Ogre::OverlayManager::getSingleton().getByName("Verve/Debug")->hide();
 	Ogre::OverlayManager::getSingleton().getByName("Core/DebugOverlay")->hide();
 
@@ -145,12 +352,13 @@ int main(int argc, char* argv[])
 	gEngine.getCamera()->setPosition(opal::Point3r(0, 25, 25));
 	gEngine.getCamera()->lookAt(opal::Point3r(0, (opal::real)0.1, 0));
 	gEngine.setCameraMoveSpeed(15);
+	*/
 
-	setupEnvironment();
+	//setupEnvironment();
 	
 	gEngine.go();
 
-	mainLoop();
+	//mainLoop();
 
 	delete gRobot;
 	delete gCar;
@@ -280,6 +488,12 @@ void setupEnvironment()
 void mainLoop()
 {
 	//while (mCurrentTrialTime < mTrialLength)
+
+
+		//Root::clearEventTimes();
+
+ 
+        
 	while (true)
 	{
 		Ogre::Real elapsedSimTime = 0;
