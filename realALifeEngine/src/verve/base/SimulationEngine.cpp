@@ -22,11 +22,6 @@
 
 #include "SimulationEngine.h"
 
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-#include <OGRE/Ogre.h>
-#include <OGRE/OgreConfigFile.h>
-#endif
-
 SimulationEngine::SimulationEngine()
 {
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
@@ -105,6 +100,8 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	#endif
 #endif
 
+	mOgreRoot = mOgreRoot->getSingletonPtr();
+	
 	// Load resource paths from config file.  Go through all sections and 
 	// settings in the file.
 	Ogre::ConfigFile cf;
@@ -199,6 +196,9 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 		physicalCameraEyeHeight);
 
 	setupDefaultVisualScene();
+	createScene();
+	
+	mOgreRoot->addFrameListener(this);
 #endif
 
 	mFrameTimer.reset();
@@ -268,7 +268,8 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 	// 'renderOneFrame' returns a bool that determines whether we should 
 	// quit, but it is only useful when using pre and post frame event 
 	// listeners.
-	mOgreRoot->renderOneFrame();
+	if (!mOgreRoot->renderOneFrame())
+		return;
 
 	// Update the stats overlay.
 	updateOgreStats();
@@ -659,7 +660,7 @@ void SimulationEngine::setupDefaultVisualScene()
 		mOgreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_NONE);
 	}
 
-	mOgreSceneMgr->showBoundingBoxes(true);
+	//mOgreSceneMgr->showBoundingBoxes(true);
 
 	// Set the ambient light level.
 	mOgreSceneMgr->setAmbientLight(Ogre::ColourValue(0.3, 0.3, 0.3));
@@ -1112,15 +1113,65 @@ void SimulationEngine::updateOgreStats()
 	guiDbg->setCaption(mDebugText);
 }
 
+void SimulationEngine::createScene()
+{
+	
+}
+
+void SimulationEngine::destroyScene()
+{
+	
+}
+
 void SimulationEngine::go(void)
 {
-	//if (!setup())
-		//return;
+	if (!init())
+		return;
+		
 	mOgreRoot->startRendering();
 
 	// clean up
-    //destroyScene();
+    destroyScene();
 }
+
+bool SimulationEngine::frameStarted(const FrameEvent& evt)
+{
+	if(mOgreWindow->isClosed())
+	{
+     	return false;
+	}
+
+	//Need to capture/update each device
+	mKeyboard->capture();
+	mMouse->capture();
+	
+	// Check if we should quit looping.
+	if(mKeyboard->isKeyDown(OIS::KC_ESCAPE) 
+		|| mKeyboard->isKeyDown(OIS::KC_Q))
+	{
+		return false;
+	}
+	
+	if (processUnbufferedKeyInput(0.05) == false)
+	{
+		return false;
+	}
+	
+	if (processUnbufferedMouseInput(0.05) == false)
+	{
+		return false;
+	}
+	
+   return true;
+}
+
+bool SimulationEngine::frameEnded(const FrameEvent& evt)
+{
+	updateOgreStats();
+	
+   	return true;
+}
+
 #endif
 
 std::string SimulationEngine::generateUniqueName()

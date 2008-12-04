@@ -30,6 +30,11 @@
 #include "PhysicalCamera.h"
 #include "Timer.h"
 
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+#include <OGRE/Ogre.h>
+#include <OGRE/OgreConfigFile.h>
+#endif
+
 #include <opal/opal.h>
 
 //Use this define to signify OIS will be used as a DLL
@@ -38,18 +43,26 @@
 #include <OIS/OIS.h>
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+/*
 namespace Ogre
 {
 	class InputReader;
 	class Root;
 	class RenderWindow;
 	class SceneManager;
+	class FrameListener;
 }
+*/
+using namespace Ogre;
 #endif
 
 /// A general-purpose module for simulating physics (with Opal and ODE), 
 /// handling user input, and drawing 3D graphics (with Ogre).
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+class SimulationEngine : public FrameListener
+#else
 class SimulationEngine
+#endif
 {
 public:
 	/// Various ways to update the simulation.
@@ -110,8 +123,8 @@ public:
 	///// will probably decrease substantially as frames are being captured.
 	//void setCaptureFramesEnabled(bool capture);
 	
-	/// Start the example
-	void go(void);
+	/// Start the Engine
+	virtual void go(void);
 #endif
 
 	/// Sets the type of update to use.  The extra real parameter is used 
@@ -222,6 +235,14 @@ protected:
 
 	/// Updates the Ogre stats overlay.
 	void updateOgreStats();
+	
+	///
+	virtual void createScene();
+	virtual void destroyScene();
+	
+	/// FrameListener overrides 
+   	virtual bool frameStarted(const FrameEvent& evt); 
+   	virtual bool frameEnded(const FrameEvent& evt); 
 #endif
 
 	/// Returns a unique name string.  Useful when creating lots of 
