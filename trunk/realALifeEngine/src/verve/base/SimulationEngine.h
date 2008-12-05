@@ -46,7 +46,6 @@
 #include <OIS/OIS.h>
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-
 /*
 namespace Ogre
 {
@@ -54,14 +53,20 @@ namespace Ogre
 	class Root;
 	class RenderWindow;
 	class SceneManager;
+	class FrameListener;
 }
-*/
 
+using namespace Ogre;
+*/
 #endif
 
 /// A general-purpose module for simulating physics (with Opal and ODE), 
 /// handling user input, and drawing 3D graphics (with Ogre).
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+class SimulationEngine : public SimulationFrameListener
+#else
 class SimulationEngine
+#endif
 {
 public:
 	/// Various ways to update the simulation.
@@ -88,7 +93,7 @@ public:
 	/// amount of time by which the world was just simulated (which depends 
 	/// on the UpdateType being used) and the actual elapsed (wall clock) 
 	/// time since the last update.
-	void update(opal::real& elapsedSimTime, opal::real& elapsedRealTime);
+	//void update(opal::real& elapsedSimTime, opal::real& elapsedRealTime);
 
 	/// Returns true if we should quit the app.  This should be checked 
 	/// after each update.
@@ -222,24 +227,27 @@ protected:
 	//void captureFrame();
 
 	/// Returns false if we should break out of the main loop.
-	bool handleInput(opal::real dt);
+	//bool handleInput(opal::real dt);
 
 	/// Process keyboard input here.  Returns false if we should break out 
 	/// of the main loop.
-	bool processUnbufferedKeyInput(opal::real dt);
+	//bool processUnbufferedKeyInput(opal::real dt);
 
 	/// Process mouse input here.  Returns false if we should break out of 
 	/// the main loop.
-	bool processUnbufferedMouseInput(opal::real dt);
+	//bool processUnbufferedMouseInput(opal::real dt);
 
 	/// Updates the Ogre stats overlay.
-	///void updateOgreStats();
+	//void updateOgreStats();
 	
 	///
-	virtual void createFrameListener(void);
-	virtual void createScene(){}
+	virtual void createScene() = 0;
 	virtual void destroyScene(){}
+	virtual void createFrameListener(void);
 	
+	/// FrameListener overrides 
+   	virtual bool frameStarted(const FrameEvent& evt);
+   	//virtual bool frameEnded(const FrameEvent& evt){return true;}  
 #endif
 
 	/// Returns a unique name string.  Useful when creating lots of 
@@ -267,9 +275,6 @@ protected:
 
 	/// Pointer to the PhysicalCamera.
 	PhysicalCamera* mPhysicalCamera;
-	
-	/// 
-	SimulationFrameListener* mFrameListener;
 
 	/// Determines how fast the camera can rotate.
 	opal::real mCameraRotateSpeed;
