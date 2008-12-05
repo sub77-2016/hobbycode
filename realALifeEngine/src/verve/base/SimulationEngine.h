@@ -31,8 +31,10 @@
 #include "Timer.h"
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+/*
 #include <OGRE/Ogre.h>
 #include <OGRE/OgreConfigFile.h>
+*/
 #include "SimulationFrameListener.h"
 #endif
 
@@ -44,6 +46,7 @@
 #include <OIS/OIS.h>
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+
 /*
 namespace Ogre
 {
@@ -51,11 +54,9 @@ namespace Ogre
 	class Root;
 	class RenderWindow;
 	class SceneManager;
-	class FrameListener;
 }
-
-using namespace Ogre;
 */
+
 #endif
 
 /// A general-purpose module for simulating physics (with Opal and ODE), 

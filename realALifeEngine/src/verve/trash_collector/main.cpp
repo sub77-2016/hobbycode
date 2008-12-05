@@ -97,7 +97,7 @@ void MyApplication::createScene()
         // Setup camera.
         getCamera()->setPosition(opal::Point3r(0, 25, 25));
         getCamera()->lookAt(opal::Point3r(0, (opal::real)0.1, 0));
-        setCameraMoveSpeed(15);
+        setCameraMoveSpeed(1);
        
         // Main static arena.
         opal::Blueprint arenaBlueprint;
