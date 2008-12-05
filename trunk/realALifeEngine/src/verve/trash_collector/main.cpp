@@ -27,6 +27,7 @@
 #include "verve/apps/Car.h"
 #include "verve/apps/AgentVisualDebugger.h"
 #include "verve/apps/SimulationEngine.h"
+#include "verve/apps/SimulationFrameListener.h"
 
 void setupEnvironment();
 void mainLoop();
@@ -66,7 +67,6 @@ public:
 
 protected:
    virtual void createScene();
-   virtual bool frameStarted(const FrameEvent& evt);
 };
 
 MyApplication::MyApplication()
@@ -218,7 +218,7 @@ void MyApplication::createScene()
          
 }
 
-
+/*
 bool MyApplication::frameStarted(const FrameEvent& evt)
 {
         if(mOgreWindow->isClosed())
@@ -326,7 +326,7 @@ bool MyApplication::frameStarted(const FrameEvent& evt)
        
    return true;
 }
-
+*/
 
 void MyApplication::go()
 {

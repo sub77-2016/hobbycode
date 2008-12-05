@@ -13,6 +13,7 @@ headers = Split("""
 	PhysicalEntity.h
 	Robot.h
 	SimulationEngine.h
+	SimulationFrameListener.h
 	Timer.h
 """)
 

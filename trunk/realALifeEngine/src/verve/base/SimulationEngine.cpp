@@ -32,6 +32,7 @@ SimulationEngine::SimulationEngine()
 	mMouse = NULL;
 	mKeyboard = NULL;
 	mPhysicalCamera = NULL;
+	mFrameListener = NULL;
 	mDrawPickingGraphics = true;
 	//mCaptureFramesEnabled = false;
 #endif
@@ -71,6 +72,11 @@ SimulationEngine::~SimulationEngine()
 	if (mOgreRoot)
 	{
 		delete mOgreRoot;
+	}
+	
+	if (mFrameListener)
+	{
+		delete mFrameListener;
 	}
 #endif
 
@@ -169,10 +175,11 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	//ExampleFrameListener::init(ExampleApplication::mWindow, 
 	//	mOgreCamera);
 
+	/*
 	// Get a pointer to the Ogre overlay.  Make it visible by default.
 	Ogre::OverlayManager::getSingleton().getByName("Core/DebugOverlay")->
 		show();
-
+	
 	// Setup the input capturing devices.
 	OIS::ParamList pl;
 	size_t windowHnd = 0;
@@ -185,7 +192,7 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 		OIS::OISKeyboard, false));
 	mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject(
 		OIS::OISMouse, false));
-
+	*/
 #endif // #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 
 	// Setup the OPAL simulator.
@@ -198,8 +205,8 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 
 	setupDefaultVisualScene();
 	createScene();
+	createFrameListener();
 	
-	mOgreRoot->addFrameListener(this);
 #endif
 
 	mFrameTimer.reset();
@@ -1114,16 +1121,6 @@ void SimulationEngine::updateOgreStats()
 	guiDbg->setCaption(mDebugText);
 }
 
-void SimulationEngine::createScene()
-{
-	
-}
-
-void SimulationEngine::destroyScene()
-{
-	
-}
-
 void SimulationEngine::go(void)
 {
 	if (!init())
@@ -1135,30 +1132,11 @@ void SimulationEngine::go(void)
     destroyScene();
 }
 
-bool SimulationEngine::frameStarted(const FrameEvent& evt)
+void SimulationEngine::createFrameListener(void)
 {
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	if (mOgreWindow->isClosed())
-	{
-		mQuitApp = true;
-		return false;
-	}
-
-	if (false == handleInput(0))
-	{
-		mQuitApp = true;
-		return false;
-	}
-#endif
-	
-   return true;
-}
-
-bool SimulationEngine::frameEnded(const FrameEvent& evt)
-{
-	updateOgreStats();
-	
-   	return true;
+	mFrameListener= new SimulationFrameListener(mOgreWindow, getCamera()->getOgreCamera());
+	mFrameListener->showDebugOverlay(true);
+   	mOgreRoot->addFrameListener(mFrameListener);
 }
 
 #endif

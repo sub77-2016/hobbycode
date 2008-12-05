@@ -33,6 +33,7 @@
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 #include <OGRE/Ogre.h>
 #include <OGRE/OgreConfigFile.h>
+#include "SimulationFrameListener.h"
 #endif
 
 #include <opal/opal.h>
@@ -52,17 +53,14 @@ namespace Ogre
 	class SceneManager;
 	class FrameListener;
 }
-*/
+
 using namespace Ogre;
+*/
 #endif
 
 /// A general-purpose module for simulating physics (with Opal and ODE), 
 /// handling user input, and drawing 3D graphics (with Ogre).
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-class SimulationEngine : public FrameListener
-#else
 class SimulationEngine
-#endif
 {
 public:
 	/// Various ways to update the simulation.
@@ -237,12 +235,10 @@ protected:
 	void updateOgreStats();
 	
 	///
-	virtual void createScene();
-	virtual void destroyScene();
+	virtual void createFrameListener(void);
+	virtual void createScene() = 0;
+	virtual void destroyScene(){}
 	
-	/// FrameListener overrides 
-   	virtual bool frameStarted(const FrameEvent& evt); 
-   	virtual bool frameEnded(const FrameEvent& evt); 
 #endif
 
 	/// Returns a unique name string.  Useful when creating lots of 
@@ -270,6 +266,9 @@ protected:
 
 	/// Pointer to the PhysicalCamera.
 	PhysicalCamera* mPhysicalCamera;
+	
+	/// 
+	SimulationFrameListener* mFrameListener;
 
 	/// Determines how fast the camera can rotate.
 	opal::real mCameraRotateSpeed;
