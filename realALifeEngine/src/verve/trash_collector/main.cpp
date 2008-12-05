@@ -56,25 +56,268 @@ class PhysicsPostStepEventHandler : public opal::PostStepEventHandler
         }
 };
 
-        PhysicsPostStepEventHandler gPostStepEventHandler;
+PhysicsPostStepEventHandler gPostStepEventHandler;
 
 class MyApplication : public SimulationEngine
 {
 public:
-   MyApplication(void);
-   virtual ~MyApplication();
+   MyApplication(void)
+   :SimulationEngine()
+   {
+   	
+   }
+   virtual ~MyApplication(){}
    virtual void go();
 
 protected:
    virtual void createScene();
+   virtual void createFrameListener();
 };
 
-MyApplication::MyApplication()
+//MyApplication app;
+
+class Sim
 {
+public:
+	
+	Sim()
+	{    
+		mEngine.init();
+		//mEngine = new SimulationEngine();	
+		//mEngine = &engine;
+		
+		// Create the robot.
+		opal::Matrix44r robotTransform;
+   		robotTransform.translate(0, 1, 0);
+   		mRobot = new Robot(mEngine, 5);
+   		mRobot->init("../data/blueprints/robot1.xml", "Plastic/LightBlue",
+                0.5, robotTransform, 2);
+   		mRobot->resetBodyAndCreateNewAgent();
+   		mRobot->resetBodyAndSTM();
+   		mRobot->randomizeState();
+   		mRobot->getFLMotor()->setMaxTorque((opal::real)2);
+   		mRobot->getFRMotor()->setMaxTorque((opal::real)2);
+   		mRobot->getFLMotor()->setMaxVelocity(1000);
+   		mRobot->getFRMotor()->setMaxVelocity(1000);
+
+  		// Create the car.
+   		opal::Matrix44r carTransform;
+   		carTransform.translate(-12, 2, 4);
+   		mCar = new Car(mEngine);
+   		mCar->init("../data/blueprints/car1.xml", "Plastic/Blue", 1,
+                carTransform, 1);
+       
+		//DataFile dataFile(mNumTrialsPerRun);
+  		//updateOverlayData(trial);
+   		//mAvgRewardPerStep = 0;
+   		//mCurrentTrialTime = 0;
+       
+ 		mAgentDebugger = new AgentVisualDebugger(mEngine.getSceneManager());
+   		mAgentDebugger->setAgent(mRobot->getAgent());
+   		mAgentDebugger->setDisplayEnabled(false);  
+	}
+   
+   ~Sim()
+	{
+		delete mRobot;
+   		delete mCar;
+  		delete mAgentDebugger;
+  		delete mPostStepEventHandler;
+	}
+	
+	void go()
+	{
+		mEngine.go();
+	}
+	
+	void evolve()
+	{
+		while(true)
+		{
+ 			Ogre::Real elapsedSimTime = 0;
+       		Ogre::Real elapsedRealTime = 0;
+       		//mEngine.update(elapsedSimTime, elapsedRealTime);
+       		//handleInput(elapsedRealTime);
+                
+      		if (mEngine.quitApp())
+        	{
+             	return;
+         	}
+       	
+         	// Update sound effects at 50 Hz.
+       		const Ogre::Real soundUpdatePeriod = 0.02;
+       		static Ogre::Real soundUpdateTimer = 0;
+      		soundUpdateTimer -= elapsedSimTime;
+      	
+     		if (soundUpdateTimer <= 0)
+       		{
+         		mRobot->updateSoundEffects(soundUpdatePeriod);
+           		mCar->updateSoundEffects(soundUpdatePeriod);
+           		soundUpdateTimer = soundUpdatePeriod;
+      		}
+
+      		mRobot->updateVisuals(elapsedSimTime);
+        	//updateOverlay();
+      		mAgentDebugger->updateVisuals();
+		}
+	}
+	
+	void handleInput(Ogre::Real elapsedRealTime)
+	{
+        // This variable can be used to keep keys from repeating too fast.
+        static Ogre::Real toggleTimer = 0;
+        if (toggleTimer >= 0)
+        {
+                toggleTimer -= elapsedRealTime;
+        }
+
+        OIS::Keyboard* keyboard = mEngine.getKeyboard();
+
+        if (keyboard->isKeyDown(OIS::KC_W))
+        {
+                mCar->forward();
+        }
+        else if (keyboard->isKeyDown(OIS::KC_S))
+        {
+                mCar->reverse();
+        }
+        else
+        {
+                mCar->idle();
+        }
+
+        if (keyboard->isKeyDown(OIS::KC_A))
+        {
+                mCar->setSteering(-1);
+        }
+        else if (keyboard->isKeyDown(OIS::KC_D))
+        {
+                mCar->setSteering(1);
+        }
+        else
+        {
+                mCar->setSteering(0);
+        }
+
+		/*
+        // If available, get data from the game controller.
+        if (gGamePad)
+        {
+                // Update the game controller state.
+                SDL_JoystickUpdate();
+
+                Ogre::Real joy0X = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 0) /
+                        (Ogre::Real)32768;
+                Ogre::Real joy0Y = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 1) /
+                        (Ogre::Real)32768;
+                Ogre::Real joy1X = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 4) /
+                        (Ogre::Real)32768;
+                Ogre::Real joy1Y = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 3) /
+                        (Ogre::Real)32768;
+
+                if (fabs(joy0Y) > 0.1)
+                {
+                        mCar->setThrottle(-joy0Y);
+                }
+                else
+                {
+                        mCar->idle();
+                }
+
+                if (fabs(joy0X) > 0.1)
+                {
+                        mCar->setSteering(joy0X);
+                }
+                else
+                {
+                        mCar->setSteering(0);
+                }
+
+                if (joy1X > 0.2 || joy1X < -0.2)
+                {
+                        Ogre::Degree rotAroundY = -Ogre::Degree(joy1X);
+                        gEngine.getCamera()->yawRelative(rotAroundY.valueDegrees());
+                }
+
+                if (joy1Y > 0.2 || joy1Y < -0.2)
+                {
+                        Ogre::Degree rotAroundX = -Ogre::Degree(joy1Y);
+                        gEngine.getCamera()->pitchRelative(rotAroundX.valueDegrees());
+                }
+        }
+		*/
+		
+        // Toggle GUI.
+        if (keyboard->isKeyDown(OIS::KC_G) && toggleTimer <= 0)
+        {
+                Ogre::Overlay* debugOverlay = Ogre::OverlayManager::getSingleton().
+                        getByName("Verve/Debug");
+
+                if (debugOverlay->isVisible())
+        {
+                        debugOverlay->hide();
+                        mAgentDebugger->setDisplayEnabled(false);
+                }
+                else
+                {
+                        debugOverlay->show();
+                        mAgentDebugger->setDisplayEnabled(true);
+                }
+
+                toggleTimer = 0.5;
+        }
+	}
+	
+protected:    
+	MyApplication mEngine;
+		
+	Robot* mRobot;
+	Car* mCar;
+	AgentVisualDebugger* mAgentDebugger;
+	PhysicsPostStepEventHandler *mPostStepEventHandler;
+	
+	unsigned int mNumRuns;
+	unsigned int mNumTrialsPerRun;
+	verve::real mPhysicsStepSize;
+};
+
+//Sim sim(app);
+
+class MyFrameListener : public SimulationFrameListener
+{
+public:
+    MyFrameListener(RenderWindow* win, Camera* cam)
+        : SimulationFrameListener(win, cam)
+    {
+		
+    } 
+    
+   ~MyFrameListener()
+	{
+
+	}
+	
+	bool frameRenderingQueued(const FrameEvent& evt);
+	
+};
+
+bool MyFrameListener::frameRenderingQueued(const FrameEvent& evt)
+{
+	if( SimulationFrameListener::frameRenderingQueued(evt) == false )
+		return false;
+
+	//sim.evolve();
+
+  	// Call default
+	return true;
 }
 
-MyApplication::~MyApplication()
+
+void MyApplication::createFrameListener()
 {
+	mFrameListener= new MyFrameListener(mOgreWindow, getCamera()->getOgreCamera());
+	mFrameListener->showDebugOverlay(true);
+   	mOgreRoot->addFrameListener(mFrameListener);
 }
 
 void MyApplication::createScene()
@@ -82,7 +325,7 @@ void MyApplication::createScene()
         setUpdateMode(SimulationEngine::SIMULATE_REAL_TIME_MULTIPLE, 1);
 
         //// Set to capture frames at 29.97 fps.
-        //engine.setUpdateMode(SIMULATE_CONSTANT_CHUNK, 0.0333667);
+        //setUpdateMode(SIMULATE_CONSTANT_CHUNK, 0.0333667);
 
         // Use feet for this simulation.
         getSimulator()->setGravity(opal::Vec3r(0, -30, 0));
@@ -330,14 +573,60 @@ bool MyApplication::frameStarted(const FrameEvent& evt)
 
 void MyApplication::go()
 {
-        mOgreRoot->startRendering();
+	mOgreRoot->startRendering();
 }
 
 
 MyApplication gEngine;
 
 
-int main(int argc, char* argv[])
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+#define WIN32_LEAN_AND_MEAN
+#include "windows.h"
+
+INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
+#else
+int main(int argc, char **argv)
+#endif
+{
+	srand((unsigned int)time(NULL));
+	
+    // Create application object
+    //MyApplication app;
+    Sim sim;
+    
+    //if (!app.init())
+    //{
+     	//return 0;
+   	//}
+   	
+   	//sim = new Sim(app);
+
+    try {
+    	//sim.go();
+    	sim.evolve();
+    	//app.go();
+    } catch( Ogre::Exception& e ) {
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+        MessageBox( NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL );
+#else
+        std::cerr << "An exception has occured: " << e.getFullDescription();
+#endif
+    }
+
+
+    return 0;
+}
+#ifdef __cplusplus
+}
+#endif
+
+
+int _main(int argc, char* argv[])
 {
 
        
@@ -455,6 +744,7 @@ int main(int argc, char* argv[])
         return 0;
 }
 
+/*
 void setupEnvironment()
 {
         // Main static arena.
@@ -573,6 +863,7 @@ void setupEnvironment()
         //opal::Joint* fixedJoint = gEngine.getSimulator()->createJoint();
         //fixedJoint->init(fixedJointData);
 }
+*/
 
 void mainLoop()
 {
@@ -583,7 +874,7 @@ void mainLoop()
         {
                 Ogre::Real elapsedSimTime = 0;
                 Ogre::Real elapsedRealTime = 0;
-                gEngine.update(elapsedSimTime, elapsedRealTime);
+                //gEngine.update(elapsedSimTime, elapsedRealTime);
                 handleInput(elapsedRealTime);
                 if (gEngine.quitApp())
                 {
