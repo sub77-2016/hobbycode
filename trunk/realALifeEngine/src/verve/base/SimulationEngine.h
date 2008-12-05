@@ -233,11 +233,11 @@ protected:
 	bool processUnbufferedMouseInput(opal::real dt);
 
 	/// Updates the Ogre stats overlay.
-	void updateOgreStats();
+	///void updateOgreStats();
 	
 	///
 	virtual void createFrameListener(void);
-	virtual void createScene() = 0;
+	virtual void createScene(){}
 	virtual void destroyScene(){}
 	
 #endif

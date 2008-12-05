@@ -280,7 +280,7 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		return;
 
 	// Update the stats overlay.
-	updateOgreStats();
+	//updateOgreStats();
 
 	//if (mCaptureFramesEnabled)
 	//{
@@ -1072,6 +1072,7 @@ bool SimulationEngine::processUnbufferedMouseInput(opal::real dt)
 	return true;
 }
 
+/*
 void SimulationEngine::updateOgreStats()
 {
 	static Ogre::String currFps = "Current FPS: ";
@@ -1120,6 +1121,7 @@ void SimulationEngine::updateOgreStats()
 		"Core/DebugText");
 	guiDbg->setCaption(mDebugText);
 }
+*/
 
 void SimulationEngine::go(void)
 {
