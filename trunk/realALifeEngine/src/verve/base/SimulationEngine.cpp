@@ -573,7 +573,7 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 				e->setMaterialName(materialName);
 
 			// Keep the normals normalized even after scaling.
-			e->setNormaliseNormals(true);
+			//e->setNormaliseNormals(true);
 
 			// Attach the Entity to the SceneNode.
 			newChildNode->attachObject(e);
@@ -595,7 +595,7 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 			e->setMaterialName(materialName);
 
 			// Keep the normals normalized even after scaling.
-			e->setNormaliseNormals(true);
+			//e->setNormaliseNormals(true);
 
 			// Attach the Entity to the SceneNode.
 			newChildNode->attachObject(e);
@@ -622,7 +622,7 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 			// radius 1.
 			e = mOgreSceneMgr->createEntity(subObjectName, "cylinder.mesh");
 			e->setMaterialName(materialName);
-			e->setNormaliseNormals(true);
+			//e->setNormaliseNormals(true);
 			newChildNode->attachObject(e);
 
 			// The spheres must use separate scene nodes that are offset 
@@ -637,7 +637,7 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 			sphereNode->scale(radius, radius, radius);
 			e = mOgreSceneMgr->createEntity(subObjectName, "sphere.mesh");
 			e->setMaterialName(materialName);
-			e->setNormaliseNormals(true);
+			//e->setNormaliseNormals(true);
 			sphereNode->attachObject(e);
 
 			subObjectName = "sphere1" + name;
@@ -647,7 +647,7 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 			sphereNode->scale(radius, radius, radius);
 			e = mOgreSceneMgr->createEntity(subObjectName, "sphere.mesh");
 			e->setMaterialName(materialName);
-			e->setNormaliseNormals(true);
+			//e->setNormaliseNormals(true);
 			sphereNode->attachObject(e);
 			break;
 		}
