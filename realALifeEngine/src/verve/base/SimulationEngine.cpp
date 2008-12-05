@@ -32,7 +32,6 @@ SimulationEngine::SimulationEngine()
 	mMouse = NULL;
 	mKeyboard = NULL;
 	mPhysicalCamera = NULL;
-	mFrameListener = NULL;
 	mDrawPickingGraphics = true;
 	//mCaptureFramesEnabled = false;
 #endif
@@ -73,11 +72,6 @@ SimulationEngine::~SimulationEngine()
 	{
 		delete mOgreRoot;
 	}
-	
-	if (mFrameListener)
-	{
-		delete mFrameListener;
-	}
 #endif
 
 	if (mSimulator)
@@ -106,8 +100,8 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	#endif
 #endif
 
-	// Only One Scene Graph tree
-	mOgreRoot = mOgreRoot->getSingletonPtr();
+	// Only One Scene Root
+	//mOgreRoot = mOgreRoot->getSingletonPtr();
 	
 	// Load resource paths from config file.  Go through all sections and 
 	// settings in the file.
@@ -179,7 +173,7 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	// Get a pointer to the Ogre overlay.  Make it visible by default.
 	Ogre::OverlayManager::getSingleton().getByName("Core/DebugOverlay")->
 		show();
-	
+
 	// Setup the input capturing devices.
 	OIS::ParamList pl;
 	size_t windowHnd = 0;
@@ -193,6 +187,7 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject(
 		OIS::OISMouse, false));
 	*/
+
 #endif // #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 
 	// Setup the OPAL simulator.
@@ -207,6 +202,7 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	createScene();
 	createFrameListener();
 	
+	//mOgreRoot->addFrameListener(this);
 #endif
 
 	mFrameTimer.reset();
@@ -214,6 +210,7 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	return true;
 }
 
+/*
 void SimulationEngine::update(opal::real& elapsedSimTime, 
 	opal::real& elapsedRealTime)
 {
@@ -280,7 +277,7 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		return;
 
 	// Update the stats overlay.
-	//updateOgreStats();
+	updateOgreStats();
 
 	//if (mCaptureFramesEnabled)
 	//{
@@ -288,6 +285,7 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 	//}
 #endif
 }
+*/
 
 bool SimulationEngine::quitApp()
 {
@@ -570,7 +568,7 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 			// Create an Ogre Entity using a cube mesh.  This mesh must be 
 			// stored as a box with dimensions 1x1x1.
 			e = mOgreSceneMgr->createEntity(name, "cube.mesh");
-				e->setMaterialName(materialName);
+			e->setMaterialName(materialName);
 
 			// Keep the normals normalized even after scaling.
 			//e->setNormaliseNormals(true);
@@ -817,6 +815,7 @@ void SimulationEngine::updatePickingGraphics()
 //	++count;
 //}
 
+/*
 bool SimulationEngine::handleInput(opal::real dt)
 {
 	//// This variable can be used to keep keys from repeating too fast.
@@ -1072,7 +1071,6 @@ bool SimulationEngine::processUnbufferedMouseInput(opal::real dt)
 	return true;
 }
 
-/*
 void SimulationEngine::updateOgreStats()
 {
 	static Ogre::String currFps = "Current FPS: ";
@@ -1123,7 +1121,7 @@ void SimulationEngine::updateOgreStats()
 }
 */
 
-void SimulationEngine::go(void)
+void SimulationEngine::go()
 {
 	if (!init())
 		return;
@@ -1134,11 +1132,80 @@ void SimulationEngine::go(void)
     destroyScene();
 }
 
-void SimulationEngine::createFrameListener(void)
+void SimulationEngine::createFrameListener()
 {
-	mFrameListener= new SimulationFrameListener(mOgreWindow, getCamera()->getOgreCamera());
-	mFrameListener->showDebugOverlay(true);
-   	mOgreRoot->addFrameListener(mFrameListener);
+ 	SimulationFrameListener *frmLnr = new SimulationFrameListener(
+ 											mOgreWindow, getCamera()->getOgreCamera());
+   	frmLnr->showDebugOverlay(true);
+   	mOgreRoot->addFrameListener(frmLnr);
+   	
+   	//SimulationEngine *frmLnr = new SimulationEngine();
+   	//frmLnr->showDebugOverlay(true);
+   	//mOgreRoot->addFrameListener(frmLnr);
+   	
+   	//mOgreRoot->addFrameListener(this);
+}
+
+bool SimulationEngine::frameStarted(const FrameEvent& evt)
+{
+	/*
+	// Get the elapsed time in seconds since the last time we were here.
+	opal::real elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
+	mFrameTimer.reset();
+	opal::real elapsedSimTime = elapsedRealTime;
+
+	if (!mPaused)
+	{
+		switch(mUpdateMode)
+		{
+			case SIMULATE_CONSTANT_CHUNK:
+				// Simulate constant chunks of time at once.  Keep in 
+				// mind that this must finish before continuing, so 
+				// if it takes a while to simulate a single chunk 
+				// of time, the input handling might become unresponsive.
+				elapsedSimTime = mUpdateConstant;
+				break;
+			case SIMULATE_REAL_TIME_MULTIPLE:
+				elapsedSimTime *= mUpdateConstant;
+				break;
+			default:
+				assert(false);
+				break;
+		}
+
+		mSimulator->simulate(elapsedSimTime);
+
+		size_t size = mPhysicalEntityList.size();
+		for(size_t i = 0; i<size; ++i)
+		{
+			mPhysicalEntityList.at(i)->update(elapsedSimTime);
+		}
+
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		mPhysicalCamera->update(elapsedSimTime);
+#endif
+	}
+
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	updatePickingGraphics();
+
+	// 'renderOneFrame' returns a bool that determines whether we should 
+	// quit, but it is only useful when using pre and post frame event 
+	// listeners.
+	if (!mOgreRoot->renderOneFrame())
+		return false;
+		
+	// Update the stats overlay.
+	//updateOgreStats();
+
+	//if (mCaptureFramesEnabled)
+	//{
+	//	captureFrame();
+	//}
+#endif
+*/
+	
+	return true;
 }
 
 #endif

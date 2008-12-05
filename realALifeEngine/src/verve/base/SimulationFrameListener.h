@@ -86,6 +86,10 @@ protected:
 	}
 
 public:
+	SimulationFrameListener()
+	{
+		//
+	}
 	// Constructor takes a RenderWindow because it uses that to determine input context
 	SimulationFrameListener(RenderWindow* win, Camera* cam, bool bufferedKeys = false, bool bufferedMouse = false,
 			     bool bufferedJoy = false ) :
