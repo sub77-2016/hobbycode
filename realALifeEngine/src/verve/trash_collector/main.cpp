@@ -73,7 +73,7 @@ public:
 	}
 	
 	//bool frameRenderingQueued(const FrameEvent& evt);
-	virtual bool frameStarted(const FrameEvent& evt);
+	//virtual bool frameStarted(const FrameEvent& evt);
 	
 };
 
@@ -104,15 +104,7 @@ protected:
 	/*
 	virtual void createFrameListener()
 	{
-		//mFrameListener= new MyFrameListener(mOgreWindow, getCamera()->getOgreCamera());
-		//mFrameListener->showDebugOverlay(true);
-   		//mOgreRoot->addFrameListener(mFrameListener);
-   		
-   		//SimulationFrameListener::SimulationFrameListener(
-   		//							mOgreWindow, getCamera()->getOgreCamera());
-   		
-   		MyFrameListener *frmLnr = new MyFrameListener(
-   								mOgreWindow, getCamera()->getOgreCamera());
+   		MyFrameListener *frmLnr = new MyFrameListener(mOgreWindow, mPhysicalCamera);
 		frmLnr->showDebugOverlay(true);
    		mOgreRoot->addFrameListener(frmLnr);
 	}
@@ -120,123 +112,7 @@ protected:
 	
 	
    virtual void createScene();
-   //virtual bool frameStarted(const FrameEvent& evt);
 };
-
-/*
-bool MyFrameListener::frameStarted(const FrameEvent& evt)
-{
-		
-        if(mOgreWindow->isClosed())
-        {
-        return false;
-        }
-
-        //Need to capture/update each device
-        mKeyboard->capture();
-        mMouse->capture();
-       
-        // Check if we should quit looping.
-        if(mKeyboard->isKeyDown(OIS::KC_ESCAPE)
-                || mKeyboard->isKeyDown(OIS::KC_Q))
-        {
-                return false;
-        }
-       
-       
-                Ogre::Real elapsedSimTime = 0;
-                Ogre::Real elapsedRealTime = 0;
-                ////
-                //gEngine.update(elapsedSimTime, elapsedRealTime);
-                ////
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-        if (mOgreWindow->isClosed())
-        {
-                mQuitApp = true;
-                return false;
-        }
-#endif
-
-        // Get the elapsed time in seconds since the last time we were here.
-        elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
-        mFrameTimer.reset();
-        elapsedSimTime = elapsedRealTime;
-
-
-        if (!mPaused)
-        {
-                switch(mUpdateMode)
-                {
-                        case SIMULATE_CONSTANT_CHUNK:
-                                // Simulate constant chunks of time at once.  Keep in
-                                // mind that this must finish before continuing, so
-                                // if it takes a while to simulate a single chunk
-                                // of time, the input handling might become unresponsive.
-                                elapsedSimTime = mUpdateConstant;
-                                break;
-                        case SIMULATE_REAL_TIME_MULTIPLE:
-                                elapsedSimTime *= mUpdateConstant;
-                                break;
-                        default:
-                                assert(false);
-                                break;
-                }
-
-                mSimulator->simulate(elapsedSimTime);
-
-                size_t size = mPhysicalEntityList.size();
-                for(size_t i = 0; i<size; ++i)
-                {
-                        mPhysicalEntityList.at(i)->update(elapsedSimTime);
-                }
-
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-                mPhysicalCamera->update(elapsedSimTime);
-#endif
-        }
-
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-        updatePickingGraphics();
-#endif
-               
-                ////
-                //handleInput(elapsedRealTime);
-                if (quitApp())
-                {
-                        return false;
-                }
-
-                // Update sound effects at 50 Hz.
-                const Ogre::Real soundUpdatePeriod = 0.02;
-                static Ogre::Real soundUpdateTimer = 0;
-                soundUpdateTimer -= elapsedSimTime;
-                if (soundUpdateTimer <= 0)
-                {
-                        gRobot->updateSoundEffects(soundUpdatePeriod);
-                        gCar->updateSoundEffects(soundUpdatePeriod);
-                        soundUpdateTimer = soundUpdatePeriod;
-                }
-
-                gRobot->updateVisuals(elapsedSimTime);
-                updateOverlay();
-                gAgentDebugger->updateVisuals();
-       
-       
-        if (processUnbufferedKeyInput(elapsedRealTime) == false)
-        {
-                return false;
-        }
-       
-        if (processUnbufferedMouseInput(elapsedRealTime) == false)
-        {
-                return false;
-        }
-        
-       
-   return true;
-}
-*/
-
 
 void MyApplication::createScene()
 {
