@@ -48,20 +48,21 @@ D:        Step right
 
 using namespace Ogre;
 
-enum UpdateMode
-{
-	/// Each update simulates the world ahead by a constant amount of 
-	/// time.
-	SIMULATE_CONSTANT_CHUNK,
-
-	/// Each update simulates the world ahead by an amount of time 
-	/// proportional to the elapsed time since the previous update.
-	SIMULATE_REAL_TIME_MULTIPLE
-};
-
 class SimulationFrameListener: public FrameListener, public WindowEventListener
 {
 protected:
+	/// Various ways to update the simulation.
+	enum UpdateMode
+	{
+		/// Each update simulates the world ahead by a constant amount of 
+		/// time.
+		SIMULATE_CONSTANT_CHUNK = 0,
+
+		/// Each update simulates the world ahead by an amount of time 
+		/// proportional to the elapsed time since the previous update.
+		SIMULATE_REAL_TIME_MULTIPLE = 1
+	};
+
 	virtual void updateStats(void)
 	{
 		static String currFps = "Current FPS: ";
@@ -100,14 +101,18 @@ protected:
 
 public:	
 	// Constructor takes a RenderWindow because it uses that to determine input context
-	SimulationFrameListener(RenderWindow* win, Camera* cam, bool bufferedKeys = false, bool bufferedMouse = false,
+	SimulationFrameListener(RenderWindow* win, PhysicalCamera* pcam, bool bufferedKeys = false, bool bufferedMouse = false,
 			     bool bufferedJoy = false ) :
-		mCamera(cam), mTranslateVector(Vector3::ZERO), mCurrentSpeed(0), mWindow(win), mStatsOn(true), mNumScreenShots(0),
+		mTranslateVector(Vector3::ZERO), mCurrentSpeed(0), mWindow(win), mStatsOn(true), mNumScreenShots(0),
 		mMoveScale(0.0f), mRotScale(0.0f), mTimeUntilNextToggle(0), mFiltering(TFO_BILINEAR),
 		mAniso(1), mSceneDetailIndex(0), mMoveSpeed(100), mRotateSpeed(36), mDebugOverlay(0),
 		mInputManager(0), mMouse(0), mKeyboard(0), mJoy(0)
 	{
+		// Init Compatible from Physical Camera
+		mPhysicalCamera = pcam;
+		mCamera = mPhysicalCamera->getOgreCamera();
 
+		// Now follow OGRE step
 		mDebugOverlay = OverlayManager::getSingleton().getByName("Core/DebugOverlay");
 
 		LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
@@ -403,18 +408,19 @@ public:
 	}
 	
 	void hook_simulation(std::vector<PhysicalEntity*> &plist,
-				opal::Simulator* sim, PhysicalCamera* pcam,
-				Ogre::SceneManager* scmr)
+				opal::Simulator* sim, Ogre::SceneManager* scmr, 
+				opal::real updconst = 1,
+				UpdateMode updmode = SIMULATE_REAL_TIME_MULTIPLE)
 	{
 		mPhysicalEntityList = plist;
 		mSimulator = sim;
-		mPhysicalCamera = pcam;
-		mUpdateMode = SIMULATE_REAL_TIME_MULTIPLE;
 		mOgreSceneMgr = scmr;
+		
+		mUpdateMode = updmode;
+		mUpdateConstant = updconst;
 		
 		mDrawPickingGraphics = true;
 		mPaused = false;
-		mUpdateConstant = 1;
 	}
 	
 	void updatePhysics()
@@ -535,6 +541,11 @@ public:
 			}
 		}
 	}
+	
+	void setPickingGraphicsEnabled(bool e)
+	{
+		mDrawPickingGraphics = e;
+	}
 
 protected:
 	Camera* mCamera;
@@ -572,13 +583,21 @@ protected:
 	std::vector<PhysicalEntity*> mPhysicalEntityList;
 	opal::Simulator* mSimulator;
 	PhysicalCamera* mPhysicalCamera;
-	UpdateMode mUpdateMode;
-	
 	::Timer mFrameTimer;
-	
+
 	bool mPaused;
-	bool mDrawPickingGraphics;
+	
+	UpdateMode mUpdateMode;
 	opal::real mUpdateConstant;
+	
+	/// Determines how fast the camera can rotate.
+	//opal::real mCameraRotateSpeed;
+
+	/// Determines whether the grasping visuals are shown.
+	bool mDrawPickingGraphics;
+
+	///// Determines whether frames are captured after each update.
+	//bool mCaptureFramesEnabled;
 };
 
 #endif

@@ -61,7 +61,7 @@ PhysicsPostStepEventHandler gPostStepEventHandler;
 class MyFrameListener : public SimulationFrameListener
 {
 public:
-    MyFrameListener(RenderWindow* win, Camera* cam)
+    MyFrameListener(RenderWindow* win, PhysicalCamera* cam)
         : SimulationFrameListener(win, cam)
     {
 		
