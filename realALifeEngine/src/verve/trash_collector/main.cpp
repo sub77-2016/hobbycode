@@ -72,23 +72,20 @@ public:
 
 	}
 	
-	//bool frameRenderingQueued(const FrameEvent& evt);
-	//virtual bool frameStarted(const FrameEvent& evt);
+	virtual bool frameStarted(const FrameEvent& evt);
+	virtual bool frameEnded(const FrameEvent& evt){}
 	
 };
 
-/*
-bool MyFrameListener::frameRenderingQueued(const FrameEvent& evt)
+bool MyFrameListener::frameStarted(const FrameEvent& evt)
 {
-	if( SimulationFrameListener::frameRenderingQueued(evt) == false )
+	//if( SimulationFrameListener::frameRenderingQueued(evt) == false )
+	if( SimulationFrameListener::frameStarted(evt) == false )
 		return false;
-
-	//sim.evolve();
 
   	// Call default
 	return true;
 }
-*/
 
 class MyApplication : public SimulationEngine
 {
