@@ -58,41 +58,75 @@ class PhysicsPostStepEventHandler : public opal::PostStepEventHandler
 
 PhysicsPostStepEventHandler gPostStepEventHandler;
 
+class MyFrameListener : public SimulationFrameListener
+{
+public:
+    MyFrameListener(RenderWindow* win, Camera* cam)
+        : SimulationFrameListener(win, cam)
+    {
+		
+    } 
+    
+   ~MyFrameListener()
+	{
+
+	}
+	
+	//bool frameRenderingQueued(const FrameEvent& evt);
+	virtual bool frameStarted(const FrameEvent& evt);
+	
+};
+
+/*
+bool MyFrameListener::frameRenderingQueued(const FrameEvent& evt)
+{
+	if( SimulationFrameListener::frameRenderingQueued(evt) == false )
+		return false;
+
+	//sim.evolve();
+
+  	// Call default
+	return true;
+}
+*/
+
 class MyApplication : public SimulationEngine
 {
 public:
    MyApplication(void)
+   	: SimulationEngine()
    {
    	
    }
    virtual ~MyApplication(){}
    
-   virtual void go()
-   {
-   		mOgreRoot->startRendering();
-   }
-
 protected:
-	
+	/*
 	virtual void createFrameListener()
 	{
 		//mFrameListener= new MyFrameListener(mOgreWindow, getCamera()->getOgreCamera());
 		//mFrameListener->showDebugOverlay(true);
    		//mOgreRoot->addFrameListener(mFrameListener);
    		
-   		//SimulationEngine *frmLnr = new SimulationEngine(
+   		//SimulationFrameListener::SimulationFrameListener(
    		//							mOgreWindow, getCamera()->getOgreCamera());
-		//frmLnr->showDebugOverlay(true);
-   		mOgreRoot->addFrameListener(this);
+   		
+   		MyFrameListener *frmLnr = new MyFrameListener(
+   								mOgreWindow, getCamera()->getOgreCamera());
+		frmLnr->showDebugOverlay(true);
+   		mOgreRoot->addFrameListener(frmLnr);
 	}
+	*/
+	
 	
    virtual void createScene();
-   virtual bool frameStarted(const FrameEvent& evt);
+   //virtual bool frameStarted(const FrameEvent& evt);
 };
 
-bool MyApplication::frameStarted(const FrameEvent& evt)
+/*
+bool MyFrameListener::frameStarted(const FrameEvent& evt)
 {
-		/*
+		
         if(mOgreWindow->isClosed())
         {
         return false;
@@ -108,6 +142,7 @@ bool MyApplication::frameStarted(const FrameEvent& evt)
         {
                 return false;
         }
+       
        
                 Ogre::Real elapsedSimTime = 0;
                 Ogre::Real elapsedRealTime = 0;
@@ -185,9 +220,8 @@ bool MyApplication::frameStarted(const FrameEvent& evt)
                 gRobot->updateVisuals(elapsedSimTime);
                 updateOverlay();
                 gAgentDebugger->updateVisuals();
-       */
        
-       /*
+       
         if (processUnbufferedKeyInput(elapsedRealTime) == false)
         {
                 return false;
@@ -197,10 +231,11 @@ bool MyApplication::frameStarted(const FrameEvent& evt)
         {
                 return false;
         }
-        */
+        
        
    return true;
 }
+*/
 
 
 void MyApplication::createScene()
@@ -347,8 +382,11 @@ void MyApplication::createScene()
 class Sim
 {
 public:
+	Sim(MyApplication &a){
+		mEngine = a;
+	}
 	
-	Sim()
+	void init()
 	{    
 		mEngine.init();
 		//mEngine = new SimulationEngine();	
@@ -393,147 +431,19 @@ public:
   		delete mPostStepEventHandler;
 	}
 	
-	void go()
+	void run()
 	{
-		mEngine.go();
+		mEngine.run();
 	}
 	
 	void evolve()
 	{
-		while(true)
-		{
- 			Ogre::Real elapsedSimTime = 0;
-       		//Ogre::Real elapsedRealTime = 0;
-       		//mEngine.update(elapsedSimTime, elapsedRealTime);
-       		//handleInput(elapsedRealTime);
-                
-      		if (mEngine.quitApp())
-        	{
-             	return;
-         	}
-       	
-         	// Update sound effects at 50 Hz.
-       		const Ogre::Real soundUpdatePeriod = 0.02;
-       		static Ogre::Real soundUpdateTimer = 0;
-      		soundUpdateTimer -= elapsedSimTime;
-      	
-     		if (soundUpdateTimer <= 0)
-       		{
-         		mRobot->updateSoundEffects(soundUpdatePeriod);
-           		mCar->updateSoundEffects(soundUpdatePeriod);
-           		soundUpdateTimer = soundUpdatePeriod;
-      		}
-
-      		mRobot->updateVisuals(elapsedSimTime);
-        	//updateOverlay();
-      		mAgentDebugger->updateVisuals();
-		}
+		
 	}
 	
 	void handleInput(Ogre::Real elapsedRealTime)
 	{
-        // This variable can be used to keep keys from repeating too fast.
-        static Ogre::Real toggleTimer = 0;
-        if (toggleTimer >= 0)
-        {
-                toggleTimer -= elapsedRealTime;
-        }
-
-        OIS::Keyboard* keyboard = mEngine.getKeyboard();
-
-        if (keyboard->isKeyDown(OIS::KC_W))
-        {
-                mCar->forward();
-        }
-        else if (keyboard->isKeyDown(OIS::KC_S))
-        {
-                mCar->reverse();
-        }
-        else
-        {
-                mCar->idle();
-        }
-
-        if (keyboard->isKeyDown(OIS::KC_A))
-        {
-                mCar->setSteering(-1);
-        }
-        else if (keyboard->isKeyDown(OIS::KC_D))
-        {
-                mCar->setSteering(1);
-        }
-        else
-        {
-                mCar->setSteering(0);
-        }
-
-		/*
-        // If available, get data from the game controller.
-        if (gGamePad)
-        {
-                // Update the game controller state.
-                SDL_JoystickUpdate();
-
-                Ogre::Real joy0X = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 0) /
-                        (Ogre::Real)32768;
-                Ogre::Real joy0Y = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 1) /
-                        (Ogre::Real)32768;
-                Ogre::Real joy1X = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 4) /
-                        (Ogre::Real)32768;
-                Ogre::Real joy1Y = (Ogre::Real)SDL_JoystickGetAxis(gGamePad, 3) /
-                        (Ogre::Real)32768;
-
-                if (fabs(joy0Y) > 0.1)
-                {
-                        mCar->setThrottle(-joy0Y);
-                }
-                else
-                {
-                        mCar->idle();
-                }
-
-                if (fabs(joy0X) > 0.1)
-                {
-                        mCar->setSteering(joy0X);
-                }
-                else
-                {
-                        mCar->setSteering(0);
-                }
-
-                if (joy1X > 0.2 || joy1X < -0.2)
-                {
-                        Ogre::Degree rotAroundY = -Ogre::Degree(joy1X);
-                        gEngine.getCamera()->yawRelative(rotAroundY.valueDegrees());
-                }
-
-                if (joy1Y > 0.2 || joy1Y < -0.2)
-                {
-                        Ogre::Degree rotAroundX = -Ogre::Degree(joy1Y);
-                        gEngine.getCamera()->pitchRelative(rotAroundX.valueDegrees());
-                }
-        }
-		*/
 		
-        // Toggle GUI.
-        if (keyboard->isKeyDown(OIS::KC_G) && toggleTimer <= 0)
-        {
-                Ogre::Overlay* debugOverlay = Ogre::OverlayManager::getSingleton().
-                        getByName("Verve/Debug");
-
-                if (debugOverlay->isVisible())
-        {
-                        debugOverlay->hide();
-                        mAgentDebugger->setDisplayEnabled(false);
-                }
-                else
-                {
-                        debugOverlay->show();
-                        mAgentDebugger->setDisplayEnabled(true);
-                }
-
-                toggleTimer = 0.5;
-        }
 	}
 	
 protected:    
@@ -548,37 +458,6 @@ protected:
 	unsigned int mNumTrialsPerRun;
 	verve::real mPhysicsStepSize;
 };
-
-//Sim sim(app);
-
-class MyFrameListener : public SimulationFrameListener
-{
-public:
-    MyFrameListener(RenderWindow* win, Camera* cam)
-        : SimulationFrameListener(win, cam)
-    {
-		
-    } 
-    
-   ~MyFrameListener()
-	{
-
-	}
-	
-	bool frameRenderingQueued(const FrameEvent& evt);
-	
-};
-
-bool MyFrameListener::frameRenderingQueued(const FrameEvent& evt)
-{
-	if( SimulationFrameListener::frameRenderingQueued(evt) == false )
-		return false;
-
-	//sim.evolve();
-
-  	// Call default
-	return true;
-}
 
 #ifdef __cplusplus
 extern "C" {
@@ -597,12 +476,16 @@ int main(int argc, char **argv)
 	
     // Create application object
     MyApplication app;
-    //Sim sim;
+    //app.init();
+    
+    //Sim sim(app);
+    //sim.init();
     
     if (!app.init())
     {
      	return 0;
    	}
+   	
    	
         // Create the robot.
         opal::Matrix44r robotTransform;
@@ -635,9 +518,10 @@ int main(int argc, char **argv)
         gAgentDebugger = new AgentVisualDebugger(app.getSceneManager());
         gAgentDebugger->setAgent(gRobot->getAgent());
         gAgentDebugger->setDisplayEnabled(false);
+        
 
     try {
-    	app.go();
+    	app.run();
     } catch( Ogre::Exception& e ) {
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
         MessageBox( NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL );
@@ -766,7 +650,7 @@ int _main(int argc, char* argv[])
 
         //setupEnvironment();
        
-        gEngine.go();
+        gEngine.run();
 
         //mainLoop();
 
@@ -908,10 +792,10 @@ void mainLoop()
                 Ogre::Real elapsedRealTime = 0;
                 //gEngine.update(elapsedSimTime, elapsedRealTime);
                 handleInput(elapsedRealTime);
-                if (gEngine.quitApp())
-                {
-                        return;
-                }
+                //if (gEngine.quitApp())
+                //{
+                        //return;
+                //}
 
                 // Update sound effects at 50 Hz.
                 const Ogre::Real soundUpdatePeriod = 0.02;
@@ -952,7 +836,7 @@ void handleInput(Ogre::Real elapsedRealTime)
                 toggleTimer -= elapsedRealTime;
         }
 
-        OIS::Keyboard* keyboard = gEngine.getKeyboard();
+        OIS::Keyboard* keyboard ; //= gEngine.getKeyboard();
 
         if (keyboard->isKeyDown(OIS::KC_W))
         {
