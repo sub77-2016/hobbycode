@@ -23,15 +23,16 @@
 #include "SimulationEngine.h"
 
 SimulationEngine::SimulationEngine()
-//: SimulationFrameListener()
 {
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 	mOgreRoot = NULL;
 	mOgreSceneMgr = NULL;
 	mOgreWindow = NULL;
+	/*
 	mInputManager = NULL;
 	mMouse = NULL;
 	mKeyboard = NULL;
+	*/
 	mPhysicalCamera = NULL;
 	mDrawPickingGraphics = true;
 	//mCaptureFramesEnabled = false;
@@ -39,8 +40,10 @@ SimulationEngine::SimulationEngine()
 #endif
 
 	mSimulator = NULL;
+#ifdef SIMULATION_ENGINE_PHYSICS_ONLY
 	mQuitApp = false;
-	mPaused = false;
+#endif
+	//mPaused = false;
 	mUpdateMode = SIMULATE_REAL_TIME_MULTIPLE;
 	mUpdateConstant = 1;
 }
@@ -51,6 +54,7 @@ SimulationEngine::~SimulationEngine()
 	destroyAllPhysicalEntities();
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	/*
 	if (mInputManager)
 	{
 		mInputManager->destroyInputObject( mMouse );
@@ -58,6 +62,7 @@ SimulationEngine::~SimulationEngine()
 		OIS::InputManager::destroyInputSystem(mInputManager);
 		mInputManager = NULL;
 	}
+	*/
 
 	// This must occur before destroying the Opal Simulator.
 	if (mPhysicalCamera)
@@ -215,10 +220,12 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	return true;
 }
 
-/*
+/// Now become non-Graphics update
+#ifdef SIMULATION_ENGINE_PHYSICS_ONLY
 void SimulationEngine::update(opal::real& elapsedSimTime, 
 	opal::real& elapsedRealTime)
 {
+	/*
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 	if (mOgreWindow->isClosed())
 	{
@@ -226,12 +233,14 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		return;
 	}
 #endif
+	*/
 
 	// Get the elapsed time in seconds since the last time we were here.
 	elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
 	mFrameTimer.reset();
 	elapsedSimTime = elapsedRealTime;
 
+	/*
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 	if (false == handleInput(elapsedRealTime))
 	{
@@ -239,9 +248,10 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		return;
 	}
 #endif
+	*/
 
-	if (!mPaused)
-	{
+	//if (!mPaused)
+	//{
 		switch(mUpdateMode)
 		{
 			case SIMULATE_CONSTANT_CHUNK:
@@ -266,12 +276,14 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		{
 			mPhysicalEntityList.at(i)->update(elapsedSimTime);
 		}
-
+/*
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 		mPhysicalCamera->update(elapsedSimTime);
 #endif
-	}
+*/
+	//}
 
+/*
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 	updatePickingGraphics();
 
@@ -289,13 +301,14 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 	//	captureFrame();
 	//}
 #endif
-}
 */
+}
 
 bool SimulationEngine::quitApp()
 {
 	return mQuitApp;
 }
+#endif
 
 opal::Simulator* SimulationEngine::getSimulator()const
 {
@@ -308,6 +321,7 @@ Ogre::SceneManager* SimulationEngine::getSceneManager()const
 	return mOgreSceneMgr;
 }
 
+/*
 OIS::Keyboard* SimulationEngine::getKeyboard()const
 {
 	return mKeyboard;
@@ -317,6 +331,7 @@ OIS::Mouse* SimulationEngine::getMouse()const
 {
 	return mMouse;
 }
+*/
 
 PhysicalCamera* SimulationEngine::getCamera()
 {
@@ -727,12 +742,12 @@ void SimulationEngine::setupDefaultVisualScene()
 	*/
 }
 
+/*
 void SimulationEngine::setPickingGraphicsEnabled(bool e)
 {
 	mDrawPickingGraphics = e;
 }
 
-/*
 void SimulationEngine::updatePickingGraphics()
 {
 	if (!mDrawPickingGraphics)
@@ -1142,86 +1157,14 @@ void SimulationEngine::run()
 void SimulationEngine::createFrameListener()
 {
  	mFrameListener = new SimulationFrameListener(
- 							mOgreWindow, getCamera()->getOgreCamera());
+ 							mOgreWindow, mPhysicalCamera);
    	mFrameListener->showDebugOverlay(true);
    	
    	mFrameListener->hook_simulation(mPhysicalEntityList,
-				mSimulator, mPhysicalCamera,
-				mOgreSceneMgr);
+				mSimulator, mOgreSceneMgr);
 
    	mOgreRoot->addFrameListener(mFrameListener);
 }
-
-/*
-bool SimulationEngine::frameStarted(const FrameEvent& evt)
-{
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	if (mOgreWindow->isClosed())
-	{
-		mQuitApp = true;
-		return false;
-	}
-#endif
-	
-	// Get the elapsed time in seconds since the last time we were here.
-	opal::real elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
-	mFrameTimer.reset();
-	opal::real elapsedSimTime = elapsedRealTime;
-
-	if (!mPaused)
-	{
-		switch(mUpdateMode)
-		{
-			case SIMULATE_CONSTANT_CHUNK:
-				// Simulate constant chunks of time at once.  Keep in 
-				// mind that this must finish before continuing, so 
-				// if it takes a while to simulate a single chunk 
-				// of time, the input handling might become unresponsive.
-				elapsedSimTime = mUpdateConstant;
-				break;
-			case SIMULATE_REAL_TIME_MULTIPLE:
-				elapsedSimTime *= mUpdateConstant;
-				break;
-			default:
-				assert(false);
-				break;
-		}
-
-		mSimulator->simulate(elapsedSimTime);
-
-		size_t size = mPhysicalEntityList.size();
-		for(size_t i = 0; i<size; ++i)
-		{
-			mPhysicalEntityList.at(i)->update(elapsedSimTime);
-		}
-
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-		mPhysicalCamera->update(elapsedSimTime);
-#endif
-	}
-
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	updatePickingGraphics();
-
-	// 'renderOneFrame' returns a bool that determines whether we should 
-	// quit, but it is only useful when using pre and post frame event 
-	// listeners.
-	if (!mOgreRoot->renderOneFrame())
-		return false;
-		
-	// Update the stats overlay.
-	//updateOgreStats();
-
-	//if (mCaptureFramesEnabled)
-	//{
-	//	captureFrame();
-	//}
-#endif
-
-	
-	return true;
-}
-*/
 
 #endif
 

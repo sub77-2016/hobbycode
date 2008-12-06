@@ -30,8 +30,6 @@
 #include "PhysicalCamera.h"
 #include "Timer.h"
 
-//typedef std::vector<PhysicalEntity*> P_ENT;
-
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 /*
 #include <OGRE/Ogre.h>
@@ -57,8 +55,6 @@ namespace Ogre
 	class SceneManager;
 	class FrameListener;
 }
-
-using namespace Ogre;
 */
 #endif
 
@@ -76,11 +72,11 @@ public:
 	{
 		/// Each update simulates the world ahead by a constant amount of 
 		/// time.
-		SIMULATE_CONSTANT_CHUNK,
+		SIMULATE_CONSTANT_CHUNK = 0,
 
 		/// Each update simulates the world ahead by an amount of time 
 		/// proportional to the elapsed time since the previous update.
-		SIMULATE_REAL_TIME_MULTIPLE
+		SIMULATE_REAL_TIME_MULTIPLE = 1,
 	};
 
 	SimulationEngine();
@@ -95,11 +91,13 @@ public:
 	/// amount of time by which the world was just simulated (which depends 
 	/// on the UpdateType being used) and the actual elapsed (wall clock) 
 	/// time since the last update.
-	//void update(opal::real& elapsedSimTime, opal::real& elapsedRealTime);
-
+#ifdef SIMULATION_ENGINE_PHYSICS_ONLY
+	void update(opal::real& elapsedSimTime, opal::real& elapsedRealTime);
+	
 	/// Returns true if we should quit the app.  This should be checked 
 	/// after each update.
 	bool quitApp();
+#endif
 
 	/// Returns a pointer to the Opal Simulator.
 	opal::Simulator* getSimulator()const;
@@ -110,11 +108,11 @@ public:
 
 	/// Returns a pointer to the OIS keyboard.  This can be used for 
 	/// application-specific user input.
-	OIS::Keyboard* getKeyboard()const;
+	//OIS::Keyboard* getKeyboard()const;
 
 	/// Returns a pointer to the OIS mouse.  This can be used for 
 	/// application-specific user input.
-	OIS::Mouse* getMouse()const;
+	//OIS::Mouse* getMouse()const;
 
 	/// Returns a pointer to the physical camera.
 	PhysicalCamera* getCamera();
@@ -220,10 +218,10 @@ protected:
 	void setupDefaultVisualScene();
 
 	/// Sets whether the grasping visuals are shown.
-	void setPickingGraphicsEnabled(bool e);
+	//void setPickingGraphicsEnabled(bool e);
 
 	/// Updates the picking graphics.
-	void updatePickingGraphics();
+	//void updatePickingGraphics();
 
 	///// Saves the current screen to a file with a unique name.
 	//void captureFrame();
@@ -242,14 +240,11 @@ protected:
 	/// Updates the Ogre stats overlay.
 	//void updateOgreStats();
 	
-	///
+	/// Ogre Application overide
 	virtual void createScene() = 0;
 	virtual void destroyScene(){}
 	virtual void createFrameListener();
 	
-	/// FrameListener overrides 
-   	//virtual bool frameStarted(const FrameEvent& evt);
-   	//virtual bool frameEnded(const FrameEvent& evt){return true;}  
 #endif
 
 	/// Returns a unique name string.  Useful when creating lots of 
@@ -267,22 +262,22 @@ protected:
 	Ogre::RenderWindow* mOgreWindow;
 
 	/// The OIS input manager.
-	OIS::InputManager* mInputManager;
+	//OIS::InputManager* mInputManager;
 
 	/// The OIS mouse.
-	OIS::Mouse* mMouse;
+	//OIS::Mouse* mMouse;
 
 	/// The OIS keyboard.
-	OIS::Keyboard* mKeyboard;
+	//OIS::Keyboard* mKeyboard;
 
 	/// Pointer to the PhysicalCamera.
 	PhysicalCamera* mPhysicalCamera;
 	
-	///
+	/// Detect Render Event Loop
 	SimulationFrameListener *mFrameListener;
 
 	/// Determines how fast the camera can rotate.
-	opal::real mCameraRotateSpeed;
+	//opal::real mCameraRotateSpeed;
 
 	/// Determines whether the grasping visuals are shown.
 	bool mDrawPickingGraphics;
@@ -291,7 +286,7 @@ protected:
 	//bool mCaptureFramesEnabled;
 
 	/// Used to print out debug info.
-	std::string mDebugText;
+	//std::string mDebugText;
 #endif
 
 	/// Pointer to the OPAL Simulator.
@@ -300,11 +295,13 @@ protected:
 	/// A timer used to measure time differences between frames.
 	::Timer mFrameTimer;
 
+#ifdef SIMULATION_ENGINE_PHYSICS_ONLY
 	/// Set to true when the app should quit.
 	bool mQuitApp;
+#endif
 
 	/// True when the physics simulation is paused.
-	bool mPaused;
+	//bool mPaused;
 
 	/// The type of update being used.
 	UpdateMode mUpdateMode;
@@ -315,7 +312,6 @@ protected:
 	/// Map of named PhysicalEntities.  This is just used to find a 
 	/// PhysicalEntity by name.
 	std::vector<PhysicalEntity*> mPhysicalEntityList;
-	//P_ENT mPhysicalEntityList;
 
 	/// Map of named PhysicalEntities.
 	std::map<std::string, PhysicalEntity*> mPhysicalEntityMap;
