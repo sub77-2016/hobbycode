@@ -732,6 +732,7 @@ void SimulationEngine::setPickingGraphicsEnabled(bool e)
 	mDrawPickingGraphics = e;
 }
 
+/*
 void SimulationEngine::updatePickingGraphics()
 {
 	if (!mDrawPickingGraphics)
@@ -810,6 +811,7 @@ void SimulationEngine::updatePickingGraphics()
 		}
 	}
 }
+*/
 
 //void SimulationEngine::captureFrame()
 //{
