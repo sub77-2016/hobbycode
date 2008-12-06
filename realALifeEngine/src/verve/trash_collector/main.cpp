@@ -58,6 +58,8 @@ class PhysicsPostStepEventHandler : public opal::PostStepEventHandler
 
 PhysicsPostStepEventHandler gPostStepEventHandler;
 
+
+
 class MyFrameListener : public SimulationFrameListener
 {
 public:
@@ -72,20 +74,31 @@ public:
 
 	}
 	
-	virtual bool frameStarted(const FrameEvent& evt);
+protected:
+	virtual bool frameStarted(const FrameEvent& evt){}
 	virtual bool frameEnded(const FrameEvent& evt){}
 	
+	//virtual void physicsEnded();
 };
 
+/*
+void MyFrameListener::physicsEnded()
+{
+	//
+}
+*/
+
+/*
 bool MyFrameListener::frameStarted(const FrameEvent& evt)
 {
-	//if( SimulationFrameListener::frameRenderingQueued(evt) == false )
-	if( SimulationFrameListener::frameStarted(evt) == false )
-		return false;
+	//if( SimulationFrameListener::frameStarted(evt) == false )
+		//return false;
+	app.update(0,0);
 
   	// Call default
 	return true;
 }
+*/
 
 class MyApplication : public SimulationEngine
 {
@@ -98,15 +111,13 @@ public:
    virtual ~MyApplication(){}
    
 protected:
-	/*
+	
 	virtual void createFrameListener()
 	{
    		MyFrameListener *frmLnr = new MyFrameListener(mOgreWindow, mPhysicalCamera);
 		frmLnr->showDebugOverlay(true);
    		mOgreRoot->addFrameListener(frmLnr);
 	}
-	*/
-	
 	
    virtual void createScene();
 };

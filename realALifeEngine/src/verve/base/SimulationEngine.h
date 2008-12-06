@@ -91,13 +91,11 @@ public:
 	/// amount of time by which the world was just simulated (which depends 
 	/// on the UpdateType being used) and the actual elapsed (wall clock) 
 	/// time since the last update.
-#ifdef SIMULATION_ENGINE_PHYSICS_ONLY
 	void update(opal::real& elapsedSimTime, opal::real& elapsedRealTime);
 	
 	/// Returns true if we should quit the app.  This should be checked 
 	/// after each update.
 	bool quitApp();
-#endif
 
 	/// Returns a pointer to the Opal Simulator.
 	opal::Simulator* getSimulator()const;
@@ -295,10 +293,8 @@ protected:
 	/// A timer used to measure time differences between frames.
 	::Timer mFrameTimer;
 
-#ifdef SIMULATION_ENGINE_PHYSICS_ONLY
 	/// Set to true when the app should quit.
 	bool mQuitApp;
-#endif
 
 	/// True when the physics simulation is paused.
 	//bool mPaused;

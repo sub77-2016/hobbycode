@@ -220,12 +220,9 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	return true;
 }
 
-/// Now become non-Graphics update
-#ifdef SIMULATION_ENGINE_PHYSICS_ONLY
 void SimulationEngine::update(opal::real& elapsedSimTime, 
 	opal::real& elapsedRealTime)
 {
-	/*
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 	if (mOgreWindow->isClosed())
 	{
@@ -233,7 +230,6 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		return;
 	}
 #endif
-	*/
 
 	// Get the elapsed time in seconds since the last time we were here.
 	elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
@@ -276,16 +272,15 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		{
 			mPhysicalEntityList.at(i)->update(elapsedSimTime);
 		}
-/*
+		
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 		mPhysicalCamera->update(elapsedSimTime);
 #endif
-*/
+
 	//}
 
-/*
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	updatePickingGraphics();
+	//updatePickingGraphics();
 
 	// 'renderOneFrame' returns a bool that determines whether we should 
 	// quit, but it is only useful when using pre and post frame event 
@@ -294,21 +289,20 @@ void SimulationEngine::update(opal::real& elapsedSimTime,
 		return;
 
 	// Update the stats overlay.
-	updateOgreStats();
+	//updateOgreStats();
 
 	//if (mCaptureFramesEnabled)
 	//{
 	//	captureFrame();
 	//}
 #endif
-*/
 }
 
 bool SimulationEngine::quitApp()
 {
 	return mQuitApp;
 }
-#endif
+
 
 opal::Simulator* SimulationEngine::getSimulator()const
 {
