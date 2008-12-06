@@ -39,6 +39,8 @@ D:        Step right
 #include "OGRE/OgreStringConverter.h"
 #include "OGRE/OgreException.h"
 
+#include "SimulationEngine.h"
+
 //Use this define to signify OIS will be used as a DLL
 //(so that dll import/export macros are in effect)
 #define OIS_DYNAMIC_LIB
@@ -86,10 +88,31 @@ protected:
 	}
 
 public:
-	SimulationFrameListener()
+	enum UpdateMode
 	{
-		//
+		/// Each update simulates the world ahead by a constant amount of 
+		/// time.
+		SIMULATE_CONSTANT_CHUNK,
+
+		/// Each update simulates the world ahead by an amount of time 
+		/// proportional to the elapsed time since the previous update.
+		SIMULATE_REAL_TIME_MULTIPLE
+	};
+	
+	void hook_simulation(P_ENT &plist,
+				opal::Simulator* sim, PhysicalCamera* pcam,
+				Ogre::SceneManager* scmr)
+	{
+		mPhysicalEntityList = plist;
+		mSimulator = sim;
+		mPhysicalCamera = pcam;
+		mUpdateMode = SIMULATE_REAL_TIME_MULTIPLE;
+		mOgreSceneMgr = scmr;
+		
+		mPaused = false;
+		mUpdateConstant = 1;
 	}
+	
 	// Constructor takes a RenderWindow because it uses that to determine input context
 	SimulationFrameListener(RenderWindow* win, Camera* cam, bool bufferedKeys = false, bool bufferedMouse = false,
 			     bool bufferedJoy = false ) :
@@ -380,6 +403,46 @@ public:
 		return true;
 	}
 
+	bool frameStarted(const FrameEvent& evt)
+	{
+		// Get the elapsed time in seconds since the last time we were here.
+		opal::real elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
+		mFrameTimer.reset();
+		opal::real elapsedSimTime = elapsedRealTime;
+
+		if (!mPaused)
+		{
+			switch(mUpdateMode)
+			{
+				case SIMULATE_CONSTANT_CHUNK:
+					// Simulate constant chunks of time at once.  Keep in 
+					// mind that this must finish before continuing, so 
+					// if it takes a while to simulate a single chunk 
+					// of time, the input handling might become unresponsive.
+					elapsedSimTime = mUpdateConstant;
+					break;
+				case SIMULATE_REAL_TIME_MULTIPLE:
+					elapsedSimTime *= mUpdateConstant;
+					break;
+				default:
+					assert(false);
+					break;
+			}
+
+			mSimulator->simulate(elapsedSimTime);
+
+			size_t size = mPhysicalEntityList.size();
+			for(size_t i = 0; i<size; ++i)
+			{
+				mPhysicalEntityList.at(i)->update(elapsedSimTime);
+			}
+
+			mPhysicalCamera->update(elapsedSimTime);
+		}
+
+		return true;
+	}
+	
 	bool frameEnded(const FrameEvent& evt)
 	{
 		updateStats();
@@ -416,6 +479,19 @@ protected:
 	OIS::Mouse*    mMouse;
 	OIS::Keyboard* mKeyboard;
 	OIS::JoyStick* mJoy;
+	
+	//
+	Ogre::SceneManager* mOgreSceneMgr;
+	P_ENT mPhysicalEntityList;
+	opal::Simulator* mSimulator;
+	PhysicalCamera* mPhysicalCamera;
+	UpdateMode mUpdateMode;
+	
+	::Timer mFrameTimer;
+	
+	bool mPaused;
+	bool mDrawPickingGraphics;
+	opal::real mUpdateConstant;
 };
 
 #endif

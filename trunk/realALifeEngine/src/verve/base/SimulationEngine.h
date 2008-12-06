@@ -30,6 +30,8 @@
 #include "PhysicalCamera.h"
 #include "Timer.h"
 
+typedef std::vector<PhysicalEntity*> P_ENT;
+
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 /*
 #include <OGRE/Ogre.h>
@@ -62,11 +64,11 @@ using namespace Ogre;
 
 /// A general-purpose module for simulating physics (with Opal and ODE), 
 /// handling user input, and drawing 3D graphics (with Ogre).
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-class SimulationEngine : public SimulationFrameListener
-#else
+//#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+//class SimulationEngine : public SimulationFrameListener
+//#else
 class SimulationEngine
-#endif
+//#endif
 {
 public:
 	/// Various ways to update the simulation.
@@ -128,7 +130,7 @@ public:
 	//void setCaptureFramesEnabled(bool capture);
 	
 	/// Start the Engine
-	virtual void go(void);
+	virtual void run(void);
 #endif
 
 	/// Sets the type of update to use.  The extra real parameter is used 
@@ -243,10 +245,10 @@ protected:
 	///
 	virtual void createScene() = 0;
 	virtual void destroyScene(){}
-	virtual void createFrameListener(void);
+	virtual void createFrameListener();
 	
 	/// FrameListener overrides 
-   	virtual bool frameStarted(const FrameEvent& evt);
+   	//virtual bool frameStarted(const FrameEvent& evt);
    	//virtual bool frameEnded(const FrameEvent& evt){return true;}  
 #endif
 
@@ -275,6 +277,9 @@ protected:
 
 	/// Pointer to the PhysicalCamera.
 	PhysicalCamera* mPhysicalCamera;
+	
+	///
+	SimulationFrameListener *mFrameListener;
 
 	/// Determines how fast the camera can rotate.
 	opal::real mCameraRotateSpeed;
@@ -309,7 +314,8 @@ protected:
 
 	/// Map of named PhysicalEntities.  This is just used to find a 
 	/// PhysicalEntity by name.
-	std::vector<PhysicalEntity*> mPhysicalEntityList;
+	//std::vector<PhysicalEntity*> mPhysicalEntityList;
+	P_ENT mPhysicalEntityList;
 
 	/// Map of named PhysicalEntities.
 	std::map<std::string, PhysicalEntity*> mPhysicalEntityMap;

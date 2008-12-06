@@ -23,6 +23,7 @@
 #include "SimulationEngine.h"
 
 SimulationEngine::SimulationEngine()
+//: SimulationFrameListener()
 {
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 	mOgreRoot = NULL;
@@ -34,6 +35,7 @@ SimulationEngine::SimulationEngine()
 	mPhysicalCamera = NULL;
 	mDrawPickingGraphics = true;
 	//mCaptureFramesEnabled = false;
+	mFrameListener = NULL;
 #endif
 
 	mSimulator = NULL;
@@ -71,6 +73,11 @@ SimulationEngine::~SimulationEngine()
 	if (mOgreRoot)
 	{
 		delete mOgreRoot;
+	}
+	
+	if (mFrameListener)
+	{
+		delete mFrameListener;
 	}
 #endif
 
@@ -201,8 +208,6 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	setupDefaultVisualScene();
 	createScene();
 	createFrameListener();
-	
-	//mOgreRoot->addFrameListener(this);
 #endif
 
 	mFrameTimer.reset();
@@ -1121,10 +1126,10 @@ void SimulationEngine::updateOgreStats()
 }
 */
 
-void SimulationEngine::go()
+void SimulationEngine::run()
 {
-	if (!init())
-		return;
+	//if (!init())
+	//	return;
 		
 	mOgreRoot->startRendering();
 
@@ -1134,21 +1139,28 @@ void SimulationEngine::go()
 
 void SimulationEngine::createFrameListener()
 {
- 	SimulationFrameListener *frmLnr = new SimulationFrameListener(
- 											mOgreWindow, getCamera()->getOgreCamera());
-   	frmLnr->showDebugOverlay(true);
-   	mOgreRoot->addFrameListener(frmLnr);
+ 	mFrameListener = new SimulationFrameListener(
+ 							mOgreWindow, getCamera()->getOgreCamera());
+   	mFrameListener->showDebugOverlay(true);
    	
-   	//SimulationEngine *frmLnr = new SimulationEngine();
-   	//frmLnr->showDebugOverlay(true);
-   	//mOgreRoot->addFrameListener(frmLnr);
-   	
-   	//mOgreRoot->addFrameListener(this);
+   	mFrameListener->hook_simulation(mPhysicalEntityList,
+				mSimulator, mPhysicalCamera,
+				mOgreSceneMgr);
+
+   	mOgreRoot->addFrameListener(mFrameListener);
 }
 
+/*
 bool SimulationEngine::frameStarted(const FrameEvent& evt)
 {
-	/*
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	if (mOgreWindow->isClosed())
+	{
+		mQuitApp = true;
+		return false;
+	}
+#endif
+	
 	// Get the elapsed time in seconds since the last time we were here.
 	opal::real elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
 	mFrameTimer.reset();
@@ -1203,10 +1215,11 @@ bool SimulationEngine::frameStarted(const FrameEvent& evt)
 	//	captureFrame();
 	//}
 #endif
-*/
+
 	
 	return true;
 }
+*/
 
 #endif
 
