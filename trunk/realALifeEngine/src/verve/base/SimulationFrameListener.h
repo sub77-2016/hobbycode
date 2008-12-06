@@ -395,13 +395,13 @@ public:
 	}
 
 	/// The core function for update physcal simulation
-	bool frameStarted(const FrameEvent& evt)
+	virtual bool frameStarted(const FrameEvent& evt)
 	{
 		updatePhysics();
 		return true;
 	}
 	
-	bool frameEnded(const FrameEvent& evt)
+	virtual bool frameEnded(const FrameEvent& evt)
 	{
 		updateStats();
 		return true;
