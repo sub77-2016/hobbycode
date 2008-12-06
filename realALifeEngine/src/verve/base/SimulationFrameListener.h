@@ -48,6 +48,17 @@ D:        Step right
 
 using namespace Ogre;
 
+enum UpdateMode
+{
+	/// Each update simulates the world ahead by a constant amount of 
+	/// time.
+	SIMULATE_CONSTANT_CHUNK,
+
+	/// Each update simulates the world ahead by an amount of time 
+	/// proportional to the elapsed time since the previous update.
+	SIMULATE_REAL_TIME_MULTIPLE
+};
+
 class SimulationFrameListener: public FrameListener, public WindowEventListener
 {
 protected:
@@ -87,32 +98,7 @@ protected:
 		catch(...) { /* ignore */ }
 	}
 
-public:
-	enum UpdateMode
-	{
-		/// Each update simulates the world ahead by a constant amount of 
-		/// time.
-		SIMULATE_CONSTANT_CHUNK,
-
-		/// Each update simulates the world ahead by an amount of time 
-		/// proportional to the elapsed time since the previous update.
-		SIMULATE_REAL_TIME_MULTIPLE
-	};
-	
-	void hook_simulation(P_ENT &plist,
-				opal::Simulator* sim, PhysicalCamera* pcam,
-				Ogre::SceneManager* scmr)
-	{
-		mPhysicalEntityList = plist;
-		mSimulator = sim;
-		mPhysicalCamera = pcam;
-		mUpdateMode = SIMULATE_REAL_TIME_MULTIPLE;
-		mOgreSceneMgr = scmr;
-		
-		mPaused = false;
-		mUpdateConstant = 1;
-	}
-	
+public:	
 	// Constructor takes a RenderWindow because it uses that to determine input context
 	SimulationFrameListener(RenderWindow* win, Camera* cam, bool bufferedKeys = false, bool bufferedMouse = false,
 			     bool bufferedJoy = false ) :
@@ -403,7 +389,35 @@ public:
 		return true;
 	}
 
+	/// The core function for update physcal simulation
 	bool frameStarted(const FrameEvent& evt)
+	{
+		updatePhysics();
+		return true;
+	}
+	
+	bool frameEnded(const FrameEvent& evt)
+	{
+		updateStats();
+		return true;
+	}
+	
+	void hook_simulation(std::vector<PhysicalEntity*> &plist,
+				opal::Simulator* sim, PhysicalCamera* pcam,
+				Ogre::SceneManager* scmr)
+	{
+		mPhysicalEntityList = plist;
+		mSimulator = sim;
+		mPhysicalCamera = pcam;
+		mUpdateMode = SIMULATE_REAL_TIME_MULTIPLE;
+		mOgreSceneMgr = scmr;
+		
+		mDrawPickingGraphics = true;
+		mPaused = false;
+		mUpdateConstant = 1;
+	}
+	
+	void updatePhysics()
 	{
 		// Get the elapsed time in seconds since the last time we were here.
 		opal::real elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
@@ -439,14 +453,87 @@ public:
 
 			mPhysicalCamera->update(elapsedSimTime);
 		}
-
-		return true;
+		
+		updatePickingGraphics();
 	}
 	
-	bool frameEnded(const FrameEvent& evt)
+	void updatePickingGraphics()
 	{
-		updateStats();
-		return true;
+		if (!mDrawPickingGraphics)
+		{
+			Ogre::Entity* pickingSphere = 
+				mOgreSceneMgr->getEntity("pickingSphere");
+			if (pickingSphere->isVisible())
+			{
+				pickingSphere->setVisible(false);
+			}
+
+			Ogre::Entity* springLine = 
+			mOgreSceneMgr->getEntity("springLine");
+			if (springLine->isVisible())
+			{
+				springLine->setVisible(false);
+			}
+			return;
+		}
+
+		// Update the grasping spring line.
+		if (mPhysicalCamera->isGrasping())
+		{
+			Ogre::Entity* pickingSphere = 
+				mOgreSceneMgr->getEntity("pickingSphere");
+			if (!pickingSphere->isVisible())
+			{
+				pickingSphere->setVisible(true);
+			}
+
+			Ogre::Entity* springLine = 
+				mOgreSceneMgr->getEntity("springLine");
+			if (!springLine->isVisible())
+			{
+				springLine->setVisible(true);
+			}
+
+			opal::Point3r desiredPos = 
+				mPhysicalCamera->getGraspGlobalPos();
+			Ogre::Vector3 point0(desiredPos[0], desiredPos[1], desiredPos[2]);
+
+			opal::Point3r attachPos = mPhysicalCamera->getAttachGlobalPos();
+			Ogre::Vector3 point1(attachPos[0], attachPos[1], attachPos[2]);
+
+			pickingSphere->getParentSceneNode()->setPosition(point1);
+
+			Ogre::Vector3 lineVec = point0 - point1;
+			if (!lineVec.isZeroLength())
+			{
+				Ogre::SceneNode* springLineNode = 
+					springLine->getParentSceneNode();
+				springLineNode->setPosition(0.5 * (point0 + point1));
+
+				springLineNode->setDirection(lineVec, Ogre::Node::TS_WORLD);
+				springLineNode->setScale(0.02, 0.02, lineVec.length());
+			}
+			else
+			{
+				springLine->setVisible(false);
+			}
+		}
+		else
+		{
+			Ogre::Entity* pickingSphere = 
+				mOgreSceneMgr->getEntity("pickingSphere");
+			if (pickingSphere->isVisible())
+			{
+				pickingSphere->setVisible(false);
+			}
+
+			Ogre::Entity* springLine = 
+			mOgreSceneMgr->getEntity("springLine");
+			if (springLine->isVisible())
+			{
+				springLine->setVisible(false);
+			}
+		}
 	}
 
 protected:
@@ -480,9 +567,9 @@ protected:
 	OIS::Keyboard* mKeyboard;
 	OIS::JoyStick* mJoy;
 	
-	//
+	// Hook Physics System
 	Ogre::SceneManager* mOgreSceneMgr;
-	P_ENT mPhysicalEntityList;
+	std::vector<PhysicalEntity*> mPhysicalEntityList;
 	opal::Simulator* mSimulator;
 	PhysicalCamera* mPhysicalCamera;
 	UpdateMode mUpdateMode;

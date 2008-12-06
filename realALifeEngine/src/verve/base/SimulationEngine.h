@@ -30,7 +30,7 @@
 #include "PhysicalCamera.h"
 #include "Timer.h"
 
-typedef std::vector<PhysicalEntity*> P_ENT;
+//typedef std::vector<PhysicalEntity*> P_ENT;
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 /*
@@ -314,8 +314,8 @@ protected:
 
 	/// Map of named PhysicalEntities.  This is just used to find a 
 	/// PhysicalEntity by name.
-	//std::vector<PhysicalEntity*> mPhysicalEntityList;
-	P_ENT mPhysicalEntityList;
+	std::vector<PhysicalEntity*> mPhysicalEntityList;
+	//P_ENT mPhysicalEntityList;
 
 	/// Map of named PhysicalEntities.
 	std::map<std::string, PhysicalEntity*> mPhysicalEntityMap;
