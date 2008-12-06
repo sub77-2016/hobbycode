@@ -410,7 +410,7 @@ public:
 	void hook_simulation(std::vector<PhysicalEntity*> &plist,
 				opal::Simulator* sim, Ogre::SceneManager* scmr, 
 				opal::real updconst = 1,
-				UpdateMode updmode = SIMULATE_REAL_TIME_MULTIPLE)
+				int updmode = SIMULATE_REAL_TIME_MULTIPLE)
 	{
 		mPhysicalEntityList = plist;
 		mSimulator = sim;
@@ -587,7 +587,7 @@ protected:
 
 	bool mPaused;
 	
-	UpdateMode mUpdateMode;
+	int mUpdateMode;
 	opal::real mUpdateConstant;
 	
 	/// Determines how fast the camera can rotate.

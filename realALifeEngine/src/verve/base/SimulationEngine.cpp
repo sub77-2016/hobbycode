@@ -1161,7 +1161,7 @@ void SimulationEngine::createFrameListener()
    	mFrameListener->showDebugOverlay(true);
    	
    	mFrameListener->hook_simulation(mPhysicalEntityList,
-				mSimulator, mOgreSceneMgr);
+				mSimulator, mOgreSceneMgr, mUpdateConstant, (int)mUpdateMode);
 
    	mOgreRoot->addFrameListener(mFrameListener);
 }
