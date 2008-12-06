@@ -403,6 +403,7 @@ public:
 	
 	virtual bool frameEnded(const FrameEvent& evt)
 	{
+		updatePickingGraphics();
 		updateStats();
 		return true;
 	}
@@ -458,10 +459,12 @@ public:
 			}
 
 			mPhysicalCamera->update(elapsedSimTime);
+			
+			physicsEnded();
 		}
-		
-		updatePickingGraphics();
 	}
+	
+	virtual void physicsEnded(){}
 	
 	void updatePickingGraphics()
 	{
