@@ -75,10 +75,10 @@ public:
 	}
 	
 protected:
-	virtual bool frameStarted(const FrameEvent& evt){}
-	virtual bool frameEnded(const FrameEvent& evt){}
+	//virtual bool frameStarted(const FrameEvent& evt){}
+	//virtual bool frameEnded(const FrameEvent& evt){}
 	
-	//virtual void physicsEnded();
+	virtual void physicsEnded();
 };
 
 /*
@@ -115,6 +115,10 @@ protected:
 	virtual void createFrameListener()
 	{
    		MyFrameListener *frmLnr = new MyFrameListener(mOgreWindow, mPhysicalCamera);
+   		
+   		frmLnr->hook_simulation(mPhysicalEntityList,
+				mSimulator, mOgreSceneMgr, mUpdateConstant, (int)mUpdateMode);
+				
 		frmLnr->showDebugOverlay(true);
    		mOgreRoot->addFrameListener(frmLnr);
 	}
@@ -263,85 +267,29 @@ void MyApplication::createScene()
          
 }
 
-class Sim
-{
-public:
-	Sim(MyApplication &a){
-		mEngine = a;
-	}
-	
-	void init()
-	{    
-		mEngine.init();
-		//mEngine = new SimulationEngine();	
-		//mEngine = &engine;
-		
-		// Create the robot.
-		opal::Matrix44r robotTransform;
-   		robotTransform.translate(0, 1, 0);
-   		mRobot = new Robot(mEngine, 5);
-   		mRobot->init("../data/blueprints/robot1.xml", "Plastic/LightBlue",
-                0.5, robotTransform, 2);
-   		mRobot->resetBodyAndCreateNewAgent();
-   		mRobot->resetBodyAndSTM();
-   		mRobot->randomizeState();
-   		mRobot->getFLMotor()->setMaxTorque((opal::real)2);
-   		mRobot->getFRMotor()->setMaxTorque((opal::real)2);
-   		mRobot->getFLMotor()->setMaxVelocity(1000);
-   		mRobot->getFRMotor()->setMaxVelocity(1000);
+MyApplication app;
 
-  		// Create the car.
-   		opal::Matrix44r carTransform;
-   		carTransform.translate(-12, 2, 4);
-   		mCar = new Car(mEngine);
-   		mCar->init("../data/blueprints/car1.xml", "Plastic/Blue", 1,
-                carTransform, 1);
-       
-		//DataFile dataFile(mNumTrialsPerRun);
-  		//updateOverlayData(trial);
-   		//mAvgRewardPerStep = 0;
-   		//mCurrentTrialTime = 0;
-       
- 		mAgentDebugger = new AgentVisualDebugger(mEngine.getSceneManager());
-   		mAgentDebugger->setAgent(mRobot->getAgent());
-   		mAgentDebugger->setDisplayEnabled(false);  
-	}
-   
-   ~Sim()
-	{
-		delete mRobot;
-   		delete mCar;
-  		delete mAgentDebugger;
-  		delete mPostStepEventHandler;
-	}
-	
-	void run()
-	{
-		mEngine.run();
-	}
-	
-	void evolve()
-	{
-		
-	}
-	
-	void handleInput(Ogre::Real elapsedRealTime)
-	{
-		
-	}
-	
-protected:    
-	MyApplication mEngine;
-		
-	Robot* mRobot;
-	Car* mCar;
-	AgentVisualDebugger* mAgentDebugger;
-	PhysicsPostStepEventHandler *mPostStepEventHandler;
-	
-	unsigned int mNumRuns;
-	unsigned int mNumTrialsPerRun;
-	verve::real mPhysicsStepSize;
-};
+void MyFrameListener::physicsEnded()
+{
+	            Ogre::Real elapsedSimTime = 0;
+                Ogre::Real elapsedRealTime = 0;
+                // Update sound effects at 50 Hz.
+                //app.update(elapsedSimTime,elapsedRealTime);
+                const Ogre::Real soundUpdatePeriod = 0.02;
+                static Ogre::Real soundUpdateTimer = 0;
+                soundUpdateTimer -= elapsedSimTime;
+                if (soundUpdateTimer <= 0)
+                {
+                        gRobot->updateSoundEffects(soundUpdatePeriod);
+                        gCar->updateSoundEffects(soundUpdatePeriod);
+                        soundUpdateTimer = soundUpdatePeriod;
+                }
+
+                gRobot->updateVisuals(elapsedSimTime);
+                updateOverlay();
+                gAgentDebugger->updateVisuals();
+}
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -359,7 +307,7 @@ int main(int argc, char **argv)
 	srand((unsigned int)time(NULL));
 	
     // Create application object
-    MyApplication app;
+    //MyApplication app;
     //app.init();
     
     //Sim sim(app);
