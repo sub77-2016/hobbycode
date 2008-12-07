@@ -39,7 +39,11 @@ D:        Step right
 #include "OGRE/OgreStringConverter.h"
 #include "OGRE/OgreException.h"
 
-#include "SimulationEngine.h"
+#include "PhysicalEntity.h"
+#include "PhysicalCamera.h"
+#include "Timer.h"
+
+//#include "SimulationEngine.h"
 
 //Use this define to signify OIS will be used as a DLL
 //(so that dll import/export macros are in effect)
@@ -395,15 +399,24 @@ public:
 	}
 
 	/// The core function for update physcal simulation
-	virtual bool frameStarted(const FrameEvent& evt)
+	bool frameStarted(const FrameEvent& evt)
 	{
-		updatePhysics();
+		opal::real elapsedSimTime = 0;
+       	opal::real elapsedRealTime = 0;
+               
+		// Get the elapsed time in seconds since the last time we were here.
+		elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
+		mFrameTimer.reset();
+		elapsedSimTime = elapsedRealTime;
+		
+		updatePhysics(elapsedSimTime, elapsedRealTime);
+		physicsEnded(elapsedSimTime, elapsedRealTime);
+		
 		return true;
 	}
 	
 	virtual bool frameEnded(const FrameEvent& evt)
 	{
-		updatePickingGraphics();
 		updateStats();
 		return true;
 	}
@@ -422,15 +435,14 @@ public:
 		
 		mDrawPickingGraphics = true;
 		mPaused = false;
+		
+		//mFrameTimer = tmr;
+		mFrameTimer.reset();
 	}
 	
-	void updatePhysics()
+	void updatePhysics(opal::real& elapsedSimTime, 
+		opal::real& elapsedRealTime)
 	{
-		// Get the elapsed time in seconds since the last time we were here.
-		opal::real elapsedRealTime = mFrameTimer.getTimeMilliseconds() * (opal::real)0.001;
-		mFrameTimer.reset();
-		opal::real elapsedSimTime = elapsedRealTime;
-
 		if (!mPaused)
 		{
 			switch(mUpdateMode)
@@ -458,13 +470,14 @@ public:
 				mPhysicalEntityList.at(i)->update(elapsedSimTime);
 			}
 
-			mPhysicalCamera->update(elapsedSimTime);
+			mPhysicalCamera->update(elapsedSimTime);	
 			
-			physicsEnded();
+			updatePickingGraphics();		
 		}
 	}
 	
-	virtual void physicsEnded(){}
+	virtual void physicsEnded(opal::real& elapsedSimTime, 
+		opal::real& elapsedRealTime){}
 	
 	void updatePickingGraphics()
 	{

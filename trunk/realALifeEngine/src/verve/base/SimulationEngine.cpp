@@ -38,6 +38,8 @@ SimulationEngine::SimulationEngine()
 	//mCaptureFramesEnabled = false;
 	mFrameListener = NULL;
 #endif
+	
+	//mFrameTimer = NULL;
 
 	mSimulator = NULL;
 #ifdef SIMULATION_ENGINE_PHYSICS_ONLY
@@ -85,6 +87,12 @@ SimulationEngine::~SimulationEngine()
 		delete mFrameListener;
 	}
 #endif
+	/*
+	if (mFrameTimer)
+	{
+		delete mFrameTimer;
+	}
+	*/
 
 	if (mSimulator)
 	{
@@ -215,6 +223,7 @@ bool SimulationEngine::init(PhysicalCamera::Type cameraType,
 	createFrameListener();
 #endif
 
+	//mFrameTimer = new ::Timer();
 	mFrameTimer.reset();
 
 	return true;
@@ -1155,7 +1164,8 @@ void SimulationEngine::createFrameListener()
    	mFrameListener->showDebugOverlay(true);
    	
    	mFrameListener->hook_simulation(mPhysicalEntityList,
-				mSimulator, mOgreSceneMgr, mUpdateConstant, (int)mUpdateMode);
+				mSimulator, mOgreSceneMgr, 
+				mUpdateConstant, (int)mUpdateMode);
 
    	mOgreRoot->addFrameListener(mFrameListener);
 }
