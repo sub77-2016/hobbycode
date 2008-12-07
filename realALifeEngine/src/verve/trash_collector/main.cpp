@@ -26,8 +26,8 @@
 #include "verve/apps/Robot.h"
 #include "verve/apps/Car.h"
 #include "verve/apps/AgentVisualDebugger.h"
+
 #include "verve/apps/SimulationEngine.h"
-#include "verve/apps/SimulationFrameListener.h"
 
 void setupEnvironment();
 void mainLoop();
@@ -75,10 +75,34 @@ public:
 	}
 	
 protected:
-	//virtual bool frameStarted(const FrameEvent& evt){}
+	virtual bool frameStarted(const FrameEvent& evt)
+	{
+		if( SimulationFrameListener::frameStarted(evt) == false )
+			return false;
+		return true;
+	}
 	//virtual bool frameEnded(const FrameEvent& evt){}
-	
-	virtual void physicsEnded();
+	virtual void physicsEnded(opal::real& elapsedSimTime, 
+		opal::real& elapsedRealTime)
+	{
+		
+		// Update sound effects at 50 Hz.
+		const opal::real soundUpdatePeriod = 0.02;
+   		static opal::real soundUpdateTimer = 0;
+  		soundUpdateTimer -= elapsedSimTime;
+   		if (soundUpdateTimer <= 0)
+   		{
+     		gRobot->updateSoundEffects(soundUpdatePeriod);
+    		gCar->updateSoundEffects(soundUpdatePeriod);
+   			soundUpdateTimer = soundUpdatePeriod;
+ 		}
+
+		gRobot->updateVisuals(elapsedSimTime);
+  		updateOverlay();
+  		gAgentDebugger->updateVisuals();
+  		
+  		
+	}
 };
 
 /*
@@ -111,18 +135,19 @@ public:
    virtual ~MyApplication(){}
    
 protected:
-	
+	/*
 	virtual void createFrameListener()
 	{
    		MyFrameListener *frmLnr = new MyFrameListener(mOgreWindow, mPhysicalCamera);
    		
    		frmLnr->hook_simulation(mPhysicalEntityList,
-				mSimulator, mOgreSceneMgr, mUpdateConstant, (int)mUpdateMode);
+				mSimulator, mOgreSceneMgr, 
+				mUpdateConstant, (int)mUpdateMode);
 				
 		frmLnr->showDebugOverlay(true);
    		mOgreRoot->addFrameListener(frmLnr);
 	}
-	
+	*/
    virtual void createScene();
 };
 
@@ -269,26 +294,26 @@ void MyApplication::createScene()
 
 MyApplication app;
 
-void MyFrameListener::physicsEnded()
+/*
+void MyFrameListener::physicsEnded(opal::real& elapsedSimTime, 
+		opal::real& elapsedRealTime)
 {
-	            Ogre::Real elapsedSimTime = 0;
-                Ogre::Real elapsedRealTime = 0;
-                // Update sound effects at 50 Hz.
-                //app.update(elapsedSimTime,elapsedRealTime);
-                const Ogre::Real soundUpdatePeriod = 0.02;
-                static Ogre::Real soundUpdateTimer = 0;
-                soundUpdateTimer -= elapsedSimTime;
-                if (soundUpdateTimer <= 0)
-                {
-                        gRobot->updateSoundEffects(soundUpdatePeriod);
-                        gCar->updateSoundEffects(soundUpdatePeriod);
-                        soundUpdateTimer = soundUpdatePeriod;
-                }
+	// Update sound effects at 50 Hz.
+	const opal::real soundUpdatePeriod = 0.02;
+   	static opal::real soundUpdateTimer = 0;
+  	soundUpdateTimer -= elapsedSimTime;
+   	if (soundUpdateTimer <= 0)
+   	{
+     	gRobot->updateSoundEffects(soundUpdatePeriod);
+    	gCar->updateSoundEffects(soundUpdatePeriod);
+   		soundUpdateTimer = soundUpdatePeriod;
+ 	}
 
-                gRobot->updateVisuals(elapsedSimTime);
-                updateOverlay();
-                gAgentDebugger->updateVisuals();
+	gRobot->updateVisuals(elapsedSimTime);
+  	updateOverlay();
+  	gAgentDebugger->updateVisuals();
 }
+*/
 
 
 #ifdef __cplusplus

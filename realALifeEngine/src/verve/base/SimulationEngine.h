@@ -26,9 +26,11 @@
 // Note: It is possible to use the SimulationEngine without graphics or 
 // input (i.e. physics alone).  Simply #define SIMULATION_ENGINE_PHYSICS_ONLY.
 
+/*
 #include "PhysicalEntity.h"
 #include "PhysicalCamera.h"
 #include "Timer.h"
+*/
 
 #ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 /*
