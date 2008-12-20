@@ -1,26 +1,35 @@
 /*
- *  GameApp.h
- *  SDL Test
+ * Created by Waipot Ngamsaad (ngamsaad.waipot@gmail.com)
+ * Dated 20-12-2008
+
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Created by Mark Szymczyk on 5/1/06.
- *  Copyright 2006 Me and Mark Publishing. All rights reserved.
- *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "SDL.h"
-#include <GL/gl.h>
-#include <GL/glu.h>
+#ifndef _SDLviewer_h_
+#define _SDLviewer_h_
 
-class GameApp
-{
-    protected:
-        SDL_TimerID timer;
-        bool done;
-        
+#include <SDL.h>
+
+
+namespace SDLGL { 
+	
+	class SDLviewer
+	{   
     public:
         // Constructor and destructor
-        GameApp (void);
-        virtual ~GameApp(void);
+        SDLviewer (void);
+        virtual ~SDLviewer(void);
 
         // Initialization functions
         void InitApp(void);
@@ -39,9 +48,16 @@ class GameApp
         void GameLoop(void);
         void RenderFrame(void);
         
-};
+     protected:
+        SDL_TimerID mTimer;
+        bool mDone;        
+	};
 
-typedef GameApp* GameAppPtr;
-typedef GameApp** GameAppHandle;
+	typedef SDLviewer* SDLviewerPtr;
+	typedef SDLviewer** SDLviewerHandle;
 
-const int RUN_GAME_LOOP = 1;
+	const int RUN_GAME_LOOP = 1;
+}
+
+#endif
+
