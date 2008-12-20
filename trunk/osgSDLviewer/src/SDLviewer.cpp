@@ -17,8 +17,6 @@
  */
 
 #include <iostream>
-#include <GL/gl.h>
-#include <GL/glu.h>
 
 #include "SDLviewer.h"
 
@@ -40,7 +38,7 @@ namespace SDLGL {
     	mDone = false;
     	mFullScr = false;
     	mWidth = w;
-    	mHeight = h;
+    	mHeight = h;   	
     	//drawContext = NULL;
 	}
 
@@ -52,12 +50,15 @@ namespace SDLGL {
 
 	// Initialization functions
 	bool SDLviewer::init(void)
-	{
+	{			
     	if ( !initializeSDL() )
     		return false;
     		
     	if ( !installTimer() )
     		return false;  
+    		
+		if ( !initializeSceneMgr() )
+			return false;
     	
     	return true;  
 	}
@@ -121,8 +122,6 @@ namespace SDLGL {
    		//SDL_LockSurface(screen);
    		
    		SDL_EnableUNICODE(1);
-    
-    	createScene();
     	
     	return true;
 	}
@@ -147,6 +146,27 @@ namespace SDLGL {
     	SDL_PushEvent(&event);
     
     	return interval;
+	}
+	
+	bool SDLviewer::initializeSceneMgr(void)
+	{
+		mMgr = new osg::SimpleSceneManager;
+		
+    	mPwin = osg::PassiveWindow::create();
+    	mPwin->init();
+    	mMgr->setWindow(mPwin); 
+    	
+    	//mScene = osg::Node::create();
+    	mScene = osg::makeTorus(.5, 3, 16, 16);
+    	mMgr->setRoot(mScene);
+    
+    	// Set up Default Scene 	
+    	createScene();
+    	
+    	mMgr->showAll();
+    	
+    	
+    	return true;
 	}
 
 	// Cleanup functions
@@ -220,15 +240,33 @@ namespace SDLGL {
     	return true;
 	}
 	
-	void SDLviewer::draw()
+	void SDLviewer::run(void)
 	{
-		glColor3f(0.7, 0.5, 0.8);
-    	glRectf(1.0, 1.0, 3.0, 2.0);
+		if ( !init() )
+			return;
+			
+		startRendering();
+		
+		// clean up
+		cleanup();
 	}
 	
 	void SDLviewer::createScene(void)
 	{
 		gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
 	} 
+	
+	void SDLviewer::draw(void)
+	{
+		//mMgr->redraw();
+		
+		glColor3f(0.7, 0.5, 0.8);
+    	glRectf(1.0, 1.0, 3.0, 2.0);  	
+	}
+	
+	osg::SimpleSceneManager* SDLviewer::getSceneManager(void)
+	{
+		return mMgr;	
+	}
 
 }
