@@ -29,16 +29,18 @@ namespace SDLGL {
 	SDLviewer::SDLviewer(void)
 	{
     	mDone = false;
-    	mFlags = SDL_OPENGL | SDL_RESIZABLE | SDL_FULLSCREEN;
+    	mFullScr = true;    	
+    	mWidth = 640;
+    	mHeight = 480;
     	//drawContext = NULL;
 	}
 	
 	SDLviewer::SDLviewer(const unsigned int w, const unsigned int h)
 	{
     	mDone = false;
+    	mFullScr = false;
     	mWidth = w;
     	mHeight = h;
-    	mFlags = SDL_OPENGL | SDL_RESIZABLE;
     	//drawContext = NULL;
 	}
 
@@ -63,17 +65,33 @@ namespace SDLGL {
 	bool SDLviewer::initializeSDL(void)
 	{
     	int error;
-    	SDL_Surface* drawContext;
+    	int width, height, bpp;
+    	
+    	/* Drawing Context */
+    	SDL_Surface* screen = NULL;
+    	
+    	/* Information about the current video settings. */
+    	const SDL_VideoInfo* info = NULL;
+    	
+    	Uint32 flags;
+    	
     
     	// init SDL
     	if ( (error = SDL_Init(SDL_INIT_EVERYTHING) < 0) )
     	{
-    		fprintf(stderr, "Unable to init SDL: %s\n", SDL_GetError());
+    		std::cerr<< "Unable to init SDL: %s\n"<< SDL_GetError()<< std::endl;
     		exit(1);
     	}
     	atexit(SDL_Quit);
     	
-    	SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
+    	// Let's get some video information.
+    	if ( !(info = SDL_GetVideoInfo()) )
+    	{
+    		std::cerr<< "Video query failed: %s\n"<< SDL_GetError()<< std::endl;
+    		exit(1);
+    	}    	
+    	
+   		SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
     	SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
     	SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
     	SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
@@ -81,15 +99,30 @@ namespace SDLGL {
     	// Create a double-buffered draw context
     	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     	
-    	if ( !(drawContext = SDL_SetVideoMode(mWidth, mHeight, 0, mFlags)) )
+    	bpp = info->vfmt->BitsPerPixel;
+    	width = (int)mWidth;
+    	height = (int)mHeight;
+    	
+    	if ( mFullScr )
+    		flags = SDL_OPENGL | SDL_FULLSCREEN;
+    	else
+    		flags = SDL_OPENGL | SDL_RESIZABLE;
+    	
+    	if ( !(screen = SDL_SetVideoMode(width, height, bpp, flags)) )
    		{
-   			std::cerr<<"Unable to set "<<mWidth<<"x"<<mHeight<<" video: %s\n"<< SDL_GetError()<<std::endl;
+   			std::cerr<< "Unable to set "<< mWidth<<"x"<< mHeight<< " video: %s\n"<< SDL_GetError()<< std::endl;
    			exit(1);
    		}
    		
+   		// Set window title
+   		if (!mFullScr)
+   			SDL_WM_SetCaption("SDL OpenGL Viewer", "OpenGL");
+   		
+   		//SDL_LockSurface(screen);
+   		
    		SDL_EnableUNICODE(1);
     
-    	gluOrtho2D(0.0, 4.0, 0.0, 3.0);    
+    	createScene();
     	
     	return true;
 	}
@@ -126,7 +159,7 @@ namespace SDLGL {
 	}
 
 	// Main Render Loop functions
-	bool SDLviewer::startRendering(void)
+	void SDLviewer::startRendering(void)
 	{
     	SDL_Event event;
     
@@ -135,6 +168,9 @@ namespace SDLGL {
     	
     	while((!mDone) && (SDL_WaitEvent(&event))) 
     	{
+    		// Pump message in all registered windows
+    		SDL_PumpEvents();
+    		
         	switch(event.type) 
         	{
             	case SDL_USEREVENT:
@@ -142,8 +178,7 @@ namespace SDLGL {
                 	break;
                 
             	case SDL_KEYDOWN:
-                	// Quit when user presses Esc key.
-                	//if 
+                	// Quit when user presses Any key.
                 	mDone = true;
                 	break;
             
@@ -154,9 +189,7 @@ namespace SDLGL {
             	default:
                 	break;
         	}   // End switch            
-    	}   // End while 
-    	
-    	return true;       
+    	}   // End while       
 	}
 
 	void SDLviewer::handleUserEvents(SDL_Event* event)
@@ -174,7 +207,9 @@ namespace SDLGL {
 
 	bool SDLviewer::renderOneFrame(void) 
 	{
-    	glClear(GL_COLOR_BUFFER_BIT);
+    	//glClear(GL_COLOR_BUFFER_BIT);
+    	//Clear the color and depth buffers.
+    	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     	
     	// Update Scene
     	draw();
@@ -190,5 +225,10 @@ namespace SDLGL {
 		glColor3f(0.7, 0.5, 0.8);
     	glRectf(1.0, 1.0, 3.0, 2.0);
 	}
+	
+	void SDLviewer::createScene(void)
+	{
+		gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
+	} 
 
 }
