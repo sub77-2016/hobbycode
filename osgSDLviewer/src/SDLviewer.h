@@ -20,7 +20,13 @@
 #define _SDLviewer_h_
 
 #include <SDL.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
+#include <OpenSG/OSGConfig.h>
+#include <OpenSG/OSGSimpleGeometry.h>
+#include <OpenSG/OSGPassiveWindow.h>
+#include <OpenSG/OSGSimpleSceneManager.h>
 
 namespace SDLGL { 
 	
@@ -42,7 +48,16 @@ namespace SDLGL {
      	// Cleanup functions
         void cleanup(void);
         
+        // Run the Renderer
+        virtual void run(void);
+        
+        // Get Scene Manager
+        osg::SimpleSceneManager* getSceneManager(void);
+        
+        
    	protected:
+   		bool initializeSceneMgr(void);
+   		
         bool initializeSDL(void);
         
         bool installTimer(void);
@@ -61,7 +76,15 @@ namespace SDLGL {
         
         bool mDone, mFullScr;     
         
-        unsigned int mWidth, mHeight;   
+        unsigned int mWidth, mHeight;  
+        
+      	osg::SimpleSceneManager *mMgr;
+    	// no GLUT window this time, but a passive one
+    	osg::PassiveWindowPtr mPwin;
+    	
+    	// Root Scene node
+    	osg::NodePtr mScene;
+         
 	};
 
 	typedef SDLviewer* SDLviewerPtr;
