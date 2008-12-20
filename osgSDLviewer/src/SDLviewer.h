@@ -29,28 +29,38 @@ namespace SDLGL {
     public:
         // Constructor and destructor
         SDLviewer (void);
+        SDLviewer(const unsigned int w, const unsigned int h);
         virtual ~SDLviewer(void);
 
         // Initialization functions
-        void InitApp(void);
-        void InitializeSDL(void);
-        void InstallTimer(void);
-        static Uint32 GameLoopTimer(Uint32 interval, void* param);
+        bool init(void);
         
-        // Cleanup functions
-        void Cleanup(void);
+      	// Main Render Loop functions
+        bool startRendering(void);
         
-        // Event-related functions
-        void EventLoop(void);
-        void HandleUserEvents(SDL_Event* event);
+     	// Cleanup functions
+        void cleanup(void);
         
-        // Game related functions
-        void GameLoop(void);
-        void RenderFrame(void);
+   	protected:
+        bool initializeSDL(void);
         
-     protected:
+        bool installTimer(void);
+        
+        static Uint32 timerLoop(Uint32 interval, void* param);  
+                   
+        void handleUserEvents(SDL_Event* event);  
+        
+        bool renderOneFrame(void);
+        
+        virtual void draw(void);
+        
         SDL_TimerID mTimer;
-        bool mDone;        
+        
+        Uint32 mFlags;
+        
+        bool mDone;     
+        
+        unsigned int mWidth, mHeight;   
 	};
 
 	typedef SDLviewer* SDLviewerPtr;

@@ -15,7 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
+#include <iostream>
 #include <GL/gl.h>
 #include <GL/glu.h>
 
@@ -24,10 +25,20 @@
 
 namespace SDLGL { 
 	
-	// Constructor
+	// Constructors
 	SDLviewer::SDLviewer(void)
 	{
     	mDone = false;
+    	mFlags = SDL_OPENGL | SDL_RESIZABLE | SDL_FULLSCREEN;
+    	//drawContext = NULL;
+	}
+	
+	SDLviewer::SDLviewer(const unsigned int w, const unsigned int h)
+	{
+    	mDone = false;
+    	mWidth = w;
+    	mHeight = h;
+    	mFlags = SDL_OPENGL | SDL_RESIZABLE;
     	//drawContext = NULL;
 	}
 
@@ -38,36 +49,59 @@ namespace SDLGL {
 	}
 
 	// Initialization functions
-	void SDLviewer::InitApp(void)
+	bool SDLviewer::init(void)
 	{
-    	InitializeSDL();
-    	InstallTimer();    
+    	if ( !initializeSDL() )
+    		return false;
+    		
+    	if ( !installTimer() )
+    		return false;  
+    	
+    	return true;  
 	}
 
-	void SDLviewer::InitializeSDL(void)
+	bool SDLviewer::initializeSDL(void)
 	{
     	int error;
     	SDL_Surface* drawContext;
     
-    	error = SDL_Init(SDL_INIT_EVERYTHING);
+    	// init SDL
+    	if ( (error = SDL_Init(SDL_INIT_EVERYTHING) < 0) )
+    	{
+    		fprintf(stderr, "Unable to init SDL: %s\n", SDL_GetError());
+    		exit(1);
+    	}
+    	atexit(SDL_Quit);
+    	
+    	SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
+    	SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
+    	SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
+    	SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
     
     	// Create a double-buffered draw context
     	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-                        
-    	Uint32 flags;
-    	flags = SDL_OPENGL;// | SDL_FULLSCREEN;
-    	drawContext = SDL_SetVideoMode(640, 480, 0, flags);
+    	
+    	if ( !(drawContext = SDL_SetVideoMode(mWidth, mHeight, 0, mFlags)) )
+   		{
+   			std::cerr<<"Unable to set "<<mWidth<<"x"<<mHeight<<" video: %s\n"<< SDL_GetError()<<std::endl;
+   			exit(1);
+   		}
+   		
+   		SDL_EnableUNICODE(1);
     
-    	gluOrtho2D(0.0, 4.0, 0.0, 3.0);
-    
+    	gluOrtho2D(0.0, 4.0, 0.0, 3.0);    
+    	
+    	return true;
 	}
 
-	void SDLviewer::InstallTimer(void)
+	bool SDLviewer::installTimer(void)
 	{
-    	mTimer = SDL_AddTimer(30, GameLoopTimer, this);
+    	mTimer = SDL_AddTimer(30, timerLoop, this);
+    	
+    	return true;
 	}
 
-	Uint32 SDLviewer::GameLoopTimer(Uint32 interval, void* param)
+	Uint32 SDLviewer::timerLoop(Uint32 interval, void* param)
 	{
     	// Create a user event to call the game loop.
     	SDL_Event event;
@@ -83,7 +117,7 @@ namespace SDLGL {
 	}
 
 	// Cleanup functions
-	void SDLviewer::Cleanup(void)
+	void SDLviewer::cleanup(void)
 	{
     	SDL_bool success;
     	success = SDL_RemoveTimer(mTimer);
@@ -91,21 +125,25 @@ namespace SDLGL {
     	SDL_Quit();
 	}
 
-	// Event-related functions
-	void SDLviewer::EventLoop(void)
+	// Main Render Loop functions
+	bool SDLviewer::startRendering(void)
 	{
     	SDL_Event event;
     
+    	// Infinite loop
+    	mDone = false;
+    	
     	while((!mDone) && (SDL_WaitEvent(&event))) 
     	{
         	switch(event.type) 
         	{
             	case SDL_USEREVENT:
-                	HandleUserEvents(&event);
+                	handleUserEvents(&event);
                 	break;
                 
             	case SDL_KEYDOWN:
-                	// Quit when user presses a key.
+                	// Quit when user presses Esc key.
+                	//if 
                 	mDone = true;
                 	break;
             
@@ -115,18 +153,18 @@ namespace SDLGL {
                 
             	default:
                 	break;
-        	}   // End switch
-            
-    	}   // End while
-        
+        	}   // End switch            
+    	}   // End while 
+    	
+    	return true;       
 	}
 
-	void SDLviewer::HandleUserEvents(SDL_Event* event)
+	void SDLviewer::handleUserEvents(SDL_Event* event)
 	{
     	switch (event->user.code) 
     	{
         	case RUN_GAME_LOOP:
-            	GameLoop();
+        		renderOneFrame();
             	break;
             
         	default:
@@ -134,18 +172,23 @@ namespace SDLGL {
     	}
 	}
 
-	// Game related functions
-	void SDLviewer::GameLoop(void)
-	{
-    	RenderFrame();    
-	}
-
-	void SDLviewer::RenderFrame(void) 
+	bool SDLviewer::renderOneFrame(void) 
 	{
     	glClear(GL_COLOR_BUFFER_BIT);
-    	glColor3f(0.7, 0.5, 0.8);
-    	glRectf(1.0, 1.0, 3.0, 2.0);
+    	
+    	// Update Scene
+    	draw();
+
+    	// Swap Buffers
     	SDL_GL_SwapBuffers();
+    	
+    	return true;
+	}
+	
+	void SDLviewer::draw()
+	{
+		glColor3f(0.7, 0.5, 0.8);
+    	glRectf(1.0, 1.0, 3.0, 2.0);
 	}
 
 }
