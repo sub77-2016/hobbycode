@@ -5,13 +5,15 @@
 
 #include "SDLviewer.h"
 
+using namespace SDLGL;
+
 int main(int argc, char *argv[])
 {
-    GameApp theGame;
+    SDLviewer viewer;
 	
-	theGame.InitApp();
-	theGame.EventLoop();
-    theGame.Cleanup();
+	viewer.InitApp();
+	viewer.EventLoop();
+    viewer.Cleanup();
     
     return 0;
 }
