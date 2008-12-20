@@ -27,16 +27,17 @@ namespace SDLGL {
 	class SDLviewer
 	{   
     public:
-        // Constructor and destructor
+        // Constructors and destructor
         SDLviewer (void);
         SDLviewer(const unsigned int w, const unsigned int h);
+        
         virtual ~SDLviewer(void);
 
         // Initialization functions
         bool init(void);
         
       	// Main Render Loop functions
-        bool startRendering(void);
+        void startRendering(void);
         
      	// Cleanup functions
         void cleanup(void);
@@ -52,13 +53,13 @@ namespace SDLGL {
         
         bool renderOneFrame(void);
         
+        virtual void createScene(void);
+        
         virtual void draw(void);
         
         SDL_TimerID mTimer;
         
-        Uint32 mFlags;
-        
-        bool mDone;     
+        bool mDone, mFullScr;     
         
         unsigned int mWidth, mHeight;   
 	};
