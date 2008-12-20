@@ -11,9 +11,9 @@ int main(int argc, char *argv[])
 {
     SDLviewer viewer;
 	
-	viewer.InitApp();
-	viewer.EventLoop();
-    viewer.Cleanup();
+	viewer.init();
+	viewer.startRendering();
+    viewer.cleanup();
     
     return 0;
 }
