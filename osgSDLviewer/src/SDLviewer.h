@@ -20,8 +20,10 @@
 #define _SDLviewer_h_
 
 #include <SDL.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <SDL_opengl.h>
+
+//#include <GL/gl.h>
+//#include <GL/glu.h>
 
 #include <OpenSG/OSGConfig.h>
 #include <OpenSG/OSGSimpleGeometry.h>
@@ -60,7 +62,7 @@ namespace SDLGL {
    		
         bool initializeSDL(void);
         
-        bool installTimer(void);
+        bool initializeTimer(void);
         
         static Uint32 timerLoop(Uint32 interval, void* param);  
                    
@@ -70,7 +72,9 @@ namespace SDLGL {
         
         virtual void createScene(void);
         
-        virtual void draw(void);
+        virtual void redraw(void);
+
+        virtual void resize(void);
         
         SDL_TimerID mTimer;
         
