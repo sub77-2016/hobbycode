@@ -155,33 +155,58 @@ namespace SDLGL {
 	
 	bool SDLviewer::initializeSceneMgr(void)
 	{
+		//osg::PassiveWindowPtr mPwin = osg::PassiveWindow::create();
+		mPwin = osg::PassiveWindow::create();
+		    	
 		mMgr = new osg::SimpleSceneManager;		
-    	mPwin = osg::PassiveWindow::create();
-    	mMgr->setWindow(mPwin);     	
-    	mPwin->init();
-    	mMgr->resize(mWidth, mHeight); 	
+    	mMgr->setWindow(mPwin); 
     	
-    	mScene = osg::Node::create();
-
-		osg::beginEditCP(mScene);
-			mScene->setCore(osg::Group::create());
-		osg::endEditCP(mScene);
+    	//osg::NodePtr camBeacon = osg::Node::create();
     	
+    	//osg::beginEditCP(camBeacon);
+    		//camBeacon>addChild(osg::makeTorus(.5, 2, 16, 16));
+    	//osg::endEditCP(camBeacon);
     	
     	// Setup camera
-    	mCamera = osg::PerspectiveCamera::create();
+    	//mCamera = osg::PerspectiveCamera::create();    	
 
-    	osg::beginEditCP(mCamera);
-        	mCamera->setBeacon( mScene );
-        	mCamera->setFov( osg::deg2rad( 60 ) );
-        	mCamera->setNear( 0.5 );
-        	mCamera->setFar( 8000 );
-    	osg::endEditCP(mCamera);    	
-
-    	// Set up Default Scene 	
-    	createScene();    	
+    	//osg::beginEditCP(mCamera);
+        	//mCamera->setBeacon( camBeacon );
+        	//mCamera->setFov( osg::deg2rad( 60 ) );
+        	//mCamera->setNear( 0.5 );
+        	//mCamera->setFar( 8000 );
+    	//osg::endEditCP(mCamera);    	
     	
-    	mMgr->setRoot(mScene);
+    	// Set up viewport 
+    	//osg::ViewportPtr viewport = osg::Viewport::create();
+    	//osg::ViewportPtr viewport;
+    	//viewport = mMgr->getWindow()->getPort(0);
+    	
+    	//osg::beginEditCP(viewport);
+			//viewport->setCamera(mCamera);
+			//viewport->setBackground(leftBkg);
+			//viewport->setRoot(mScene);
+			//viewport->setSize(0,0,0.5,1);
+		//osg::endEditCP(viewport);   
+		
+		//mPwin->getPort(0) = viewport;		
+     	
+		mPwin->init();  
+		
+		mScene = osg::Node::create();	
+
+		//osg::beginEditCP(mScene);
+			//mScene->setCore(osg::Group::create());
+			//mScene->addChild(camBeacon);			
+		//osg::endEditCP(mScene);			
+			    	
+    	// Set up Default Scene 	
+    	createScene();       	
+
+		mMgr->setRoot(mScene);
+    	//mMgr->setNavigationMode(osg::Navigator::WALK);
+    	mMgr->resize(mWidth, mHeight); 
+   		
     	mMgr->showAll(); 
     	
     	return true;
@@ -225,17 +250,20 @@ namespace SDLGL {
             	break;
                 
            	case SDL_KEYDOWN:
-             	// Quit when user presses Esc or Q key.
+             	// Quit when user presses Esc key.
               	switch(event.key.keysym.sym)
 				{
 					case SDLK_ESCAPE:
 						mDone = true;
 						break;
-					case SDLK_q:
-						mDone = true;
-						break;
+
 					default:
-						OnKeyDown( event.key.keysym.sym );
+						OnKeyDown( 
+							event.key.keysym.sym,
+							event.motion.x, 
+							event.motion.y, 
+							event.motion.xrel, 
+							event.motion.yrel);
 						break;
 				}
                 break;
@@ -290,16 +318,7 @@ namespace SDLGL {
 				{
 					mWidth = event.resize.w;
 					mHeight = event.resize.h;
-					/*
-					float mAspectRatio = (float)mWidth/(float)mHeight;
-					glViewport(0, 0, mWidth, mHeight);
-					glMatrixMode(GL_PROJECTION);
-					glLoadIdentity();
-					gluPerspective(40.0, mAspectRatio, 1, 5000.0);
-					glMatrixMode(GL_MODELVIEW);
-					*/
 					resize();
-					//redraw();
 				}
 				break;
             
@@ -381,6 +400,7 @@ namespace SDLGL {
 	void SDLviewer::resize(void)
 	{
 		mMgr->resize(mWidth, mHeight);	
+		mPwin->init();	
 	}
 	
 	osg::SimpleSceneManager* SDLviewer::getSceneManager(void)
@@ -394,23 +414,62 @@ namespace SDLGL {
 	}
 	
 	// Handle Key pressed
-	void SDLviewer::OnKeyDown(const int& iKeyEnum)
-	{        
+	void SDLviewer::OnKeyDown(const int& iKeyEnum,
+								  const int& iX, 
+					 			  const int& iY, 
+					 			  const int& iRelX, 
+					 			  const int& iRelY)
+	{
+		// Handle Keybord Input
+		osg::UChar8	key;    
+		
     	switch (iKeyEnum)
     	{
     		case SDLK_LEFT:
-      		// Left arrow pressed
-      		break;
-    		case SDLK_RIGHT:
-     		// Right arrow pressed
-      		break;
-    		case SDLK_UP:
-      		// Up arrow pressed
-      		break;
-    		case SDLK_DOWN:
-      		// Down arrow pressed
-      		break;
+	  			// Left arrow released
+	  			key = 't';
+	  			break;
+			case SDLK_RIGHT:
+	  			// Right arrow released
+	  			key = 'u';
+	  			break;
+			case SDLK_UP:
+	  			// Up arrow released
+	  			key = 'y';
+	  			break;
+			case SDLK_DOWN:
+	  			// Down arrow released
+	  			key = 'h';
+	  			break;
+	  			
+	  		case SDLK_q:
+	  			// Left arrow released
+	  			key = 't';
+	  			break;	  			
+			case SDLK_e:
+	  			// Right arrow released
+	  			key = 'u';
+	  			break;	  			
+    		case SDLK_a:
+      			// Left arrow pressed
+      			key = 'g';
+      			break;
+    		case SDLK_d:
+     			// Right arrow pressed
+     			key = 'j';
+      			break;
+    		case SDLK_w:
+      			// Up arrow pressed
+      			key = 'y';
+      			break;
+    		case SDLK_s:
+      			// Down arrow pressed
+      			key = 'h';
+      			break;
     	}
+    	
+    	//passs the event to the manager object
+		mMgr->key(key, iX, iY);
 	} 
  
  	// Handle Key released
@@ -431,6 +490,8 @@ namespace SDLGL {
 	  		// Down arrow released
 	  		break;
 		}
+		
+		mMgr->idle();
 	}
  
 	void SDLviewer::OnMouseMoved(const int& iButton, 

@@ -78,17 +78,21 @@ namespace SDLGL {
  
 		/** OVERLOADED - Window is inactive. **/
 		virtual void OnWindowInactive();
+		
+		/** OVERLOADED - Keyboard key has been pressed.
+		@param iKeyEnum The key number.
+		**/
+		virtual void OnKeyDown(const int& iKeyEnum,
+							   	  const int& iX, 
+					 			  const int& iY, 
+					 			  const int& iRelX, 
+					 			  const int& iRelY);
+ 
  
 		/** OVERLOADED - Keyboard key has been released.
 		@param iKeyEnum The key number.
 		**/
 		virtual void OnKeyUp(const int& iKeyEnum);
- 
-		/** OVERLOADED - Keyboard key has been pressed.
-		@param iKeyEnum The key number.
-		**/
-		virtual void OnKeyDown(const int& iKeyEnum);
- 
  
 		/** OVERLOADED - The mouse has been moved.
 		@param iButton	Specifies if a mouse button is pressed.
@@ -138,7 +142,7 @@ namespace SDLGL {
     	// Root Scene node
     	osg::NodePtr mScene;
     	// Camera
-    	osg::PerspectiveCameraPtr mCamera;
+    	//osg::PerspectiveCameraPtr mCamera;
     	
     private:
        	bool initializeSceneMgr(void);
