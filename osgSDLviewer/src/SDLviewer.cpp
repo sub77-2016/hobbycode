@@ -372,6 +372,7 @@ namespace SDLGL {
 		return (mScrMode == FULLSCREEN);	
 	}
 	
+	// Handle Key pressed
 	void SDLviewer::OnKeyDown(const int& iKeyEnum)
 	{        
     	switch (iKeyEnum)
@@ -391,6 +392,7 @@ namespace SDLGL {
     	}
 	} 
  
+ 	// Handle Key released
 	void SDLviewer::OnKeyUp(const int& iKeyEnum)
 	{
 		switch (iKeyEnum)
@@ -420,8 +422,41 @@ namespace SDLGL {
  
 		// iX and iY are absolute screen positions
 		// iRelX and iRelY are screen position relative to last detected mouse movement
+		
+		mMgr->mouseMove(iX, iY);
 	}
  
+ 	void SDLviewer::OnMouseButtonDown(const int& iButton, 
+				const int& iX, 
+				const int& iY, 
+				const int& iRelX, 
+				const int& iRelY)
+	{
+		// Handle mouse button pressed
+		osg::UInt32 button;
+		// translate the button value from qt to OpenSG
+		switch (iButton)
+		{
+    		case SDL_BUTTON_LEFT: 
+    			button = osg::SimpleSceneManager::MouseLeft;    
+    			break;
+    			
+    		case SDL_BUTTON_MIDDLE:   
+    			button = osg::SimpleSceneManager::MouseMiddle; 
+    			break;
+    			
+    		case SDL_BUTTON_RIGHT: 
+    			button = osg::SimpleSceneManager::MouseRight; 
+    			break;
+    			
+    		default:
+    			return;
+		}
+	
+		//passs the event to the manager object
+		mMgr->mouseButtonPress(button, iX, iY);		
+	}
+	
 	void SDLviewer::OnMouseButtonUp(const int& iButton, 
 			      const int& iX, 
 			      const int& iY, 
@@ -429,15 +464,28 @@ namespace SDLGL {
 			      const int& iRelY)
 	{
 		// Handle mouse button released
-	}
- 
-	void SDLviewer::OnMouseButtonDown(const int& iButton, 
-				const int& iX, 
-				const int& iY, 
-				const int& iRelX, 
-				const int& iRelY)
-	{
-		// Handle mouse button pressed
+		osg::UInt32 button;
+		// translate the button value from qt to OpenSG
+		switch (iButton)
+		{
+    		case SDL_BUTTON_LEFT: 
+    			button = osg::SimpleSceneManager::MouseLeft;    
+    			break;
+    			
+    		case SDL_BUTTON_MIDDLE:   
+    			button = osg::SimpleSceneManager::MouseMiddle; 
+    			break;
+    			
+    		case SDL_BUTTON_RIGHT: 
+    			button = osg::SimpleSceneManager::MouseRight; 
+    			break;
+    			
+    		default:
+    			return;
+		}
+	
+		//passs the event to the manager object
+		mMgr->mouseButtonRelease(button, iX, iY);		
 	}
  
 	void SDLviewer::OnWindowInactive()

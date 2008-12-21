@@ -49,10 +49,10 @@ int main(int argc, char *argv[])
     
     //SDLviewer viewer;
     //SDLviewer viewer(640,480);
-    SDLviewer viewer(640, 480, SDLviewer::WINDOWED);
+    //SDLviewer viewer(640, 480, SDLviewer::WINDOWED);
     //SDLviewer viewer(640, 480, SDLviewer::FULLSCREEN);
     
-    //MyApp viewer(640,480);
+    MyApp viewer(640,480);
 	
 	//viewer.init();
 	//viewer.startRendering();
