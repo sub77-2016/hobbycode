@@ -1,10 +1,16 @@
-#Sat Dec 20 09:59:02 GMT+07:00 2008
+#Sun Dec 21 16:58:18 GMT+07:00 2008
+cdt.managedbuild.config.gnu.exe.release.774803949/internalBuilder/enabled=false
 cdt.managedbuild.config.gnu.exe.debug.1454042549/internalBuilder/enabled=false
 cdt.managedbuild.config.gnu.exe.release.209401390/internalBuilder/enabled=false
 cdt.managedbuild.config.gnu.exe.release.209401390/internalBuilder/ignoreErr=true
 environment/project=<?xml version\="1.0"?>\n<environment/>
+cdt.managedbuild.config.gnu.exe.release.774803949/internalBuilder/ignoreErr=true
+environment/project/cdt.managedbuild.config.gnu.exe.debug.2091212556=<?xml version\="1.0"?>\n<environment/>
 environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.1454042549=<?xml version\="1.0"?>\n<environment>\n  <variable name\="CPLUS_INCLUDE_PATH" operation\="remove"/>\n  <variable name\="CPATH" operation\="remove"/>\n  <variable name\="C_INCLUDE_PATH" operation\="remove"/>\n</environment>
-environment/project/cdt.managedbuild.config.gnu.exe.debug.1454042549=<?xml version\="1.0"?>\n<environment/>
+cdt.managedbuild.config.gnu.exe.debug.2091212556/internalBuilder/enabled=false
+environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.2091212556=<?xml version\="1.0"?>\n<environment>\n  <variable name\="LIBRARY_PATH" operation\="remove"/>\n</environment>
 cdt.managedbuild.config.gnu.exe.debug.1454042549/internalBuilder/ignoreErr=true
 environment/buildEnvironmentLibrary/cdt.managedbuild.config.gnu.exe.debug.1454042549=<?xml version\="1.0"?>\n<environment>\n  <variable name\="LIBRARY_PATH" operation\="remove"/>\n</environment>
 eclipse.preferences.version=1
+cdt.managedbuild.config.gnu.exe.debug.2091212556/internalBuilder/ignoreErr=true
+environment/buildEnvironmentInclude/cdt.managedbuild.config.gnu.exe.debug.2091212556=<?xml version\="1.0"?>\n<environment>\n  <variable name\="CPLUS_INCLUDE_PATH" operation\="remove"/>\n  <variable name\="CPATH" operation\="remove"/>\n  <variable name\="C_INCLUDE_PATH" operation\="remove"/>\n</environment>
