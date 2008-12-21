@@ -35,9 +35,13 @@ namespace SDLGL {
 	class SDLviewer
 	{   
     public:
+    	enum VideoMode {
+    		WINDOWED,
+    		FULLSCREEN
+    	};
         // Constructors and destructor
-        SDLviewer (void);
-        SDLviewer(const unsigned int w, const unsigned int h);
+        SDLviewer(const unsigned int w = 800, const unsigned int h = 600,
+        		VideoMode video = WINDOWED);
         
         virtual ~SDLviewer(void);
 
@@ -53,22 +57,13 @@ namespace SDLGL {
         // Run the Renderer
         virtual void run(void);
         
+        bool isFullScreen(void);
+        
         // Get Scene Manager
         osg::SimpleSceneManager* getSceneManager(void);
         
         
    	protected:
-   		bool initializeSceneMgr(void);
-   		
-        bool initializeSDL(void);
-        
-        bool initializeTimer(void);
-        
-        static Uint32 timerLoop(Uint32 interval, void* param);  
-                   
-        void handleUserEvents(SDL_Event* event);  
-        
-        bool renderOneFrame(void);
         
         virtual void createScene(void);
         
@@ -76,23 +71,102 @@ namespace SDLGL {
 
         virtual void resize(void);
         
-        SDL_TimerID mTimer;
-        
-        bool mDone, mFullScr;     
-        
-        unsigned int mWidth, mHeight;  
+        /// Window Handle
+        /** OVERLOADED - Window is active again. **/
+		virtual void OnWindowActive();
+ 
+		/** OVERLOADED - Window is inactive. **/
+		virtual void OnWindowInactive();
+ 
+		/** OVERLOADED - Keyboard key has been released.
+		@param iKeyEnum The key number.
+		**/
+		virtual void OnKeyUp(const int& iKeyEnum);
+ 
+		/** OVERLOADED - Keyboard key has been pressed.
+		@param iKeyEnum The key number.
+		**/
+		virtual void OnKeyDown(const int& iKeyEnum);
+ 
+ 
+		/** OVERLOADED - The mouse has been moved.
+		@param iButton	Specifies if a mouse button is pressed.
+		@param iX	The mouse position on the X-axis in pixels.
+		@param iY	The mouse position on the Y-axis in pixels.
+		@param iRelX	The mouse position on the X-axis relative to the last position, in pixels.
+		@param iRelY	The mouse position on the Y-axis relative to the last position, in pixels.
+ 
+		@bug The iButton variable is always NULL.
+		**/
+		virtual void OnMouseMoved(const int& iButton,
+					   			  const int& iX, 
+					 			  const int& iY, 
+					 			  const int& iRelX, 
+					 			  const int& iRelY);
+ 
+		/** OVERLOADED - A mouse button has been released.
+		@param iButton	Specifies if a mouse button is pressed.
+		@param iX	The mouse position on the X-axis in pixels.
+		@param iY	The mouse position on the Y-axis in pixels.
+		@param iRelX	The mouse position on the X-axis relative to the last position, in pixels.
+		@param iRelY	The mouse position on the Y-axis relative to the last position, in pixels.
+		**/
+ 
+		virtual void OnMouseButtonUp(const int& iButton, 
+					 				 const int& iX, 
+					 				 const int& iY, 
+					 				 const int& iRelX, 
+					 				 const int& iRelY);
+ 
+		/** OVERLOADED - A mouse button has been pressed.
+		@param iButton	Specifies if a mouse button is pressed.
+		@param iX	The mouse position on the X-axis in pixels.
+		@param iY	The mouse position on the Y-axis in pixels.
+		@param iRelX	The mouse position on the X-axis relative to the last position, in pixels.
+		@param iRelY	The mouse position on the Y-axis relative to the last position, in pixels.
+		**/
+		virtual void OnMouseButtonDown(const int& iButton, 
+					 				   const int& iX, 
+					 				   const int& iY, 
+					 				   const int& iRelX, 
+					 				   const int& iRelY);     
         
       	osg::SimpleSceneManager *mMgr;
     	// no GLUT window this time, but a passive one
-    	osg::PassiveWindowPtr mPwin;
-    	
+    	osg::PassiveWindowPtr mPwin;    	
     	// Root Scene node
     	osg::NodePtr mScene;
-         
+    	
+    private:
+       	bool initializeSceneMgr(void);
+   		
+        bool initializeSDL(void);
+        
+        bool initializeTimer(void);
+        
+        static Uint32 timerLoop(Uint32 interval, void* param);  
+                   
+        //void handleUserEvents(SDL_Event* event); 
+        
+        bool renderOneFrame(void);
+        
+       	void handleEvents(SDL_Event& event);  
+       	
+       	SDL_Surface* mScreen;
+       	
+        SDL_TimerID mTimer;
+        
+        bool mDone;
+        
+        bool mMinimized;
+        
+        VideoMode mScrMode;     
+        
+        unsigned int mWidth, mHeight;           
 	};
 
-	typedef SDLviewer* SDLviewerPtr;
-	typedef SDLviewer** SDLviewerHandle;
+	//typedef SDLviewer* SDLviewerPtr;
+	//typedef SDLviewer** SDLviewerHandle;
 
 	const int RUN_GAME_LOOP = 1;
 }

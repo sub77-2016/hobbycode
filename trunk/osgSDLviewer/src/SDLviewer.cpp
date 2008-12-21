@@ -24,25 +24,18 @@
 namespace SDLGL { 
 	
 	// Constructors
-	SDLviewer::SDLviewer(void)
+	SDLviewer::SDLviewer(const unsigned int w, const unsigned int h, VideoMode video)
 	{
+		mScreen = NULL;
+		
+		mMinimized = false;
     	mDone = false;
-    	mFullScr = true;    	
-    	mWidth = 640;
-    	mHeight = 480;
-    	//drawContext = NULL;
-    	mMgr = NULL;
-    	//mPwin = NULL;
-    	//mScene = NULL;
-	}
-	
-	SDLviewer::SDLviewer(const unsigned int w, const unsigned int h)
-	{
-    	mDone = false;
-    	mFullScr = false;
+    	
+    	mScrMode = video;
+    	
     	mWidth = w;
-    	mHeight = h;   	
-    	//drawContext = NULL;
+    	mHeight = h;  	
+
     	mMgr = NULL;
     	//mPwin = 0;
     	//mScene = 0;
@@ -81,7 +74,7 @@ namespace SDLGL {
     	int width, height, bpp;
     	
     	/* Drawing Context */
-    	SDL_Surface* screen = NULL;
+    	//SDL_Surface* screen = NULL;
     	
     	/* Information about the current video settings. */
     	const SDL_VideoInfo* info = NULL;
@@ -116,20 +109,19 @@ namespace SDLGL {
     	width = (int)mWidth;
     	height = (int)mHeight;
     	
-    	if ( mFullScr )
-    		flags = SDL_OPENGL | SDL_FULLSCREEN;
-    	else
-    		flags = SDL_OPENGL | SDL_RESIZABLE;
+    	flags = SDL_OPENGL | SDL_RESIZABLE;
     	
-    	if ( !(screen = SDL_SetVideoMode(width, height, bpp, flags)) )
+    	if ( isFullScreen() )
+    		flags = flags | SDL_FULLSCREEN;
+    	
+    	if ( !(mScreen = SDL_SetVideoMode(width, height, bpp, flags)) )
    		{
    			std::cerr<< "Unable to set "<< mWidth<<"x"<< mHeight<< " video: %s\n"<< SDL_GetError()<< std::endl;
    			exit(1);
    		}
    		
    		// Set window title
-   		if (!mFullScr)
-   			SDL_WM_SetCaption("SDL OpenGL Viewer", "OpenGL");
+   		SDL_WM_SetCaption("SDL OpenGL Viewer", "OpenGL");
    		
    		//SDL_LockSurface(screen);
    		
@@ -196,28 +188,84 @@ namespace SDLGL {
     		// Pump message in all registered windows
     		SDL_PumpEvents();
     		
-        	switch(event.type) 
-        	{
-            	case SDL_USEREVENT:
-                	handleUserEvents(&event);
-                	break;
+    		handleEvents(event);
+    		
+    		if ( !renderOneFrame() )
+    			return;
+    	}
+	}
+	
+	void SDLviewer::handleEvents(SDL_Event& event)
+	{
+		switch(event.type) 
+        {
+        	case SDL_USEREVENT:
+           	//handleUserEvents(&event);
+            	break;
                 
-            	case SDL_KEYDOWN:
-                	// Quit when user presses Esc or Q key.
-                	switch(event.key.keysym.sym)
+           	case SDL_KEYDOWN:
+             	// Quit when user presses Esc or Q key.
+              	switch(event.key.keysym.sym)
+				{
+					case SDLK_ESCAPE:
+						mDone = true;
+						break;
+					case SDLK_q:
+						mDone = true;
+						break;
+					default:
+						OnKeyDown( event.key.keysym.sym );
+						break;
+				}
+                break;
+                
+			case SDL_KEYUP:
+				OnKeyUp( event.key.keysym.sym );
+				break;
+  
+			case SDL_MOUSEMOTION:
+				OnMouseMoved(
+				event.button.button, 
+				event.motion.x, 
+				event.motion.y, 
+				event.motion.xrel, 
+				event.motion.yrel);
+				break;
+ 
+			case SDL_MOUSEBUTTONUP:
+				OnMouseButtonUp(
+					event.button.button, 
+					event.motion.x, 
+					event.motion.y, 
+					event.motion.xrel, 
+					event.motion.yrel);
+				break;
+ 
+			case SDL_MOUSEBUTTONDOWN:
+				OnMouseButtonDown(
+					event.button.button, 
+					event.motion.x, 
+					event.motion.y, 
+					event.motion.xrel, 
+					event.motion.yrel);
+				break;
+ 
+			case SDL_ACTIVEEVENT:
+				if ( event.active.state & SDL_APPACTIVE ) {
+					if ( event.active.gain ) 
 					{
-						case SDLK_ESCAPE:
-							mDone = true;
-							break;
-						case SDLK_q:
-							mDone = true;
-							break;
-						default:
-							break;
+						mMinimized = false;
+						OnWindowActive();
+					} 
+					else 
+					{
+						mMinimized = true;
+						OnWindowInactive();
 					}
-                	break;
+				}
+				break;
                 	
-				case SDL_VIDEORESIZE:
+			case SDL_VIDEORESIZE:
 				{
 					mWidth = event.resize.w;
 					mHeight = event.resize.h;
@@ -232,18 +280,18 @@ namespace SDLGL {
 					resize();
 					//redraw();
 				}
-					break;
+				break;
             
-            	case SDL_QUIT:
-                	mDone = true;
-                	break;
+            case SDL_QUIT:
+                mDone = true;
+                break;
                 
-            	default:
-                	break;
-        	}   // End switch            
-    	}   // End while       
+            default:
+                break;
+        }   // End switch              
 	}
 
+	/*
 	void SDLviewer::handleUserEvents(SDL_Event* event)
 	{
     	switch (event->user.code) 
@@ -256,14 +304,24 @@ namespace SDLGL {
             	break;
     	}
 	}
+	*/
 
 	bool SDLviewer::renderOneFrame(void) 
 	{
+		// Lock surface if needed
+		if ( SDL_MUSTLOCK( mScreen ) )
+			if ( SDL_LockSurface( mScreen ) < 0 )
+				return false;
+					
     	//Clear the color and depth buffers.
     	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     	 	
     	// Update Scene
     	redraw();
+    	
+    	// Unlock if needed
+		if ( SDL_MUSTLOCK( mScreen ) ) 
+			SDL_UnlockSurface( mScreen );    	
 
     	// Swap Buffers
     	SDL_GL_SwapBuffers();
@@ -308,5 +366,88 @@ namespace SDLGL {
 	{
 		return mMgr;	
 	}
+	
+	bool SDLviewer::isFullScreen(void)
+	{
+		return (mScrMode == FULLSCREEN);	
+	}
+	
+	void SDLviewer::OnKeyDown(const int& iKeyEnum)
+	{        
+    	switch (iKeyEnum)
+    	{
+    		case SDLK_LEFT:
+      		// Left arrow pressed
+      		break;
+    		case SDLK_RIGHT:
+     		// Right arrow pressed
+      		break;
+    		case SDLK_UP:
+      		// Up arrow pressed
+      		break;
+    		case SDLK_DOWN:
+      		// Down arrow pressed
+      		break;
+    	}
+	} 
+ 
+	void SDLviewer::OnKeyUp(const int& iKeyEnum)
+	{
+		switch (iKeyEnum)
+		{
+			case SDLK_LEFT:
+	  		// Left arrow released
+	  		break;
+			case SDLK_RIGHT:
+	  		// Right arrow released
+	  		break;
+			case SDLK_UP:
+	  		// Up arrow released
+	  		break;
+			case SDLK_DOWN:
+	  		// Down arrow released
+	  		break;
+		}
+	}
+ 
+	void SDLviewer::OnMouseMoved(const int& iButton, 
+			   const int& iX, 
+			   const int& iY, 
+			   const int& iRelX, 
+			   const int& iRelY)
+	{
+		// Handle mouse movement
+ 
+		// iX and iY are absolute screen positions
+		// iRelX and iRelY are screen position relative to last detected mouse movement
+	}
+ 
+	void SDLviewer::OnMouseButtonUp(const int& iButton, 
+			      const int& iX, 
+			      const int& iY, 
+			      const int& iRelX, 
+			      const int& iRelY)
+	{
+		// Handle mouse button released
+	}
+ 
+	void SDLviewer::OnMouseButtonDown(const int& iButton, 
+				const int& iX, 
+				const int& iY, 
+				const int& iRelX, 
+				const int& iRelY)
+	{
+		// Handle mouse button pressed
+	}
+ 
+	void SDLviewer::OnWindowInactive()
+	{
+		// Pause game
+	}
+ 
+	void SDLviewer::OnWindowActive()
+	{
+		// Un-pause game
+	}	
 
 }
