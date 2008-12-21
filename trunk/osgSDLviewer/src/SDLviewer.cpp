@@ -31,6 +31,9 @@ namespace SDLGL {
     	mWidth = 640;
     	mHeight = 480;
     	//drawContext = NULL;
+    	mMgr = NULL;
+    	//mPwin = NULL;
+    	//mScene = NULL;
 	}
 	
 	SDLviewer::SDLviewer(const unsigned int w, const unsigned int h)
@@ -40,12 +43,22 @@ namespace SDLGL {
     	mWidth = w;
     	mHeight = h;   	
     	//drawContext = NULL;
+    	mMgr = NULL;
+    	//mPwin = 0;
+    	//mScene = 0;
 	}
 
 	// Destructor
 	SDLviewer::~SDLviewer(void)
 	{
-		
+		if (mMgr)
+			delete mMgr;
+			
+		//if (mPwin)
+			//delete mPwin;
+			
+		//if (mScene)
+			//delete mScene;
 	}
 
 	// Initialization functions
@@ -54,7 +67,7 @@ namespace SDLGL {
     	if ( !initializeSDL() )
     		return false;
     		
-    	if ( !installTimer() )
+    	if ( !initializeTimer() )
     		return false;  
     		
 		if ( !initializeSceneMgr() )
@@ -65,7 +78,6 @@ namespace SDLGL {
 
 	bool SDLviewer::initializeSDL(void)
 	{
-    	int error;
     	int width, height, bpp;
     	
     	/* Drawing Context */
@@ -78,7 +90,7 @@ namespace SDLGL {
     	
     
     	// init SDL
-    	if ( (error = SDL_Init(SDL_INIT_EVERYTHING) < 0) )
+    	if ( SDL_Init(SDL_INIT_EVERYTHING) < 0 )
     	{
     		std::cerr<< "Unable to init SDL: %s\n"<< SDL_GetError()<< std::endl;
     		exit(1);
@@ -92,10 +104,10 @@ namespace SDLGL {
     		exit(1);
     	}    	
     	
-   		SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
-    	SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
-    	SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
-    	SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
+   		//SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
+    	//SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
+    	//SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
+    	//SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
     
     	// Create a double-buffered draw context
     	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -126,7 +138,7 @@ namespace SDLGL {
     	return true;
 	}
 
-	bool SDLviewer::installTimer(void)
+	bool SDLviewer::initializeTimer(void)
 	{
     	mTimer = SDL_AddTimer(30, timerLoop, this);
     	
@@ -150,21 +162,14 @@ namespace SDLGL {
 	
 	bool SDLviewer::initializeSceneMgr(void)
 	{
-		mMgr = new osg::SimpleSceneManager;
-		
+		mMgr = new osg::SimpleSceneManager;		
     	mPwin = osg::PassiveWindow::create();
+    	mMgr->setWindow(mPwin);     	
     	mPwin->init();
-    	mMgr->setWindow(mPwin); 
-    	
-    	//mScene = osg::Node::create();
-    	mScene = osg::makeTorus(.5, 3, 16, 16);
-    	mMgr->setRoot(mScene);
-    
+    	mMgr->resize(mWidth, mHeight); 	
+
     	// Set up Default Scene 	
-    	createScene();
-    	
-    	mMgr->showAll();
-    	
+    	createScene();    	
     	
     	return true;
 	}
@@ -198,9 +203,36 @@ namespace SDLGL {
                 	break;
                 
             	case SDL_KEYDOWN:
-                	// Quit when user presses Any key.
-                	mDone = true;
+                	// Quit when user presses Esc or Q key.
+                	switch(event.key.keysym.sym)
+					{
+						case SDLK_ESCAPE:
+							mDone = true;
+							break;
+						case SDLK_q:
+							mDone = true;
+							break;
+						default:
+							break;
+					}
                 	break;
+                	
+				case SDL_VIDEORESIZE:
+				{
+					mWidth = event.resize.w;
+					mHeight = event.resize.h;
+					/*
+					float mAspectRatio = (float)mWidth/(float)mHeight;
+					glViewport(0, 0, mWidth, mHeight);
+					glMatrixMode(GL_PROJECTION);
+					glLoadIdentity();
+					gluPerspective(40.0, mAspectRatio, 1, 5000.0);
+					glMatrixMode(GL_MODELVIEW);
+					*/
+					resize();
+					//redraw();
+				}
+					break;
             
             	case SDL_QUIT:
                 	mDone = true;
@@ -227,12 +259,11 @@ namespace SDLGL {
 
 	bool SDLviewer::renderOneFrame(void) 
 	{
-    	//glClear(GL_COLOR_BUFFER_BIT);
     	//Clear the color and depth buffers.
     	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    	
+    	 	
     	// Update Scene
-    	draw();
+    	redraw();
 
     	// Swap Buffers
     	SDL_GL_SwapBuffers();
@@ -253,15 +284,24 @@ namespace SDLGL {
 	
 	void SDLviewer::createScene(void)
 	{
-		gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
+		//gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
+
+    	mScene = osg::makeTorus(.5, 2, 16, 16);
+    	mMgr->setRoot(mScene);
+    	mMgr->showAll();   
 	} 
 	
-	void SDLviewer::draw(void)
+	void SDLviewer::redraw(void)
 	{
-		//mMgr->redraw();
+		mMgr->redraw();
 		
-		glColor3f(0.7, 0.5, 0.8);
-    	glRectf(1.0, 1.0, 3.0, 2.0);  	
+		//glColor3f(0.7, 0.5, 0.8);
+    	//glRectf(1.0, 1.0, 3.0, 2.0);  	
+	}
+	
+	void SDLviewer::resize(void)
+	{
+		mMgr->resize(mWidth, mHeight);	
 	}
 	
 	osg::SimpleSceneManager* SDLviewer::getSceneManager(void)
