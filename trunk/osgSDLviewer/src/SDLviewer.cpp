@@ -39,6 +39,7 @@ namespace SDLGL {
     	mMgr = NULL;
     	//mPwin = 0;
     	//mScene = 0;
+    	//mCamera = 0;
 	}
 
 	// Destructor
@@ -159,9 +160,29 @@ namespace SDLGL {
     	mMgr->setWindow(mPwin);     	
     	mPwin->init();
     	mMgr->resize(mWidth, mHeight); 	
+    	
+    	mScene = osg::Node::create();
+
+		osg::beginEditCP(mScene);
+			mScene->setCore(osg::Group::create());
+		osg::endEditCP(mScene);
+    	
+    	
+    	// Setup camera
+    	mCamera = osg::PerspectiveCamera::create();
+
+    	osg::beginEditCP(mCamera);
+        	mCamera->setBeacon( mScene );
+        	mCamera->setFov( osg::deg2rad( 60 ) );
+        	mCamera->setNear( 0.5 );
+        	mCamera->setFar( 8000 );
+    	osg::endEditCP(mCamera);    	
 
     	// Set up Default Scene 	
     	createScene();    	
+    	
+    	mMgr->setRoot(mScene);
+    	mMgr->showAll(); 
     	
     	return true;
 	}
@@ -345,8 +366,8 @@ namespace SDLGL {
 		//gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
 
     	mScene = osg::makeTorus(.5, 2, 16, 16);
-    	mMgr->setRoot(mScene);
-    	mMgr->showAll();   
+    	//mMgr->setRoot(mScene);
+    	//mMgr->showAll();   
 	} 
 	
 	void SDLviewer::redraw(void)

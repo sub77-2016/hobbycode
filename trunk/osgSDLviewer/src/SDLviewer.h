@@ -28,6 +28,7 @@
 #include <OpenSG/OSGConfig.h>
 #include <OpenSG/OSGSimpleGeometry.h>
 #include <OpenSG/OSGPassiveWindow.h>
+#include <OpenSG/OSGPerspectiveCamera.h>
 #include <OpenSG/OSGSimpleSceneManager.h>
 
 namespace SDLGL { 
@@ -136,6 +137,8 @@ namespace SDLGL {
     	osg::PassiveWindowPtr mPwin;    	
     	// Root Scene node
     	osg::NodePtr mScene;
+    	// Camera
+    	osg::PerspectiveCameraPtr mCamera;
     	
     private:
        	bool initializeSceneMgr(void);
