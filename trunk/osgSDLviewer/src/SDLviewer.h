@@ -169,7 +169,9 @@ namespace SDLGL {
         
         VideoMode mScrMode;     
         
-        unsigned int mWidth, mHeight;           
+        unsigned int mWidth, mHeight, mBpp; 
+        
+        Uint32 mFlags;          
 	};
 
 	//typedef SDLviewer* SDLviewerPtr;
