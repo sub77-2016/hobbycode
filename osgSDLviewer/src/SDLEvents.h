@@ -16,11 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SDLviewer_h_
-#define _SDLviewer_h_
+#ifndef _SDLEvents_h_
+#define _SDLEvents_h_
 
 #include <SDL.h>
-#include <SDL_opengl.h>
+//#include <SDL_opengl.h>
 
 //#include <GL/gl.h>
 //#include <GL/glu.h>
@@ -33,44 +33,21 @@
 
 namespace SDLGL { 
 	
-	class SDLviewer
+	class SDLEvents
 	{   
     public:
-    	enum VideoMode {
-    		WINDOWED,
-    		FULLSCREEN
-    	};
-        // Constructors and destructor
-        SDLviewer(const unsigned int w = 800, const unsigned int h = 600,
-        		VideoMode video = WINDOWED);
+        // Constructor and destructor
+        SDLEvents();        
+        virtual ~SDLEvents(void);
         
-        virtual ~SDLviewer(void);
+        bool isDone(void);
 
-        // Initialization functions
-        bool init(void);
-        
-      	// Main Render Loop functions
-        void startRendering(void);
-        
-     	// Cleanup functions
-        void cleanup(void);
-        
-        // Run the Renderer
-        virtual void run(void);
-        
-        bool isFullScreen(void);
-        
-        // Get Scene Manager
-        osg::SimpleSceneManager* getSceneManager(void);
-        
         
    	protected:
         
-        virtual void createScene(void);
-        
-        virtual void redraw(void);
+        virtual void redraw(void) = 0;
 
-        virtual void resize(void);
+        virtual void resize(void) = 0;
         
         /// Window Handle
         /** OVERLOADED - Window is active again. **/
@@ -134,48 +111,28 @@ namespace SDLGL {
 					 				   const int& iX, 
 					 				   const int& iY, 
 					 				   const int& iRelX, 
-					 				   const int& iRelY);     
-        
-      	osg::SimpleSceneManager *mMgr;
-    	// no GLUT window this time, but a passive one
-    	osg::PassiveWindowPtr mPwin;    	
-    	// Root Scene node
-    	osg::NodePtr mScene;
-    	// Camera
-    	//osg::PerspectiveCameraPtr mCamera;
+					 				   const int& iRelY);
     	
     private:
-       	bool initializeSceneMgr(void);
-   		
-        bool initializeSDL(void);
         
         bool initializeTimer(void);
         
         static Uint32 timerLoop(Uint32 interval, void* param);  
                    
         //void handleUserEvents(SDL_Event* event); 
-        
-        bool renderOneFrame(void);
-        
+                
        	void handleEvents(SDL_Event& event);  
-       	
-       	SDL_Surface* mScreen;
        	
         SDL_TimerID mTimer;
         
         bool mDone;
         
         bool mMinimized;
-        
-        VideoMode mScrMode;     
-        
-        unsigned int mWidth, mHeight, mBpp; 
-        
-        Uint32 mFlags;          
+     
 	};
 
-	//typedef SDLviewer* SDLviewerPtr;
-	//typedef SDLviewer** SDLviewerHandle;
+	//typedef SDLEvents* SDLEventsPtr;
+	//typedef SDLEvents** SDLEventsHandle;
 
 	const int RUN_GAME_LOOP = 1;
 }
