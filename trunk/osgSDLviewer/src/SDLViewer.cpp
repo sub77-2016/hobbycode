@@ -23,6 +23,17 @@
 
 namespace SDLGL { 
 	
+    template<class SDLViewer> SDLViewer* Singleton<SDLViewer>::ms_Singleton = 0;   
+    /* 
+    SDLViewer* SDLViewer::getInstancePtr(void)
+    {
+        return ms_Singleton;
+    }
+    SDLViewer& SDLViewer::getInstance(void)
+    {
+        assert( ms_Singleton );  return ( *ms_Singleton );
+    }
+	*/
 	// Constructors
 	SDLViewer::SDLViewer(const unsigned int w, const unsigned int h, VideoMode video)
 	{
@@ -216,7 +227,7 @@ namespace SDLGL {
 	}
 
 	// Cleanup functions
-	void SDLViewer::cleanup(void)
+	void SDLViewer::cleanUp(void)
 	{
     	SDL_bool success;
     	success = SDL_RemoveTimer(mTimer);
@@ -361,9 +372,17 @@ namespace SDLGL {
     	//Clear the color and depth buffers.
     	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     	 	
+    	// Frame started
+    	if (!frameStarted())
+    		return false;
+    		
     	// Update Scene
     	redraw();
     	
+    	// Frame ended
+    	if (!frameEnded())
+    		return false;
+    		    	
     	// Unlock if needed
 		if ( SDL_MUSTLOCK( mScreen ) ) 
 			SDL_UnlockSurface( mScreen );    	
@@ -382,7 +401,7 @@ namespace SDLGL {
 		startRendering();
 		
 		// clean up
-		cleanup();
+		cleanUp();
 	}
 	
 	void SDLViewer::createScene(void)
