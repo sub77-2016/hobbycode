@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _SDLviewer_h_
-#define _SDLviewer_h_
+#ifndef _SDLViewer_h_
+#define _SDLViewer_h_
 
 #include <SDL.h>
 #include <SDL_opengl.h>
@@ -33,7 +33,7 @@
 
 namespace SDLGL { 
 	
-	class SDLviewer
+	class SDLViewer
 	{   
     public:
     	enum VideoMode {
@@ -41,10 +41,10 @@ namespace SDLGL {
     		FULLSCREEN
     	};
         // Constructors and destructor
-        SDLviewer(const unsigned int w = 800, const unsigned int h = 600,
+        SDLViewer(const unsigned int w = 800, const unsigned int h = 600,
         		VideoMode video = WINDOWED);
         
-        virtual ~SDLviewer(void);
+        virtual ~SDLViewer(void);
 
         // Initialization functions
         bool init(void);
@@ -174,8 +174,8 @@ namespace SDLGL {
         Uint32 mFlags;          
 	};
 
-	//typedef SDLviewer* SDLviewerPtr;
-	//typedef SDLviewer** SDLviewerHandle;
+	//typedef SDLViewer* SDLViewerPtr;
+	//typedef SDLViewer** SDLViewerHandle;
 
 	const int RUN_GAME_LOOP = 1;
 }

@@ -18,129 +18,39 @@
 
 #include <iostream>
 
-#include "SDLviewer.h"
+#include "SDLEvents.h"
 
 
 namespace SDLGL { 
 	
 	// Constructors
-	SDLviewer::SDLviewer(const unsigned int w, const unsigned int h, VideoMode video)
+	SDLEvents::SDLEvents()
 	{
-		mScreen = NULL;
-		
+		mDone = false;
 		mMinimized = false;
-    	mDone = false;
-    	
-    	mScrMode = video;
-    	
-    	mWidth = w;
-    	mHeight = h;  	
-    	mBpp = 0;
-
-    	mMgr = NULL;
-    	//mPwin = 0;
-    	//mScene = 0;
-    	//mCamera = 0;
+		
+		initializeTimer();
 	}
 
 	// Destructor
-	SDLviewer::~SDLviewer(void)
+	SDLEvents::~SDLEvents(void)
 	{
-		if (mMgr)
-			delete mMgr;
-			
-		//if (mPwin)
-			//delete mPwin;
-			
-		//if (mScene)
-			//delete mScene;
-	}
 
-	// Initialization functions
-	bool SDLviewer::init(void)
-	{			
-    	if ( !initializeSDL() )
-    		return false;
-    		
-    	if ( !initializeTimer() )
-    		return false;  
-    		
-		if ( !initializeSceneMgr() )
-			return false;
-    	
-    	return true;  
 	}
-
-	bool SDLviewer::initializeSDL(void)
+	
+	bool SDLEvents::isDone(void)
 	{
-    	//int width, height, bpp;
-    	
-    	/* Drawing Context */
-    	//SDL_Surface* screen = NULL;
-    	
-    	/* Information about the current video settings. */
-    	const SDL_VideoInfo* info = NULL;
-    	
-    	//Uint32 flags;
-    	
-    
-    	// init SDL
-    	if ( SDL_Init(SDL_INIT_EVERYTHING) < 0 )
-    	{
-    		std::cerr<< "Unable to init SDL: %s\n"<< SDL_GetError()<< std::endl;
-    		exit(1);
-    	}
-    	atexit(SDL_Quit);
-    	
-    	// Let's get some video information.
-    	if ( !(info = SDL_GetVideoInfo()) )
-    	{
-    		std::cerr<< "Video query failed: %s\n"<< SDL_GetError()<< std::endl;
-    		exit(1);
-    	}    	
-    	
-   		//SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
-    	//SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
-    	//SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
-    	//SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
-    
-    	// Create a double-buffered draw context
-    	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    	
-    	mBpp = info->vfmt->BitsPerPixel;
-    	//width = (int)mWidth;
-    	//height = (int)mHeight;
-    	
-    	mFlags = SDL_OPENGL | SDL_RESIZABLE;
-    	    	
-    	if ( isFullScreen() )
-    		mFlags = mFlags | SDL_FULLSCREEN;
-    	
-    	if ( !(mScreen = SDL_SetVideoMode(mWidth, mHeight, mBpp, mFlags)) )
-   		{
-   			std::cerr<< "Unable to set "<< mWidth<<"x"<< mHeight<< " video: %s\n"<< SDL_GetError()<< std::endl;
-   			exit(1);
-   		}
-   		// Make sure we have the correct size
-   		mWidth = mScreen->w;
-   		mHeight = mScreen->h;
-   		
-   		// Set window title
-   		SDL_WM_SetCaption("SDL OpenGL Viewer", "OpenGL");
-   		   		
-   		SDL_EnableUNICODE(1);
-    	
-    	return true;
+		return mDone;
 	}
-
-	bool SDLviewer::initializeTimer(void)
+	
+	bool SDLEvents::initializeTimer(void)
 	{
     	mTimer = SDL_AddTimer(30, timerLoop, this);
     	
     	return true;
 	}
 
-	Uint32 SDLviewer::timerLoop(Uint32 interval, void* param)
+	Uint32 SDLEvents::timerLoop(Uint32 interval, void* param)
 	{
     	// Create a user event to call the game loop.
     	SDL_Event event;
@@ -155,95 +65,7 @@ namespace SDLGL {
     	return interval;
 	}
 	
-	bool SDLviewer::initializeSceneMgr(void)
-	{
-		//osg::PassiveWindowPtr mPwin = osg::PassiveWindow::create();
-		mPwin = osg::PassiveWindow::create();
-		    	
-		mMgr = new osg::SimpleSceneManager;		
-    	mMgr->setWindow(mPwin); 
-    	
-    	//osg::NodePtr camBeacon = osg::Node::create();
-    	
-    	//osg::beginEditCP(camBeacon);
-    		//camBeacon>addChild(osg::makeTorus(.5, 2, 16, 16));
-    	//osg::endEditCP(camBeacon);
-    	
-    	// Setup camera
-    	//mCamera = osg::PerspectiveCamera::create();    	
-
-    	//osg::beginEditCP(mCamera);
-        	//mCamera->setBeacon( camBeacon );
-        	//mCamera->setFov( osg::deg2rad( 60 ) );
-        	//mCamera->setNear( 0.5 );
-        	//mCamera->setFar( 8000 );
-    	//osg::endEditCP(mCamera);    	
-    	
-    	// Set up viewport 
-    	//osg::ViewportPtr viewport = osg::Viewport::create();
-    	//osg::ViewportPtr viewport;
-    	//viewport = mMgr->getWindow()->getPort(0);
-    	
-    	//osg::beginEditCP(viewport);
-			//viewport->setCamera(mCamera);
-			//viewport->setBackground(leftBkg);
-			//viewport->setRoot(mScene);
-			//viewport->setSize(0,0,0.5,1);
-		//osg::endEditCP(viewport);   
-		
-		//mPwin->getPort(0) = viewport;		
-     	
-		mPwin->init();  
-		
-		mScene = osg::Node::create();	
-
-		//osg::beginEditCP(mScene);
-			//mScene->setCore(osg::Group::create());
-			//mScene->addChild(camBeacon);			
-		//osg::endEditCP(mScene);			
-			    	
-    	// Set up Default Scene 	
-    	createScene();       	
-
-		mMgr->setRoot(mScene);
-    	//mMgr->setNavigationMode(osg::Navigator::WALK);
-    	mMgr->resize(mWidth, mHeight); 
-   		
-    	mMgr->showAll(); 
-    	
-    	return true;
-	}
-
-	// Cleanup functions
-	void SDLviewer::cleanup(void)
-	{
-    	SDL_bool success;
-    	success = SDL_RemoveTimer(mTimer);
-    
-    	SDL_Quit();
-	}
-
-	// Main Render Loop functions
-	void SDLviewer::startRendering(void)
-	{
-    	SDL_Event event;
-    
-    	// Infinite loop
-    	mDone = false;
-    	
-    	while((!mDone) && (SDL_WaitEvent(&event))) 
-    	{
-    		// Pump message in all registered windows
-    		SDL_PumpEvents();
-    		
-    		handleEvents(event);
-    		
-    		if ( !renderOneFrame() )
-    			return;
-    	}
-	}
-	
-	void SDLviewer::handleEvents(SDL_Event& event)
+	void SDLEvents::handleEvents(SDL_Event& event)
 	{
 		switch(event.type) 
         {
@@ -318,6 +140,8 @@ namespace SDLGL {
                 	
 			case SDL_VIDEORESIZE:
 				{
+					resize();
+					/*
     				if ( !(mScreen = SDL_SetVideoMode(event.resize.w, event.resize.h, 
     													mBpp, mFlags)) )
    					{
@@ -325,6 +149,7 @@ namespace SDLGL {
    						mHeight = mScreen->h;
    						resize();
    					}
+   					*/
 				}
 				break;
             
@@ -338,7 +163,7 @@ namespace SDLGL {
 	}
 
 	/*
-	void SDLviewer::handleUserEvents(SDL_Event* event)
+	void SDLEvents::handleUserEvents(SDL_Event* event)
 	{
     	switch (event->user.code) 
     	{
@@ -352,75 +177,18 @@ namespace SDLGL {
 	}
 	*/
 
-	bool SDLviewer::renderOneFrame(void) 
+	void SDLEvents::redraw(void)
 	{
-		// Lock surface if needed
-		if ( SDL_MUSTLOCK( mScreen ) )
-			if ( SDL_LockSurface( mScreen ) < 0 )
-				return false;
-					
-    	//Clear the color and depth buffers.
-    	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    	 	
-    	// Update Scene
-    	redraw();
-    	
-    	// Unlock if needed
-		if ( SDL_MUSTLOCK( mScreen ) ) 
-			SDL_UnlockSurface( mScreen );    	
 
-    	// Swap Buffers
-    	SDL_GL_SwapBuffers();
-    	
-    	return true;
 	}
 	
-	void SDLviewer::run(void)
+	void SDLEvents::resize(void)
 	{
-		if ( !init() )
-			return;
-			
-		startRendering();
-		
-		// clean up
-		cleanup();
-	}
-	
-	void SDLviewer::createScene(void)
-	{
-		//gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
 
-    	mScene = osg::makeTorus(.5, 2, 16, 16);
-    	//mMgr->setRoot(mScene);
-    	//mMgr->showAll();   
-	} 
-	
-	void SDLviewer::redraw(void)
-	{
-		mMgr->redraw();
-		
-		//glColor3f(0.7, 0.5, 0.8);
-    	//glRectf(1.0, 1.0, 3.0, 2.0);  	
-	}
-	
-	void SDLviewer::resize(void)
-	{
-		mMgr->resize(mWidth, mHeight);	
-		//mPwin->init();	
-	}
-	
-	osg::SimpleSceneManager* SDLviewer::getSceneManager(void)
-	{
-		return mMgr;	
-	}
-	
-	bool SDLviewer::isFullScreen(void)
-	{
-		return (mScrMode == FULLSCREEN);	
 	}
 	
 	// Handle Key pressed
-	void SDLviewer::OnKeyDown(const int& iKeyEnum,
+	void SDLEvents::OnKeyDown(const int& iKeyEnum,
 								  const int& iX, 
 					 			  const int& iY, 
 					 			  const int& iRelX, 
@@ -475,11 +243,11 @@ namespace SDLGL {
     	}
     	
     	//passs the event to the manager object
-		mMgr->key(key, iX, iY);
+		//mMgr->key(key, iX, iY);
 	} 
  
  	// Handle Key released
-	void SDLviewer::OnKeyUp(const int& iKeyEnum)
+	void SDLEvents::OnKeyUp(const int& iKeyEnum)
 	{
 		switch (iKeyEnum)
 		{
@@ -497,10 +265,10 @@ namespace SDLGL {
 	  		break;
 		}
 		
-		mMgr->idle();
+		//mMgr->idle();
 	}
  
-	void SDLviewer::OnMouseMoved(const int& iButton, 
+	void SDLEvents::OnMouseMoved(const int& iButton, 
 			   const int& iX, 
 			   const int& iY, 
 			   const int& iRelX, 
@@ -511,30 +279,30 @@ namespace SDLGL {
 		// iX and iY are absolute screen positions
 		// iRelX and iRelY are screen position relative to last detected mouse movement
 		
-		mMgr->mouseMove(iX, iY);
+		//mMgr->mouseMove(iX, iY);
 	}
  
- 	void SDLviewer::OnMouseButtonDown(const int& iButton, 
+ 	void SDLEvents::OnMouseButtonDown(const int& iButton, 
 				const int& iX, 
 				const int& iY, 
 				const int& iRelX, 
 				const int& iRelY)
 	{
 		// Handle mouse button pressed
-		osg::UInt32 button;
+		//osg::UInt32 button;
 		// translate the button value from qt to OpenSG
 		switch (iButton)
 		{
     		case SDL_BUTTON_LEFT: 
-    			button = osg::SimpleSceneManager::MouseLeft;    
+    			//button = osg::SimpleSceneManager::MouseLeft;    
     			break;
     			
     		case SDL_BUTTON_MIDDLE:   
-    			button = osg::SimpleSceneManager::MouseMiddle; 
+    			//button = osg::SimpleSceneManager::MouseMiddle; 
     			break;
     			
     		case SDL_BUTTON_RIGHT: 
-    			button = osg::SimpleSceneManager::MouseRight; 
+    			//button = osg::SimpleSceneManager::MouseRight; 
     			break;
     			
     		default:
@@ -542,30 +310,30 @@ namespace SDLGL {
 		}
 	
 		//passs the event to the manager object
-		mMgr->mouseButtonPress(button, iX, iY);		
+		//mMgr->mouseButtonPress(button, iX, iY);		
 	}
 	
-	void SDLviewer::OnMouseButtonUp(const int& iButton, 
+	void SDLEvents::OnMouseButtonUp(const int& iButton, 
 			      const int& iX, 
 			      const int& iY, 
 			      const int& iRelX, 
 			      const int& iRelY)
 	{
 		// Handle mouse button released
-		osg::UInt32 button;
+		//osg::UInt32 button;
 		// translate the button value from qt to OpenSG
 		switch (iButton)
 		{
     		case SDL_BUTTON_LEFT: 
-    			button = osg::SimpleSceneManager::MouseLeft;    
+    			//button = osg::SimpleSceneManager::MouseLeft;    
     			break;
     			
     		case SDL_BUTTON_MIDDLE:   
-    			button = osg::SimpleSceneManager::MouseMiddle; 
+    			//button = osg::SimpleSceneManager::MouseMiddle; 
     			break;
     			
     		case SDL_BUTTON_RIGHT: 
-    			button = osg::SimpleSceneManager::MouseRight; 
+    			//button = osg::SimpleSceneManager::MouseRight; 
     			break;
     			
     		default:
@@ -573,15 +341,15 @@ namespace SDLGL {
 		}
 	
 		//passs the event to the manager object
-		mMgr->mouseButtonRelease(button, iX, iY);		
+		//mMgr->mouseButtonRelease(button, iX, iY);		
 	}
  
-	void SDLviewer::OnWindowInactive()
+	void SDLEvents::OnWindowInactive()
 	{
 		// Pause game
 	}
  
-	void SDLviewer::OnWindowActive()
+	void SDLEvents::OnWindowActive()
 	{
 		// Un-pause game
 	}	

@@ -18,13 +18,13 @@
 
 #include <iostream>
 
-#include "SDLviewer.h"
+#include "SDLViewer.h"
 
 
 namespace SDLGL { 
 	
 	// Constructors
-	SDLviewer::SDLviewer(const unsigned int w, const unsigned int h, VideoMode video)
+	SDLViewer::SDLViewer(const unsigned int w, const unsigned int h, VideoMode video)
 	{
 		mScreen = NULL;
 		
@@ -44,7 +44,7 @@ namespace SDLGL {
 	}
 
 	// Destructor
-	SDLviewer::~SDLviewer(void)
+	SDLViewer::~SDLViewer(void)
 	{
 		if (mMgr)
 			delete mMgr;
@@ -57,7 +57,7 @@ namespace SDLGL {
 	}
 
 	// Initialization functions
-	bool SDLviewer::init(void)
+	bool SDLViewer::init(void)
 	{			
     	if ( !initializeSDL() )
     		return false;
@@ -71,7 +71,7 @@ namespace SDLGL {
     	return true;  
 	}
 
-	bool SDLviewer::initializeSDL(void)
+	bool SDLViewer::initializeSDL(void)
 	{
     	//int width, height, bpp;
     	
@@ -133,14 +133,14 @@ namespace SDLGL {
     	return true;
 	}
 
-	bool SDLviewer::initializeTimer(void)
+	bool SDLViewer::initializeTimer(void)
 	{
     	mTimer = SDL_AddTimer(30, timerLoop, this);
     	
     	return true;
 	}
 
-	Uint32 SDLviewer::timerLoop(Uint32 interval, void* param)
+	Uint32 SDLViewer::timerLoop(Uint32 interval, void* param)
 	{
     	// Create a user event to call the game loop.
     	SDL_Event event;
@@ -155,7 +155,7 @@ namespace SDLGL {
     	return interval;
 	}
 	
-	bool SDLviewer::initializeSceneMgr(void)
+	bool SDLViewer::initializeSceneMgr(void)
 	{
 		//osg::PassiveWindowPtr mPwin = osg::PassiveWindow::create();
 		mPwin = osg::PassiveWindow::create();
@@ -215,7 +215,7 @@ namespace SDLGL {
 	}
 
 	// Cleanup functions
-	void SDLviewer::cleanup(void)
+	void SDLViewer::cleanup(void)
 	{
     	SDL_bool success;
     	success = SDL_RemoveTimer(mTimer);
@@ -224,7 +224,7 @@ namespace SDLGL {
 	}
 
 	// Main Render Loop functions
-	void SDLviewer::startRendering(void)
+	void SDLViewer::startRendering(void)
 	{
     	SDL_Event event;
     
@@ -243,7 +243,7 @@ namespace SDLGL {
     	}
 	}
 	
-	void SDLviewer::handleEvents(SDL_Event& event)
+	void SDLViewer::handleEvents(SDL_Event& event)
 	{
 		switch(event.type) 
         {
@@ -338,7 +338,7 @@ namespace SDLGL {
 	}
 
 	/*
-	void SDLviewer::handleUserEvents(SDL_Event* event)
+	void SDLViewer::handleUserEvents(SDL_Event* event)
 	{
     	switch (event->user.code) 
     	{
@@ -352,7 +352,7 @@ namespace SDLGL {
 	}
 	*/
 
-	bool SDLviewer::renderOneFrame(void) 
+	bool SDLViewer::renderOneFrame(void) 
 	{
 		// Lock surface if needed
 		if ( SDL_MUSTLOCK( mScreen ) )
@@ -375,7 +375,7 @@ namespace SDLGL {
     	return true;
 	}
 	
-	void SDLviewer::run(void)
+	void SDLViewer::run(void)
 	{
 		if ( !init() )
 			return;
@@ -386,7 +386,7 @@ namespace SDLGL {
 		cleanup();
 	}
 	
-	void SDLviewer::createScene(void)
+	void SDLViewer::createScene(void)
 	{
 		//gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
 
@@ -395,7 +395,7 @@ namespace SDLGL {
     	//mMgr->showAll();   
 	} 
 	
-	void SDLviewer::redraw(void)
+	void SDLViewer::redraw(void)
 	{
 		mMgr->redraw();
 		
@@ -403,24 +403,24 @@ namespace SDLGL {
     	//glRectf(1.0, 1.0, 3.0, 2.0);  	
 	}
 	
-	void SDLviewer::resize(void)
+	void SDLViewer::resize(void)
 	{
 		mMgr->resize(mWidth, mHeight);	
 		//mPwin->init();	
 	}
 	
-	osg::SimpleSceneManager* SDLviewer::getSceneManager(void)
+	osg::SimpleSceneManager* SDLViewer::getSceneManager(void)
 	{
 		return mMgr;	
 	}
 	
-	bool SDLviewer::isFullScreen(void)
+	bool SDLViewer::isFullScreen(void)
 	{
 		return (mScrMode == FULLSCREEN);	
 	}
 	
 	// Handle Key pressed
-	void SDLviewer::OnKeyDown(const int& iKeyEnum,
+	void SDLViewer::OnKeyDown(const int& iKeyEnum,
 								  const int& iX, 
 					 			  const int& iY, 
 					 			  const int& iRelX, 
@@ -479,7 +479,7 @@ namespace SDLGL {
 	} 
  
  	// Handle Key released
-	void SDLviewer::OnKeyUp(const int& iKeyEnum)
+	void SDLViewer::OnKeyUp(const int& iKeyEnum)
 	{
 		switch (iKeyEnum)
 		{
@@ -500,7 +500,7 @@ namespace SDLGL {
 		mMgr->idle();
 	}
  
-	void SDLviewer::OnMouseMoved(const int& iButton, 
+	void SDLViewer::OnMouseMoved(const int& iButton, 
 			   const int& iX, 
 			   const int& iY, 
 			   const int& iRelX, 
@@ -514,7 +514,7 @@ namespace SDLGL {
 		mMgr->mouseMove(iX, iY);
 	}
  
- 	void SDLviewer::OnMouseButtonDown(const int& iButton, 
+ 	void SDLViewer::OnMouseButtonDown(const int& iButton, 
 				const int& iX, 
 				const int& iY, 
 				const int& iRelX, 
@@ -545,7 +545,7 @@ namespace SDLGL {
 		mMgr->mouseButtonPress(button, iX, iY);		
 	}
 	
-	void SDLviewer::OnMouseButtonUp(const int& iButton, 
+	void SDLViewer::OnMouseButtonUp(const int& iButton, 
 			      const int& iX, 
 			      const int& iY, 
 			      const int& iRelX, 
@@ -576,12 +576,12 @@ namespace SDLGL {
 		mMgr->mouseButtonRelease(button, iX, iY);		
 	}
  
-	void SDLviewer::OnWindowInactive()
+	void SDLViewer::OnWindowInactive()
 	{
 		// Pause game
 	}
  
-	void SDLviewer::OnWindowActive()
+	void SDLViewer::OnWindowActive()
 	{
 		// Un-pause game
 	}	
