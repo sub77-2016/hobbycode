@@ -3,16 +3,16 @@
  *
  */
 
-#include "SDLviewer.h"
+#include "SDLViewer.h"
 
 using namespace SDLGL;
 
-class MyApp : public SDLviewer
+class MyApp : public SDLViewer
 {
 public:
-	MyApp(const unsigned int w, const unsigned int h) : SDLviewer(w, h) 
+	MyApp(const unsigned int w, const unsigned int h) : SDLViewer(w, h) 
 	{
-		SDLviewer::init();
+		SDLViewer::init();
 	}
 	~MyApp(void){}
 	
@@ -20,7 +20,7 @@ protected:
 	void createScene(void)
 	{
 		//gluOrtho2D(-4.0, 4.0, -3.0, 3.0);  
-		SDLviewer::createScene();
+		SDLViewer::createScene();
 		
 		//mScene = osg::makeTorus(.5, 2, 16, 16);
     	//mMgr->setRoot(mScene);
@@ -30,7 +30,7 @@ protected:
 	
 	void redraw(void)
 	{
-		SDLviewer::redraw();
+		SDLViewer::redraw();
 				
 		glBegin(GL_QUADS);
     		glColor3f(1,0,0);
@@ -47,10 +47,10 @@ int main(int argc, char *argv[])
 	// OSG init
     osg::osgInit(argc, argv);
     
-    //SDLviewer viewer;
-    //SDLviewer viewer(640,480);
-    //SDLviewer viewer(640, 480, SDLviewer::WINDOWED);
-    //SDLviewer viewer(640, 480, SDLviewer::FULLSCREEN);
+    //SDLViewer viewer;
+    //SDLViewer viewer(640,480);
+    //SDLViewer viewer(640, 480, SDLviewer::WINDOWED);
+    //SDLViewer viewer(640, 480, SDLviewer::FULLSCREEN);
     
     MyApp viewer(640,480);
 	

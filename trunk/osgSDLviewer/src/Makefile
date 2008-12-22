@@ -4,9 +4,9 @@ CXX = g++
 CXXFLAGS = -g -O2 -Wall `sdl-config --cflags` `osg-config --cflags --dbg Base System`
 LIBS = -lm -lGL -lGLU `sdl-config --libs` `osg-config --libs --dbg Base System`
 
-APP_NAME = SDLviewer
+APP_NAME = SDLViewer
 
-OBJS = main.o SDLviewer.o
+OBJS = test.o SDLViewer.o
 
 $(APP_NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(APP_NAME) $(OBJS) $(LIBS)
