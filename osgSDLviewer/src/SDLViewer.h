@@ -31,9 +31,11 @@
 #include <OpenSG/OSGPerspectiveCamera.h>
 #include <OpenSG/OSGSimpleSceneManager.h>
 
+#include "Singleton.h"
+
 namespace SDLGL { 
 	
-	class SDLViewer
+	class SDLViewer : public Singleton<SDLViewer>
 	{   
     public:
     
@@ -54,7 +56,7 @@ namespace SDLGL {
         void startRendering(void);
         
      	// Cleanup functions
-        void cleanup(void);
+        void cleanUp(void);
         
         // Run the Renderer
         virtual void run(void);
@@ -70,11 +72,9 @@ namespace SDLGL {
         
         virtual void createScene(void);
         
-        virtual void redraw(void);
-
-        virtual void resize(int w, int h);
+        virtual bool frameStarted(void){return true;}
         
-        virtual void idle(void);
+        virtual bool frameEnded(void){return true;}
         
         /// Window Handle
         /** OVERLOADED - Window is active again. **/
@@ -151,6 +151,12 @@ namespace SDLGL {
         static Uint32 timerLoop(Uint32 interval, void* param);  
                    
         //void handleUserEvents(SDL_Event* event); 
+        
+      	void redraw(void);
+
+        void resize(int w, int h);
+        
+        void idle(void);
         
         bool renderOneFrame(void);
         
