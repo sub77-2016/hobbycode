@@ -36,6 +36,7 @@ namespace SDLGL {
 	class SDLViewer
 	{   
     public:
+    
     	enum VideoMode {
     		WINDOWED,
     		FULLSCREEN
@@ -72,6 +73,8 @@ namespace SDLGL {
         virtual void redraw(void);
 
         virtual void resize(void);
+        
+        virtual void idle(void);
         
         /// Window Handle
         /** OVERLOADED - Window is active again. **/
@@ -138,6 +141,7 @@ namespace SDLGL {
 					 				   const int& iRelY);     
     	
     private:
+    
        	bool initializeSceneMgr(void);
    		
         bool initializeSDL(void);
@@ -152,7 +156,7 @@ namespace SDLGL {
         
        	void handleEvents(SDL_Event& event);  
        	
-    protected:
+    protected:    
             
       	osg::SimpleSceneManager *mMgr;
     	// no GLUT window this time, but a passive one
@@ -162,7 +166,8 @@ namespace SDLGL {
     	// Camera
     	//osg::PerspectiveCameraPtr mCamera;
 
-    private:    	
+    private:  
+      	
        	SDL_Surface* mScreen;
        	
         SDL_TimerID mTimer;
