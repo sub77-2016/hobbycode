@@ -35,6 +35,7 @@ namespace SDLGL {
     	
     	mWidth = w;
     	mHeight = h;  	
+    	mBpp = 0;
 
     	mMgr = NULL;
     	//mPwin = 0;
@@ -72,7 +73,7 @@ namespace SDLGL {
 
 	bool SDLviewer::initializeSDL(void)
 	{
-    	int width, height, bpp;
+    	//int width, height, bpp;
     	
     	/* Drawing Context */
     	//SDL_Surface* screen = NULL;
@@ -80,7 +81,7 @@ namespace SDLGL {
     	/* Information about the current video settings. */
     	const SDL_VideoInfo* info = NULL;
     	
-    	Uint32 flags;
+    	//Uint32 flags;
     	
     
     	// init SDL
@@ -106,26 +107,27 @@ namespace SDLGL {
     	// Create a double-buffered draw context
     	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     	
-    	bpp = info->vfmt->BitsPerPixel;
-    	width = (int)mWidth;
-    	height = (int)mHeight;
+    	mBpp = info->vfmt->BitsPerPixel;
+    	//width = (int)mWidth;
+    	//height = (int)mHeight;
     	
-    	flags = SDL_OPENGL | SDL_RESIZABLE;
-    	
+    	mFlags = SDL_OPENGL | SDL_RESIZABLE;
+    	    	
     	if ( isFullScreen() )
-    		flags = flags | SDL_FULLSCREEN;
+    		mFlags = mFlags | SDL_FULLSCREEN;
     	
-    	if ( !(mScreen = SDL_SetVideoMode(width, height, bpp, flags)) )
+    	if ( !(mScreen = SDL_SetVideoMode(mWidth, mHeight, mBpp, mFlags)) )
    		{
    			std::cerr<< "Unable to set "<< mWidth<<"x"<< mHeight<< " video: %s\n"<< SDL_GetError()<< std::endl;
    			exit(1);
    		}
+   		// Make sure we have the correct size
+   		mWidth = mScreen->w;
+   		mHeight = mScreen->h;
    		
    		// Set window title
    		SDL_WM_SetCaption("SDL OpenGL Viewer", "OpenGL");
-   		
-   		//SDL_LockSurface(screen);
-   		
+   		   		
    		SDL_EnableUNICODE(1);
     	
     	return true;
@@ -316,9 +318,13 @@ namespace SDLGL {
                 	
 			case SDL_VIDEORESIZE:
 				{
-					mWidth = event.resize.w;
-					mHeight = event.resize.h;
-					resize();
+    				if ( !(mScreen = SDL_SetVideoMode(event.resize.w, event.resize.h, 
+    													mBpp, mFlags)) )
+   					{
+   						mWidth = mScreen->w;
+   						mHeight = mScreen->h;
+   						resize();
+   					}
 				}
 				break;
             
@@ -400,7 +406,7 @@ namespace SDLGL {
 	void SDLviewer::resize(void)
 	{
 		mMgr->resize(mWidth, mHeight);	
-		mPwin->init();	
+		//mPwin->init();	
 	}
 	
 	osg::SimpleSceneManager* SDLviewer::getSceneManager(void)
