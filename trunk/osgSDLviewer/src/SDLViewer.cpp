@@ -511,8 +511,6 @@ namespace SDLGL {
 	  		// Down arrow released
 	  		break;
 		}
-		
-		//mMgr->idle();
 	}
  
 	void SDLViewer::OnMouseMoved(const int& iButton, 
@@ -593,12 +591,12 @@ namespace SDLGL {
  
 	void SDLViewer::OnWindowInactive()
 	{
-		// Pause game
+		// Pause 
 	}
  
 	void SDLViewer::OnWindowActive()
 	{
-		// Un-pause game
+		// Un-pause 
 	}	
 
 }
