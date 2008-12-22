@@ -30,6 +30,7 @@ namespace SDLGL {
 		
 		mMinimized = false;
     	mDone = false;
+    	mTimer = 0;
     	
     	mScrMode = video;
     	
@@ -62,8 +63,8 @@ namespace SDLGL {
     	if ( !initializeSDL() )
     		return false;
     		
-    	if ( !initializeTimer() )
-    		return false;  
+    	//if ( !initializeTimer() )
+    		//return false;  
     		
 		if ( !initializeSceneMgr() )
 			return false;
@@ -231,12 +232,16 @@ namespace SDLGL {
     	// Infinite loop
     	mDone = false;
     	
-    	while((!mDone) && (SDL_WaitEvent(&event))) 
+    	//while( (!mDone) && (SDL_WaitEvent(&event)) ) 
+    	while( !mDone )
     	{
     		// Pump message in all registered windows
     		SDL_PumpEvents();
     		
-    		handleEvents(event);
+    		idle();
+    		
+    		while( SDL_PollEvent(&event) )
+    			handleEvents(event);
     		
     		if ( !renderOneFrame() )
     			return;
@@ -407,6 +412,11 @@ namespace SDLGL {
 	{
 		mMgr->resize(mWidth, mHeight);	
 		//mPwin->init();	
+	}
+	
+	void SDLViewer::idle(void)
+	{
+		mMgr->idle();	
 	}
 	
 	osg::SimpleSceneManager* SDLViewer::getSceneManager(void)
