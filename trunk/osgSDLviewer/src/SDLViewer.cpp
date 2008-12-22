@@ -323,13 +323,7 @@ namespace SDLGL {
                 	
 			case SDL_VIDEORESIZE:
 				{
-    				if ( !(mScreen = SDL_SetVideoMode(event.resize.w, event.resize.h, 
-    													mBpp, mFlags)) )
-   					{
-   						mWidth = mScreen->w;
-   						mHeight = mScreen->h;
-   						resize();
-   					}
+					resize(event.resize.w, event.resize.h);
 				}
 				break;
             
@@ -408,10 +402,16 @@ namespace SDLGL {
     	//glRectf(1.0, 1.0, 3.0, 2.0);  	
 	}
 	
-	void SDLViewer::resize(void)
+	void SDLViewer::resize(int w, int h)
 	{
-		mMgr->resize(mWidth, mHeight);	
-		//mPwin->init();	
+		if ( !(mScreen = SDL_SetVideoMode(w, h, mBpp, mFlags)) )
+   		{
+   			mWidth = mScreen->w;
+   			mHeight = mScreen->h;
+   			
+   			mMgr->resize(mWidth, mHeight);	
+			//mPwin->init();	   						
+   		}
 	}
 	
 	void SDLViewer::idle(void)

@@ -72,7 +72,7 @@ namespace SDLGL {
         
         virtual void redraw(void);
 
-        virtual void resize(void);
+        virtual void resize(int w, int h);
         
         virtual void idle(void);
         
