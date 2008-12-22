@@ -419,6 +419,11 @@ namespace SDLGL {
 		return (mScrMode == FULLSCREEN);	
 	}
 	
+	bool SDLViewer::isMinimized(void)
+	{
+		return mMinimized;	
+	}
+	
 	// Handle Key pressed
 	void SDLViewer::OnKeyDown(const int& iKeyEnum,
 								  const int& iX, 
@@ -427,7 +432,7 @@ namespace SDLGL {
 					 			  const int& iRelY)
 	{
 		// Handle Keybord Input
-		osg::UChar8	key;    
+		osg::UChar8	key = ' ';    
 		
     	switch (iKeyEnum)
     	{
@@ -497,7 +502,7 @@ namespace SDLGL {
 	  		break;
 		}
 		
-		mMgr->idle();
+		//mMgr->idle();
 	}
  
 	void SDLViewer::OnMouseMoved(const int& iButton, 

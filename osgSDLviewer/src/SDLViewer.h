@@ -60,9 +60,10 @@ namespace SDLGL {
         
         bool isFullScreen(void);
         
-        // Get Scene Manager
-        osg::SimpleSceneManager* getSceneManager(void);
+        bool isMinimized();
         
+        // Get Scene Manager
+        osg::SimpleSceneManager* getSceneManager(void);        
         
    	protected:
         
@@ -135,14 +136,6 @@ namespace SDLGL {
 					 				   const int& iY, 
 					 				   const int& iRelX, 
 					 				   const int& iRelY);     
-        
-      	osg::SimpleSceneManager *mMgr;
-    	// no GLUT window this time, but a passive one
-    	osg::PassiveWindowPtr mPwin;    	
-    	// Root Scene node
-    	osg::NodePtr mScene;
-    	// Camera
-    	//osg::PerspectiveCameraPtr mCamera;
     	
     private:
        	bool initializeSceneMgr(void);
@@ -159,6 +152,17 @@ namespace SDLGL {
         
        	void handleEvents(SDL_Event& event);  
        	
+    protected:
+            
+      	osg::SimpleSceneManager *mMgr;
+    	// no GLUT window this time, but a passive one
+    	osg::PassiveWindowPtr mPwin;    	
+    	// Root Scene node
+    	osg::NodePtr mScene;
+    	// Camera
+    	//osg::PerspectiveCameraPtr mCamera;
+
+    private:    	
        	SDL_Surface* mScreen;
        	
         SDL_TimerID mTimer;
