@@ -22,98 +22,116 @@
 
 #include "PhysicalEntity.h"
 
-#include <opal/opal.h>
-
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-#include <OpenSG/OSGConfig.h>
-#include <OpenSG/OSGSimpleGeometry.h>
-#include <OpenSG/OSGSimpleSceneManager.h>
-#endif
-
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-PhysicalEntity::PhysicalEntity(const std::string& name, 
-	osg::NodePtr node, opal::Solid* s)
-{
-	mName = name;
-	mSceneNode = node;
-	mSolid = s;
-
-	if (mSolid && mSceneNode)
+namespace SDLGL { 
+	
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	PhysicalEntity::PhysicalEntity(const std::string& name, 
+		osg::NodePtr node, opal::Solid* s)
 	{
-		updateOSGSceneNode();
+		mName = name;
+		mSceneNode = node;
+		mSolid = s;
+	
+		if (mSolid && mSceneNode)
+		{
+			updateOSGSceneNode();
+		}
 	}
-}
-#endif
 
-PhysicalEntity::PhysicalEntity(const std::string& name, opal::Solid* s)
-{
-	mName = name;
-	mSolid = s;
-
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	mSceneNode = NULL;
-#endif
-}
-
-PhysicalEntity::~PhysicalEntity()
-{
-	// The OPAL Solid and Ogre SceneNode should be destroyed 
-	// externally, not here.
-}
-
-const std::string& PhysicalEntity::getName()const
-{
-	return mName;
-}
-
-bool PhysicalEntity::isVisual()const
-{
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	if (mSceneNode)
+	PhysicalEntity::PhysicalEntity(const std::string& name, 
+		osg::TransformPtr trans, opal::Solid* s)
 	{
-		return true;
+		mName = name;
+		mTrans = trans;
+		mSolid = s;
+
+		if (mSolid && mSceneNode)
+		{
+			updateOSGSceneNode();
+		}
 	}
-	else
+	#endif
+
+	PhysicalEntity::PhysicalEntity(const std::string& name, opal::Solid* s)
 	{
+		mName = name;
+		mSolid = s;
+
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		//mSceneNode = NULL;
+	#endif
+	}
+
+	PhysicalEntity::~PhysicalEntity()
+	{
+		// The OPAL Solid and Ogre SceneNode should be destroyed 
+		// externally, not here.
+	}
+
+	const std::string& PhysicalEntity::getName()const
+	{
+		return mName;
+	}
+
+	bool PhysicalEntity::isVisual()const
+	{
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		if (mSceneNode)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	#else
 		return false;
+	#endif
 	}
-#else
-	return false;
-#endif
-}
 
-void PhysicalEntity::update(opal::real dt)
-{
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	if (NULL == mSolid || NULL == mSceneNode || mSolid->isSleeping())
+	void PhysicalEntity::update(opal::real dt)
 	{
-		return;
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		if (NULL == mSolid || NULL == mSceneNode || NULL == mTrans || mSolid->isSleeping())
+		{
+			return;
+		}
+
+		updateOSGSceneNode();
+	#endif
 	}
 
-	updateOSGSceneNode();
-#endif
-}
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	void PhysicalEntity::updateOSGSceneNode()
+	{
+		osg::Matrix m;
+		opal::Point3r pos = mSolid->getPosition();
+		opal::Quaternion quat = mSolid->getQuaternion();
+		//mSceneNode->setPosition((Ogre::Real)pos[0], (Ogre::Real)pos[1], 
+			//(Ogre::Real)pos[2]);
+		quat.normalize();
+		//mSceneNode->setOrientation((Ogre::Real)quat[0], 
+			//(Ogre::Real)quat[1], (Ogre::Real)quat[2], 
+			//(Ogre::Real)quat[3]);
+	
+		m.setIdentity();
+   		m.setTranslate((osg::Real32)pos[0], (osg::Real32)pos[1], 
+			(osg::Real32)pos[2]);
+  		m.setRotate(osg::Quaternion(osg::Vec3f((osg::Real32)quat[1],(osg::Real32)quat[1],
+  			(osg::Real32)quat[1]), (osg::Real32)quat[0]));
+      		
+   		mTrans->setMatrix(m);
+	}
 
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-void PhysicalEntity::updateOSGSceneNode()
-{
-	opal::Point3r pos = mSolid->getPosition();
-	opal::Quaternion quat = mSolid->getQuaternion();
-	//mSceneNode->setPosition((Ogre::Real)pos[0], (Ogre::Real)pos[1], 
-		//(Ogre::Real)pos[2]);
-	quat.normalize();
-	//mSceneNode->setOrientation((Ogre::Real)quat[0], 
-		//(Ogre::Real)quat[1], (Ogre::Real)quat[2], 
-		//(Ogre::Real)quat[3]);
-}
+	osg::NodePtr PhysicalEntity::getSceneNode()const
+	{
+		return mSceneNode;
+	}
+	#endif
 
-osg::NodePtr PhysicalEntity::getSceneNode()const
-{
-	return mSceneNode;
-}
-#endif
-
-opal::Solid* PhysicalEntity::getSolid()const
-{
-	return mSolid;
+	opal::Solid* PhysicalEntity::getSolid()const
+	{
+		return mSolid;
+	}
+	
 }

@@ -25,9 +25,19 @@
 
 #include <iostream>
 
+#include <opal/opal.h>
+
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+#include <OpenSG/OSGConfig.h>
+#include <OpenSG/OSGSimpleGeometry.h>
+#include <OpenSG/OSGSimpleSceneManager.h>
+#endif
+
+/*
 namespace osg
 {
 	class NodePtr;
+	class TransformPtr;
 }
 
 namespace opal
@@ -35,59 +45,71 @@ namespace opal
 	typedef float real; // This is just for forward declaration.
 	class Solid;
 }
+*/
 
-class PhysicalEntity
-{
-public:
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	/// Constructor for a PhysicalEntity with a physical and visual 
-	/// representation.  This should not be called directly.  Instead, 
-	/// use the SimulationEngine function for creating PhysicalEntities.
-	PhysicalEntity(const std::string& name, osg::NodePtr node, 
-		opal::Solid* s);
-#endif
+namespace SDLGL { 
 
-	/// Constructor for a PhysicalEntity with a physical representation 
-	/// only.  This should not be called directly.  Instead, 
-	/// use the SimulationEngine function for creating PhysicalEntities.
-	PhysicalEntity(const std::string& name, opal::Solid* s);
+	class PhysicalEntity
+	{
+	public:
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		/// Constructor for a PhysicalEntity with a physical and visual 
+		/// representation.  This should not be called directly.  Instead, 
+		/// use the SimulationEngine function for creating PhysicalEntities.
+		PhysicalEntity(const std::string& name, osg::NodePtr node, 
+			opal::Solid* s);		
+	
+		PhysicalEntity(const std::string& name, osg::TransformPtr trans, 
+			opal::Solid* s);
+	#endif
 
-	virtual ~PhysicalEntity();
+		/// Constructor for a PhysicalEntity with a physical representation 
+		/// only.  This should not be called directly.  Instead, 
+		/// use the SimulationEngine function for creating PhysicalEntities.
+		PhysicalEntity(const std::string& name, opal::Solid* s);
 
-	/// Returns the PhysicalEntity's name.
-	const std::string& getName()const;
+		virtual ~PhysicalEntity();
 
-	/// Returns whether the PhysicalEntity has a visual representation.
-	bool isVisual()const;
+		/// Returns the PhysicalEntity's name.
+		const std::string& getName()const;
 
-	/// Updates the PhysicalEntity.
-	virtual void update(opal::real dt);
+		/// Returns whether the PhysicalEntity has a visual representation.
+		bool isVisual()const;
 
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	/// Updates the Ogre SceneNode transform from the OPAL 
-	/// Solid's transform.
-	virtual void updateOSGSceneNode();
+		/// Updates the PhysicalEntity.
+		virtual void update(opal::real dt);
 
-	/// Returns a pointer to the Ogre SceneNode.
-	osg::NodePtr getSceneNode()const;
-#endif
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		/// Updates the Ogre SceneNode transform from the OPAL 
+		/// Solid's transform.
+		virtual void updateOSGSceneNode();
 
-	/// Returns a pointer to the OPAL Solid.
-	opal::Solid* getSolid()const;
+		/// Returns a pointer to the Ogre SceneNode.
+		osg::NodePtr getSceneNode()const;
+	#endif
 
-protected:
-	/// The PhysicalEntity's name.
-	std::string mName;
+		/// Returns a pointer to the OPAL Solid.
+		opal::Solid* getSolid()const;
 
-	/// Pointer to the OPAL Solid.
-	opal::Solid* mSolid;
+	protected:
+		/// The PhysicalEntity's name.
+		std::string mName;
 
-#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-	/// Pointer to the Ogre SceneNode.
-	osg::NodePtr mSceneNode;
-#endif
+		/// Pointer to the OPAL Solid.
+		opal::Solid* mSolid;
 
-private:
-};
+	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+		/// Pointer to the Ogre SceneNode.	
+		osg::NodePtr mSceneNode;
+	
+		/// Transform node
+		osg::TransformPtr mTrans;
+		
+	#endif
+
+	private:
+	};
+	
+}
 
 #endif

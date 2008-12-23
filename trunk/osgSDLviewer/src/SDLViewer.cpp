@@ -17,6 +17,7 @@
  */
 
 #include <iostream>
+#include <SDL_opengl.h>
 
 #include "SDLViewer.h"
 
@@ -64,8 +65,8 @@ namespace SDLGL {
 		//if (mPwin)
 			//delete mPwin;
 			
-		//if (mScene)
-			//delete mScene;
+		//if (mSceneRoot)
+			//delete mSceneRoot;
 	}
 
 	// Initialization functions
@@ -141,18 +142,22 @@ namespace SDLGL {
    		SDL_WM_SetCaption("SDL OpenGL Viewer", "OpenGL");
    		   		
    		SDL_EnableUNICODE(1);
+   		SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, 
+   							SDL_DEFAULT_REPEAT_INTERVAL);
+   							
+   		mLastTick = SDL_GetTicks();
     	
     	return true;
 	}
 
 	bool SDLViewer::initializeTimer(void)
 	{
-    	mTimer = SDL_AddTimer(30, timerLoop, this);
+    	mTimer = SDL_AddTimer(30, timerCallback, this);
     	
     	return true;
 	}
 
-	Uint32 SDLViewer::timerLoop(Uint32 interval, void* param)
+	Uint32 SDLViewer::timerCallback(Uint32 interval, void* param)
 	{
     	// Create a user event to call the game loop.
     	SDL_Event event;
@@ -169,11 +174,9 @@ namespace SDLGL {
 	
 	bool SDLViewer::initializeSceneMgr(void)
 	{
-		//osg::PassiveWindowPtr mPwin = osg::PassiveWindow::create();
+		osg::PassiveWindowPtr mPwin = osg::PassiveWindow::create();
 		mPwin = osg::PassiveWindow::create();
-		    	
-		mMgr = new osg::SimpleSceneManager;		
-    	mMgr->setWindow(mPwin); 
+		mPwin->init();  
     	
     	//osg::NodePtr camBeacon = osg::Node::create();
     	
@@ -203,11 +206,9 @@ namespace SDLGL {
 			//viewport->setSize(0,0,0.5,1);
 		//osg::endEditCP(viewport);   
 		
-		//mPwin->getPort(0) = viewport;		
-     	
-		mPwin->init();  
+		//mPwin->getPort(0) = viewport;				
 		
-		mScene = osg::Node::create();	
+		mSceneRoot = osg::Node::create();	
 
 		//osg::beginEditCP(mScene);
 			//mScene->setCore(osg::Group::create());
@@ -215,12 +216,14 @@ namespace SDLGL {
 		//osg::endEditCP(mScene);			
 			    	
     	// Set up Default Scene 	
-    	createScene();       	
-
-		mMgr->setRoot(mScene);
+    	createScene();  
+    	
+    			    	
+		mMgr = new osg::SimpleSceneManager;		
+    	mMgr->setWindow(mPwin); 
+		mMgr->setRoot(mSceneRoot);
     	//mMgr->setNavigationMode(osg::Navigator::WALK);
-    	mMgr->resize(mWidth, mHeight); 
-   		
+    	mMgr->resize(mWidth, mHeight);    		
     	mMgr->showAll(); 
     	
     	return true;
@@ -235,6 +238,13 @@ namespace SDLGL {
     	SDL_Quit();
 	}
 
+	float SDLViewer::timeElapsed(void)
+	{
+	 	Uint32 t = SDL_GetTicks();
+        mLastTick = t;
+        return (float)(t - mLastTick) * 0.001;
+     }
+     
 	// Main Render Loop functions
 	void SDLViewer::startRendering(void)
 	{
@@ -408,7 +418,7 @@ namespace SDLGL {
 	{
 		//gluOrtho2D(0.0, 4.0, 0.0, 3.0);   
 
-    	mScene = osg::makeTorus(.5, 2, 16, 16);
+    	mSceneRoot = osg::makeTorus(.5, 2, 16, 16);
     	//mMgr->setRoot(mScene);
     	//mMgr->showAll();   
 	} 
@@ -538,11 +548,9 @@ namespace SDLGL {
 			   const int& iRelX, 
 			   const int& iRelY)
 	{
-		// Handle mouse movement
- 
+		// Handle mouse movement 
 		// iX and iY are absolute screen positions
-		// iRelX and iRelY are screen position relative to last detected mouse movement
-		
+		// iRelX and iRelY are screen position relative to last detected mouse movement		
 		mMgr->mouseMove(iX, iY);
 	}
  
@@ -610,12 +618,12 @@ namespace SDLGL {
  
 	void SDLViewer::OnWindowInactive()
 	{
-		// Pause 
+		// pause 
 	}
  
 	void SDLViewer::OnWindowActive()
 	{
-		// Un-pause 
+		// un-pause 
 	}	
 
 }
