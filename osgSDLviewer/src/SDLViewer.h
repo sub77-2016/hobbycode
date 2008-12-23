@@ -20,7 +20,6 @@
 #define _SDLViewer_h_
 
 #include <SDL.h>
-#include <SDL_opengl.h>
 
 //#include <GL/gl.h>
 //#include <GL/glu.h>
@@ -60,6 +59,8 @@ namespace SDLGL {
         
         // Run the Renderer
         virtual void run(void);
+        
+        float timeElapsed(void);
         
         bool isFullScreen(void);
         
@@ -148,7 +149,7 @@ namespace SDLGL {
         
         bool initializeTimer(void);
         
-        static Uint32 timerLoop(Uint32 interval, void* param);  
+        static Uint32 timerCallback(Uint32 interval, void* param);  
                    
         //void handleUserEvents(SDL_Event* event); 
         
@@ -164,11 +165,11 @@ namespace SDLGL {
        	
     protected:    
             
-      	osg::SimpleSceneManager *mMgr;
+      	osg::SimpleSceneManager* mMgr;
     	// no GLUT window this time, but a passive one
-    	osg::PassiveWindowPtr mPwin;    	
+    	//osg::PassiveWindowPtr mPwin;    	
     	// Root Scene node
-    	osg::NodePtr mScene;
+    	osg::NodePtr mSceneRoot;
     	// Camera
     	//osg::PerspectiveCameraPtr mCamera;
 
@@ -186,7 +187,9 @@ namespace SDLGL {
         
         unsigned int mWidth, mHeight, mBpp; 
         
-        Uint32 mFlags;          
+        Uint32 mFlags;     
+        
+        Uint32 mLastTick;     
 	};
 
 	//typedef SDLViewer* SDLViewerPtr;
