@@ -11,6 +11,7 @@
           <option superClass="gnu.cpp.link.option.libs" id="gnu.cpp.link.option.libs.1909362499" valueType="libs">
             <listOptionValue value="GL" builtIn="false"/>
             <listOptionValue value="GLU" builtIn="false"/>
+            <listOptionValue value="opal-ode" builtIn="false"/>
           </option>
         </tool>
         <tool superClass="cdt.managedbuild.tool.gnu.assembler.exe.debug" id="cdt.managedbuild.tool.gnu.assembler.exe.debug.942418526" name="GCC Assembler"/>
