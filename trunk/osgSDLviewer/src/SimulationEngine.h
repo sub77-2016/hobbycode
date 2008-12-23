@@ -53,7 +53,8 @@ namespace SDLGL {
 			SIMULATE_REAL_TIME_MULTIPLE
 		};
 
-		SimulationEngine(const unsigned int w, const unsigned int h, VideoMode video);
+		SimulationEngine(const unsigned int w = 800, const unsigned int h = 600,
+        		VideoMode video = WINDOWED);
 
 		~SimulationEngine();
 
@@ -65,7 +66,8 @@ namespace SDLGL {
 		/// amount of time by which the world was just simulated (which depends 
 		/// on the UpdateType being used) and the actual elapsed (wall clock) 
 		/// time since the last update.
-		void update(opal::real& elapsedSimTime, opal::real& elapsedRealTime);
+		//void update(opal::real& elapsedSimTime, opal::real& elapsedRealTime);
+		void update(void);
 
 		/// Returns true if we should quit the app.  This should be checked 
 		/// after each update.
@@ -108,14 +110,14 @@ namespace SDLGL {
 		void setUpdateMode(UpdateMode type, opal::real updateConstant);
 
 		/// Returns the update mode being used.
-		UpdateMode getUpdateMode()const;
+		UpdateMode getUpdateMode() const;
 
 		/// Returns the update constant being used.
-		opal::real getUpdateConstant()const;
+		opal::real getUpdateConstant() const;
 
 		/// Finds a PhysicalEntity pointer by name.  Returns NULL if the 
 		/// PhysicalEntity could not be found.
-		PhysicalEntity* getPhysicalEntity(const std::string& name)const;
+		PhysicalEntity* getPhysicalEntity(const std::string& name) const;
 
 		/// Destroys the given PhysicalEntity.
 		void destroyPhysicalEntity(PhysicalEntity* pe);
@@ -173,14 +175,14 @@ namespace SDLGL {
 		/// SceneNode, and a pointer to an OPAL Solid.  If the name string 
 		/// is empty, a unique name will be automatically generated; 
 		/// otherwise, the given name must be unique.
-		//PhysicalEntity* createVisualPhysicalEntity(const std::string& name, 
-			//Ogre::SceneNode* sn, opal::Solid* s);
+		PhysicalEntity* createVisualPhysicalEntity(const std::string& name, 
+			osg::TransformPtr tr, opal::Solid* s);
 
 		/// Helper function to create an Ogre Entity using the given Opal shape 
 		/// data and attach it to the given SceneNode.
-		//void createChildVisualEntity(Ogre::SceneNode* parentNode, 
-			//const opal::ShapeData* data, const std::string& name, 
-			//const std::string& materialName);
+		void createChildVisualEntity(osg::NodePtr parentNode, 
+			const opal::ShapeData* data, const std::string& name, 
+			const std::string& materialName);
 
 		/// Initial scene setup function.  Create and position lights, setup 
 		/// shadows, etc.

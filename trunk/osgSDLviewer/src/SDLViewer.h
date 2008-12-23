@@ -77,6 +77,8 @@ namespace SDLGL {
         
         virtual bool frameEnded(void){return true;}
         
+        virtual void update(){}
+        
         /// Window Handle
         /** OVERLOADED - Window is active again. **/
 		virtual void OnWindowActive();

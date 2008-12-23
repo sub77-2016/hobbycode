@@ -218,9 +218,13 @@ namespace SDLGL {
 }
 */
 
-	void SimulationEngine::update(	opal::real& elapsedSimTime, 
-									opal::real& elapsedRealTime)
+	//void SimulationEngine::update(	opal::real& elapsedSimTime, 
+									//opal::real& elapsedRealTime)
+	void SimulationEngine::update()
 	{
+		opal::real elapsedSimTime;
+		opal::real elapsedRealTime;
+									
 	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 		//if (mOgreWindow->isClosed())
 		//{
@@ -457,16 +461,29 @@ namespace SDLGL {
 		// Create an Ogre SceneNode for the Entity.
 		//Ogre::SceneNode* sn = mOgreSceneMgr->getRootSceneNode()->
 			//createChildSceneNode(nameStr);
+			
+		osg::NodePtr sn = osg::Node::create();				
+		osg::TransformPtr tr = osg::Transform::create();	
+		
+		osg::NodePtr tn = osg::Node::create();
+  		osg::beginEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+      		tn->setCore(tr);
+      		tn->addChild(sn);
+  		osg::endEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  		
+  		osg::beginEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
+      		mSceneRoot->addChild(tn);
+  		osg::endEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
 
 		for (unsigned int i = 0; i < s->getData().getNumShapes(); ++i)
 		{
 			char shapeName[512];
 			sprintf(shapeName, "%s_shape_%d", nameStr.c_str(), i);
-			//createChildVisualEntity(sn, s->getData().getShapeData(i), shapeName, 
-				//materialName);
+			createChildVisualEntity(sn, s->getData().getShapeData(i), shapeName, 
+				materialName);
 		}
 
-		//pe = createVisualPhysicalEntity(nameStr, sn, s);
+		pe = createVisualPhysicalEntity(nameStr, tr, s);
 	#else
 		pe = createNonVisualPhysicalEntity(nameStr, s);
 	#endif
@@ -504,44 +521,44 @@ namespace SDLGL {
 		return pe;
 	}
 
-	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-/*
-PhysicalEntity* SimulationEngine::createVisualPhysicalEntity(
-	const std::string& name, Ogre::SceneNode* sn, opal::Solid* s)
-{
-	if (!s)
+#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
+	PhysicalEntity* SimulationEngine::createVisualPhysicalEntity(
+		const std::string& name, osg::TransformPtr tr, opal::Solid* s)
 	{
-		return NULL;
+		if (!s)
+		{
+			return NULL;
+		}
+
+		std::string nameStr = name;
+		if (nameStr.empty())
+		{
+			nameStr = generateUniqueName();
+		}
+
+		// Create a new PhysicalEntity.
+		PhysicalEntity* pe = new PhysicalEntity(nameStr, tr, s);
+
+		// Store the pointer in the PhysicalEntity list.
+		mPhysicalEntityList.push_back(pe);
+
+		// If the name is not empty, also store the pointer in the 
+		// map of named PhysicalEntities.
+		if (!name.empty())
+		{
+			mPhysicalEntityMap[nameStr] = pe;
+		}
+
+		return pe;
 	}
 
-	std::string nameStr = name;
-	if (nameStr.empty())
+	void SimulationEngine::createChildVisualEntity(osg::NodePtr parentNode, 
+		const opal::ShapeData* data, const std::string& name, 
+		const std::string& materialName)
 	{
-		nameStr = generateUniqueName();
-	}
-
-	// Create a new PhysicalEntity.
-	PhysicalEntity* pe = new PhysicalEntity(nameStr, sn, s);
-
-	// Store the pointer in the PhysicalEntity list.
-	mPhysicalEntityList.push_back(pe);
-
-	// If the name is not empty, also store the pointer in the 
-	// map of named PhysicalEntities.
-	if (!name.empty())
-	{
-		mPhysicalEntityMap[nameStr] = pe;
-	}
-
-	return pe;
-}
-
-void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode, 
-	const opal::ShapeData* data, const std::string& name, 
-	const std::string& materialName)
-{
-	// Create an Ogre SceneNode for the Entity.
-	opal::Point3r offsetPos = data->offset.getPosition();
+		// Create an Ogre SceneNode for the Entity.
+		opal::Point3r offsetPos = data->offset.getPosition();
+	/*
 	Ogre::Vector3 translationOffset(offsetPos[0], offsetPos[1], 
 		offsetPos[2]);
 	opal::Quaternion offsetQuat = data->offset.getQuaternion();
@@ -553,33 +570,50 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 
 	Ogre::SceneNode* newChildNode = NULL;
 	Ogre::Entity* e = NULL;
-
-	switch(data->getType())
-	{
-		case opal::BOX_SHAPE:
+	*/
+		osg::NodePtr newChildNode; // = osg::Node::create();	
+		
+		switch(data->getType())
 		{
-			newChildNode = parentNode->createChildSceneNode(name, 
-				translationOffset, rotationOffset);
+			case opal::BOX_SHAPE:
+			{
+				//newChildNode = parentNode->createChildSceneNode(name, 
+					//translationOffset, rotationOffset);
 
-			// Scale the object according to the given dimensions.
-			opal::Vec3r boxDim = static_cast<const opal::BoxShapeData*>
-				(data)->dimensions;
-			Ogre::Vector3 dimensions(boxDim[0], boxDim[1], boxDim[2]);
-			newChildNode->scale(dimensions[0], dimensions[1], 
-				dimensions[2]);
+				// Scale the object according to the given dimensions.
+				opal::Vec3r boxDim = static_cast<const opal::BoxShapeData*>
+					(data)->dimensions;
+					
+				//Ogre::Vector3 dimensions(boxDim[0], boxDim[1], boxDim[2]);
+				//newChildNode->scale(dimensions[0], dimensions[1], 
+					//dimensions[2]);
+					
+				//create the geometry which we will assign a texture to
+				osg::GeometryPtr boxGeo = osg::makeBoxGeo(boxDim[0],
+													boxDim[1],boxDim[2],1,1,1);
 
-			// Create an Ogre Entity using a cube mesh.  This mesh must be 
-			// stored as a box with dimensions 1x1x1.
-			e = mOgreSceneMgr->createEntity(name, "cube.mesh");
-				e->setMaterialName(materialName);
+				// Create an Ogre Entity using a cube mesh.  This mesh must be 
+				// stored as a box with dimensions 1x1x1.
+				//e = mOgreSceneMgr->createEntity(name, "cube.mesh");
+				//e->setMaterialName(materialName);
 
-			// Keep the normals normalized even after scaling.
-			e->setNormaliseNormals(true);
+				// Keep the normals normalized even after scaling.
+				//e->setNormaliseNormals(true);
 
-			// Attach the Entity to the SceneNode.
-			newChildNode->attachObject(e);
-			break;
-		}
+				// Attach the Entity to the SceneNode.
+				//newChildNode->attachObject(e);
+				
+				osg::beginEditCP(newChildNode, osg::Node::CoreFieldMask);
+    				newChildNode->setCore(boxGeo);
+				osg::endEditCP(newChildNode, osg::Node::CoreFieldMask);				
+				
+  				osg::beginEditCP(parentNode, osg::Node::ChildrenFieldMask);
+      				parentNode->addChild(newChildNode);
+  				osg::endEditCP(parentNode, osg::Node::ChildrenFieldMask);
+  		
+				break;
+			}
+		/*
 		case opal::SPHERE_SHAPE:
 		{
 			newChildNode = parentNode->createChildSceneNode(name, 
@@ -652,12 +686,14 @@ void SimulationEngine::createChildVisualEntity(Ogre::SceneNode* parentNode,
 			sphereNode->attachObject(e);
 			break;
 		}
-		default:
-			assert(false);
-			break;
+		*/
+			default:
+				assert(false);
+				break;
+		}
 	}
-}
 
+/*
 void SimulationEngine::setupDefaultVisualScene()
 {
 	if (mOgreSceneMgr->getShadowTechnique() == Ogre::SHADOWTYPE_NONE)

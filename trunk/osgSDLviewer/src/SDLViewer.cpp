@@ -384,9 +384,10 @@ namespace SDLGL {
     	 	
     	// Frame started
     	if (!frameStarted())
-    		return false;
-    		
+    		return false;    	
+    	
     	// Update Scene
+    	update();
     	redraw();
     	
     	// Frame ended

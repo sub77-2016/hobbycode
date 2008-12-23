@@ -2,7 +2,7 @@
 <?fileVersion 3.1.0?>
 <ManagedProjectBuildInfo>
   <project id="osgSDL.cdt.managedbuild.target.gnu.exe.556494236" name="Executable (Gnu)" projectType="cdt.managedbuild.target.gnu.exe">
-    <configuration id="cdt.managedbuild.config.gnu.exe.debug.2091212556" name="Debug" description="" parent="cdt.managedbuild.config.gnu.exe.debug" artifactName="osgSDL" errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" cleanCommand="rm -rf">
+    <configuration id="cdt.managedbuild.config.gnu.exe.debug.2091212556" name="Debug" description="" parent="cdt.managedbuild.config.gnu.exe.debug" artifactName="osgSDLtest" errorParsers="org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" cleanCommand="rm -rf">
       <toolChain superClass="cdt.managedbuild.toolchain.gnu.exe.debug" id="cdt.managedbuild.toolchain.gnu.exe.debug.1432414805" name="GCC Tool Chain">
         <tool superClass="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug" id="cdt.managedbuild.tool.gnu.cpp.compiler.exe.debug.600766721" name="GCC C++ Compiler" command="g++  `sdl-config --cflags` `osg-config --cflags --dbg Base System`"/>
         <tool superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug" id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1298698316" name="GCC C Compiler"/>
