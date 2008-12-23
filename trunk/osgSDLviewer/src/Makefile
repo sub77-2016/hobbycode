@@ -2,9 +2,9 @@
 
 CXX = g++
 CXXFLAGS = -g -O2 -Wall `sdl-config --cflags` `osg-config --cflags --dbg Base System`
-LIBS = -lm -lGL -lGLU `sdl-config --libs` `osg-config --libs --dbg Base System`
+LIBS = -lm -lGL -lGLU `sdl-config --libs` `osg-config --libs --dbg Base System` -lopal-ode 
 
-APP_NAME = SDLViewer
+APP_NAME = osgSDLViewer
 
 OBJS = test.o SDLViewer.o
 
