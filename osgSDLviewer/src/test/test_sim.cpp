@@ -1,16 +1,12 @@
-/*
- *  main.cpp
- *
- */
 
-#include "SDLViewer.h"
+#include "../SimulationEngine.h"
 
 using namespace SDLGL;
 
-class MyApp : public SDLViewer
+class MyApp : public SimulationEngine
 {
 public:
-	MyApp(const unsigned int w, const unsigned int h) : SDLViewer(w, h) 
+	MyApp(const unsigned int w, const unsigned int h) : SimulationEngine(w, h) 
 	{
 		//SDLViewer::init();
 	}
@@ -131,13 +127,12 @@ protected:
 
 };
 
-int main(int argc, char *argv[])
+void test_sim(void)
 {
-	// OSG init
-    osg::osgInit(argc, argv);
-    
     //SDLViewer viewer;
     //SDLViewer viewer(640,480);
+    
+    //SimulationEngine viewer(640,480);
     
     //SDLViewer viewer2(800,600);
     //SDLViewer viewer3(1024,768);
@@ -154,5 +149,4 @@ int main(int argc, char *argv[])
     //viewer.cleanup();
     viewer.run();
     
-    return 0;
 }
