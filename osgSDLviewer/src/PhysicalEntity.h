@@ -103,7 +103,7 @@ namespace SDLGL {
 		osg::NodePtr mSceneNode;
 	
 		/// Transform node
-		osg::TransformPtr mTrans;
+		osg::TransformPtr mTransCore;
 		
 	#endif
 

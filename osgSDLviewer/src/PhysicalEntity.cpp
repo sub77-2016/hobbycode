@@ -42,7 +42,7 @@ namespace SDLGL {
 		osg::TransformPtr trans, opal::Solid* s)
 	{
 		mName = name;
-		mTrans = trans;
+		mTransCore = trans;
 		mSolid = s;
 
 		if (mSolid && mSceneNode)
@@ -92,7 +92,7 @@ namespace SDLGL {
 	void PhysicalEntity::update(opal::real dt)
 	{
 	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-		if (NULL == mSolid || NULL == mSceneNode || NULL == mTrans || mSolid->isSleeping())
+		if (NULL == mSolid || NULL == mSceneNode || NULL == mTransCore || mSolid->isSleeping())
 		{
 			return;
 		}
@@ -105,6 +105,7 @@ namespace SDLGL {
 	void PhysicalEntity::updateOSGSceneNode()
 	{
 		osg::Matrix m;
+		
 		opal::Point3r pos = mSolid->getPosition();
 		opal::Quaternion quat = mSolid->getQuaternion();
 		//mSceneNode->setPosition((Ogre::Real)pos[0], (Ogre::Real)pos[1], 
@@ -115,12 +116,23 @@ namespace SDLGL {
 			//(Ogre::Real)quat[3]);
 	
 		m.setIdentity();
-   		m.setTranslate((osg::Real32)pos[0], (osg::Real32)pos[1], 
+   		m.setTranslate(
+   			(osg::Real32)pos[0], 
+   			(osg::Real32)pos[1], 
 			(osg::Real32)pos[2]);
-  		m.setRotate(osg::Quaternion(osg::Vec3f((osg::Real32)quat[1],(osg::Real32)quat[1],
-  			(osg::Real32)quat[1]), (osg::Real32)quat[0]));
-      		
-   		mTrans->setMatrix(m);
+			
+  		m.setRotate(
+  			osg::Quaternion(
+  				osg::Vec3f(
+  					(osg::Real32)quat[1],
+  					(osg::Real32)quat[2],
+  					(osg::Real32)quat[3]), 
+  				(osg::Real32)quat[0]));
+    
+    	//apply the new matrix to our transform core
+    	osg::beginEditCP(mTransCore);    	
+    		mTransCore->setMatrix(m);
+    	osg::endEditCP(mTransCore);
 	}
 
 	osg::NodePtr PhysicalEntity::getSceneNode()const

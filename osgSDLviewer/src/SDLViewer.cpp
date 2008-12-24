@@ -208,7 +208,7 @@ namespace SDLGL {
 		
 		//mPwin->getPort(0) = viewport;				
 		
-		//mSceneRoot = osg::Node::create();	
+		mSceneRoot = osg::Node::create();	
 
 		//osg::beginEditCP(mScene);
 			//mScene->setCore(osg::Group::create());
@@ -395,7 +395,7 @@ namespace SDLGL {
     		return false;    	
     	
     	// Update Scene
-    	//update();
+    	update();
     	redraw();
     	
     	// Frame ended
