@@ -181,6 +181,7 @@ namespace SDLGL {
 		/// Helper function to create an Ogre Entity using the given Opal shape 
 		/// data and attach it to the given SceneNode.
 		void createChildVisualEntity(osg::NodePtr parentNode, 
+			osg::TransformPtr trans,
 			const opal::ShapeData* data, const std::string& name, 
 			const std::string& materialName);
 

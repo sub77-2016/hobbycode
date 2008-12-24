@@ -174,7 +174,7 @@ namespace SDLGL {
 	
 	bool SDLViewer::initializeSceneMgr(void)
 	{
-		osg::PassiveWindowPtr mPwin = osg::PassiveWindow::create();
+		//osg::PassiveWindowPtr Pwin = osg::PassiveWindow::create();
 		mPwin = osg::PassiveWindow::create();
 		mPwin->init();  
     	
@@ -208,7 +208,7 @@ namespace SDLGL {
 		
 		//mPwin->getPort(0) = viewport;				
 		
-		mSceneRoot = osg::Node::create();	
+		//mSceneRoot = osg::Node::create();	
 
 		//osg::beginEditCP(mScene);
 			//mScene->setCore(osg::Group::create());
@@ -220,10 +220,18 @@ namespace SDLGL {
     	
     			    	
 		mMgr = new osg::SimpleSceneManager;		
-    	mMgr->setWindow(mPwin); 
+    	mMgr->setWindow(mPwin);
 		mMgr->setRoot(mSceneRoot);
+		
     	//mMgr->setNavigationMode(osg::Navigator::WALK);
-    	mMgr->resize(mWidth, mHeight);    		
+    	mMgr->useOpenSGLogo();
+    	mMgr->setClickCenter(true);
+		mMgr->setStatistics(true);
+		
+    	mMgr->resize(mWidth, mHeight);    	
+    	//mPwin->resize(mWidth, mHeight);			
+   		//mPwin->resizeGL();
+   				
     	mMgr->showAll(); 
     	
     	return true;
@@ -238,11 +246,11 @@ namespace SDLGL {
     	SDL_Quit();
 	}
 
-	float SDLViewer::timeElapsed(void)
+	Uint32 SDLViewer::timeElapsed(void)
 	{
 	 	Uint32 t = SDL_GetTicks();
-        mLastTick = t;
-        return (float)(t - mLastTick) * 0.001;
+        //mLastTick = t;
+        return (t - mLastTick);
      }
      
 	// Main Render Loop functions
@@ -387,7 +395,7 @@ namespace SDLGL {
     		return false;    	
     	
     	// Update Scene
-    	update();
+    	//update();
     	redraw();
     	
     	// Frame ended
@@ -439,8 +447,15 @@ namespace SDLGL {
    			mWidth = mScreen->w;
    			mHeight = mScreen->h;
    			
+   			//osg::PassiveWindowPtr mPwin = osg::PassiveWindow::create();
+			//mPwin = osg::PassiveWindow::create();
+			//mPwin->init();     			
+   			//mMgr->setWindow(mPwin); 
+   			
    			mMgr->resize(mWidth, mHeight);	
-			//mPwin->init();	   						
+   			
+   			//mPwin->resize(mWidth, mHeight);			
+   			//mPwin->resizeGL();
    		}
 	}
 	

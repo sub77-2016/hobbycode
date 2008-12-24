@@ -60,7 +60,7 @@ namespace SDLGL {
         // Run the Renderer
         virtual void run(void);
         
-        float timeElapsed(void);
+        Uint32 timeElapsed(void);
         
         bool isFullScreen(void);
         
@@ -169,7 +169,7 @@ namespace SDLGL {
             
       	osg::SimpleSceneManager* mMgr;
     	// no GLUT window this time, but a passive one
-    	//osg::PassiveWindowPtr mPwin;    	
+    	osg::PassiveWindowPtr mPwin;    	
     	// Root Scene node
     	osg::NodePtr mSceneRoot;
     	// Camera
