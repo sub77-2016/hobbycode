@@ -45,7 +45,7 @@ namespace SDLGL {
 		mTransCore = trans;
 		mSolid = s;
 
-		if (mSolid && mSceneNode)
+		if (mSolid && mTransCore)
 		{
 			updateOSGSceneNode();
 		}
@@ -92,7 +92,7 @@ namespace SDLGL {
 	void PhysicalEntity::update(opal::real dt)
 	{
 	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
-		if (NULL == mSolid || NULL == mSceneNode || NULL == mTransCore || mSolid->isSleeping())
+		if (NULL == mSolid || /*NULL == mSceneNode ||*/ NULL == mTransCore || mSolid->isSleeping())
 		{
 			return;
 		}

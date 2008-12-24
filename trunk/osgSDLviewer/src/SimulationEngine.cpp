@@ -220,7 +220,7 @@ namespace SDLGL {
 
 	//void SimulationEngine::update(	opal::real& elapsedSimTime, 
 									//opal::real& elapsedRealTime)
-	void SimulationEngine::update()
+	void SimulationEngine::update(void)
 	{
 		opal::real elapsedSimTime;
 		opal::real elapsedRealTime;
@@ -465,25 +465,41 @@ namespace SDLGL {
 			//createChildSceneNode(nameStr);
 				
 		osg::NodePtr tn = osg::Node::create();			
-		osg::TransformPtr tr = osg::Transform::create();			
+		osg::TransformPtr tr = osg::Transform::create();	
 		
-		osg::NodePtr sn = osg::Node::create();  		
+		osg::Matrix m;        
+        // now provide some data...
+        m.setIdentity();
+        
+        // set the core to the matrix we created
+        osg::beginEditCP(tr);
+            tr->setMatrix(m);
+        osg::endEditCP(tr);		
+		
+		//osg::NodePtr sn = osg::Node::create();  	
+		osg::NodePtr sn = osg::makeTorus(.5, 2, 16, 16);	
 		for (unsigned int i = 0; i < s->getData().getNumShapes(); ++i)
 		{
 			char shapeName[512];
 			sprintf(shapeName, "%s_shape_%d", nameStr.c_str(), i);
-			createChildVisualEntity(sn, /*tr,*/ s->getData().getShapeData(i), shapeName, 
-				materialName);
+			//createChildVisualEntity(sn, /*tr,*/ s->getData().getShapeData(i), shapeName, 
+				//materialName);
 		}
 		
-		osg::beginEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+		//osg::beginEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+		osg::beginEditCP(tn);
       		tn->setCore(tr);
       		tn->addChild(sn);
-  		osg::endEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+      	osg::endEditCP(tn);
+  		//osg::endEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
   		
-		osg::beginEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
-      		mSceneRoot->addChild(tn);
-  		osg::endEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
+		//osg::beginEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
+		//osg::beginEditCP(mSceneRoot);
+      		//mSceneRoot->addChild(tn);
+      	//osg::endEditCP(mSceneRoot);
+  		//osg::endEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
+  		
+  		mSceneRoot = tn;
 		
 		pe = createVisualPhysicalEntity(nameStr, tr, s);
 	#else
@@ -627,14 +643,20 @@ namespace SDLGL {
 				// Attach the Entity to the SceneNode.
 				//newChildNode->attachObject(e);
 				
-				osg::beginEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+				//osg::beginEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+				osg::beginEditCP(newChildNode);
     				newChildNode->setCore(transCore);
     				newChildNode->addChild(boxGeo);
-				osg::endEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);				
+    			osg::endEditCP(newChildNode);
+				//osg::endEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);				
 				
-  				osg::beginEditCP(parentNode, osg::Node::ChildrenFieldMask);
+  				//osg::beginEditCP(parentNode, osg::Node::ChildrenFieldMask);
+  				osg::beginEditCP(parentNode);
       				parentNode->addChild(newChildNode);
-  				osg::endEditCP(parentNode, osg::Node::ChildrenFieldMask);
+      			osg::endEditCP(parentNode);
+  				//osg::endEditCP(parentNode, osg::Node::ChildrenFieldMask);
+  				
+  				//parentNode = newChildNode;
   				
 				break;
 			}
