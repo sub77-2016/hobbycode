@@ -42,15 +42,28 @@ protected:
         
         //// TESTING: Simple goal box.
         opal::Solid* boxSolid = getSimulator()->createSolid();
-        boxSolid->setStatic(false);
+        boxSolid->setStatic(true);
         boxSolid->setSleepiness(0);
         boxSolid->setPosition(15.5, 10, -7);
-        opal::BoxShapeData data;
-        data.dimensions.set(1.5, 1.5, 1.5);
-        data.material.friction = 0.1;
-        data.material.density = 0.5;
-        boxSolid->addShape(data);
-        createPhysicalEntity("goal box", "Plastic/Green", boxSolid);	  	
+        opal::BoxShapeData data1;
+        data1.dimensions.set(15, 1.0, 15);
+        data1.material.friction = 0.1;
+        data1.material.density = 0.5;
+        boxSolid->addShape(data1);
+        createPhysicalEntity("goal box", "Plastic/Green", boxSolid);	
+        
+        //// TESTING: Simple goal sphere.
+        opal::Solid* sphereSolid = getSimulator()->createSolid();
+        sphereSolid->setStatic(false);
+        sphereSolid->setSleepiness(0);
+        sphereSolid->setPosition(15.5, 30, -7);
+        opal::SphereShapeData data2;
+        data2.radius = 1.0;
+		//data2.offset.translate(4.0, 0.0, 0.0);
+        data2.material.friction = 0.1;
+        data2.material.density = 0.5;
+        sphereSolid->addShape(data2);
+        createPhysicalEntity("goal sphere", "Plastic/Green", sphereSolid);  	
 	}
 	
 	osg::NodePtr createPhysScene2(void)
