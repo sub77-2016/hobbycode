@@ -656,26 +656,13 @@ namespace SDLGL {
 				// Attach the Entity to the SceneNode.
 				//newChildNode->attachObject(e);
 				
-				//osg::beginEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
-				//osg::beginEditCP(newChildNode);
-    				//newChildNode->setCore(transCore);
-    				//newChildNode->addChild(boxGeo);
-    			//osg::endEditCP(newChildNode);
-				//osg::endEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);				
-				
-				osg::beginEditCP(newChildNode);
+				//osg::beginEditCP(parentNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+				osg::beginEditCP(parentNode);
     				parentNode->setCore(newTransCore);
     				parentNode->addChild(newChildNode);
-    			osg::endEditCP(newChildNode);
-    			
-  				//osg::beginEditCP(parentNode, osg::Node::ChildrenFieldMask);
-  				//osg::beginEditCP(parentNode);
-      				//parentNode->addChild(newChildNode);
-      			//osg::endEditCP(parentNode);
-  				//osg::endEditCP(parentNode, osg::Node::ChildrenFieldMask);
-  				
-  				//parentNode = newChildNode;
-  				
+    			osg::endEditCP(parentNode);
+				//osg::endEditCP(parentNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);				
+				  				
 				break;
 			}
 
@@ -692,6 +679,12 @@ namespace SDLGL {
 				//Ogre::Real radius = static_cast<const opal::SphereShapeData*>
 					//(data)->radius;
 				//newChildNode->scale(radius, radius, radius);
+				
+				opal::real radius = static_cast<const opal::SphereShapeData*>
+					(data)->radius;
+					
+				newChildNode = osg::makeSphere((osg::UInt16)radius/5, 
+											   (osg::Real32)radius);
 
 				// Create an Ogre Entity using a sphere mesh.  This mesh must be 
 				// stored as a sphere with radius 1.
@@ -704,11 +697,13 @@ namespace SDLGL {
 				// Attach the Entity to the SceneNode.
 				//newChildNode->attachObject(e);
 				
-				osg::beginEditCP(newChildNode);
+				//osg::beginEditCP(parentNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+				osg::beginEditCP(parentNode);
     				parentNode->setCore(newTransCore);
     				parentNode->addChild(newChildNode);
-    			osg::endEditCP(newChildNode);
-				
+    			osg::endEditCP(parentNode);
+				//osg::endEditCP(parentNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);				
+								
 				break;
 			}
 		
