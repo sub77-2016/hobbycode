@@ -3,14 +3,14 @@
 
 using namespace SDLGL;
 
-class MyApp : public SimulationEngine
+class TestSim : public SimulationEngine
 {
 public:
-	MyApp(const unsigned int w, const unsigned int h) : SimulationEngine(w, h) 
+	TestSim(const unsigned int w, const unsigned int h) : SimulationEngine(w, h) 
 	{
 		//SDLViewer::init();
 	}
-	~MyApp(void){}
+	~TestSim(void){}
 	
 protected:
 	void createScene(void)
@@ -140,7 +140,7 @@ void test_sim(void)
     //SDLViewer viewer(640, 480, SDLviewer::WINDOWED);
     //SDLViewer viewer(640, 480, SDLviewer::FULLSCREEN);
     
-    MyApp viewer(640,480);
+    TestSim viewer(640,480);
 	
 	//viewer = SDLViewer::getInstance();
 	

@@ -463,7 +463,7 @@ namespace SDLGL {
 			//createChildSceneNode(nameStr);
 			
 		osg::NodePtr sn = osg::Node::create();				
-		osg::TransformPtr tr = osg::Transform::create();	
+		osg::TransformPtr tr = osg::Transform::create();			
 		
 		osg::NodePtr tn = osg::Node::create();
   		osg::beginEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
@@ -474,20 +474,20 @@ namespace SDLGL {
   		osg::beginEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
       		mSceneRoot->addChild(tn);
   		osg::endEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
-
+  		
 		for (unsigned int i = 0; i < s->getData().getNumShapes(); ++i)
 		{
 			char shapeName[512];
 			sprintf(shapeName, "%s_shape_%d", nameStr.c_str(), i);
-			createChildVisualEntity(sn, s->getData().getShapeData(i), shapeName, 
+			createChildVisualEntity(sn, tr, s->getData().getShapeData(i), shapeName, 
 				materialName);
 		}
-
+		
 		pe = createVisualPhysicalEntity(nameStr, tr, s);
 	#else
-		pe = createNonVisualPhysicalEntity(nameStr, s);
+		pe = createNonVisualPhysicalEntity(nameStr, s); 
 	#endif
-
+	
 		return pe;
 	}
 
@@ -553,32 +553,45 @@ namespace SDLGL {
 	}
 
 	void SimulationEngine::createChildVisualEntity(osg::NodePtr parentNode, 
+		osg::TransformPtr trans,
 		const opal::ShapeData* data, const std::string& name, 
 		const std::string& materialName)
 	{
 		// Create an Ogre SceneNode for the Entity.
 		opal::Point3r offsetPos = data->offset.getPosition();
-	/*
-	Ogre::Vector3 translationOffset(offsetPos[0], offsetPos[1], 
-		offsetPos[2]);
-	opal::Quaternion offsetQuat = data->offset.getQuaternion();
-	Ogre::Quaternion rotationOffset;
-	rotationOffset.x = offsetQuat.x;
-	rotationOffset.y = offsetQuat.y;
-	rotationOffset.z = offsetQuat.z;
-	rotationOffset.w = offsetQuat.w;
+		/*
+		Ogre::Vector3 translationOffset(offsetPos[0], offsetPos[1], 
+			offsetPos[2]);
+		*/
+		opal::Quaternion offsetQuat = data->offset.getQuaternion();
+		/*
+		Ogre::Quaternion rotationOffset;
+		rotationOffset.x = offsetQuat.x;
+		rotationOffset.y = offsetQuat.y;
+		rotationOffset.z = offsetQuat.z;
+		rotationOffset.w = offsetQuat.w;
+		*/
+		osg::Matrix m;
+		m.setIdentity();
+   		m.setTranslate((osg::Real32)offsetPos[0], (osg::Real32)offsetPos[1], 
+			(osg::Real32)offsetPos[2]);
+  		m.setRotate(osg::Quaternion(osg::Vec3f((osg::Real32)offsetQuat[1],(osg::Real32)offsetQuat[1],
+  			(osg::Real32)offsetQuat[1]), (osg::Real32)offsetQuat[0]));
 
-	Ogre::SceneNode* newChildNode = NULL;
-	Ogre::Entity* e = NULL;
-	*/
-		osg::NodePtr newChildNode; // = osg::Node::create();	
+		/*
+		Ogre::SceneNode* newChildNode = NULL;
+		Ogre::Entity* e = NULL;
+		*/
+		osg::NodePtr newChildNode = osg::Node::create();
+		osg::TransformPtr Trans = trans;	
 		
 		switch(data->getType())
 		{
 			case opal::BOX_SHAPE:
-			{
+			{				
 				//newChildNode = parentNode->createChildSceneNode(name, 
-					//translationOffset, rotationOffset);
+					//translationOffset, rotationOffset);				
+				Trans->setMatrix(m);
 
 				// Scale the object according to the given dimensions.
 				opal::Vec3r boxDim = static_cast<const opal::BoxShapeData*>
@@ -610,7 +623,7 @@ namespace SDLGL {
   				osg::beginEditCP(parentNode, osg::Node::ChildrenFieldMask);
       				parentNode->addChild(newChildNode);
   				osg::endEditCP(parentNode, osg::Node::ChildrenFieldMask);
-  		
+  				
 				break;
 			}
 		/*
