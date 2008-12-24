@@ -79,6 +79,8 @@ namespace SDLGL {
 	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 		/// Returns a pointer to the Ogre SceneManager.
 		//Ogre::SceneManager* getSceneManager()const;
+		
+		osg::SimpleSceneManager* getSceneManager() const;
 
 		/// Returns a pointer to the OIS keyboard.  This can be used for 
 		/// application-specific user input.
@@ -200,6 +202,8 @@ namespace SDLGL {
 		/// Updates the Ogre stats overlay.
 		//void updateOgreStats();
 	#endif
+	
+	private:
 
 		/// Returns a unique name string.  Useful when creating lots of 
 		/// anonymous objects.
@@ -264,8 +268,6 @@ namespace SDLGL {
 
 		/// Map of named PhysicalEntities.
 		std::map<std::string, PhysicalEntity*> mPhysicalEntityMap;
-
-	private:
 	};
 
 }
