@@ -209,6 +209,9 @@ namespace SDLGL {
 		//mPwin->getPort(0) = viewport;				
 		
 		mSceneRoot = osg::Node::create();	
+		osg::beginEditCP(mSceneRoot, osg::Node::CoreFieldMask);
+        	mSceneRoot->setCore(osg::Group::create());
+    	osg::endEditCP(mSceneRoot, osg::Node::CoreFieldMask);
 
 		//osg::beginEditCP(mScene);
 			//mScene->setCore(osg::Group::create());

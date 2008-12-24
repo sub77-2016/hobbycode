@@ -317,6 +317,11 @@ namespace SDLGL {
 	}
 	*/
 
+	osg::SimpleSceneManager* SimulationEngine::getSceneManager() const
+	{
+		return mMgr;
+	}
+
 	/*
 	PhysicalCamera* SimulationEngine::getCamera()
 	{
@@ -475,31 +480,40 @@ namespace SDLGL {
         osg::beginEditCP(tr);
             tr->setMatrix(m);
         osg::endEditCP(tr);		
+        
+        osg::beginEditCP(tn);
+      		tn->setCore(tr);
+      	osg::endEditCP(tn);
 		
 		//osg::NodePtr sn = osg::Node::create();  	
-		osg::NodePtr sn = osg::makeTorus(.5, 2, 16, 16);	
+		//osg::NodePtr sn = osg::makeTorus(.5, 2, 16, 16);	
 		for (unsigned int i = 0; i < s->getData().getNumShapes(); ++i)
 		{
 			char shapeName[512];
 			sprintf(shapeName, "%s_shape_%d", nameStr.c_str(), i);
-			//createChildVisualEntity(sn, /*tr,*/ s->getData().getShapeData(i), shapeName, 
-				//materialName);
+			
+			osg::NodePtr sn = osg::Node::create(); 
+			//osg::NodePtr sn = osg::makeTorus(.5, 2, 16, 16);
+			//osg::NodePtr sn;
+			createChildVisualEntity(sn, /*tr,*/ s->getData().getShapeData(i), shapeName, 
+				materialName);
+				
+			osg::beginEditCP(tn);
+      			tn->addChild(sn);
+      		osg::endEditCP(tn);
 		}
 		
 		//osg::beginEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
-		osg::beginEditCP(tn);
-      		tn->setCore(tr);
-      		tn->addChild(sn);
-      	osg::endEditCP(tn);
+
   		//osg::endEditCP(tn, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
   		
 		//osg::beginEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
-		//osg::beginEditCP(mSceneRoot);
-      		//mSceneRoot->addChild(tn);
-      	//osg::endEditCP(mSceneRoot);
+		osg::beginEditCP(mSceneRoot);
+      		mSceneRoot->addChild(tn);
+      	osg::endEditCP(mSceneRoot);
   		//osg::endEditCP(mSceneRoot, osg::Node::ChildrenFieldMask);
   		
-  		mSceneRoot = tn;
+  		//mSceneRoot = tn;
 		
 		pe = createVisualPhysicalEntity(nameStr, tr, s);
 	#else
@@ -604,8 +618,8 @@ namespace SDLGL {
 		//Ogre::SceneNode* newChildNode = NULL;
 		//Ogre::Entity* e = NULL;
 		
-		osg::NodePtr newChildNode = osg::Node::create();
-		osg::TransformPtr transCore = osg::Transform::create();	
+		osg::NodePtr newChildNode; //= osg::Node::create();
+		osg::TransformPtr newTransCore = osg::Transform::create();	
 		
 		switch(data->getType())
 		{
@@ -614,9 +628,9 @@ namespace SDLGL {
 				//newChildNode = parentNode->createChildSceneNode(name, 
 					//translationOffset, rotationOffset);	
 								
-				osg::beginEditCP(transCore);
-            		transCore->setMatrix(m);
-        		osg::endEditCP(transCore);
+				osg::beginEditCP(newTransCore);
+            		newTransCore->setMatrix(m);
+        		osg::endEditCP(newTransCore);
 
 				// Scale the object according to the given dimensions.
 				opal::Vec3r boxDim = static_cast<const opal::BoxShapeData*>
@@ -627,8 +641,7 @@ namespace SDLGL {
 					//dimensions[2]);
 					
 				//create the geometry which we will assign a texture to
-				osg::NodePtr boxGeo = osg::makeBox(
-											(osg::Real32)boxDim[0],
+				newChildNode = osg::makeBox((osg::Real32)boxDim[0],
 											(osg::Real32)boxDim[1],
 											(osg::Real32)boxDim[2],1,1,1);
 
@@ -644,16 +657,21 @@ namespace SDLGL {
 				//newChildNode->attachObject(e);
 				
 				//osg::beginEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
-				osg::beginEditCP(newChildNode);
-    				newChildNode->setCore(transCore);
-    				newChildNode->addChild(boxGeo);
-    			osg::endEditCP(newChildNode);
+				//osg::beginEditCP(newChildNode);
+    				//newChildNode->setCore(transCore);
+    				//newChildNode->addChild(boxGeo);
+    			//osg::endEditCP(newChildNode);
 				//osg::endEditCP(newChildNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);				
 				
+				osg::beginEditCP(newChildNode);
+    				parentNode->setCore(newTransCore);
+    				parentNode->addChild(newChildNode);
+    			osg::endEditCP(newChildNode);
+    			
   				//osg::beginEditCP(parentNode, osg::Node::ChildrenFieldMask);
-  				osg::beginEditCP(parentNode);
-      				parentNode->addChild(newChildNode);
-      			osg::endEditCP(parentNode);
+  				//osg::beginEditCP(parentNode);
+      				//parentNode->addChild(newChildNode);
+      			//osg::endEditCP(parentNode);
   				//osg::endEditCP(parentNode, osg::Node::ChildrenFieldMask);
   				
   				//parentNode = newChildNode;
