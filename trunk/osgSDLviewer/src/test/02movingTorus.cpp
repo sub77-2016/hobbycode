@@ -1,3 +1,4 @@
+/*
 //what follows here is the smallest OpenSG programm possible
 //most things used here are explained now or on the next few pages, so don't 
 //worry if not everythings clear right at the beginning...
@@ -143,3 +144,4 @@ int setupGLUT(int *argc, char *argv[])
         glutIdleFunc(display);
         return winid;
 }
+*/
