@@ -678,80 +678,93 @@ namespace SDLGL {
   				
 				break;
 			}
-		/*
-		case opal::SPHERE_SHAPE:
-		{
-			newChildNode = parentNode->createChildSceneNode(name, 
-				translationOffset, rotationOffset);
 
-			// Scale the object according to the given dimensions.
-			Ogre::Real radius = static_cast<const opal::SphereShapeData*>
-				(data)->radius;
-			newChildNode->scale(radius, radius, radius);
+			case opal::SPHERE_SHAPE:
+			{
+				//newChildNode = parentNode->createChildSceneNode(name, 
+					//translationOffset, rotationOffset);
+					
+				osg::beginEditCP(newTransCore);
+            		newTransCore->setMatrix(m);
+        		osg::endEditCP(newTransCore);
 
-			// Create an Ogre Entity using a sphere mesh.  This mesh must be 
-			// stored as a sphere with radius 1.
-			e = mOgreSceneMgr->createEntity(name, "sphere.mesh");
-			e->setMaterialName(materialName);
+				// Scale the object according to the given dimensions.
+				//Ogre::Real radius = static_cast<const opal::SphereShapeData*>
+					//(data)->radius;
+				//newChildNode->scale(radius, radius, radius);
 
-			// Keep the normals normalized even after scaling.
-			e->setNormaliseNormals(true);
+				// Create an Ogre Entity using a sphere mesh.  This mesh must be 
+				// stored as a sphere with radius 1.
+				//e = mOgreSceneMgr->createEntity(name, "sphere.mesh");
+				//e->setMaterialName(materialName);
 
-			// Attach the Entity to the SceneNode.
-			newChildNode->attachObject(e);
-			break;
-		}
-		case opal::CAPSULE_SHAPE:
-		{
-			// Create an Ogre SceneNode for the cylinder Entity.
-			std::string subObjectName = "cylinder" + name;
-			newChildNode = parentNode->createChildSceneNode(
-				subObjectName, translationOffset, rotationOffset);
+				// Keep the normals normalized even after scaling.
+				//e->setNormaliseNormals(true);
 
-			// Scale the object according to the given dimensions.  This 
-			// will also scale the transforms for the child nodes, but 
-			// we disable the "inherit scale" option for child nodes 
-			// here so the shapes themselves don't get scaled.
-			Ogre::Real radius = static_cast<const opal::CapsuleShapeData*>
-				(data)->radius;
-			Ogre::Real length = static_cast<const opal::CapsuleShapeData*>
-				(data)->length;
-			newChildNode->scale(radius, radius, length);
+				// Attach the Entity to the SceneNode.
+				//newChildNode->attachObject(e);
+				
+				osg::beginEditCP(newChildNode);
+    				parentNode->setCore(newTransCore);
+    				parentNode->addChild(newChildNode);
+    			osg::endEditCP(newChildNode);
+				
+				break;
+			}
+		
+		
+			case opal::CAPSULE_SHAPE:
+			{
+				// Create an Ogre SceneNode for the cylinder Entity.
+				//std::string subObjectName = "cylinder" + name;
+				//newChildNode = parentNode->createChildSceneNode(
+					//subObjectName, translationOffset, rotationOffset);
 
-			// This mesh must be stored as a cylinder with length 1 and 
-			// radius 1.
-			e = mOgreSceneMgr->createEntity(subObjectName, "cylinder.mesh");
-			e->setMaterialName(materialName);
-			e->setNormaliseNormals(true);
-			newChildNode->attachObject(e);
+				// Scale the object according to the given dimensions.  This 
+				// will also scale the transforms for the child nodes, but 
+				// we disable the "inherit scale" option for child nodes 
+				// here so the shapes themselves don't get scaled.
+				//Ogre::Real radius = static_cast<const opal::CapsuleShapeData*>
+					//(data)->radius;
+				//Ogre::Real length = static_cast<const opal::CapsuleShapeData*>
+					//(data)->length;
+				//newChildNode->scale(radius, radius, length);
 
-			// The spheres must use separate scene nodes that are offset 
-			// from the cylinder's scene node.
+				// This mesh must be stored as a cylinder with length 1 and 
+				// radius 1.
+				//e = mOgreSceneMgr->createEntity(subObjectName, "cylinder.mesh");
+				//e->setMaterialName(materialName);
+				//e->setNormaliseNormals(true);
+				//newChildNode->attachObject(e);
 
-			// This mesh must be stored as a sphere with radius 1.
-			subObjectName = "sphere0" + name;
-			Ogre::SceneNode* sphereNode = newChildNode->createChildSceneNode(
-				subObjectName);
-			sphereNode->setInheritScale(false);
-			sphereNode->translate(0, 0, -0.5);
-			sphereNode->scale(radius, radius, radius);
-			e = mOgreSceneMgr->createEntity(subObjectName, "sphere.mesh");
-			e->setMaterialName(materialName);
-			e->setNormaliseNormals(true);
-			sphereNode->attachObject(e);
+				// The spheres must use separate scene nodes that are offset 
+				// from the cylinder's scene node.
 
-			subObjectName = "sphere1" + name;
-			sphereNode = newChildNode->createChildSceneNode(subObjectName);
-			sphereNode->setInheritScale(false);
-			sphereNode->translate(0, 0, 0.5);
-			sphereNode->scale(radius, radius, radius);
-			e = mOgreSceneMgr->createEntity(subObjectName, "sphere.mesh");
-			e->setMaterialName(materialName);
-			e->setNormaliseNormals(true);
-			sphereNode->attachObject(e);
-			break;
-		}
-		*/
+				// This mesh must be stored as a sphere with radius 1.
+				//subObjectName = "sphere0" + name;
+				//Ogre::SceneNode* sphereNode = newChildNode->createChildSceneNode(
+					//subObjectName);
+				//sphereNode->setInheritScale(false);
+				//sphereNode->translate(0, 0, -0.5);
+				//sphereNode->scale(radius, radius, radius);
+				//e = mOgreSceneMgr->createEntity(subObjectName, "sphere.mesh");
+				//e->setMaterialName(materialName);
+				//e->setNormaliseNormals(true);
+				//sphereNode->attachObject(e);
+
+				//subObjectName = "sphere1" + name;
+				//sphereNode = newChildNode->createChildSceneNode(subObjectName);
+				//sphereNode->setInheritScale(false);
+				//sphereNode->translate(0, 0, 0.5);
+				//sphereNode->scale(radius, radius, radius);
+				//e = mOgreSceneMgr->createEntity(subObjectName, "sphere.mesh");
+				//e->setMaterialName(materialName);
+				//e->setNormaliseNormals(true);
+				//sphereNode->attachObject(e);
+			
+				break;
+			}
+		
 			default:
 				assert(false);
 				break;
@@ -825,10 +838,10 @@ void SimulationEngine::setupDefaultVisualScene()
 }
 */
 
-void SimulationEngine::setPickingGraphicsEnabled(bool e)
-{
-	mDrawPickingGraphics = e;
-}
+	void SimulationEngine::setPickingGraphicsEnabled(bool e)
+	{
+		mDrawPickingGraphics = e;
+	}
 
 /*
 void SimulationEngine::updatePickingGraphics()
