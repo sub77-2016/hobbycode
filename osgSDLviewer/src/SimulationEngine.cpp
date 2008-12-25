@@ -588,7 +588,7 @@ namespace SDLGL {
 		/*osg::TransformPtr trans,*/ const opal::ShapeData* data, const std::string& name, 
 		const std::string& materialName)
 	{
-		// Create an Ogre SceneNode for the Entity.
+		// Create an Ogre SceneNode for the Entity.		
 		osg::Matrix m;
 		
 		opal::Point3r offsetPos = data->offset.getPosition();
@@ -601,25 +601,31 @@ namespace SDLGL {
 		//rotationOffset.z = offsetQuat.z;
 		//rotationOffset.w = offsetQuat.w;
 		
-		m.setIdentity();
-   		m.setTranslate(
-   			(osg::Real32)offsetPos[0], 
-   			(osg::Real32)offsetPos[1], 
-			(osg::Real32)offsetPos[2]);
-			
-  		m.setRotate(
-  			osg::Quaternion(
-  				osg::Vec3f(
-  					(osg::Real32)offsetQuat[1],
-  					(osg::Real32)offsetQuat[2],
-  					(osg::Real32)offsetQuat[3]), 
-  				(osg::Real32)offsetQuat[0]));
-
 		//Ogre::SceneNode* newChildNode = NULL;
 		//Ogre::Entity* e = NULL;
 		
+		// OSG covention: we need one new node and transformation
 		osg::NodePtr newChildNode; //= osg::Node::create();
 		osg::TransformPtr newTransCore = osg::Transform::create();	
+		
+		osg::beginEditCP(newTransCore);
+			m.setIdentity();
+				
+   			m.setTranslate(
+   				(osg::Real32)offsetPos[0], 
+   				(osg::Real32)offsetPos[1], 
+				(osg::Real32)offsetPos[2]);
+			
+  			m.setRotate(
+  				osg::Quaternion(
+  					osg::Vec3f(
+  						(osg::Real32)offsetQuat[1],
+  						(osg::Real32)offsetQuat[2],
+  						(osg::Real32)offsetQuat[3]), 
+  					(osg::Real32)offsetQuat[0]));
+  				
+            newTransCore->setMatrix(m);
+       	osg::endEditCP(newTransCore);
 		
 		switch(data->getType())
 		{
@@ -627,10 +633,6 @@ namespace SDLGL {
 			{				
 				//newChildNode = parentNode->createChildSceneNode(name, 
 					//translationOffset, rotationOffset);	
-								
-				osg::beginEditCP(newTransCore);
-            		newTransCore->setMatrix(m);
-        		osg::endEditCP(newTransCore);
 
 				// Scale the object according to the given dimensions.
 				opal::Vec3r boxDim = static_cast<const opal::BoxShapeData*>
@@ -670,10 +672,6 @@ namespace SDLGL {
 			{
 				//newChildNode = parentNode->createChildSceneNode(name, 
 					//translationOffset, rotationOffset);
-					
-				osg::beginEditCP(newTransCore);
-            		newTransCore->setMatrix(m);
-        		osg::endEditCP(newTransCore);
 
 				// Scale the object according to the given dimensions.
 				//Ogre::Real radius = static_cast<const opal::SphereShapeData*>
@@ -683,8 +681,7 @@ namespace SDLGL {
 				opal::real radius = static_cast<const opal::SphereShapeData*>
 					(data)->radius;
 					
-				newChildNode = osg::makeSphere((osg::UInt16)radius/5, 
-											   (osg::Real32)radius);
+				newChildNode = osg::makeSphere(3, (osg::Real32)radius);
 
 				// Create an Ogre Entity using a sphere mesh.  This mesh must be 
 				// stored as a sphere with radius 1.
@@ -707,11 +704,14 @@ namespace SDLGL {
 				break;
 			}
 		
-		
 			case opal::CAPSULE_SHAPE:
 			{
+				osg::NodePtr capsule =  osg::Node::create();
+        		osg::NodePtr topcap  =  osg::Node::create();
+       			osg::NodePtr botcap  =  osg::Node::create();  
+        		     
 				// Create an Ogre SceneNode for the cylinder Entity.
-				//std::string subObjectName = "cylinder" + name;
+				std::string subObjectName = "cylinder" + name;
 				//newChildNode = parentNode->createChildSceneNode(
 					//subObjectName, translationOffset, rotationOffset);
 
@@ -721,10 +721,18 @@ namespace SDLGL {
 				// here so the shapes themselves don't get scaled.
 				//Ogre::Real radius = static_cast<const opal::CapsuleShapeData*>
 					//(data)->radius;
+				opal::real radius = static_cast<const opal::CapsuleShapeData*>
+					(data)->radius;
 				//Ogre::Real length = static_cast<const opal::CapsuleShapeData*>
 					//(data)->length;
+				opal::real length = static_cast<const opal::CapsuleShapeData*>
+					(data)->length;
 				//newChildNode->scale(radius, radius, length);
 
+				osg::NodePtr cyl = osg::makeCylinder((osg::Real32)length,
+													 (osg::Real32)radius,
+													 40,true,false,false); 
+				
 				// This mesh must be stored as a cylinder with length 1 and 
 				// radius 1.
 				//e = mOgreSceneMgr->createEntity(subObjectName, "cylinder.mesh");
@@ -736,7 +744,7 @@ namespace SDLGL {
 				// from the cylinder's scene node.
 
 				// This mesh must be stored as a sphere with radius 1.
-				//subObjectName = "sphere0" + name;
+				subObjectName = "sphere0" + name;
 				//Ogre::SceneNode* sphereNode = newChildNode->createChildSceneNode(
 					//subObjectName);
 				//sphereNode->setInheritScale(false);
@@ -746,8 +754,27 @@ namespace SDLGL {
 				//e->setMaterialName(materialName);
 				//e->setNormaliseNormals(true);
 				//sphereNode->attachObject(e);
+				
+				osg::NodePtr topGeo = osg::makeSphere(3,(osg::Real32)radius);     
+				//one geometry and one transform node        
+        		osg::TransformPtr topTr = osg::Transform::create();
+        		osg::Matrix _m;
+  				//osg::beginEditCP(tChimney, osg::Transform::MatrixFieldMask);
+  				osg::beginEditCP(topTr);
+      				_m.setIdentity();
+      				_m.setTranslate(0,(osg::Real32)length/2.0,0);
+      				topTr->setMatrix(_m);
+      			osg::endEditCP(topTr);
+  				//osg::endEditCP(tChimney, osg::Transform::MatrixFieldMask);
 
-				//subObjectName = "sphere1" + name;
+  				//osg::beginEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  				osg::beginEditCP(topcap);
+      				topcap->setCore(topTr);
+      				topcap->addChild(topGeo);
+      			osg::endEditCP(topcap);
+  				//osg::endEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  		   		
+				subObjectName = "sphere1" + name;
 				//sphereNode = newChildNode->createChildSceneNode(subObjectName);
 				//sphereNode->setInheritScale(false);
 				//sphereNode->translate(0, 0, 0.5);
@@ -756,6 +783,42 @@ namespace SDLGL {
 				//e->setMaterialName(materialName);
 				//e->setNormaliseNormals(true);
 				//sphereNode->attachObject(e);
+				
+				osg::NodePtr botGeo = osg::makeSphere(3,(osg::Real32)radius);
+				osg::TransformPtr botTr = osg::Transform::create();
+  				osg::Matrix _n;
+  				//osg::beginEditCP(tChimney, osg::Transform::MatrixFieldMask);
+  				osg::beginEditCP(botTr);
+      				_n.setIdentity();
+      				_n.setTranslate(0,-(osg::Real32)length/2.0,0);
+      				botTr->setMatrix(_n);
+      				osg::endEditCP(botTr);
+  				//osg::endEditCP(tChimney, osg::Transform::MatrixFieldMask);
+
+  				//osg::beginEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  				osg::beginEditCP(botcap);
+      				botcap->setCore(botTr);
+      				botcap->addChild(botGeo);
+      			osg::endEditCP(botcap);
+  				//osg::endEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  		
+  				// Finally Compose everything to a Capsule!!
+        		osg::beginEditCP(capsule);
+        			capsule->setCore(osg::Group::create());
+    				capsule->addChild(cyl);
+    				capsule->addChild(topcap);
+    				capsule->addChild(botcap);
+    			osg::endEditCP(capsule);
+    			
+    			// OK send to new scene noe
+    			newChildNode = capsule;
+    			
+    			//osg::beginEditCP(parentNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+				osg::beginEditCP(parentNode);
+    				parentNode->setCore(newTransCore);
+    				parentNode->addChild(newChildNode);
+    			osg::endEditCP(parentNode);
+				//osg::endEditCP(parentNode, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);				
 			
 				break;
 			}
