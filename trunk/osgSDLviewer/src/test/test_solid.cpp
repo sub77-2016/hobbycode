@@ -4,7 +4,7 @@
 #include <OpenSG/OSGGLUTWindow.h>
 
 
-using namespace SDLGL;
+using namespace OPAL_OSG;
 
 class TestSolid: public SimulationEngine
 {

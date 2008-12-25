@@ -47,7 +47,7 @@ namespace opal
 }
 */
 
-namespace SDLGL { 
+namespace OPAL_OSG { 
 
 	class PhysicalEntity
 	{

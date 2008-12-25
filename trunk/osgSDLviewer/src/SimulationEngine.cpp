@@ -27,12 +27,12 @@
 //#include <ogre/OgreConfigFile.h>
 #endif
 
-namespace SDLGL { 
+namespace OPAL_OSG { 
 
 	SimulationEngine::SimulationEngine(	const unsigned int w, 
 										const unsigned int h, 
 										VideoMode video)
-	: SDLViewer(w, h, video)
+	: osgSDLViewer(w, h, video)
 	{
 	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 		//mOgreRoot = NULL;

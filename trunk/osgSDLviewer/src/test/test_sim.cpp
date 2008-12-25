@@ -1,7 +1,7 @@
 
 #include "../SimulationEngine.h"
 
-using namespace SDLGL;
+using namespace OPAL_OSG;
 
 class TestSim : public SimulationEngine
 {

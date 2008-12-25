@@ -22,7 +22,7 @@
 
 #include "PhysicalEntity.h"
 
-namespace SDLGL { 
+namespace OPAL_OSG { 
 	
 	#ifndef SIMULATION_ENGINE_PHYSICS_ONLY
 	PhysicalEntity::PhysicalEntity(const std::string& name, 
