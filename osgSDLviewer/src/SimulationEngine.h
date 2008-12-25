@@ -33,12 +33,12 @@
 //#include "PhysicalCamera.h"
 //#include "Timer.h"
 
-namespace SDLGL { 
+namespace OPAL_OSG { 
 	
 
 	/// A general-purpose module for simulating physics (with Opal and ODE), 
 	/// handling user input, and drawing 3D graphics (with Ogre).
-	class SimulationEngine : public SDLViewer
+	class SimulationEngine : public osgSDLViewer
 	{
 	public:
 		/// Various ways to update the simulation.

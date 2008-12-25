@@ -21,7 +21,7 @@
 
 #include <iostream>
 
-namespace SDLGL { 
+namespace OPAL_OSG { 
 	
 	
 	template <typename T> class Singleton 

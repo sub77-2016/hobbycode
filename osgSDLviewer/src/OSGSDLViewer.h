@@ -32,9 +32,9 @@
 
 #include "Singleton.h"
 
-namespace SDLGL { 
+namespace OPAL_OSG { 
 	
-	class SDLViewer : public Singleton<SDLViewer>
+	class osgSDLViewer : public Singleton<osgSDLViewer>
 	{   
     public:
     
@@ -43,10 +43,10 @@ namespace SDLGL {
     		FULLSCREEN
     	};
         // Constructors and destructor
-        SDLViewer(const unsigned int w = 800, const unsigned int h = 600,
+        osgSDLViewer(const unsigned int w = 800, const unsigned int h = 600,
         		VideoMode video = WINDOWED);
         
-        virtual ~SDLViewer(void);
+        virtual ~osgSDLViewer(void);
 
         // Initialization functions
         bool init(void);
@@ -194,8 +194,8 @@ namespace SDLGL {
         Uint32 mLastTick;     
 	};
 
-	//typedef SDLViewer* SDLViewerPtr;
-	//typedef SDLViewer** SDLViewerHandle;
+	//typedef osgSDLViewer* osgSDLViewerPtr;
+	//typedef osgSDLViewer** osgSDLViewerHandle;
 
 	const int RUN_GAME_LOOP = 1;
 }
