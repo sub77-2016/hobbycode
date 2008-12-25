@@ -19,7 +19,7 @@
 #include <iostream>
 #include <SDL_opengl.h>
 
-#include "SDLViewer.h"
+#include "osgSDLViewer.h"
 
 
 namespace SDLGL { 
