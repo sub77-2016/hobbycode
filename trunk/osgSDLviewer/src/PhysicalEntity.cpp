@@ -114,23 +114,24 @@ namespace SDLGL {
 		//mSceneNode->setOrientation((Ogre::Real)quat[0], 
 			//(Ogre::Real)quat[1], (Ogre::Real)quat[2], 
 			//(Ogre::Real)quat[3]);
-	
-		m.setIdentity();
-   		m.setTranslate(
-   			(osg::Real32)pos[0], 
-   			(osg::Real32)pos[1], 
-			(osg::Real32)pos[2]);
-			
-  		m.setRotate(
-  			osg::Quaternion(
-  				osg::Vec3f(
-  					(osg::Real32)quat[1],
-  					(osg::Real32)quat[2],
-  					(osg::Real32)quat[3]), 
-  				(osg::Real32)quat[0]));
-    
+	    
     	//apply the new matrix to our transform core
-    	osg::beginEditCP(mTransCore);    	
+    	osg::beginEditCP(mTransCore);    
+    		m.setIdentity();
+    			
+   			m.setTranslate(
+   				(osg::Real32)pos[0], 
+   				(osg::Real32)pos[1], 
+				(osg::Real32)pos[2]);
+			
+  			m.setRotate(
+  				osg::Quaternion(
+  					osg::Vec3f(
+  						(osg::Real32)quat[1],
+  						(osg::Real32)quat[2],
+  						(osg::Real32)quat[3]), 
+  					(osg::Real32)quat[0]));
+  					
     		mTransCore->setMatrix(m);
     	osg::endEditCP(mTransCore);
 	}

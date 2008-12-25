@@ -25,7 +25,112 @@ protected:
 		//mSceneRoot = createScenegraph1();
 		//mSceneRoot = createPhysScene2();
 		
-		createPhysScene1();
+		//mSceneRoot = createSimpleGeo();
+				
+		//createPhysScene1();
+		createRagdoll();
+	}
+	
+	void createRagdoll(void)
+	{
+		// OPAL physics
+        setUpdateMode(SimulationEngine::SIMULATE_REAL_TIME_MULTIPLE, 1);
+
+        //// Set to capture frames at 29.97 fps.
+        //setUpdateMode(SIMULATE_CONSTANT_CHUNK, 0.0333667);
+
+        // Use feet for this simulation.
+        getSimulator()->setGravity(opal::Vec3r(0, -9.8*0.1, 0));
+        getSimulator()->setStepSize(0.01);	
+        
+		//// Ragdoll.
+        opal::Blueprint ragdollBP;
+        opal::loadFile(ragdollBP, "../data/blueprints/ragdoll.xml");
+        opal::BlueprintInstance ragdollBPInstance;
+        opal::Matrix44r ragdollTransform;
+        ragdollTransform.translate(10, 5, 0);
+        
+        getSimulator()->instantiateBlueprint(ragdollBPInstance,
+              ragdollBP, ragdollTransform, 2);
+              
+        for (unsigned int i = 0; i < ragdollBPInstance.getNumSolids(); ++i)
+        {
+              opal::Solid* s = ragdollBPInstance.getSolid(i);
+              createPhysicalEntity(s->getName(), "Plastic/Red", s);
+        }
+        
+       	//// TESTING: Simple box.
+        opal::Solid* boxSolid = getSimulator()->createSolid();
+        boxSolid->setStatic(true);
+        boxSolid->setSleepiness(0);
+        boxSolid->setPosition(10, -5, 0);
+        opal::BoxShapeData data1;
+        data1.dimensions.set(5, 1.0, 5);
+        data1.material.friction = 0.1;
+        data1.material.density = 0.5;
+        boxSolid->addShape(data1);
+        createPhysicalEntity("goal box", "Plastic/Green", boxSolid);
+	}
+	
+	osg::NodePtr createSimpleGeo(void)
+	{
+		// That will be our whole scene for now : an incredible Torus
+		osg::Real32 h = 10, r = 1;
+        
+        osg::NodePtr capsule =  osg::Node::create();
+        osg::NodePtr topcap  =  osg::Node::create();
+        osg::NodePtr botcap  =  osg::Node::create();          
+                     
+        //osg::GeometryPtr cylGeo = osg::makeCylinderGeo(h,r,40,true,false,false);   
+        osg::NodePtr cyl = osg::makeCylinder(h,r,40,true,false,false);      
+        osg::NodePtr topGeo = osg::makeSphere(3,r);
+        osg::NodePtr botGeo = osg::makeSphere(3,r);
+        
+        // create all that stuff we will need:
+        //one geometry and one transform node        
+        osg::TransformPtr topTr = osg::Transform::create();
+        osg::Matrix m;
+  		//osg::beginEditCP(tChimney, osg::Transform::MatrixFieldMask);
+  		osg::beginEditCP(topTr);
+      		m.setIdentity();
+      		m.setTranslate(0,h/2,0);
+      		topTr->setMatrix(m);
+      	osg::endEditCP(topTr);
+  		//osg::endEditCP(tChimney, osg::Transform::MatrixFieldMask);
+
+  		//osg::beginEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  		osg::beginEditCP(topcap);
+      		topcap->setCore(topTr);
+      		topcap->addChild(topGeo);
+      	osg::endEditCP(topcap);
+  		//osg::endEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  		
+  		osg::TransformPtr botTr = osg::Transform::create();
+  		osg::Matrix n;
+  		//osg::beginEditCP(tChimney, osg::Transform::MatrixFieldMask);
+  		osg::beginEditCP(botTr);
+      		n.setIdentity();
+      		n.setTranslate(0,-h/2,0);
+      		botTr->setMatrix(n);
+      	osg::endEditCP(botTr);
+  		//osg::endEditCP(tChimney, osg::Transform::MatrixFieldMask);
+
+  		//osg::beginEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  		osg::beginEditCP(botcap);
+      		botcap->setCore(botTr);
+      		botcap->addChild(botGeo);
+      	osg::endEditCP(botcap);
+  		//osg::endEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
+  		
+  		// Finally Compose everything to a Capsule!!
+        osg::beginEditCP(capsule);
+        	capsule->setCore(osg::Group::create());
+    		capsule->addChild(cyl);
+    		capsule->addChild(topcap);
+    		capsule->addChild(botcap);
+    	osg::endEditCP(capsule);
+        
+        return capsule;
 	}
 	
 	void createPhysScene1(void)
@@ -40,7 +145,7 @@ protected:
         getSimulator()->setGravity(opal::Vec3r(0, -9.8*0.1, 0));
         getSimulator()->setStepSize(0.01);	
         
-        //// TESTING: Simple goal box.
+        //// TESTING: Simple box.
         opal::Solid* boxSolid = getSimulator()->createSolid();
         boxSolid->setStatic(true);
         boxSolid->setSleepiness(0);
@@ -63,7 +168,21 @@ protected:
         data2.material.friction = 0.1;
         data2.material.density = 0.5;
         sphereSolid->addShape(data2);
-        createPhysicalEntity("goal sphere", "Plastic/Green", sphereSolid);  	
+        createPhysicalEntity("goal sphere", "Plastic/Green", sphereSolid);  
+        
+        //// TESTING: Simple capsule.
+        opal::Solid* capsuleSolid = getSimulator()->createSolid();
+        capsuleSolid->setStatic(false);
+        capsuleSolid->setSleepiness(0);
+        capsuleSolid->setPosition(15.5, 40, -7);
+        opal::CapsuleShapeData data3;
+        data3.radius = 1.0;
+        data3.length = 5.0;
+		//data2.offset.translate(4.0, 0.0, 0.0);
+        data3.material.friction = 0.1;
+        data3.material.density = 0.5;
+        capsuleSolid->addShape(data3);
+        createPhysicalEntity("goal capsule", "Plastic/Green", capsuleSolid); 
 	}
 	
 	osg::NodePtr createPhysScene2(void)
