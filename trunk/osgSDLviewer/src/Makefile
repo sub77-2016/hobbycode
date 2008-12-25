@@ -6,7 +6,7 @@ LIBS = -lm -lGL -lGLU `sdl-config --libs` `osg-config --libs --dbg Base System` 
 
 APP_NAME = osgSDLViewer
 
-OBJS = test.o SimulationEngine.o SDLViewer.o PhysicalEntity.o
+OBJS = test.o SimulationEngine.o osgSDLViewer.o PhysicalEntity.o
 
 $(APP_NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(APP_NAME) $(OBJS) $(LIBS)
