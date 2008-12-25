@@ -29,7 +29,7 @@
 #include <opal/opal.h>
 
 #include "PhysicalEntity.h"
-#include "osgSDLViewer.h"
+#include "OSGSDLViewer.h"
 //#include "PhysicalCamera.h"
 //#include "Timer.h"
 
