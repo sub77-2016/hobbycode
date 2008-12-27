@@ -40,7 +40,7 @@ protected:
         //setUpdateMode(SIMULATE_CONSTANT_CHUNK, 0.0333667);
 
         // Use feet for this simulation.
-        getSimulator()->setGravity(opal::Vec3r(0, -9.8*0.1, 0));
+        //getSimulator()->setGravity(opal::Vec3r(0, -9.8*0.1, 0));
         getSimulator()->setStepSize(0.01);	
         
 		//// Ragdoll.
@@ -59,6 +59,7 @@ protected:
               createPhysicalEntity(s->getName(), "Plastic/Red", s);
         }
         
+        /*
        	//// TESTING: Simple box.
         opal::Solid* boxSolid = getSimulator()->createSolid();
         boxSolid->setStatic(true);
@@ -70,6 +71,7 @@ protected:
         data1.material.density = 0.5;
         boxSolid->addShape(data1);
         createPhysicalEntity("goal box", "Plastic/Green", boxSolid);
+        */
 	}
 	
 	osg::NodePtr createSimpleGeo(void)
