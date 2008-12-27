@@ -470,14 +470,14 @@ namespace OPAL_OSG {
 			//createChildSceneNode(nameStr);
 				
 		osg::NodePtr tn = osg::Node::create();			
-		osg::TransformPtr tr = osg::Transform::create();	
-		
-		osg::Matrix m;        
-        // now provide some data...
-        m.setIdentity();
+		osg::TransformPtr tr = osg::Transform::create();			
+		       
+        // now provide some data...        
+        osg::Matrix m; 
         
         // set the core to the matrix we created
         osg::beginEditCP(tr);
+        	m.setIdentity();
             tr->setMatrix(m);
         osg::endEditCP(tr);		
         
@@ -608,31 +608,31 @@ namespace OPAL_OSG {
 		osg::NodePtr newChildNode; //= osg::Node::create();
 		osg::TransformPtr newTransCore = osg::Transform::create();	
 		
-		osg::beginEditCP(newTransCore);
-			m.setIdentity();
-				
-   			m.setTranslate(
-   				(osg::Real32)offsetPos[0], 
-   				(osg::Real32)offsetPos[1], 
-				(osg::Real32)offsetPos[2]);
-			
-  			m.setRotate(
-  				osg::Quaternion(
-  					osg::Vec3f(
-  						(osg::Real32)offsetQuat[1],
-  						(osg::Real32)offsetQuat[2],
-  						(osg::Real32)offsetQuat[3]), 
-  					(osg::Real32)offsetQuat[0]));
-  				
-            newTransCore->setMatrix(m);
-       	osg::endEditCP(newTransCore);
-		
 		switch(data->getType())
 		{
 			case opal::BOX_SHAPE:
 			{				
 				//newChildNode = parentNode->createChildSceneNode(name, 
 					//translationOffset, rotationOffset);	
+				
+				osg::beginEditCP(newTransCore);
+					m.setIdentity();
+				
+   					m.setTranslate(
+   						(osg::Real32)offsetPos[0], 
+   						(osg::Real32)offsetPos[1], 
+						(osg::Real32)offsetPos[2]);
+			
+  					m.setRotate(
+  						osg::Quaternion(
+  							osg::Vec3f(
+  								(osg::Real32)offsetQuat[1],
+  								(osg::Real32)offsetQuat[2],
+  								(osg::Real32)offsetQuat[3]), 
+  							(osg::Real32)offsetQuat[0]));
+  				
+            		newTransCore->setMatrix(m);
+       			osg::endEditCP(newTransCore);
 
 				// Scale the object according to the given dimensions.
 				opal::Vec3r boxDim = static_cast<const opal::BoxShapeData*>

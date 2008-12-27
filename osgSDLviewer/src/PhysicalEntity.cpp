@@ -107,7 +107,16 @@ namespace OPAL_OSG {
 		osg::Matrix m;
 		
 		opal::Point3r pos = mSolid->getPosition();
+		std::cout<< "Solid Pos = "<< std::endl<< 
+			(osg::Real32)pos[0]<< std::endl<< 
+			(osg::Real32)pos[1]<< std::endl<< 
+			(osg::Real32)pos[2]<< std::endl;
 		opal::Quaternion quat = mSolid->getQuaternion();
+		std::cout<< "Solid Quat = "<< std::endl<< 
+			(osg::Real32)quat[0]<< std::endl<< 
+			(osg::Real32)quat[1]<< std::endl<< 
+			(osg::Real32)quat[2]<< std::endl<< 
+			(osg::Real32)quat[3]<< std::endl;
 		//mSceneNode->setPosition((Ogre::Real)pos[0], (Ogre::Real)pos[1], 
 			//(Ogre::Real)pos[2]);
 		quat.normalize();
