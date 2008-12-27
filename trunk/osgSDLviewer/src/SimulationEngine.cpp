@@ -608,22 +608,15 @@ namespace OPAL_OSG {
 		osg::NodePtr newChildNode; //= osg::Node::create();
 		osg::TransformPtr newTransCore = osg::Transform::create();	
 		
-		switch(data->getType())
-		{
-			case opal::BOX_SHAPE:
-			{				
-				//newChildNode = parentNode->createChildSceneNode(name, 
-					//translationOffset, rotationOffset);	
+		osg::beginEditCP(newTransCore);
+			m.setIdentity();
 				
-				osg::beginEditCP(newTransCore);
-					m.setIdentity();
-				
-   					m.setTranslate(
+   			m.setTranslate(
    						(osg::Real32)offsetPos[0], 
    						(osg::Real32)offsetPos[1], 
 						(osg::Real32)offsetPos[2]);
 			
-  					m.setRotate(
+  			m.setRotate(
   						osg::Quaternion(
   							osg::Vec3f(
   								(osg::Real32)offsetQuat[1],
@@ -631,8 +624,15 @@ namespace OPAL_OSG {
   								(osg::Real32)offsetQuat[3]), 
   							(osg::Real32)offsetQuat[0]));
   				
-            		newTransCore->setMatrix(m);
-       			osg::endEditCP(newTransCore);
+            newTransCore->setMatrix(m);
+       	osg::endEditCP(newTransCore);
+		
+		switch(data->getType())
+		{
+			case opal::BOX_SHAPE:
+			{				
+				//newChildNode = parentNode->createChildSceneNode(name, 
+					//translationOffset, rotationOffset);	
 
 				// Scale the object according to the given dimensions.
 				opal::Vec3r boxDim = static_cast<const opal::BoxShapeData*>
@@ -792,7 +792,7 @@ namespace OPAL_OSG {
       				_n.setIdentity();
       				_n.setTranslate(0,-(osg::Real32)length/2.0,0);
       				botTr->setMatrix(_n);
-      				osg::endEditCP(botTr);
+      			osg::endEditCP(botTr);
   				//osg::endEditCP(tChimney, osg::Transform::MatrixFieldMask);
 
   				//osg::beginEditCP(chimneyTrans, osg::Node::CoreFieldMask | osg::Node::ChildrenFieldMask);
