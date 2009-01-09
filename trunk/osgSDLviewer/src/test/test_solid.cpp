@@ -27,8 +27,8 @@ protected:
 		
 		//mSceneRoot = createSimpleGeo();
 				
-		//createPhysScene1();
-		createRagdoll();
+		createPhysScene1();
+		//createRagdoll();
 	}
 	
 	void createRagdoll(void)
@@ -159,6 +159,7 @@ protected:
         boxSolid->addShape(data1);
         createPhysicalEntity("goal box", "Plastic/Green", boxSolid);	
         
+        /*
         //// TESTING: Simple goal sphere.
         opal::Solid* sphereSolid = getSimulator()->createSolid();
         sphereSolid->setStatic(false);
@@ -171,6 +172,7 @@ protected:
         data2.material.density = 0.5;
         sphereSolid->addShape(data2);
         createPhysicalEntity("goal sphere", "Plastic/Green", sphereSolid);  
+        */
         
         //// TESTING: Simple capsule.
         opal::Solid* capsuleSolid = getSimulator()->createSolid();

@@ -268,7 +268,7 @@ namespace OPAL_OSG {
     	while( !mDone )
     	{
     		// Pump message in all registered windows
-    		SDL_PumpEvents();
+    		//SDL_PumpEvents();
     		
     		idle();
     		
@@ -446,6 +446,11 @@ namespace OPAL_OSG {
 	void osgSDLViewer::resize(int w, int h)
 	{
 		if ( !(mScreen = SDL_SetVideoMode(w, h, mBpp, mFlags)) )
+		{
+			std::cerr<< "Unable to resize "<< w<<"x"<< h<< " video: %s\n"<< SDL_GetError()<< std::endl;
+   			exit(1);
+		}
+		else
    		{
    			mWidth = mScreen->w;
    			mHeight = mScreen->h;
