@@ -19,15 +19,19 @@ all: ai2d
 # **************************
 
 #ai2d: 2D Debug FSM fuzzy Game Goals Graph Messaging Time Triggers
-ai2d: 2D 
+ai2d: Game 
 	$(AR) rvs $(INTREPID_OBJ) *.o
 	@echo intrepid compiled
 
 # **************************
 
-2D: Vector2D.o
+Game: BaseGameEntity.o EntityManager.o
 	@echo common compiled
 	
-Vector2D.o: 2D/Vector2D.cpp
+BaseGameEntity.o: Game/BaseGameEntity.cpp
 	$(CPP) $(FLAGS) -c $<
+
+EntityManager.o: Game/EntityManager.cpp
+	$(CPP) $(FLAGS) -c $<
+
 
