@@ -10,7 +10,7 @@
 //          box class
 //-----------------------------------------------------------------------------
 
-#include "2d/Vector2D.h"
+#include "2D/Vector2D.h"
 #include "misc/cgdi.h"
 
 class InvertedAABBox2D
