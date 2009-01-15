@@ -10,7 +10,7 @@
 //
 //------------------------------------------------------------------------
 #include <math.h>
-#include <windows.h>
+//#include <windows.h>
 #include <iosfwd>
 #include <limits>
 #include "misc/utils.h"
@@ -432,3 +432,4 @@ inline bool isSecondInFOVOfFirst(Vector2D posFirst,
 
 
 #endif
+
