@@ -1,0 +1,34 @@
+example_004 - Menu prototype
+
+Library used to compile: intrepid 0.2 alpha
+
+Please, download the library in our site... we don't include the library in our samples because:
+1. it would take extra space
+2. doing like this, we don't have to publish examples for linux and windows separate
+3. it's not difficult to download the appropriate binary file and follow the instructions on how to configure it
+4. Plus. we want you to visit us often :)
+
+We specify the library used because there can be some changes on already done functions from a version to another.
+
+http://intrepid-gl.sourceforge.net/
+
+/********************************/
+
+Linux users:
+
+Put in this directory the intrepid-gl.a and the header directory of the library.
+
+To compile:
+
+g++ main.cpp intrepid-gl.a `sdl-config --cflags --libs` -lSDL_ttf -lGL -lz
+
+or 
+
+run build.sh
+
+/********************************/
+
+Windows users:
+
+Check our tutorial section on the site if you have any troubles compiling the library.
+

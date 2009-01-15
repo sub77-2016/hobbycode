@@ -1,0 +1,47 @@
+example_003 - Super Crono World!
+
+This is a wacky tutorial we wrote to demonstrate some of the cool features in Intrepid...
+
+In this tutorial you'll get some of this:
+
+-Gravity
+-Walls
+-Keyboard control (jumping, walking..)
+-Scrolling
+-Mouse
+-Buttons
+
+There's lots more we should write about. Example 004 is coming soon...
+
+Library used to compile: intrepid 0.1 alpha
+
+Please, download the library in our site... we don't include the library in our samples because:
+1. it would take extra space
+2. doing like this, we don't have to publish examples for linux and windows separate
+3. it's not difficult to download the appropriate binary file and follow the instructions on how to configure it
+4. Plus. we want you to visit us often :)
+
+We specify the library used because there can be some changes on already done functions from a version to another.
+
+http://intrepid-gl.sourceforge.net/
+
+/********************************/
+
+Linux users:
+
+Put in this directory the intrepid-gl.a and the header directory of the library.
+
+To compile:
+
+g++ main.cpp intrepid-gl.a `sdl-config --cflags --libs` -lSDL_ttf -lGL
+
+or 
+
+run build.sh
+
+/********************************/
+
+Windows users:
+
+Check our tutorial section on the site if you have any troubles compiling the library.
+
