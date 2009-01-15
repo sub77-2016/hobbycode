@@ -4,7 +4,7 @@ CPP=g++
 AR=ar
 REM=rm
 
-INTREPID_OBJ=intrepid-gl.a
+INTREPID_OBJ=libintrepid-gl.a
 PACKER_OBJ=packer
 
 ZLIB=-lz
