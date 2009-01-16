@@ -110,6 +110,9 @@ namespace MINGL {
     	    	
     	if ( isFullScreen() )
     		mFlags = mFlags | SDL_FULLSCREEN;
+    		
+    	if ( info->hw_available == 1 )
+			mFlags = mFlags | SDL_HWSURFACE;
     	
     	if ( !(mScreen = SDL_SetVideoMode(mWidth, mHeight, mBpp, mFlags)) )
    		{
