@@ -51,11 +51,13 @@ namespace TINY_LB
 		real_t* fCursor[Q];
 		real_t* fCursorBounds[Q];
 		int blockSize = n_ * n_;
+
 		for (int i = 0; i < Q; i++)
 		{
 			fCursor[i] = f_ + blockSize * i + offsets_[i];
 			fCursorBounds[i] = f_ + blockSize * (i + 1);
 		}
+
 		for (int i = 0; i < blockSize; i++)
 		{
 			real_t rho = *fCursor[0];
