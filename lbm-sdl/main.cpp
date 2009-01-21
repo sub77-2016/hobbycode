@@ -288,7 +288,7 @@ void finishDrawLattice()
 {
 }
 
-void drawLattice(const LB2D& l)
+void drawLattice(const LBGK2D& l)
 {
 	// move points with fluid velocity
 	for (int i = 0; i < NPY + NPY; i++)
@@ -366,7 +366,8 @@ int main(int argc, char* argv[])
 #elif USE_SLOW_LATTICE
 	//SlowLattice2D l(N, myLoader);
 #elif USE_ONE_PASS_LATTICE
-	LBGK2D l(N, myLoader);
+	LBGK2D l(N);
+	l.init(myLoader);
 #else
 #error One lattice type must be selected.
 #endif
