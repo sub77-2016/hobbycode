@@ -7,7 +7,8 @@ typedef float real_t;
 typedef double real_t;
 #endif
 
-namespace TINY_LB {
+namespace TINY_LB 
+{
 
 	const int e[][2] =
 	{
@@ -34,6 +35,11 @@ namespace TINY_LB {
 		1.0f / 9.0f,  // S
 		1.0f / 36.0f, // SE
 	};
+
+	inline real_t sqr(real_t x)
+	{
+		return x * x;
+	}
 
 	class LB2D
 	{

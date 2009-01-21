@@ -2,51 +2,48 @@
 
 namespace TINY_LB
 {
-	const real_t OMEGA = 0.5f;
-
-	inline real_t sqr(real_t x)
+	LBGK2D::LBGK2D(int n)
+	: n_(n), tau(2.0f)
 	{
-		return x * x;
-	}
-
-	inline real_t getFEq(real_t rho, real_t ux, real_t uy, int i)
-	{
-		real_t uSqr = sqr(ux) + sqr(uy);
-		real_t dotProd = ux * e[i][0] + uy * e[i][1];
-		real_t eqF = w[i] * rho *
-			(1.0f + 3.0f * dotProd + 4.5f * dotProd * dotProd - 1.5f * uSqr);
-		return eqF;
-	}
-
-	LBGK2D::LBGK2D(int n,
-				void (*loader)(int x, int y, real_t& rho,
-				real_t& ux, real_t& uy)) 
-	: n_(n)
-	{
-		f_ = new real_t[n * n * Q];
-		accumBuffer_ = new real_t[(DIM + 1) * n * n];
-
-		for (int i = 0; i < Q; i++)
-			for (int x = 0; x < n; x++)
-				for (int y = 0; y < n; y++)
-				{
-					real_t rho, ux, uy, uSqr;
-					loader(x, y, rho, ux, uy);
-					uSqr = ux * ux + uy * uy;
-					f_[x + y * n + i * n * n] = getFEq(rho, ux, uy, i);
-					accumBuffer_[3 * (x + n * y)] = rho;
-					accumBuffer_[3 * (x + n * y) + 1] = ux;
-					accumBuffer_[3 * (x + n * y) + 2] = uy;
-				};
-
-		for (int i = 0; i < Q; i++)
-			offsets_[i] = 0;
+		OMEGA = 1./tau;
 	}
 
 	LBGK2D::~LBGK2D()
 	{
 		delete[] f_;
 		delete[] accumBuffer_;
+	}
+
+	void LBGK2D::init(void (*loader)(int x, int y, real_t& rho,
+				real_t& ux, real_t& uy)) 
+	{
+		f_ = new real_t[n_ * n_ * Q];
+		accumBuffer_ = new real_t[(DIM + 1) * n_ * n_];
+
+		for (int i = 0; i < Q; i++)
+			for (int x = 0; x < n_; x++)
+				for (int y = 0; y < n_; y++)
+				{
+					real_t rho, ux, uy, uSqr;
+					loader(x, y, rho, ux, uy);
+					uSqr = ux * ux + uy * uy;
+					f_[x + y * n_ + i * n_ * n_] = feq(i, rho, ux, uy);
+					accumBuffer_[3 * (x + n_ * y)] = rho;
+					accumBuffer_[3 * (x + n_ * y) + 1] = ux;
+					accumBuffer_[3 * (x + n_ * y) + 2] = uy;
+				};
+
+		for (int i = 0; i < Q; i++)
+			offsets_[i] = 0;
+	}
+
+	inline real_t LBGK2D::feq(const int i, real_t rho, real_t ux, real_t uy)
+	{
+		real_t uSqr = sqr(ux) + sqr(uy);
+		real_t dotProd = ux * e[i][0] + uy * e[i][1];
+		real_t eqF = w[i] * rho *
+			(1.0f + 3.0f * dotProd + 4.5f * dotProd * dotProd - 1.5f * uSqr);
+		return eqF;
 	}
 
 	void LBGK2D::collide()
@@ -79,7 +76,7 @@ namespace TINY_LB
 
 			for (int j = 0; j < Q; j++)
 				*fCursor[j] = *fCursor[j] * (1 - OMEGA) + 
-					OMEGA * getFEq(rho, ux, uy, j);
+					OMEGA * feq(j, rho, ux, uy);
 
 			accumBuffer_[3 * i] = rho;
 			accumBuffer_[3 * i + 1] = ux;
