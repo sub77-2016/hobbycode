@@ -19,10 +19,21 @@
 #ifndef LBVIEWER_H
 #define LBVIEWER_H
 
+struct mglDraw;
+class mglGraph;
+
 namespace TINY_LB 
 {
+	class LBViewer : public mglDraw
+	{
+	public:
+		LBViewer(void);
+		~LBViewer(void);
 
+		virtual int Draw(mglGraph *gr);
+	};
 
 }
 
 #endif
+

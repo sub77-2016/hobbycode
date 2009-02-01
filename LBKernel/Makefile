@@ -1,12 +1,12 @@
 # Set the appropriate options to match your platform
 
 CXX = g++
-CXXFLAGS = -O2 -Wall -I $(HOME)/include -DUSE_GRAPHICS -DTEST_LB_
-LIBS = -lm -L $(HOME)/lib -L /usr/X11R6/lib -lgraph -lX11 -lpng -lz
+CXXFLAGS = -O2 -Wall `fltk-config --cxxflags` -DUSE_GRAPHICS -DTEST_LB_
+LIBS = `fltk-config --ldflags` -lmgl-fltk 
 
 APP_NAME = lbmain 
 
-OBJS = main.o lb2dmix.o lbrgb.o lbcolormap.o lbd2q9.o lbkernel.o 
+OBJS = main.o lb2dmix.o lbd2q9.o lbkernel.o lbviewer.o
 
 $(APP_NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(APP_NAME) $(OBJS) $(LIBS) 
