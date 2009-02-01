@@ -16,9 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <mgl/mgl.h>
+
+#include "lbviewer.h"
+
 namespace TINY_LB 
 {
+	LBViewer::LBViewer(void)
+	{
+	}
 
+	LBViewer::~LBViewer(void)
+	{
+	}
+
+	int LBViewer::Draw(mglGraph *gr)
+	{
+  		mglData a(50,40);
+		a.Modify("0.6*sin(2*pi*x)*sin(3*pi*y) + 0.4*cos(3*pi*(x*y))");
+		gr->Box();
+		gr->Dens(a);
+		gr->Colorbar();
+
+    		return 0;
+	}
 
 }
 

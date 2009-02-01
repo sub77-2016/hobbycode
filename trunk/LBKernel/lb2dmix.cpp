@@ -19,13 +19,11 @@
 #include <fstream>
 
 #ifdef USE_GRAPHICS
-extern "C" {
-#include <mygraph.h>
-}
+#include <mgl/mgl_fltk.h>
+#include "lbviewer.h"
 #endif
 
 #include "lb2dmix.h"
-#include "lbrgb.h"
 
 namespace TINY_LB
 {
@@ -33,6 +31,7 @@ namespace TINY_LB
 	#define fourOnine (4./9.)
 	#define oneOnine  (1./9.)
 	#define oneOthirtysix (1./36.)
+
 
 	LBD2Q9Mix::LBD2Q9Mix(int nx, int ny)
 	: LBD2Q9(nx,ny,2)
@@ -80,7 +79,6 @@ namespace TINY_LB
 	
 				U[pos_v(x,y) + 0] = ux;
 				U[pos_v(x,y) + 1] = uy;
-
 	    
       				//Init PDF.
       				//For Phi     
@@ -95,18 +93,6 @@ namespace TINY_LB
       				f_[7][pos_f(x,y)] = (1./24.)*p;
 
      				f_[8][pos_f(x,y)] = (2./3.)*p;
-
-      				/*f_[0][pos_f(x,y)] = (1./24.)*p; 
-      				f_[1][pos_f(x,y)] = (1./24.)*p;
-      				f_[2][pos_f(x,y)] = (1./24.)*p;
-      				f_[3][pos_f(x,y)] = (1./24.)*p;
-	
-      				f_[4][pos_f(x,y)] = (1./24.)*p;
-      				f_[5][pos_f(x,y)] = (1./24.)*p;
-      				f_[6][pos_f(x,y)] = (1./24.)*p;
-      				f_[7][pos_f(x,y)] = (1./24.)*p;
-
-     				f_[8][pos_f(x,y)] = (2./3.)*p;*/
 
       				//For Rho     
       				f_[0][pos_f(x,y) + 1] = (1./24.)*r; 
@@ -307,7 +293,7 @@ namespace TINY_LB
 	{
 	}
 
-	void LBD2Q9Mix::initGUI(void)
+	void LBD2Q9Mix::initGUI(int argc, char **argv)
 	{
 		mXdim = NX;
 		mYdim = NY;
@@ -323,19 +309,19 @@ namespace TINY_LB
 		char rho_s[] = "rho";
 		char U_s[] = "U";
 		
-		DefineGraphNxN_R(phi_s, phi, &mXdim, &mYdim, NULL);		
-		DefineGraphNxN_R(rho_s, rho, &mXdim, &mYdim, NULL);  	
-		DefineGraphNxN_RxR(U_s, U, &mXdim, &mYdim, NULL);  		
-  		NewGraph();
+		//DefineGraphNxN_R(phi_s, phi, &mXdim, &mYdim, NULL);		
+		//DefineGraphNxN_R(rho_s, rho, &mXdim, &mYdim, NULL);  	
+		//DefineGraphNxN_RxR(U_s, U, &mXdim, &mYdim, NULL);  		
+  		//NewGraph();
 
 		char Title_s[] = "Binary Fluid Lattice-Boltzmann Simulation";
 
-		StartMenu(Title_s, 1); 
+		//StartMenu(Title_s, 1); 
 
 			char Visual_s[] = "Graphics Window";
 
-  			SetActiveGraph(0);
-  			DefineGraph(contour2d_, Visual_s);
+  			//SetActiveGraph(0);
+  			//DefineGraph(contour2d_, Visual_s);
 
   			/*StartMenu("Main Inputs",0);
   				DefineDouble("phi_zero",&r_zero[0]);
@@ -364,11 +350,11 @@ namespace TINY_LB
 			char Iterations_s[] = "Iterations";
 			char Repeat_s[] = "Repeat";
 
-  			StartMenu(Controls_s, 0);
-  				DefineInt(Iterations_s, &mIterations);
-  				DefineInt(Repeat_s, &mRepeat);
+  			//StartMenu(Controls_s, 0);
+  				//DefineInt(Iterations_s, &mIterations);
+  				//DefineInt(Repeat_s, &mRepeat);
   				//DefineInt("stabilize", &stabilize);
-  			EndMenu();
+  			//EndMenu();
 
   			/*StartMenu("Set Initializations",0);
   				DefineBool("Use Set Init", &setinit);
@@ -381,24 +367,34 @@ namespace TINY_LB
 			char Quit_s[] = "Quit";
 			//char Reinit_s[] = "Reset";
 
-  			DefineBool(Pause_s, &mPause);
-  			DefineBool(SingleStep_s, &mSingleStep);
+  			//DefineBool(Pause_s, &mPause);
+  			//DefineBool(SingleStep_s, &mSingleStep);
 			//DefineFunction(Reinit_s, &reinit);
-  			DefineBool(Quit_s, &mQuit);
+  			//DefineBool(Quit_s, &mQuit);
 	
-  		EndMenu();
+  		//EndMenu();
 	}
 
-	void LBD2Q9Mix::run(void)
+	//int LBD2Q9Mix::drawGraphs(mglGraph *gr, void *)
+	//{
+
+		//return 0;
+	//}
+
+	int LBD2Q9Mix::run(int argc, char **argv)
 	{
-		int newData = 0;
+		//int newData = 0;
 
-		initGUI();
+		//initGUI(argc, argv);
 
-		while (!mQuit)
+		LBViewer lbv;
+		mglGraphFLTK gr;
+		gr.Window(argc, argv, &lbv, "Binary Fluid Lattice-Boltzmann Simulation");
+
+		/*while (!mQuit)
 		{
-      			Events(newData);
-      			DrawGraphs();
+      			//Events(newData);
+      			//DrawGraphs();
 
     			if ( !mPause||mSingleStep ) 
 			{
@@ -419,7 +415,9 @@ namespace TINY_LB
 			{
       				//sleep(1);
 			}
-		}
+		}*/
+
+		return mglFlRun();
 	}
 #endif
 
@@ -446,15 +444,6 @@ namespace TINY_LB
 		pfile.open("data_phi.txt");
 		rfile.open("data_rho.txt");
 
-		LBColorMap *cmap = new LBColorMap();
-		real c1[3] = {1,0,0};
-		cmap->append_color(c1);
-		real c2[3] = {1,1,1};
-		cmap->append_color(c2);
-		real c3[3] = {0,0,1};
-		cmap->append_color(c3);
-
-		LBRGB *rgb = new LBRGB(NX,NY);
 
   		for (int x = 1; x < NX+1; x++)
 		{
@@ -463,18 +452,10 @@ namespace TINY_LB
       				pfile << phi[pos_r(x,y)] << "\t";
 				rfile << rho[pos_r(x,y)] << "\t";
 
-				real cc[3];
-				cmap->map_value((phi[pos_r(x,y)]+1)/2, cc);
-				rgb->set_pixel(x-1, y-1, cc);
-				//rgb->map_value(cmap, x-1, y-1, (phi[pos_r(x,y)]+1)/2);
-				//std::cout <<"c0 = " <<cc[0] <<", c1 = " <<cc[1] <<", c2 = " << cc[2] <<std::endl; 
     			}
     			pfile << std::endl;
 			rfile << std::endl;
   		}
-
-		char name[] = "file_phi.png";
-		rgb->save(name);
 
 		pfile.close();
 		rfile.close();

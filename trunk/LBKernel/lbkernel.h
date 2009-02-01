@@ -19,8 +19,6 @@
 #ifndef LBKERNEL_H
 #define LBKERNEL_H
 
-#include <iostream>
-
 namespace TINY_LB 
 {
 

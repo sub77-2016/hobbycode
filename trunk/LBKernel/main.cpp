@@ -16,6 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <iostream>
+
+#ifdef USE_GRAPHICS
+#include <mgl/mgl_fltk.h>
+#endif
+
 #include "lb2dmix.h"
 
 using namespace TINY_LB;
@@ -41,7 +47,10 @@ main(int argc, char* argv[])
 	lb.init(loader);
 
 #ifdef USE_GRAPHICS
-	lb.run();
+	return lb.run(argc, argv);
+	//mglGraphFLTK gr;
+	//gr.Window(argc,argv,lb.drawGraphs,"MathGL examples");
+	//return mglFlRun();
 #else
 	lb.run(1000);
 #endif

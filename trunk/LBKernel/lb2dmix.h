@@ -21,6 +21,8 @@
 
 #include "lbd2q9.h"
 
+class mglGraph;
+
 namespace TINY_LB
 {
 	class LBD2Q9Mix : public LBD2Q9
@@ -35,7 +37,7 @@ namespace TINY_LB
 		virtual void writeOutput(void);
 
 	#ifdef USE_GRAPHICS
-		virtual void run(void);
+		virtual int run(int argc, char **argv);
 	#endif
 
 	protected:
@@ -44,7 +46,7 @@ namespace TINY_LB
 		virtual void f_eq(const int x, const int y, real f_out[9][2]);
 
 	#ifdef USE_GRAPHICS
-		virtual void initGUI(void);
+		virtual void initGUI(int argc, char **argv);
 		virtual void reinit(void);
 
 		// GUI stuff
