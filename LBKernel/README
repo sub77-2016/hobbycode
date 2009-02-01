@@ -1,0 +1,27 @@
+LBMix is a simple object-oriented lattice-Boltzmann code for simulation of binary fluids.
+It is free and open-source which can be redistributed under GNU GPL (see LICENSE file). 
+(Warning) This code is imperfect and uncompleted! 
+
+Requirements
+ - Linux PC
+ - GCC with g++
+ - To enable graphics, you will need X11 and Graphics Library by A. J. Wagner. 
+   Please visit his homepage for the source-code and manual: 
+   http://www.physics.ndsu.nodak.edu/wagner/graph.html.
+
+How to install and run
+ $cd lbmix
+ $make
+ $./lbmix
+
+How to report bugs
+ send e-mail to me
+	ngamsaad.waipot@gmail.com 
+ or 
+	waipot@ngamsaad.name
+ 	waipotn@yahoo.com
+
+
+All the best
+Waipot Ngamsaad
+
