@@ -16,12 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <iostream>
+
 #include <fstream>
 
 #ifdef USE_GRAPHICS
 #include <mgl/mgl_fltk.h>
 #include "lbviewer.h"
 #endif
+
+#include <mgl/mgl_zb.h>
 
 #include "lb2dmix.h"
 
@@ -387,7 +391,14 @@ namespace TINY_LB
 
 		//initGUI(argc, argv);
 
-		LBViewer lbv;
+		LBViewer lbv(NX,NY);
+		lbv.setData(phi,rho);
+
+      		for (int n = 0; n < 1500; n++) 
+		{
+			step();
+      		}
+
 		mglGraphFLTK gr;
 		gr.Window(argc, argv, &lbv, "Binary Fluid Lattice-Boltzmann Simulation");
 
@@ -444,6 +455,13 @@ namespace TINY_LB
 		pfile.open("data_phi.txt");
 		rfile.open("data_rho.txt");
 
+		mglGraphZB gr;
+		gr.Alpha(false);
+		gr.Light(true);
+		gr.Light(0,mglPoint(1,0,-1));
+	
+		mglData dat(NX,NY);
+		//dat.Modify("0.6*sin(2*pi*x)*sin(3*pi*y) + 0.4*cos(3*pi*(x*y))");
 
   		for (int x = 1; x < NX+1; x++)
 		{
@@ -452,10 +470,22 @@ namespace TINY_LB
       				pfile << phi[pos_r(x,y)] << "\t";
 				rfile << rho[pos_r(x,y)] << "\t";
 
+				dat.a[(x-1)+NX*(y-1)] = phi[pos_r(x,y)];
+
+				#ifdef TEST_LB
+				std::cout <<"writeOutput: (phi, rho)[" <<x <<"][" <<y <<"] = (" <<phi[pos_r(x,y)] <<", " <<rho[pos_r(x,y)] <<")" << std::endl;
+				#endif
+
     			}
     			pfile << std::endl;
 			rfile << std::endl;
   		}
+
+		gr.Box();
+		gr.Dens(dat);
+		gr.Colorbar();
+
+		gr.WritePNG("image.png");
 
 		pfile.close();
 		rfile.close();

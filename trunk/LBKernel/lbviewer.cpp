@@ -16,26 +16,56 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <iostream>
+
 #include <mgl/mgl.h>
 
 #include "lbviewer.h"
 
 namespace TINY_LB 
 {
-	LBViewer::LBViewer(void)
+	LBViewer::LBViewer(int nx, int ny)
 	{
+		mXdim = nx;
+		mYdim = ny;
+
+		mPhi = new mglData(nx, ny);
+		mRho = new mglData(nx, ny);
 	}
 
 	LBViewer::~LBViewer(void)
 	{
 	}
 
+	void LBViewer::setData(real* phi, real* rho)
+	{
+		phi_ = phi;
+		rho_ = rho;
+	}
+
+	void LBViewer::makeData(void)
+	{
+		for (int x = 1; x < mXdim+1; x++)
+		{
+    			for (int y = 1; y < mYdim+1; y++)
+			{
+				mPhi->a[(x-1)+mXdim*(y-1)] = phi_[(mYdim+2)*x+y];
+				mRho->a[(x-1)+mXdim*(y-1)] = rho_[(mYdim+2)*x+y];
+
+				#ifdef TEST_LB
+				std::cout <<"makeData: (phi, rho)[" <<x <<"][" <<y <<"] = (" <<phi_[(mYdim+2)*x+y]<<", " <<rho_[(mYdim+2)*x+y]<<")" << std::endl;
+				#endif
+    			}
+  		}
+	}
+
 	int LBViewer::Draw(mglGraph *gr)
 	{
-  		mglData a(50,40);
-		a.Modify("0.6*sin(2*pi*x)*sin(3*pi*y) + 0.4*cos(3*pi*(x*y))");
+		makeData();
+
 		gr->Box();
-		gr->Dens(a);
+		gr->Axis("xy");
+		gr->Dens(*mPhi);
 		gr->Colorbar();
 
     		return 0;
