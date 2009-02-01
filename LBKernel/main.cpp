@@ -41,16 +41,13 @@ void loader(int x, int y, real* rho0, real& ux, real& uy)
 int 
 main(int argc, char* argv[])
 {
-	const int nx = 64, ny = 128;
+	const int nx = 129, ny = 129;
 
 	LBD2Q9Mix lb(nx,ny);
 	lb.init(loader);
 
 #ifdef USE_GRAPHICS
 	return lb.run(argc, argv);
-	//mglGraphFLTK gr;
-	//gr.Window(argc,argv,lb.drawGraphs,"MathGL examples");
-	//return mglFlRun();
 #else
 	lb.run(1000);
 #endif

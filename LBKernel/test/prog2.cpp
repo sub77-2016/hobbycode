@@ -10,8 +10,14 @@ static double f0[SIZE],f1[SIZE],f2[SIZE], omega=1, T=0.3,Amplitude=1;
 static double density[SIZE];
 static int densityreq=0;
 
-int xt = 3, yt = 3;
-double test[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+int xt = 4, yt = 3;
+double test1[4][3] = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}};
+
+double *test2 = new double [xt*yt];
+
+int iii, jjj, kkk = 1;
+
+
 
 
 void init(){
@@ -22,6 +28,10 @@ void init(){
     f1[i]=density[i]*T*0.5;
     f2[i]=density[i]*T*0.5;
   }
+
+for (iii = 0; iii < xt; iii++)
+	for (jjj = 0; jjj < yt; jjj++)
+		test2[iii*yt + jjj] = kkk++;
 }
 
 void init2(){
@@ -55,7 +65,8 @@ void iterate(){
 
 
 void GUI(){
-  DefineGraphNxN_R("test", &(test[0][0]), &xt, &yt, 0);
+  DefineGraphNxN_R("test1", &(test1[0][0]), &xt, &yt, 0);
+  DefineGraphNxN_R("test2", test2, &xt, &yt, 0);
   //DefineGraphN_R("Density --",density,&size,&densityreq);
   StartMenu("GUI",1);
     DefineDouble("T",&T);

@@ -19,6 +19,8 @@
 #ifndef LBVIEWER_H
 #define LBVIEWER_H
 
+#include "lbkernel.h"
+
 struct mglDraw;
 class mglGraph;
 
@@ -27,10 +29,21 @@ namespace TINY_LB
 	class LBViewer : public mglDraw
 	{
 	public:
-		LBViewer(void);
+		LBViewer(int nx, int ny);
 		~LBViewer(void);
 
 		virtual int Draw(mglGraph *gr);
+		virtual void setData(real* phi, real* rho);
+
+	protected:
+		virtual void makeData(void);
+
+		mglData *mPhi, *mRho;
+		int mXdim, mYdim;
+
+	private:
+		real *phi_, *rho_;
+
 	};
 
 }
