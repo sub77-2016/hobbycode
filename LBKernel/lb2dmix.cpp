@@ -392,7 +392,7 @@ namespace TINY_LB
 		//initGUI(argc, argv);
 
 		LBViewer lbv(NX,NY);
-		lbv.setData(phi,rho);
+		lbv.setData(phi,rho,U);
 
       		for (int n = 0; n < 1500; n++) 
 		{
