@@ -33,16 +33,16 @@ namespace TINY_LB
 		~LBViewer(void);
 
 		virtual int Draw(mglGraph *gr);
-		virtual void setData(real* phi, real* rho);
+		virtual void setData(real* phi, real* rho, real* U);
 
 	protected:
 		virtual void makeData(void);
 
-		mglData *mPhi, *mRho;
+		mglData *mPhi, *mRho, *mUx, *mUy;
 		int mXdim, mYdim;
 
 	private:
-		real *phi_, *rho_;
+		real *phi_, *rho_, *U_;
 
 	};
 

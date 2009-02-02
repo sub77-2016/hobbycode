@@ -31,16 +31,20 @@ namespace TINY_LB
 
 		mPhi = new mglData(nx, ny);
 		mRho = new mglData(nx, ny);
+
+		mUx = new mglData(nx, ny);
+		mUy = new mglData(nx, ny);
 	}
 
 	LBViewer::~LBViewer(void)
 	{
 	}
 
-	void LBViewer::setData(real* phi, real* rho)
+	void LBViewer::setData(real* phi, real* rho, real* U)
 	{
 		phi_ = phi;
 		rho_ = rho;
+		U_ = U;
 	}
 
 	void LBViewer::makeData(void)
@@ -51,6 +55,9 @@ namespace TINY_LB
 			{
 				mPhi->a[(x-1)+mXdim*(y-1)] = phi_[(mYdim+2)*x+y];
 				mRho->a[(x-1)+mXdim*(y-1)] = rho_[(mYdim+2)*x+y];
+
+				mUx->a[(x-1)+mXdim*(y-1)] = U_[2*((mYdim+2)*x+y)+0];
+				mUy->a[(x-1)+mXdim*(y-1)] = U_[2*((mYdim+2)*x+y)+1];
 
 				#ifdef TEST_LB
 				std::cout <<"makeData: (phi, rho)[" <<x <<"][" <<y <<"] = (" <<phi_[(mYdim+2)*x+y]<<", " <<rho_[(mYdim+2)*x+y]<<")" << std::endl;
@@ -63,12 +70,28 @@ namespace TINY_LB
 	{
 		makeData();
 
+		gr->NewFrame();
+		gr->Box();
+		gr->Axis("xy");
+		gr->VectC(*mUx,*mUy);
+		gr->Colorbar();
+        	gr->EndFrame();
+     	
+		gr->NewFrame();
+		gr->Box();
+		gr->Axis("xy");
+		gr->Dens(*mRho);
+		gr->Colorbar();
+        	gr->EndFrame();
+
+		gr->NewFrame();
 		gr->Box();
 		gr->Axis("xy");
 		gr->Dens(*mPhi);
 		gr->Colorbar();
+        	gr->EndFrame();
 
-    		return 0;
+    		return gr->GetNumFrame();
 	}
 
 }
