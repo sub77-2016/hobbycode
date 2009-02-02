@@ -50,6 +50,8 @@ namespace TINY_LB
 		LBD2Q9(int nx, int ny, int nr);
 		virtual ~LBD2Q9(){}
 
+		virtual void step(void){}
+
 	protected:
 		virtual void stream(void);
 

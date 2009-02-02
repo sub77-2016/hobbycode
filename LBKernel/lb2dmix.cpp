@@ -290,6 +290,8 @@ namespace TINY_LB
 		computeMoments();
 		collide();
 		stream();
+		
+		std::cout << "take step " << " ..." << std::endl;
 	}
 
 #ifdef USE_GRAPHICS
@@ -392,12 +394,13 @@ namespace TINY_LB
 		//initGUI(argc, argv);
 
 		LBViewer lbv(NX,NY);
-		lbv.setData(phi,rho,U);
+		lbv.setData((LBD2Q9 *)this,phi,rho,U);
 
+		/*
       		for (int n = 0; n < 1500; n++) 
 		{
 			step();
-      		}
+      		}*/
 
 		mglGraphFLTK gr;
 		gr.Window(argc, argv, &lbv, "Binary Fluid Lattice-Boltzmann Simulation");

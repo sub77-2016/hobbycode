@@ -40,11 +40,13 @@ namespace TINY_LB
 	{
 	}
 
-	void LBViewer::setData(real* phi, real* rho, real* U)
+	void LBViewer::setData(LBD2Q9* lb, real* phi, real* rho, real* U)
 	{
 		phi_ = phi;
 		rho_ = rho;
 		U_ = U;
+
+		lb_ = lb;
 	}
 
 	void LBViewer::makeData(void)
@@ -68,6 +70,9 @@ namespace TINY_LB
 
 	int LBViewer::Draw(mglGraph *gr)
 	{
+		for (int i = 0; i < 500; i++)
+			lb_->step();
+
 		makeData();
 
 		gr->NewFrame();
