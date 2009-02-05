@@ -38,6 +38,10 @@ namespace TINY_LB
 
 	LBViewer::~LBViewer(void)
 	{
+		delete mPhi;
+		delete mRho;
+		delete mUx;
+		delete mUy;
 	}
 
 	void LBViewer::setData(LBD2Q9* lb, real* phi, real* rho, real* U)
@@ -68,12 +72,20 @@ namespace TINY_LB
   		}
 	}
 
-	int LBViewer::Draw(mglGraph *gr)
+	void LBViewer::Reload(int next)
 	{
 		for (int i = 0; i < 500; i++)
 			lb_->step();
 
 		makeData();
+	}
+
+	int LBViewer::Draw(mglGraph *gr)
+	{
+		//for (int i = 0; i < 500; i++)
+			//lb_->step();
+
+		//makeData();
 
 		gr->NewFrame();
 		gr->Box();

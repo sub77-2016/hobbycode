@@ -43,6 +43,7 @@ namespace TINY_LB
 	protected:
 		virtual void computeMoments(void);
 		virtual void collide(void);
+		virtual void multcollide(void);
 		virtual void f_eq(const int x, const int y, real f_out[9][2]);
 
 	#ifdef USE_GRAPHICS
@@ -59,8 +60,12 @@ namespace TINY_LB
 		real *U;
 
 		real *omega;
+
+		real C[9][9];
 	
 	private:
+
+
 	};
 
 }

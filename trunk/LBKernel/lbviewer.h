@@ -33,6 +33,8 @@ namespace TINY_LB
 		~LBViewer(void);
 
 		virtual int Draw(mglGraph *gr);
+		virtual void Reload(int next);
+
 		virtual void setData(LBD2Q9* lb, real* phi, real* rho, real* U);
 
 	protected:

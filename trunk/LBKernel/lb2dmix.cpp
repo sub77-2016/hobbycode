@@ -49,6 +49,72 @@ namespace TINY_LB
 		phi = new real[NNODE];
 
 		U = new real[2*NNODE];
+	
+		const real M[9][9] = {
+		{1, 1, 1, 1, 1, 1, 1, 1, 1},
+    		{-4, -1, -1, -1, -1, 2, 2, 2, 2},
+    		{4, -2, -2, -2, -2, 1, 1, 1, 1},
+    		{0, 1, 0, -1, 0, 1, -1, -1, 1},
+    		{0, -2, 0, 2, 0, 1, -1, -1, 1},
+    		{0, 0, 1, 0, -1, 1, 1, -1, -1},
+    		{0, 0, -2, 0, 2, 1, 1, -1, -1},
+    		{0, 1, -1, 1, -1, 0, 0, 0, 0},
+    		{0, 0, 0, 0, 0, 1, -1, 1, -1}};
+
+		const real invM[9][9] = {
+		{1./9., -1./9., 1./9., 0., 0., 0., 0., 0., 0.},
+       		{1./9., -1./36., -1./18., 1./6., -1./6., 0., 0., 1./4., 0.},
+       		{1./9., -1./36., -1./18., 0., 0., 1./6., -1./6., -1./4., 0.},
+       		{1./9., -1./36., -1./18., -1./6., 1./6., 0., 0., 1./4., 0.},
+       		{1./9., -1./36., -1./18., 0., 0., -1./6., 1./6., -1./4., 0.},
+       		{1./9., 1./18., 1./36., 1./6., 1./12., 1./6., 1./12., 0., 1./4.},
+       		{1./9., 1./18., 1./36., -1./6., -1./12., 1./6., 1./12., 0., -1./4.},
+       		{1./9., 1./18., 1./36., -1./6., -1./12., -1./6., -1./12., 0., 1./4.},
+       		{1./9., 1./18., 1./36., 1./6.,  1./12., -1./6., -1./12., 0., -1./4.}};
+
+		const real S[9] = {0.,1.,1.,0.,1.,0.,1.,1.,1.};
+
+		real Ctmp[9][9];
+
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				Ctmp[i][j] = 0;
+				C[i][j] = 0;
+
+				std::cout<< "M[" <<i <<"][" <<j <<"] = " <<M[i][j] <<" ";
+			}
+			std::cout <<std::endl;
+		}
+
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				for (int k = 0; k < 9; k++)
+				{
+					Ctmp[i][j] += S[i]*M[k][j];
+				}
+
+				std::cout<< "invM[" <<i <<"][" <<j <<"] = " <<invM[i][j] <<" ";
+			}
+			std::cout <<std::endl;
+		}
+
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				for (int k = 0; k < 9; k++)
+				{
+					C[i][j] += invM[i][k]*Ctmp[k][j];
+				}
+				
+				std::cout<< "C[" <<i <<"][" <<j <<"] = " <<C[i][j] <<" ";
+			}
+			std::cout <<std::endl;
+		}
 	}
 
 	LBD2Q9Mix::~LBD2Q9Mix(void)
@@ -284,11 +350,44 @@ namespace TINY_LB
 			}
 		}
 	}
+
+	void LBD2Q9Mix::multcollide(void)
+	{
+		real Feq[9][2];	
+		
+		for (int x = 0; x < NX+2; x++)
+		{
+			for (int y = 0; y < NY+2; y++)
+			{
+				f_eq(x, y, Feq);
+
+				for (int l = 0; l < NVEL; l++)
+				{
+					real tmp = 0;
+
+					for (int k = 0; k < 9; k++)
+					{
+						tmp += C[l][k] * (Feq[k][0] - f_[k][pos_f(x,y)]);
+					}
+
+					f_[l][pos_f(x,y)] -= tmp;
+
+					//f_[l][pos_f(x,y)]   += omega[0] * (Feq[l][0] - f_[l][pos_f(x,y)]  );
+					f_[l][pos_f(x,y)+1] += omega[1] * (Feq[l][1] - f_[l][pos_f(x,y)+1]);
+
+					#ifdef TEST_LB
+					//std::cout << "Feq[" << l << "][*]" << " = " << Feq[l][0] << ", " << Feq[l][1] << std::endl;
+					#endif
+				}
+			}
+		}
+	}
 	
 	void LBD2Q9Mix::step(void)
 	{
 		computeMoments();
-		collide();
+		//collide();
+		multcollide();
 		stream();
 		
 		std::cout << "take step " << " ..." << std::endl;
@@ -311,81 +410,7 @@ namespace TINY_LB
 		mRepeat = 100;
 		mIterations = mRepeat;
 
-		char phi_s[] = "phi";
-		char rho_s[] = "rho";
-		char U_s[] = "U";
-		
-		//DefineGraphNxN_R(phi_s, phi, &mXdim, &mYdim, NULL);		
-		//DefineGraphNxN_R(rho_s, rho, &mXdim, &mYdim, NULL);  	
-		//DefineGraphNxN_RxR(U_s, U, &mXdim, &mYdim, NULL);  		
-  		//NewGraph();
-
-		char Title_s[] = "Binary Fluid Lattice-Boltzmann Simulation";
-
-		//StartMenu(Title_s, 1); 
-
-			char Visual_s[] = "Graphics Window";
-
-  			//SetActiveGraph(0);
-  			//DefineGraph(contour2d_, Visual_s);
-
-  			/*StartMenu("Main Inputs",0);
-  				DefineDouble("phi_zero",&r_zero[0]);
-  				DefineDouble("rho_zero",&r_zero[1]);
-  				DefineDouble("Amp",&Amp1);
-  				DefineDouble("a",&a_);
-  				DefineDouble("b",&b_);
-  				DefineDouble("kappa",&kappa_);
-  				DefineDouble("Nu2",&Nu2);
-  				DefineDouble("tau0",&tau0);
-  				DefineDouble("tau1",&tau1);
-  				DefineDouble("UX_tp",&UX1);
-  				DefineDouble("UY_tp",&UY1);
-  			EndMenu();*/
-
-  			/*StartMenu("Secondary Inputs",0);
-  				DefineInt("xdim", &xdim);
-  				DefineInt("ydim", &ydim);
-  			EndMenu();*/
-
-  			/*StartMenu("Stability Factors",0);
-  				DefineDouble("s",&s);
-  			EndMenu();*/
-
-			char Controls_s[] = "Controls";
-			char Iterations_s[] = "Iterations";
-			char Repeat_s[] = "Repeat";
-
-  			//StartMenu(Controls_s, 0);
-  				//DefineInt(Iterations_s, &mIterations);
-  				//DefineInt(Repeat_s, &mRepeat);
-  				//DefineInt("stabilize", &stabilize);
-  			//EndMenu();
-
-  			/*StartMenu("Set Initializations",0);
-  				DefineBool("Use Set Init", &setinit);
-  				DefineInt("Num Vert Domains", &initvert);
-  			EndMenu();
-			*/ 		
-		
-			char Pause_s[] = "Puase";
-			char SingleStep_s[] = "Single Step";
-			char Quit_s[] = "Quit";
-			//char Reinit_s[] = "Reset";
-
-  			//DefineBool(Pause_s, &mPause);
-  			//DefineBool(SingleStep_s, &mSingleStep);
-			//DefineFunction(Reinit_s, &reinit);
-  			//DefineBool(Quit_s, &mQuit);
-	
-  		//EndMenu();
 	}
-
-	//int LBD2Q9Mix::drawGraphs(mglGraph *gr, void *)
-	//{
-
-		//return 0;
-	//}
 
 	int LBD2Q9Mix::run(int argc, char **argv)
 	{
@@ -404,6 +429,8 @@ namespace TINY_LB
 
 		mglGraphFLTK gr;
 		gr.Window(argc, argv, &lbv, "Binary Fluid Lattice-Boltzmann Simulation");
+
+		//while(true) { gr.ReLoad(true); gr.Update(); gr.FMGL->redraw(); }
 
 		/*while (!mQuit)
 		{
@@ -432,6 +459,7 @@ namespace TINY_LB
 		}*/
 
 		return mglFlRun();
+		//return 0;
 	}
 #endif
 
