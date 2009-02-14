@@ -386,8 +386,8 @@ namespace TINY_LB
 	void LBD2Q9Mix::step(void)
 	{
 		computeMoments();
-		//collide();
-		multcollide();
+		collide();
+		//multcollide();
 		stream();
 		
 		std::cout << "take step " << " ..." << std::endl;
