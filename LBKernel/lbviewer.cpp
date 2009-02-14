@@ -74,7 +74,7 @@ namespace TINY_LB
 
 	void LBViewer::Reload(int next)
 	{
-		for (int i = 0; i < 500; i++)
+		for (int i = 0; i < 25; i++)
 			lb_->step();
 
 		makeData();
