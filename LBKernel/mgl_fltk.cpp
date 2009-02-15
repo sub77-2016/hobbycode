@@ -54,11 +54,15 @@
 #include "xpm/zoom_out.xpm"
 #include "xpm/rotate.xpm"
 #include "xpm/ok.xpm"
+#include "xpm/play.xpm"
+#include "xpm/stop.xpm"
+#include "xpm/next.xpm"
 //-----------------------------------------------------------------------------
 Fl_Pixmap xpm_a1(alpha_xpm), xpm_a2(alpha_on_xpm);
 Fl_Pixmap xpm_l1(light_on_xpm), xpm_l2(light_xpm);
 Fl_Pixmap xpm_z1(zoom_in_xpm), xpm_z2(zoom_on_xpm);
-Fl_Pixmap xpm_s1(show_sl_xpm), xpm_s2(show_on_xpm);
+//Fl_Pixmap xpm_s1(show_sl_xpm), xpm_s2(show_on_xpm);
+Fl_Pixmap xpm_s1(play_xpm), xpm_s2(stop_xpm);
 Fl_Pixmap xpm_r1(rotate_xpm), xpm_r2(rotate_on_xpm);
 //-----------------------------------------------------------------------------
 //
@@ -372,7 +376,7 @@ void mglGraphFLTK::Update()
 	FMGL->set_state(zoom_bt->value(), rotate_bt->value());
 	FMGL->set_state(alpha + 2*light);
 	FMGL->set_angle(tet->value(), phi->value());
-	CurFig=0;
+	//CurFig=0;
 	FMGL->update();
 }
 //-----------------------------------------------------------------------------
@@ -630,7 +634,7 @@ void mglGraphFLTK::Window(int argc, char **argv, int (*draw)(mglGraph *gr, void 
 	g->end();	g->resizable(0);
 
 	/* Vertical bar */
-	g = new Fl_Group(0,60,55,105);
+	g = new Fl_Group(0,60,55,130);
 	o = new Fl_Button(1, 60, 25, 25);		o->tooltip(gettext("Shift the picture up"));
 	o->image(new Fl_Pixmap(up_1_xpm));		o->callback(su_cb,this);
 	o->box(FL_PLASTIC_UP_BOX);	o->down_box(FL_PLASTIC_DOWN_BOX);
@@ -664,6 +668,16 @@ void mglGraphFLTK::Window(int argc, char **argv, int (*draw)(mglGraph *gr, void 
 	anim_bt->image(xpm_s1);	anim_bt->callback(sshow_cb,this);
 	anim_bt->tooltip(gettext("Run/Stop slideshow (graphics animation)"));
 	anim_bt->box(FL_PLASTIC_UP_BOX);		anim_bt->down_box(FL_PLASTIC_DOWN_BOX);
+	o = new Fl_Button(26, 140, 25, 25);		o->tooltip(gettext("Reload data"));
+	o->image(new Fl_Pixmap(next_xpm));	o->callback(oncemore_cb,this);
+	o->box(FL_PLASTIC_UP_BOX);	o->down_box(FL_PLASTIC_DOWN_BOX);
+
+	o = new Fl_Button(1, 165, 25, 25);		o->tooltip(gettext("Show previous frame in slideshow"));
+	o->image(new Fl_Pixmap(prev_sl_xpm));	o->callback(sprev_cb,this);
+	o->box(FL_PLASTIC_UP_BOX);	o->down_box(FL_PLASTIC_DOWN_BOX);
+	o = new Fl_Button(26, 165, 25, 25);		o->tooltip(gettext("Show next frame in slideshow"));
+	o->image(new Fl_Pixmap(next_sl_xpm));	o->callback(snext_cb,this);
+	o->box(FL_PLASTIC_UP_BOX);	o->down_box(FL_PLASTIC_DOWN_BOX);
 
 	/*o = new Fl_Button(1, 215, 25, 25);		o->tooltip(gettext("Show previous frame in slideshow"));
 	o->image(new Fl_Pixmap(prev_sl_xpm));	o->callback(sprev_cb,this);
@@ -698,8 +712,8 @@ void mglGraphFLTK::Window(int argc, char **argv, int (*draw)(mglGraph *gr, void 
 		}
 		g->end();
 
-		g = new Fl_Group(55, 85, 575, 375, "Figure 2");
-		{
+		//g = new Fl_Group(55, 85, 575, 375, "Figure 2");
+		//{
 			/*scroll = new Fl_Scroll(60, 90, 565, 300);
 			{
 				//scroll->begin();
@@ -713,11 +727,11 @@ void mglGraphFLTK::Window(int argc, char **argv, int (*draw)(mglGraph *gr, void 
 			}
 			scroll->end();
 			w1->resizable(scroll);*/
-		}
-		g->end();
+		//}
+		//g->end();
 
-		g = new Fl_Group(55, 85, 575, 375, "Figure 3");
-		{
+		//g = new Fl_Group(55, 85, 575, 375, "Figure 3");
+		//{
 			/*scroll = new Fl_Scroll(56, 85, 575, 400);
 			{
 				//scroll->begin();
@@ -731,10 +745,11 @@ void mglGraphFLTK::Window(int argc, char **argv, int (*draw)(mglGraph *gr, void 
 			}
 			scroll->end();
 			w1->resizable(scroll);*/
-		}
-		g->end();
+		//}
+		//g->end();
 	}
 	tabs->end();
+	//tabs->resizable(0);
 
 	w1->end();
 	Wnd = w1;
