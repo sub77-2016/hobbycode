@@ -27,6 +27,7 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Counter.H>
 #include <FL/Fl_Menu_Bar.H>
+#include <FL/Fl_Tabs.H>
 #include "mgl/mgl_zb.h"
 //-----------------------------------------------------------------------------
 class Fl_MathGL;
@@ -77,6 +78,7 @@ protected:
 	Fl_Counter *tet, *phi;
 	Fl_Scroll	*scroll;
 	Fl_Menu_Bar	*menu;
+	Fl_Tabs *tabs;
 
 	int alpha;		///< Current state of alpha switch (toggle button)
 	int light;		///< Current state of light switch (toggle button)

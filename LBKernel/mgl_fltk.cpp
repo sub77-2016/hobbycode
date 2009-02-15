@@ -587,7 +587,7 @@ void mglGraphFLTK::Window(int argc, char **argv, int (*draw)(mglGraph *gr, void 
 	LoadFunc = reload;
 	if(Wnd)	{	Wnd->label(title);	Wnd->show();	return;	}
 
-	Fl_Window *w1=new Fl_Double_Window(0,0,630,460,title);
+	Fl_Window *w1 = new Fl_Double_Window(0,0,630,460,title);
 	menu = new Fl_Menu_Bar(0, 0, 630, 30);
 	menu->copy(menuitems, this);
 
@@ -678,20 +678,67 @@ void mglGraphFLTK::Window(int argc, char **argv, int (*draw)(mglGraph *gr, void 
 
 	g->end();	g->resizable(0);
 
-	scroll = new Fl_Scroll(55, 60, 575, 400);
-	//scroll->begin();
-	FMGL = new Fl_MathGL(55, 60, scroll->w(), scroll->h());
-	FMGL->tet_val = tet;
-	FMGL->phi_val = phi;
-	FMGL->set_popup(pop_graph,w1,this);
-	FMGL->graph = this;
-	FMGL->draw_func = draw;
-	FMGL->draw_par = par;
-	scroll->end();
+	tabs = new Fl_Tabs(55, 60, 575, 400);
+	{
+		g = new Fl_Group(55, 85, 575, 375, "Figure 1");
+		{
+			scroll = new Fl_Scroll(60, 90, 570, 395);
+			{
+				//scroll->begin();
+				FMGL = new Fl_MathGL(56, 85, scroll->w(), scroll->h());
+				FMGL->tet_val = tet;
+				FMGL->phi_val = phi;
+				FMGL->set_popup(pop_graph,w1,this);
+				FMGL->graph = this;
+				FMGL->draw_func = draw;
+				FMGL->draw_par = par;
+			}
+			scroll->end();
+			w1->resizable(scroll);
+		}
+		g->end();
+
+		g = new Fl_Group(55, 85, 575, 375, "Figure 2");
+		{
+			/*scroll = new Fl_Scroll(60, 90, 565, 300);
+			{
+				//scroll->begin();
+				FMGL = new Fl_MathGL(56, 60, scroll->w(), scroll->h());
+				FMGL->tet_val = tet;
+				FMGL->phi_val = phi;
+				FMGL->set_popup(pop_graph,w1,this);
+				FMGL->graph = this;
+				FMGL->draw_func = draw;
+				FMGL->draw_par = par;
+			}
+			scroll->end();
+			w1->resizable(scroll);*/
+		}
+		g->end();
+
+		g = new Fl_Group(55, 85, 575, 375, "Figure 3");
+		{
+			/*scroll = new Fl_Scroll(56, 85, 575, 400);
+			{
+				//scroll->begin();
+				FMGL = new Fl_MathGL(56, 85, scroll->w(), scroll->h());
+				FMGL->tet_val = tet;
+				FMGL->phi_val = phi;
+				FMGL->set_popup(pop_graph,w1,this);
+				FMGL->graph = this;
+				FMGL->draw_func = draw;
+				FMGL->draw_par = par;
+			}
+			scroll->end();
+			w1->resizable(scroll);*/
+		}
+		g->end();
+	}
+	tabs->end();
 
 	w1->end();
 	Wnd = w1;
-	w1->resizable(scroll);	//w->graph);
+	/*w1->resizable(scroll);	//w->graph);*/
 
 	char *tmp[1];	tmp[0]=new char[1];	tmp[0][0]=0;
 	w1->show(argv ? argc:0, argv ? argv:tmp);
