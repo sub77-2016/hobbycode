@@ -59,9 +59,9 @@ namespace TINY_LB
 		void wrap_1_3(void);
 		void wrap_corners(void);
 
-		inline real* address(real* pdfs[8], const int info[3]);
-		inline void colscpy(real* pdfs[8], const int info[][6], int ncols);
-		inline void rowscpy(real* pdfs[8], const int info[][6], int nrows);
+		real* address(real* pdfs[8], const int info[3]);
+		void colscpy(real* pdfs[8], const int info[][6], int ncols);
+		void rowscpy(real* pdfs[8], const int info[][6], int nrows);
 	};
 
 
