@@ -59,7 +59,7 @@ namespace TINY_LB
 			     RANK, RANK*(NY + 2), NX);
 	}
 
-	void
+	inline void
 	LBD2Q9::wrap_0_2(void)
 	{
 		const int todo[6][6] = {
@@ -74,7 +74,7 @@ namespace TINY_LB
 		colscpy(f_, todo, 6);
 	}
 
-	void
+	inline void
 	LBD2Q9::wrap_1_3(void)
 	{
 		const int todo[6][6] = {
@@ -89,7 +89,7 @@ namespace TINY_LB
 		rowscpy(f_, todo, 6);
 	}
 
-	void
+	inline void
 	LBD2Q9::wrap_corners(void)
 	{
 		const int todo[4][6] = {
