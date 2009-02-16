@@ -21,7 +21,7 @@
 namespace TINY_LB
 {
 
-	LBGKCore::LBGKCore(int ndim, int nvel, int rank)
+	LBCore::LBCore(int ndim, int nvel, int rank)
 	{
 		nDim = ndim;
 		nVel = nvel;
@@ -30,19 +30,21 @@ namespace TINY_LB
 		nSize = new int[nDim];
 	}
 
-	LBGKCore::~LBGKCore(void)
+	LBCore::~LBCore(void)
 	{
+		if (nSize)
+			delete[] nSize;
 
-		delete[] nSize;
+		if (f_)
+		{
+			for (int l = 0; l < nVel; l++)
+				delete[] f_[l];
 
-		for (int l = 0; l < nVel; l++)
-			delete[] f_[l];
-		delete[] f_;
-
-		delete[] dataBuffer_;
+			delete[] f_;
+		}
 	}
 
-	void LBGKCore::initCoreBuffer(void)
+	void LBCore::initCoreBuffer(void)
 	{
 		nNode = 1;
 
@@ -55,17 +57,9 @@ namespace TINY_LB
 		for (int l = 0; l < nVel; l++)
 			f_[l] = new real[nRank*nNode];
 
-		dataBuffer_ = new real[nNode * (nDim + 1)];
-
 		#ifdef TEST_LB
 		std::cout <<"initCoreBuffer: " <<"NNODE = " <<nNode*nRank <<", NX = " <<NX <<", NY = " <<NY <<std::endl;
 		#endif
-
-	}
-
-	const real* LBGKCore::getData(void) const
-	{
-		return dataBuffer_;
 	}
 
 }
