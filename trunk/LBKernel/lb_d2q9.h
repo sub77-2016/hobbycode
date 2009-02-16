@@ -16,10 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LBD2Q9_H
-#define LBD2Q9_H
+#ifndef LB_D2Q9_H
+#define LB_D2Q9_H
 
-#include "lbkernel.h"
+#include "lb_kernel.h"
 
 		/*
 		. D2Q9 Lattice Boltzmann Model

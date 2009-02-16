@@ -16,40 +16,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LB_VIEWER_H
-#define LB_VIEWER_H
+#include <iostream>
 
-#include "lb_d2q9.h"
+#ifdef USE_GRAPHICS
+#include <mgl/mgl_fltk.h>
+#endif
 
-struct mglDraw;
-class mglGraph;
+#include "lb_d2q9_mix.h"
 
-namespace TINY_LB 
+using namespace TINY_LB;
+
+void loader(int x, int y, real* rho0, real& ux, real& uy)
 {
-	class LBViewer : public mglDraw
-	{
-	public:
-		LBViewer(int nx, int ny);
-		~LBViewer(void);
+      	rho0[0] = 0. + 0.0001*(1.*rand()/RANDMAX -0.5);
+      	rho0[1] = 1. + 0.0001*(1.*rand()/RANDMAX -0.5);
 
-		virtual int Draw(mglGraph *gr);
-		virtual void Reload(int next);
+	//rho0[0] = (real)1.0;
+	//rho0[1] = (real)1.0;
 
-		virtual void setData(LBD2Q9* lb, real* phi, real* rho, real* U);
-
-	protected:
-		virtual void makeData(void);
-
-		mglData *mPhi, *mRho, *mUx, *mUy;
-		int mXdim, mYdim;
-
-	private:
-		LBD2Q9* lb_;
-		real *phi_, *rho_, *U_;
-
-	};
-
+	ux = (real)0.01;
+	uy = (real)0.0;
 }
 
+int 
+main(int argc, char* argv[])
+{
+	const int nx = 129, ny = 129;
+
+	LBD2Q9Mix lb(nx,ny);
+	lb.init(loader);
+
+#ifdef USE_GRAPHICS
+	return lb.run(argc, argv);
+#else
+	lb.run(1000);
 #endif
+
+	return 0;
+}
 

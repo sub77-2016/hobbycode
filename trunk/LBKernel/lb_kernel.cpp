@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "lbkernel.h"
+#include "lb_kernel.h"
 
 namespace TINY_LB
 {
