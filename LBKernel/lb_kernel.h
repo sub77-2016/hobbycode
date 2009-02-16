@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LBKERNEL_H
-#define LBKERNEL_H
+#ifndef LB_KERNEL_H
+#define LB_KERNEL_H
 
 namespace TINY_LB 
 {

@@ -20,7 +20,7 @@
 
 #include <mgl/mgl.h>
 
-#include "lbviewer.h"
+#include "lb_viewer.h"
 
 namespace TINY_LB 
 {

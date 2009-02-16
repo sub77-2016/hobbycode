@@ -22,7 +22,7 @@
 
 #ifdef USE_GRAPHICS
 #include <mgl/mgl_fltk.h>
-#include "lbviewer.h"
+#include "lb_viewer.h"
 #endif
 
 #include <mgl/mgl_zb.h>

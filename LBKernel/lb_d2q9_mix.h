@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LB2DMIX_H
-#define LB2DMIX_H
+#ifndef LB_D2Q9_MIX_H
+#define LB_D2Q9_MIX_H
 
 #include "lb_d2q9.h"
 

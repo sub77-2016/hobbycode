@@ -18,7 +18,7 @@
 
 #include <iostream>
 
-#include "lbd2q9.h"
+#include "lb_d2q9.h"
 
 namespace TINY_LB 
 {
