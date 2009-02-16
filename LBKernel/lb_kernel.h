@@ -84,8 +84,10 @@ typedef unsigned long int uint32;
 		virtual ~LBCore(void);		
 
 	protected:
+		virtual void collide(void) = 0;
 		virtual void stream(void) = 0;
-		virtual void initCoreBuffer(void);
+
+		void initCoreBuffer(void);
 
 		int nVel;
 		int nDim;

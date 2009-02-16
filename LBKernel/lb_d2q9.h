@@ -51,7 +51,7 @@ namespace TINY_LB
 		virtual ~LBD2Q9(){}
 
 	protected:
-		virtual void collide(void) = 0;
+		virtual void collide(void){}
 		virtual void stream(void);
 
 	private:
