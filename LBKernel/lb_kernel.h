@@ -19,6 +19,8 @@
 #ifndef LB_KERNEL_H
 #define LB_KERNEL_H
 
+#include <iostream>
+
 namespace TINY_LB 
 {
 
@@ -63,15 +65,26 @@ typedef unsigned long int uint32;
 		return x * x;
 	}
 
-	class LBGKCore
+	inline void scpy(real* dst, const real* src,
+	             int rank, int stride, int count)
+	{
+		rank *= sizeof(real);
+		for (; count > 0; --count) 
+		{
+			memcpy(dst, src, rank);
+			dst += stride;
+			src += stride;
+		}
+	}
+
+	class LBCore
 	{
 	public:
-		LBGKCore(int ndim, int nvel, int rank = 1);
-		virtual ~LBGKCore(void);
-
-		virtual const real* getData(void) const;		
+		LBCore(int ndim, int nvel, int rank = 1);
+		virtual ~LBCore(void);		
 
 	protected:
+		virtual void stream(void) = 0;
 		virtual void initCoreBuffer(void);
 
 		int nVel;
@@ -82,9 +95,7 @@ typedef unsigned long int uint32;
 
 		// Core buffers
 		real** f_;
-		real* dataBuffer_;
-
-	private:				
+		
 	};
 
 }

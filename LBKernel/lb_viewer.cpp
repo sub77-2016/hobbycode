@@ -18,7 +18,7 @@
 
 #include <iostream>
 
-#include <mgl/mgl.h>
+#include <mgl/mgl_fltk.h>
 
 #include "lb_viewer.h"
 
@@ -44,7 +44,7 @@ namespace TINY_LB
 		delete mUy;
 	}
 
-	void LBViewer::setData(LBD2Q9* lb, real* phi, real* rho, real* U)
+	void LBViewer::setData(LBD2Q9Mix* lb, real* phi, real* rho, real* U)
 	{
 		phi_ = phi;
 		rho_ = rho;

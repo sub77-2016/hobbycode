@@ -44,15 +44,14 @@ namespace TINY_LB
 	#define pos_v(x,y) (NDIM*pos_r((x),(y)))	
        	#define ff(v,x,y,l) (*(f_[(v)]+pos_f((x),(y))+(l)))
 
-	class LBD2Q9 : public LBGKCore
+	class LBD2Q9 : public LBCore
 	{
 	public:
 		LBD2Q9(int nx, int ny, int nr);
 		virtual ~LBD2Q9(){}
 
-		virtual void step(void){}
-
 	protected:
+		virtual void collide(void) = 0;
 		virtual void stream(void);
 
 	private:
@@ -60,7 +59,6 @@ namespace TINY_LB
 		void wrap_1_3(void);
 		void wrap_corners(void);
 
-		inline void scpy(real* dst, const real* src, int rank, int stride, int count);
 		inline real* address(real* pdfs[8], const int info[3]);
 		inline void colscpy(real* pdfs[8], const int info[][6], int ncols);
 		inline void rowscpy(real* pdfs[8], const int info[][6], int nrows);

@@ -25,8 +25,6 @@
 #include "lb_viewer.h"
 #endif
 
-#include <mgl/mgl_zb.h>
-
 #include "lb_d2q9_mix.h"
 
 namespace TINY_LB
@@ -35,7 +33,6 @@ namespace TINY_LB
 	#define fourOnine (4./9.)
 	#define oneOnine  (1./9.)
 	#define oneOthirtysix (1./36.)
-
 
 	LBD2Q9Mix::LBD2Q9Mix(int nx, int ny)
 	: LBD2Q9(nx,ny,2)
@@ -419,7 +416,7 @@ namespace TINY_LB
 		//initGUI(argc, argv);
 
 		LBViewer lbv(NX,NY);
-		lbv.setData((LBD2Q9 *)this,phi,rho,U);
+		lbv.setData(this,phi,rho,U);
 
 		/*
       		for (int n = 0; n < 1500; n++) 

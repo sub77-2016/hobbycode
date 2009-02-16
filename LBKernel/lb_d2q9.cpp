@@ -23,9 +23,8 @@
 namespace TINY_LB 
 {
 
-
 	LBD2Q9::LBD2Q9(int nx, int ny, int nr)
-	: LBGKCore(2, 9, nr)
+	: LBCore(2, 9, nr)
 	{
 		nSize[0] = nx;
 		nSize[1] = ny;
@@ -37,19 +36,6 @@ namespace TINY_LB
 	LBD2Q9::address(real* pdfs[8], const int info[3])
 	{
 		return pdfs[info[2]] + pos_f(info[0], info[1]);
-	}
-
-	void 
-	LBD2Q9::scpy(real* dst, const real* src,
-	             int rank, int stride, int count)
-	{
-		rank *= sizeof(real);
-		for (; count > 0; --count) 
-		{
-			memcpy(dst, src, rank);
-			dst += stride;
-			src += stride;
-		}
 	}
 
 	inline void
