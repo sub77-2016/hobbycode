@@ -32,128 +32,75 @@ namespace TINY_LB
 		initCoreBuffer();
 	}
 
-	inline real*
-	LBD2Q9::address(real* pdfs[8], const int info[3])
+	void LBD2Q9::stream(void)
 	{
-		return pdfs[info[2]] + pos_f(info[0], info[1]);
+		const int xxsize = (NX*NY - 1)*SIZE_R;
+		const int yysize = (NX*NY - NX)*SIZE_R;
+		const int xysize = (NX*NY - NX - 1)*SIZE_R;
+
+		real corner0[RANK], corner2[RANK], corner4[RANK], corner5[RANK], corner6[RANK], corner7[RANK];
+		real fout_1[RANK*NX], fout_3[RANK*NX];
+
+		// Copy rim rows
+		memcpy(&fout_1[0], f_[1] + pos_f(0, NY-1), NX*SIZE_R);
+		memcpy(&fout_3[0], f_[3] + pos_f(0, 0), NX*SIZE_R);
+		
+		// Copy corners 
+		memcpy(&corner0[0], f_[0] + pos_f(NX-1, NY-1), SIZE_R);
+		memcpy(&corner2[0], f_[2] + pos_f(0, 0), SIZE_R);
+		memcpy(&corner4[0], f_[4] + pos_f(NX-1, NY-1), SIZE_R);
+  		memcpy(&corner5[0], f_[5] + pos_f(0, NY-1), SIZE_R);
+  		memcpy(&corner6[0], f_[6] + pos_f(0, 0), SIZE_R);
+  		memcpy(&corner7[0], f_[7] + pos_f(NX-1, 0), SIZE_R);
+
+		// Stream inner PDFs
+		memmove(f_[0] + pos_f(1, 0),
+		       	f_[0] + pos_f(0, 0), xxsize);
+
+		memmove(f_[1] + pos_f(0, 1),
+			f_[1] + pos_f(0, 0), yysize);
+
+		memmove(f_[2] + pos_f(0, 0),
+		       	f_[2] + pos_f(1, 0), xxsize);
+
+		memmove(f_[3] + pos_f(0, 0),
+			f_[3] + pos_f(0, 1), yysize);
+
+		memmove(f_[4] + pos_f(1, 1),
+		  	f_[4] + pos_f(0, 0), xysize);
+
+		memmove(f_[5] + pos_f(1, 0),
+		       	f_[5] + pos_f(0, 1), xysize);
+
+		memmove(f_[6] + pos_f(0, 0),
+		       	f_[6] + pos_f(1, 1), xysize);
+
+		memmove(f_[7] + pos_f(1, 0),
+		       	f_[7] + pos_f(0, 1), xysize);
+
+		// Wrap rim columns
+		scpy(f_[0] + pos_f(0, 0),
+		     f_[0] + pos_f(0, 1), RANK, NX, NY-1);
+
+		smove(f_[2] + pos_f(NX-1, 1),
+		      f_[2] + pos_f(NX-1, 0), RANK, NX, NY-1);
+
+		// Wrap rim rows
+		memcpy(f_[1] + pos_f(0, 0),
+		       &fout_1[0], NX*SIZE_R);
+
+		memcpy(f_[3] + pos_f(0, NY-1),
+		       &fout_3[0], NX*SIZE_R);
+
+		// Wrap coners
+		memcpy(f_[0] + pos_f(0, NY-1), &corner0[0], SIZE_R);
+  		memcpy(f_[2] + pos_f(NX-1, 0), &corner2[0], SIZE_R);
+		memcpy(f_[4] + pos_f(0, 0), &corner4[0], SIZE_R);
+  		memcpy(f_[5] + pos_f(NX-1, 0), &corner5[0], SIZE_R);
+  		memcpy(f_[6] + pos_f(NX-1, NY-1), &corner6[0], SIZE_R);
+  		memcpy(f_[7] + pos_f(0, NY-1), &corner7[0], SIZE_R);
+
 	}
-
-	inline void
-	LBD2Q9::colscpy(real* pdfs[8],
-		        const int info[][6], int ncols)
-	{
-		const int colsize = RANK*NY*sizeof(real);
-		for (; ncols > 0; --ncols, ++info)
-			memcpy(address(pdfs, *info),
-		       	       address(pdfs, *info + 3),
-		       	       colsize);
-	}
-
-	inline void
-	LBD2Q9::rowscpy(real* pdfs[8],
-		  const int info[][6], int nrows)
-	{
-		for (; nrows > 0; --nrows, ++info)
-			scpy(address(pdfs, *info),
-			     address(pdfs, *info + 3),
-			     RANK, RANK*(NY + 2), NX);
-	}
-
-	inline void
-	LBD2Q9::wrap_0_2(void)
-	{
-		const int todo[6][6] = {
-			{NX, 1, 2, 0, 1, 2},
-			{NX, 2, 5, 0, 2, 5},
-			{NX, 0, 6, 0, 0, 6},
-			{1, 1, 0, NX + 1, 1, 0},
-			{1, 2, 4, NX + 1, 2, 4},
-			{1, 0, 7, NX + 1, 0, 7}
-		};
-
-		colscpy(f_, todo, 6);
-	}
-
-	inline void
-	LBD2Q9::wrap_1_3(void)
-	{
-		const int todo[6][6] = {
-			{0, NY, 6, 0, 0, 6},
-			{1, NY, 3, 1, 0, 3},
-			{2, NY, 7, 2, 0, 7},
-			{0, 1, 5, 0, NY + 1, 5},
-			{1, 1, 1, 1, NY + 1, 1},
-			{2, 1, 4, 2, NY + 1, 4}
-		};
-
-		rowscpy(f_, todo, 6);
-	}
-
-	inline void
-	LBD2Q9::wrap_corners(void)
-	{
-		const int todo[4][6] = {
-			{NX, NY, 6, 0, 0, 6},
-			{NX, 1, 5, 0, NY + 1, 5},
-			{1, NY, 7, NX + 1, 0, 7},
-			{1, 1, 4, NX + 1, NY + 1, 4}
-		};
-
-		for (int i = 0; i < 4; ++i)
-			memcpy(f_[todo[i][2]] + pos_f(todo[i][0], todo[i][1]),
-		       	       f_[todo[i][5]] + pos_f(todo[i][3], todo[i][4]),
-		       	       RANK*sizeof(real));
-	}
-
-	void LBD2Q9::stream_inner_f(void)
-	{
-		const int colsize = RANK*NY*sizeof(real);
-
-		// Stream inner
-		for (int x = 1; x <= NX; ++x) 
-		{
-			memcpy(f_[0] + pos_f(NX - x + 2, 1),
-		       	       f_[0] + pos_f(NX - x + 1, 1),
-		       		colsize);
-
-			memmove(f_[1] + pos_f(x, 2),
-				f_[1] + pos_f(x, 1),
-		        	colsize);
-
-			memcpy(f_[2] + pos_f(x - 1, 1),
-		       	       f_[2] + pos_f(x, 1),
-		       		colsize);
-
-			memmove(f_[3] + pos_f(x, 0),
-				f_[3] + pos_f(x, 1),
-		        	colsize);
-
-			memcpy(f_[4] + pos_f(NX - x + 2, 2),
-		  	       f_[4] + pos_f(NX - x + 1, 1),
-		       	       colsize);
-
-			memcpy(f_[5] + pos_f(x - 1, 2),
-		       	       f_[5] + pos_f(x, 1),
-		       	       colsize);
-
-			memcpy(f_[6] + pos_f(x - 1, 0),
-		       	       f_[6] + pos_f(x, 1),
-		       	       colsize);
-
-			memcpy(f_[7] + pos_f(NX - x + 2, 0),
-		       	       f_[7] + pos_f(NX - x + 1, 1),
-		       	       colsize);
-		}
-	}
-
-	void LBD2Q9::wrap_f(void)
-	{
-		// Periodic wrapping
-		wrap_0_2();
-		wrap_1_3();
-		wrap_corners();
-	}
-
 
 }
 

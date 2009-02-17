@@ -55,15 +55,15 @@ namespace TINY_LB
 
 	void LBViewer::makeData(void)
 	{
-		for (int x = 1; x < mXdim+1; x++)
+		for (int x = 0; x < mXdim; x++)
 		{
-    			for (int y = 1; y < mYdim+1; y++)
+    			for (int y = 0; y < mYdim; y++)
 			{
-				mPhi->a[(x-1)+mXdim*(y-1)] = phi_[(mYdim+2)*x+y];
-				mRho->a[(x-1)+mXdim*(y-1)] = rho_[(mYdim+2)*x+y];
+				mPhi->a[(x)+mXdim*(y)] = phi_[(x)+mXdim*(y)];
+				mRho->a[(x)+mXdim*(y)] = rho_[(x)+mXdim*(y)];
 
-				mUx->a[(x-1)+mXdim*(y-1)] = U_[2*((mYdim+2)*x+y)+0];
-				mUy->a[(x-1)+mXdim*(y-1)] = U_[2*((mYdim+2)*x+y)+1];
+				mUx->a[(x)+mXdim*(y)] = U_[2*((x)+mXdim*(y))+0];
+				mUy->a[(x)+mXdim*(y)] = U_[2*((x)+mXdim*(y))+1];
 
 				#ifdef TEST_LB
 				std::cout <<"makeData: (phi, rho)[" <<x <<"][" <<y <<"] = (" <<phi_[(mYdim+2)*x+y]<<", " <<rho_[(mYdim+2)*x+y]<<")" << std::endl;
