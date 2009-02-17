@@ -105,7 +105,7 @@ namespace TINY_LB
 		       	       RANK*sizeof(real));
 	}
 
-	void LBD2Q9::stream(void)
+	void LBD2Q9::stream_inner_f(void)
 	{
 		const int colsize = RANK*NY*sizeof(real);
 
@@ -144,7 +144,10 @@ namespace TINY_LB
 		       	       f_[7] + pos_f(NX - x + 1, 1),
 		       	       colsize);
 		}
+	}
 
+	void LBD2Q9::wrap_f(void)
+	{
 		// Periodic wrapping
 		wrap_0_2();
 		wrap_1_3();

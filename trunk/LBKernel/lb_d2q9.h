@@ -42,7 +42,6 @@ namespace TINY_LB
 	#define pos_r(x,y) ((NY + 2)*(x) + (y))
 	#define pos_f(x,y) (RANK*pos_r((x),(y)))
 	#define pos_v(x,y) (NDIM*pos_r((x),(y)))	
-       	#define ff(v,x,y,l) (*(f_[(v)]+pos_f((x),(y))+(l)))
 
 	class LBD2Q9 : public LBCore
 	{
@@ -51,8 +50,9 @@ namespace TINY_LB
 		virtual ~LBD2Q9(){}
 
 	protected:
-		virtual void collide(void){}
-		virtual void stream(void);
+		virtual void collide(void) = 0;
+		void stream_inner_f(void);
+		void wrap_f(void);
 
 	private:
 		void wrap_0_2(void);
