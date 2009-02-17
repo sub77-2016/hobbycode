@@ -62,4 +62,10 @@ namespace TINY_LB
 		#endif
 	}
 
+	void LBCore::stream(void)
+	{
+		stream_inner_f();
+		wrap_f();
+	}
+
 }

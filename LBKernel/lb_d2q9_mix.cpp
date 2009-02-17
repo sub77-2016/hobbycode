@@ -184,7 +184,7 @@ namespace TINY_LB
 
 	void LBD2Q9Mix::f_eq(const int x, const int y, real f_out[9][2])
 	{
-		const real a = -0.1f, b = 0.1f, kappa = 0.09f; 
+		const real a = -0.1f, b = 0.1f, kappa = 0.1f; 
 
     		//Periodic BC. 
     		const int xm  = (x+(NX+2)-1)%(NX+2);
@@ -300,11 +300,7 @@ namespace TINY_LB
       				const real phi_ = f_[0][m]+f_[1][m]+f_[2][m]+f_[3][m]+f_[4][m]+f_[5][m]+f_[6][m]+f_[7][m]+f_[8][m];
       
       				const real rho_ = f_[0][n]+f_[1][n]+f_[2][n]+f_[3][n]+f_[4][n]+f_[5][n]+f_[6][n]+f_[7][n]+f_[8][n];
-
-      				//const real phi_ = ff(0,x,y,0)+ff(1,x,y,0)+ff(2,x,y,0)+ff(3,x,y,0)+ff(4,x,y,0)+ff(5,x,y,0)+ff(6,x,y,0)+ff(7,x,y,0)+ff(8,x,y,0);
-				//const real rho_ = ff(0,x,y,1)+ff(1,x,y,1)+ff(2,x,y,1)+ff(3,x,y,1)+ff(4,x,y,1)+ff(5,x,y,1)+ff(6,x,y,1)+ff(7,x,y,1)+ff(8,x,y,1);
-
-      				const real ux_  = (f_[0][n]-f_[2][n]+f_[4][n]-f_[6][n]+f_[7][n]-f_[5][n])/rho_;
+     				const real ux_  = (f_[0][n]-f_[2][n]+f_[4][n]-f_[6][n]+f_[7][n]-f_[5][n])/rho_;
       				const real uy_  = (f_[1][n]-f_[3][n]+f_[4][n]-f_[6][n]+f_[5][n]-f_[7][n])/rho_;
 
 				//const real rho_ = 1., ux_ = 0., uy_ = 0.;
