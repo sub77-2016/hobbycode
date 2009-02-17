@@ -37,6 +37,7 @@ namespace TINY_LB
 		virtual void writeOutput(void);
 
 	#ifdef USE_GRAPHICS
+		virtual void run(void);
 		virtual int run(int argc, char **argv);
 	#endif
 
@@ -47,7 +48,7 @@ namespace TINY_LB
 		virtual void f_eq(const int x, const int y, real f_out[9][2]);
 
 	#ifdef USE_GRAPHICS
-		virtual void initGUI(int argc, char **argv);
+		virtual void initGUI(void);
 		virtual void reinit(void);
 
 		// GUI stuff
@@ -64,7 +65,7 @@ namespace TINY_LB
 		real C[9][9];
 	
 	private:
-
+		void (*load_func)(int, int, real*, real&, real&);
 
 	};
 

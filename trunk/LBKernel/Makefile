@@ -1,8 +1,8 @@
 # Set the appropriate options to match your platform
 
 CXX = g++
-CXXFLAGS = -O2 -Wall -I./ `fltk-config --cxxflags` -DUSE_GRAPHICS -DTEST_LB_
-LIBS = `fltk-config --ldflags` -lmgl
+CXXFLAGS = -O2 -Wall -I ./ -I $(HOME)/include `fltk-config --cxxflags` -DUSE_GRAPHICS -DTEST_LB_
+LIBS = -L $(HOME)/lib `fltk-config --ldflags` -lmgl -lgraph
 
 APP_NAME = lbmain 
 
