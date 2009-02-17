@@ -53,7 +53,7 @@ typedef unsigned long int uint32;
 #define NVEL nVel
 #define NNODE nNode
 
-#define RANK_SIZE RANK*sizeof(real)
+#define SIZE_R RANK*sizeof(real)
 
 #ifndef Error
 #define Error(Str) Fatal_error(Str)
@@ -77,6 +77,38 @@ typedef unsigned long int uint32;
 		}
 	}
 
+	inline void smove(real* dst, const real* src,
+	             int rank, int stride, int count)
+	{
+		real *_dst = dst;
+		const real *_src = src;
+
+		stride *= rank;
+		rank *= sizeof(real);
+
+		if (_src < _dst)
+		{
+			_dst += count;
+			_src += count;
+
+			for (; count > 0; --count) 
+			{
+				memcpy(dst, src, rank);
+				dst -= stride;
+				src -= stride;
+			}
+		}
+		else if (_dst < _src)
+		{
+			for (; count > 0; --count) 
+			{
+				memcpy(dst, src, rank);
+				dst += stride;
+				src += stride;
+			}
+		}
+	}
+
 	class LBCore
 	{
 	public:
@@ -84,10 +116,8 @@ typedef unsigned long int uint32;
 		virtual ~LBCore(void);		
 
 	protected:
+		virtual void stream(void) = 0;
 		void initCoreBuffer(void);
-		void stream(void);
-		virtual void stream_inner_f(void) = 0;
-		virtual void wrap_f(void) = 0;
 
 		int nVel;
 		int nDim;

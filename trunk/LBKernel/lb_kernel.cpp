@@ -49,7 +49,7 @@ namespace TINY_LB
 		nNode = 1;
 
 		for (int i = 0; i < nDim; i++)
-			nNode *= nSize[i] + 2;
+			nNode *= nSize[i];
 
 		f_ = new real*[nVel];
 
@@ -62,10 +62,5 @@ namespace TINY_LB
 		#endif
 	}
 
-	void LBCore::stream(void)
-	{
-		stream_inner_f();
-		wrap_f();
-	}
 
 }

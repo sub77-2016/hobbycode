@@ -129,9 +129,9 @@ namespace TINY_LB
 		std::cout <<"at init ..." <<std::endl;
 		#endif
 
-		for (int x = 0; x < NX+2; x++)
+		for (int x = 0; x < NX; x++)
 		{
-			for (int y = 0; y < NY+2; y++)
+			for (int y = 0; y < NY; y++)
 			{
 				real rho0[2], ux, uy;
 
@@ -187,12 +187,18 @@ namespace TINY_LB
 		const real a = -0.1f, b = 0.1f, kappa = 0.1f; 
 
     		//Periodic BC. 
-    		const int xm  = (x+(NX+2)-1)%(NX+2);
-    		const int xp  = (x+1)%(NX+2);
-		const int ym  = (y+(NY+2)-1)%(NY+2);
-      		const int yp  = (y+1)%(NY+2);		
+    		const int xm  = (x+NX-1)%NX;
+    		const int xp  = (x+1)%NX;
+		const int ym  = (y+NY-1)%(NY);
+      		const int yp  = (y+1)%(NY);		
 		
-		const int O = pos_r(x,y); //Here
+		const real p = phi[pos_r(x,y)];
+
+		const real r = rho[pos_r(x,y)];
+		const real UX = U[pos_v(x,y) + 0];
+		const real UY = U[pos_v(x,y) + 1];
+
+		const int O = pos_r(x, y); //Here
 
 		const int N = pos_r(x,yp); //North	
 		const int S = pos_r(x,ym); //South
@@ -203,12 +209,6 @@ namespace TINY_LB
 		const int NW = pos_r(xm,yp); //North-West
 		const int SW = pos_r(xm,ym); //South-West
 		const int SE = pos_r(xp,ym); //South-East
-
-		const real p = phi[O];
-		const real r = rho[O];
-
-		const real UX = U[O + 0];
-		const real UY = U[O + 1];
 
       		//Compute Gradient
       		//const real dxp = (1./2.)*(phi[xp][y]-phi[xm][y]);
@@ -290,9 +290,9 @@ namespace TINY_LB
 	void LBD2Q9Mix::computeMoments(void)
 	{
  
-		for (int x = 0; x < NX+2; x++)
+		for (int x = 0; x < NX; x++)
 		{
-			for (int y = 0; y < NY+2; y++)
+			for (int y = 0; y < NY; y++)
 			{
 				const int m = pos_f(x,y);
 				const int n = pos_f(x,y) + 1;
@@ -323,9 +323,9 @@ namespace TINY_LB
 	{
 		real Feq[9][2];	
 		
-		for (int x = 0; x < NX+2; x++)
+		for (int x = 0; x < NX; x++)
 		{
-			for (int y = 0; y < NY+2; y++)
+			for (int y = 0; y < NY; y++)
 			{
 				f_eq(x, y, Feq);
 
@@ -348,9 +348,9 @@ namespace TINY_LB
 	{
 		real Feq[9][2];	
 		
-		for (int x = 0; x < NX+2; x++)
+		for (int x = 0; x < NX; x++)
 		{
-			for (int y = 0; y < NY+2; y++)
+			for (int y = 0; y < NY; y++)
 			{
 				f_eq(x, y, Feq);
 
@@ -487,14 +487,14 @@ namespace TINY_LB
 		mglData dat(NX,NY);
 		//dat.Modify("0.6*sin(2*pi*x)*sin(3*pi*y) + 0.4*cos(3*pi*(x*y))");
 
-  		for (int x = 1; x < NX+1; x++)
+  		for (int x = 0; x < NX; x++)
 		{
-    			for (int y = 1; y < NY+1; y++)
+    			for (int y = 0; y < NY; y++)
 			{
       				pfile << phi[pos_r(x,y)] << "\t";
 				rfile << rho[pos_r(x,y)] << "\t";
 
-				dat.a[(x-1)+NX*(y-1)] = phi[pos_r(x,y)];
+				dat.a[pos_r(x,y)] = phi[pos_r(x,y)];
 
 				#ifdef TEST_LB
 				std::cout <<"writeOutput: (phi, rho)[" <<x <<"][" <<y <<"] = (" <<phi[pos_r(x,y)] <<", " <<rho[pos_r(x,y)] <<")" << std::endl;

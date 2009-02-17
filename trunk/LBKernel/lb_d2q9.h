@@ -21,25 +21,25 @@
 
 #include "lb_kernel.h"
 
-		/*
-		. D2Q9 Lattice Boltzmann Model
-		.
-		.           y
-		.           |
-		.           1
-		.         5 | 4
-		.          \|/
-		.        2--8--0--x
-		.          /|\
-		.         6 | 7
-		.           3
-		*/ 
+/*
+. D2Q9 Lattice Boltzmann Model
+.
+.           y
+.           |
+.           1
+.         5 | 4
+.          \|/
+.        2--8--0--x
+.          /|\
+.         6 | 7
+.           3
+*/ 
 
 namespace TINY_LB 
 {
 
 	
-	#define pos_r(x,y) ((NY + 2)*(x) + (y))
+	#define pos_r(x,y) ((NX)*(y) + (x))
 	#define pos_f(x,y) (RANK*pos_r((x),(y)))
 	#define pos_v(x,y) (NDIM*pos_r((x),(y)))	
 
@@ -51,17 +51,8 @@ namespace TINY_LB
 
 	protected:
 		virtual void collide(void) = 0;
-		void stream_inner_f(void);
-		void wrap_f(void);
+		virtual void stream(void);
 
-	private:
-		void wrap_0_2(void);
-		void wrap_1_3(void);
-		void wrap_corners(void);
-
-		real* address(real* pdfs[8], const int info[3]);
-		void colscpy(real* pdfs[8], const int info[][6], int ncols);
-		void rowscpy(real* pdfs[8], const int info[][6], int nrows);
 	};
 
 
