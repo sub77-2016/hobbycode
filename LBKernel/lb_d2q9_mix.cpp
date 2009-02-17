@@ -23,6 +23,9 @@
 #ifdef USE_GRAPHICS
 #include <mgl/mgl_fltk.h>
 #include "lb_viewer.h"
+extern "C" {
+#include <mygraph.h>
+}
 #endif
 
 #include "lb_d2q9_mix.h"
@@ -129,6 +132,8 @@ namespace TINY_LB
 		std::cout <<"at init ..." <<std::endl;
 		#endif
 
+		load_func = loader;
+
 		for (int x = 0; x < NX; x++)
 		{
 			for (int y = 0; y < NY; y++)
@@ -184,7 +189,7 @@ namespace TINY_LB
 
 	void LBD2Q9Mix::f_eq(const int x, const int y, real f_out[9][2])
 	{
-		const real a = -0.1f, b = 0.1f, kappa = 0.1f; 
+		const real a = -0.1f, b = 0.1f, kappa = 0.09f; 
 
     		//Periodic BC. 
     		const int xm  = (x+NX-1)%NX;
@@ -211,13 +216,13 @@ namespace TINY_LB
 		const int SE = pos_r(xp,ym); //South-East
 
       		//Compute Gradient
-      		//const real dxp = (1./2.)*(phi[xp][y]-phi[xm][y]);
-      		//const real dyp = (1./2.)*(phi[x][yp]-phi[x][ym]);
+      		//const real dxp = (1./2.)*(phi[E]-phi[W]);
+      		//const real dyp = (1./2.)*(phi[N]-phi[S]);
       		const real dxp = (1./12.)*( -phi[SW]+phi[NE]-phi[NW]+phi[SE] +4.*(phi[E]-phi[W]) );
       		const real dyp = (1./12.)*( -phi[SW]+phi[NE]+phi[NW]-phi[SE] +4.*(phi[N]-phi[S]) );
 
       		//Compute Lapacian
-      		//const real ddp = phi[xm][y]+phi[xp][y]+phi[x][ym]+phi[x][yp]-4.*phi[x][y];   
+      		//const real ddp = phi[S]+phi[N]+phi[E]+phi[W]-4.*phi[O];   
       		const real ddp = (1./6.)*( phi[SW]+phi[NE]+phi[NW]+phi[SE] +4.*(phi[S]+phi[N]+phi[W]+phi[E] -5.*phi[O]) );
 
       		//Compute Pressure Tensor
@@ -303,8 +308,6 @@ namespace TINY_LB
      				const real ux_  = (f_[0][n]-f_[2][n]+f_[4][n]-f_[6][n]+f_[7][n]-f_[5][n])/rho_;
       				const real uy_  = (f_[1][n]-f_[3][n]+f_[4][n]-f_[6][n]+f_[5][n]-f_[7][n])/rho_;
 
-				//const real rho_ = 1., ux_ = 0., uy_ = 0.;
-
 				// Store the macroscopic quatities
 				phi[pos_r(x,y)] = phi_;
 				rho[pos_r(x,y)] = rho_;
@@ -383,15 +386,18 @@ namespace TINY_LB
 		//multcollide();
 		stream();
 		
+		#ifdef TEST_LB
 		std::cout << "take step " << " ..." << std::endl;
+		#endif
 	}
 
 #ifdef USE_GRAPHICS
 	void LBD2Q9Mix::reinit(void)
 	{
+		init(load_func);
 	}
 
-	void LBD2Q9Mix::initGUI(int argc, char **argv)
+	void LBD2Q9Mix::initGUI(void)
 	{
 		mXdim = NX;
 		mYdim = NY;
@@ -403,32 +409,97 @@ namespace TINY_LB
 		mRepeat = 100;
 		mIterations = mRepeat;
 
+		char phi_s[] = "phi";
+		char rho_s[] = "rho";
+		char U_s[] = "U";
+		
+		DefineGraphNxN_R(phi_s, phi, &mYdim, &mXdim, NULL);		
+		DefineGraphNxN_R(rho_s, rho, &mYdim, &mXdim, NULL);  	
+		DefineGraphNxN_RxR("U_s", U, &mYdim, &mXdim, NULL);  		
+  		NewGraph();
+
+		char Title_s[] = "Binary Fluid Lattice-Boltzmann Simulation";
+
+		StartMenu(Title_s, 1); 
+
+			char Visual_s[] = "Graphics Window";
+
+  			SetActiveGraph(0);
+  			DefineGraph(contour2d_, Visual_s);
+
+  			/*StartMenu("Main Inputs",0);
+  				DefineDouble("phi_zero",&r_zero[0]);
+  				DefineDouble("rho_zero",&r_zero[1]);
+  				DefineDouble("Amp",&Amp1);
+  				DefineDouble("a",&a_);
+  				DefineDouble("b",&b_);
+  				DefineDouble("kappa",&kappa_);
+  				DefineDouble("Nu2",&Nu2);
+  				DefineDouble("tau0",&tau0);
+  				DefineDouble("tau1",&tau1);
+  				DefineDouble("UX_tp",&UX1);
+  				DefineDouble("UY_tp",&UY1);
+  			EndMenu();*/
+
+  			/*StartMenu("Secondary Inputs",0);
+  				DefineInt("xdim", &xdim);
+  				DefineInt("ydim", &ydim);
+  			EndMenu();*/
+
+  			/*StartMenu("Stability Factors",0);
+  				DefineDouble("s",&s);
+  			EndMenu();*/
+
+			char Controls_s[] = "Controls";
+			char Iterations_s[] = "Iterations";
+			char Repeat_s[] = "Repeat";
+
+  			StartMenu(Controls_s, 0);
+  				DefineInt(Iterations_s, &mIterations);
+  				DefineInt(Repeat_s, &mRepeat);
+  				//DefineInt("stabilize", &stabilize);
+  			EndMenu();
+
+  			/*StartMenu("Set Initializations",0);
+  				DefineBool("Use Set Init", &setinit);
+  				DefineInt("Num Vert Domains", &initvert);
+  			EndMenu();
+			*/ 		
+		
+			char Pause_s[] = "Puase";
+			char SingleStep_s[] = "Single Step";
+			char Quit_s[] = "Quit";
+			char Reinit_s[] = "Reset";
+
+  			DefineBool(Pause_s, &mPause);
+  			DefineBool(SingleStep_s, &mSingleStep);
+			//DefineFunction(Reinit_s, &reinit);
+  			DefineBool(Quit_s, &mQuit);
+	
+  		EndMenu();
 	}
 
 	int LBD2Q9Mix::run(int argc, char **argv)
 	{
-		//int newData = 0;
-
-		//initGUI(argc, argv);
-
 		LBViewer lbv(NX,NY);
-		lbv.setData(this,phi,rho,U);
-
-		/*
-      		for (int n = 0; n < 1500; n++) 
-		{
-			step();
-      		}*/
+		lbv.setData(this, phi, rho, U);
 
 		mglGraphFLTK gr;
 		gr.Window(argc, argv, &lbv, "Binary Fluid Lattice-Boltzmann Simulation");
 
-		//while(true) { gr.ReLoad(true); gr.Update(); gr.FMGL->redraw(); }
+		return mglFlRun();
+	}
 
-		/*while (!mQuit)
+	void LBD2Q9Mix::run(void)
+	{
+		int newData = 0;
+
+		initGUI();
+
+		while (!mQuit)
 		{
-      			//Events(newData);
-      			//DrawGraphs();
+      			Events(newData);
+      			DrawGraphs();
 
     			if ( !mPause||mSingleStep ) 
 			{
@@ -449,10 +520,7 @@ namespace TINY_LB
 			{
       				//sleep(1);
 			}
-		}*/
-
-		return mglFlRun();
-		//return 0;
+		}
 	}
 #endif
 
