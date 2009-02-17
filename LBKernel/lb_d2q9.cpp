@@ -38,12 +38,19 @@ namespace TINY_LB
 		const int yysize = (NX*NY - NX)*SIZE_R;
 		const int xysize = (NX*NY - NX - 1)*SIZE_R;
 
-		real corner0[RANK], corner2[RANK], corner4[RANK], corner5[RANK], corner6[RANK], corner7[RANK];
-		real fout_1[RANK*NX], fout_3[RANK*NX];
+		real corner0[RANK], corner2[RANK], corner4[RANK], corner5[RANK], corner6[RANK], corner7[RANK],
+		fout_1[RANK*NX], fout_3[RANK*NX], 
+		fout_4[RANK*(NX-1)], fout_5[RANK*(NX-1)], fout_6[RANK*(NX-1)], fout_7[RANK*(NX-1)];
 
 		// Copy rim rows
 		memcpy(&fout_1[0], f_[1] + pos_f(0, NY-1), NX*SIZE_R);
 		memcpy(&fout_3[0], f_[3] + pos_f(0, 0), NX*SIZE_R);
+
+		memcpy(&fout_4[0], f_[4] + pos_f(0, NY-1), (NX-1)*SIZE_R);
+		memcpy(&fout_5[0], f_[5] + pos_f(1, NY-1), (NX-1)*SIZE_R);
+
+		memcpy(&fout_6[0], f_[6] + pos_f(1, 0), (NX-1)*SIZE_R);
+		memcpy(&fout_7[0], f_[7] + pos_f(0, 0), (NX-1)*SIZE_R);
 		
 		// Copy corners 
 		memcpy(&corner0[0], f_[0] + pos_f(NX-1, NY-1), SIZE_R);
@@ -79,18 +86,18 @@ namespace TINY_LB
 		       	f_[7] + pos_f(0, 1), xysize);
 
 		// Wrap rim columns
-		scpy(f_[0] + pos_f(0, 0),
-		     f_[0] + pos_f(0, 1), RANK, NX, NY-1);
-
-		smove(f_[2] + pos_f(NX-1, 1),
-		      f_[2] + pos_f(NX-1, 0), RANK, NX, NY-1);
+		 scpy(f_[0] + pos_f(0, 0), f_[0] + pos_f(0, 1), RANK, NX, NY-1);
+		smove(f_[2] + pos_f(NX-1, 1), f_[2] + pos_f(NX-1, 0), RANK, NX, NY-1);
 
 		// Wrap rim rows
-		memcpy(f_[1] + pos_f(0, 0),
-		       &fout_1[0], NX*SIZE_R);
+		memcpy(f_[1] + pos_f(0, 0), &fout_1[0], NX*SIZE_R);
+		memcpy(f_[3] + pos_f(0, NY-1), &fout_3[0], NX*SIZE_R);
 
-		memcpy(f_[3] + pos_f(0, NY-1),
-		       &fout_3[0], NX*SIZE_R);
+		memcpy(f_[4] + pos_f(1, 0), &fout_4[0], (NX-1)*SIZE_R);
+		memcpy(f_[5] + pos_f(0, 0), &fout_5[0], (NX-1)*SIZE_R);
+
+		memcpy(f_[6] + pos_f(0, NY-1), &fout_6[0], (NX-1)*SIZE_R);
+		memcpy(f_[7] + pos_f(1, NY-1), &fout_7[0], (NX-1)*SIZE_R);
 
 		// Wrap coners
 		memcpy(f_[0] + pos_f(0, NY-1), &corner0[0], SIZE_R);
