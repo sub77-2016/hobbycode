@@ -547,6 +547,7 @@ namespace TINY_LB
 		pfile.open("data_phi.txt");
 		rfile.open("data_rho.txt");
 
+	#ifdef USE_GRAPHICS
 		mglGraphZB gr;
 		gr.Alpha(false);
 		gr.Light(true);
@@ -554,6 +555,7 @@ namespace TINY_LB
 	
 		mglData dat(NX,NY);
 		//dat.Modify("0.6*sin(2*pi*x)*sin(3*pi*y) + 0.4*cos(3*pi*(x*y))");
+	#endif
 
   		for (int x = 0; x < NX; x++)
 		{
@@ -562,7 +564,9 @@ namespace TINY_LB
       				pfile << phi[pos_r(x,y)] << "\t";
 				rfile << rho[pos_r(x,y)] << "\t";
 
+			#ifdef USE_GRAPHICS
 				dat.a[pos_r(x,y)] = phi[pos_r(x,y)];
+			#endif
 
 				#ifdef TEST_LB
 				std::cout <<"writeOutput: (phi, rho)[" <<x <<"][" <<y <<"] = (" <<phi[pos_r(x,y)] <<", " <<rho[pos_r(x,y)] <<")" << std::endl;
@@ -573,14 +577,17 @@ namespace TINY_LB
 			rfile << std::endl;
   		}
 
+		pfile.close();
+		rfile.close();
+
+	#ifdef USE_GRAPHICS
 		gr.Box();
 		gr.Dens(dat);
 		gr.Colorbar();
 
 		gr.WritePNG("image.png");
+	#endif
 
-		pfile.close();
-		rfile.close();
 	}
 
 }

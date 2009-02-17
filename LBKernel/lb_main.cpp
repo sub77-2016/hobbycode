@@ -43,12 +43,38 @@ main(int argc, char* argv[])
 	LBD2Q9Mix lb(nx,ny);
 	lb.init(loader);
 
+	std::cout <<std::endl;
+	std::cout <<"Binary Fluid Lattice Bolztmann Simualation" <<std::endl;
+	std::cout <<"by Waipot Ngamsaad (waipotn@yahoo.com)" <<std::endl; 
+	std::cout <<std::endl;
+
 #ifdef USE_GRAPHICS
-	//lb.run();
-	return lb.run(argc, argv);
-#else
-	lb.run(1000);
+	int c;
+	std::cout <<"Select Graphics GUI" <<std::endl;
+	std::cout <<"[1] Wagner" <<std::endl;
+	std::cout <<"[2] MathGL" <<std::endl;
+	std::cout <<": "; 
+	std::cin >> c;
+
+	if (c == 1)
+	{
+		lb.run();
+		
+		return 0;
+	}
+	else if (c == 2)
+	{
+		return lb.run(argc, argv);
+	}
+	else
+	{
+		std::cout <<"GUI not found, Command-line mode will be used!" <<std::endl; 
+	}
 #endif
+	int nt;
+	std::cout <<"Enter number of iterations: "; 
+	std::cin >> nt;
+	lb.run(nt);
 
 	return 0;
 }
