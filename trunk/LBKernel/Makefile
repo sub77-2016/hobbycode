@@ -6,7 +6,7 @@ LIBS = -L $(HOME)/lib `fltk-config --ldflags` -lmgl -lgraph
 
 APP_NAME = lbmain 
 
-OBJS = lb_main.o lb_d2q9_mix.o lb_d2q9.o lb_kernel.o lb_viewer.o mgl_fltk.o 
+OBJS = lb_main.o lb_d2q9_mix.o lb_d2q9.o lb_d1q3.o lb_kernel.o lb_viewer.o mgl_fltk.o 
 
 $(APP_NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(APP_NAME) $(OBJS) $(LIBS) 
