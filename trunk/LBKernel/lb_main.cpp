@@ -31,17 +31,14 @@ void loader(int x, int y, real* rho0, real& ux, real& uy)
       	rho0[0] = 0. + 0.0001*(1.*rand()/RANDMAX -0.5);
       	rho0[1] = 1. + 0.0001*(1.*rand()/RANDMAX -0.5);
 
-	//rho0[0] = (real)1.0;
-	//rho0[1] = (real)1.0;
-
-	ux = (real)0.01;
+	ux = (real)0.0;
 	uy = (real)0.0;
 }
 
 int 
 main(int argc, char* argv[])
 {
-	const int nx = 129, ny = 129;
+	const int nx = 129, ny = 65;
 
 	LBD2Q9Mix lb(nx,ny);
 	lb.init(loader);

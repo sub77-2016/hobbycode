@@ -85,7 +85,6 @@ typedef unsigned long int uint32;
 
 		stride *= rank;
 		rank *= sizeof(real);
-
 		if (_src < _dst)
 		{
 			_dst += count;
@@ -93,18 +92,18 @@ typedef unsigned long int uint32;
 
 			for (; count > 0; --count) 
 			{
-				memcpy(dst, src, rank);
-				dst -= stride;
-				src -= stride;
+				memcpy(_dst, _src, rank);
+				_dst -= stride;
+				_src -= stride;
 			}
 		}
 		else if (_dst < _src)
 		{
 			for (; count > 0; --count) 
 			{
-				memcpy(dst, src, rank);
-				dst += stride;
-				src += stride;
+				memcpy(_dst, _src, rank);
+				_dst += stride;
+				_src += stride;
 			}
 		}
 	}
