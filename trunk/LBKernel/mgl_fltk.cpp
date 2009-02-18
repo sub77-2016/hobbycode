@@ -514,11 +514,11 @@ void sprev_cb(Fl_Widget*, void* v)	{	((mglGraphFLTK*)v)->PrevFrame();	}
 void time_cb(void *v)
 {
 	mglGraphFLTK *e = (mglGraphFLTK*)v;
-	//if(!e->sshow)	return;
+	if(!e->sshow)	return;
 	//e->NextFrame();
 	e->ReLoad(true);
 	//Fl::repeat_timeout(e->Delay, time_cb, v);
-	Fl::add_timeout(0.04, time_cb, v);
+	Fl::repeat_timeout(0.04, time_cb, v);
 }
 //-----------------------------------------------------------------------------
 void mglGraphFLTK::Animation()
@@ -530,7 +530,7 @@ void mglGraphFLTK::Animation()
 	if(m && sshow)	m->set();
 	if(m && !sshow)	m->clear();
 
-	//if(sshow)	
+	if(sshow)	
 	//Fl::add_timeout(Delay, time_cb, this);
 	Fl::add_timeout(0.04, time_cb, this);
 }
