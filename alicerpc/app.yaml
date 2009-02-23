@@ -4,11 +4,11 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: /.*
+- url: .*
   script: alicerpc.py
 
-- url: /xmlrpc/(.*\.(brn))
-  static_files: /\1
-  upload: /(.*\.(brn))
+- url: /standard.brn
+  static_files: /standard.brn
+  upload: /standard.brn
 
 

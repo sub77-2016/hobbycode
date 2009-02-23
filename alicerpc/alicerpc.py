@@ -8,7 +8,7 @@ import xmlrpclib
 from xmlrpcserver import XmlRpcServer
 
 import aiml
-import os.path
+import os
                                                                                
 
 class Application:
@@ -32,7 +32,8 @@ class Application:
 class XMLRpcHandler(webapp.RequestHandler):                                    
     rpcserver = None
                                 
-    def __init__(self):         
+    def __init__(self): 
+        webapp.RequestHandler.__init__(self)        
         self.rpcserver = XmlRpcServer()                                        
         alice = Application()                                                    
         self.rpcserver.register_class('alice',alice)                               
