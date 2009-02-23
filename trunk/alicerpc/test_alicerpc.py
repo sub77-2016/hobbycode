@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import xmlrpclib
-s = xmlrpclib.Server('http://alicerpc.appspot.com/xmlrpc/')
+s = xmlrpclib.Server('http://alicerpc.appspot.com:8080/xmlrpc/')
 print s.alice.getInfo()
 print s.alice.version()
 
