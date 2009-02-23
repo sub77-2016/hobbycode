@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+
+import cgi
+
+from google.appengine.api import users
 from google.appengine.ext import webapp                                        
 from google.appengine.ext.webapp.util import run_wsgi_app                      
 import logging                                                                 
@@ -28,6 +33,24 @@ class Application:
     def getInfo(self,meta):                                                    
         return 'AIML - RPC'
 
+class MainPage(webapp.RequestHandler):
+  def get(self):
+    self.response.out.write("""
+      <html>
+        <body>
+          <form action="/sign" method="post">
+            <div><textarea name="content" rows="3" cols="60"></textarea></div>
+            <div><input type="submit" value="Sign Guestbook"></div>
+          </form>
+        </body>
+      </html>""")
+
+
+class Guestbook(webapp.RequestHandler):
+  def post(self):
+    self.response.out.write('<html><body>You wrote:<pre>')
+    self.response.out.write(cgi.escape(self.request.get('content')))
+    self.response.out.write('</pre></body></html>')
         
 class XMLRpcHandler(webapp.RequestHandler):                                    
     rpcserver = None
@@ -57,7 +80,9 @@ class XMLRpcHandler(webapp.RequestHandler):
         self.response.out.write(rstr)
                                                                                                            
 def main():
-  application = webapp.WSGIApplication([('/xmlrpc/', XMLRpcHandler)],
+  application = webapp.WSGIApplication([('/xmlrpc/', XMLRpcHandler),
+                                        ('/', MainPage),
+                                        ('/sign', Guestbook)],
                                      debug=True)   
   run_wsgi_app(application)                                                    
         
