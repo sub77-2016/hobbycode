@@ -17,7 +17,7 @@ import aiml
 import os
                                                                                
 
-class Application:
+class AliceBot:
     def __init__(self):
         self.aiml_k = aiml.Kernel()
         if os.path.isfile("standard.brn"):
@@ -34,7 +34,13 @@ class Application:
     def getInfo(self,meta):                                                    
         return 'AIML - RPC'
 
-class MainPage(webapp.RequestHandler):
+# The Main Global Chatterbot
+alice = AliceBot()
+
+class ChatHandler(webapp.RequestHandler):
+  def __init__(self):
+    pass
+
   def get(self):
     #greetings_query = Greeting.all().order('-date')
     #greetings = greetings_query.fetch(10)
@@ -60,12 +66,6 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write(cgi.escape(self.request.get('content')))
     self.response.out.write('</pre></body></html>')
 
-
-class Guestbook(webapp.RequestHandler):
-  def post(self):
-    self.response.out.write('<html><body>You wrote:<pre>')
-    self.response.out.write(cgi.escape(self.request.get('content')))
-    self.response.out.write('</pre></body></html>')
         
 class XMLRpcHandler(webapp.RequestHandler):                                    
     rpcserver = None
@@ -73,7 +73,7 @@ class XMLRpcHandler(webapp.RequestHandler):
     def __init__(self): 
         webapp.RequestHandler.__init__(self)        
         self.rpcserver = XmlRpcServer()                                        
-        alice = Application()                                                    
+        #alice = AliceBot()                                                    
         self.rpcserver.register_class('alice',alice)                               
                                                                                
     def post(self):
@@ -93,14 +93,15 @@ class XMLRpcHandler(webapp.RequestHandler):
         self.response.headers['Content-type'] = 'text/xml'                     
         self.response.headers['Content-length'] = "%d"%len(rstr)               
         self.response.out.write(rstr)
-                                                                                                           
+ 
+                                                                                                          
 def main():
-  application = webapp.WSGIApplication([('/xmlrpc/', XMLRpcHandler),
-                                        ('/', MainPage),
-                                        ('/sign', Guestbook)],
-                                     debug=True)   
+  application = webapp.WSGIApplication([('/', ChatHandler),
+                                        ('/xmlrpc/', XMLRpcHandler)],
+                                        debug=True)   
   run_wsgi_app(application)                                                    
-        
+ 
+       
 if __name__ == "__main__":
     main()
 
