@@ -4,7 +4,8 @@ import cgi
 
 from google.appengine.api import users
 from google.appengine.ext import webapp                                        
-from google.appengine.ext.webapp.util import run_wsgi_app                      
+from google.appengine.ext.webapp.util import run_wsgi_app           
+from google.appengine.ext.webapp import template           
 import logging                                                                 
      
 from StringIO import StringIO                                                  
@@ -35,15 +36,29 @@ class Application:
 
 class MainPage(webapp.RequestHandler):
   def get(self):
-    self.response.out.write("""
-      <html>
-        <body>
-          <form action="/sign" method="post">
-            <div><textarea name="content" rows="3" cols="60"></textarea></div>
-            <div><input type="submit" value="Sign Guestbook"></div>
-          </form>
-        </body>
-      </html>""")
+    #greetings_query = Greeting.all().order('-date')
+    #greetings = greetings_query.fetch(10)
+
+    if users.get_current_user():
+      url = users.create_logout_url(self.request.uri)
+      url_linktext = 'Logout'
+    else:
+      url = users.create_login_url(self.request.uri)
+      url_linktext = 'Login'
+
+    template_values = {
+      'greetings': 'greetings',
+      'url': url,
+      'url_linktext': url_linktext,
+      }
+
+    path = os.path.join(os.path.dirname(__file__), 'index.html')
+    self.response.out.write(template.render(path, template_values))
+
+  def post(self):
+    self.response.out.write('<html><body>You wrote (main):<pre>')
+    self.response.out.write(cgi.escape(self.request.get('content')))
+    self.response.out.write('</pre></body></html>')
 
 
 class Guestbook(webapp.RequestHandler):
