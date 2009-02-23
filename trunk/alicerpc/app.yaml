@@ -5,7 +5,7 @@ api_version: 1
 
 handlers:
 - url: .*
-  script: alicerpc.py
+  script: alicemain.py
 
 - url: /standard.brn
   static_files: /standard.brn
