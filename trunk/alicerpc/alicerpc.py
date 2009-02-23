@@ -16,14 +16,17 @@ class Application:
         self.aiml_k = aiml.Kernel()
         if os.path.isfile("standard.brn"):
 	  self.aiml_k.verbose(False)
-          self.aiml_k.bootstrap(brainFile = "standard.brn")            
+          self.aiml_k.bootstrap(brainFile = "standard.brn")    
+	  self.aiml_k.verbose(True)        
        
     def respond(self,meta,inputrpc):                                                    
-        #print(self.aiml_k.respond(input=inputrpc))
+        return self.aiml_k.respond(input=inputrpc)
+
+    def version(self,meta):                                                    
 	return self.aiml_k.version()
  
-    def getName(self,meta):                                                    
-        return 'example - rpc'
+    def getInfo(self,meta):                                                    
+        return 'AIML - RPC'
 
         
 class XMLRpcHandler(webapp.RequestHandler):                                    
@@ -31,8 +34,8 @@ class XMLRpcHandler(webapp.RequestHandler):
                                 
     def __init__(self):         
         self.rpcserver = XmlRpcServer()                                        
-        app = Application()                                                    
-        self.rpcserver.register_class('app',app)                               
+        alice = Application()                                                    
+        self.rpcserver.register_class('alice',alice)                               
                                                                                
     def post(self):
         request = StringIO(self.request.body)
