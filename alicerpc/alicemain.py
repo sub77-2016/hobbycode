@@ -23,7 +23,7 @@ class AliceBot:
         if os.path.isfile("standard.brn"):
 	  self.aiml_k.verbose(False)
           self.aiml_k.bootstrap(brainFile = "standard.brn")    
-	  self.aiml_k.verbose(True)        
+	  self.aiml_k.verbose(True) 
        
     def respond(self,meta,inputrpc):                                                    
         return self.aiml_k.respond(input=inputrpc)
@@ -52,9 +52,12 @@ class ChatHandler(webapp.RequestHandler):
       url = users.create_login_url(self.request.uri)
       url_linktext = 'Login'
 
+    user_input = cgi.escape(self.request.get('input'))
+    bot_output = alice.aiml_k.respond(user_input)
+
     template_values = {
-      'greetings': 'greetings',
-      'url': url,
+      'user_input': user_input,
+      'bot_output': bot_output,
       'url_linktext': url_linktext,
       }
 
@@ -62,11 +65,26 @@ class ChatHandler(webapp.RequestHandler):
     self.response.out.write(template.render(path, template_values))
 
   def post(self):
-    self.response.out.write('<html><body>You wrote (main):<pre>')
-    self.response.out.write(cgi.escape(self.request.get('content')))
-    self.response.out.write('</pre></body></html>')
+    if users.get_current_user():
+      url = users.create_logout_url(self.request.uri)
+      url_linktext = 'Logout'
+    else:
+      url = users.create_login_url(self.request.uri)
+      url_linktext = 'Login'
 
-        
+    input = cgi.escape(self.request.get('input'))
+    output = alice.aiml_k.respond(input)
+
+    template_values = {
+      'input': 'input',
+      'output': 'output',
+      'url_linktext': 'url_linktext',
+      }
+
+    path = os.path.join(os.path.dirname(__file__), 'index.html')
+    #self.response.out.write(template.render(path, template_values)
+
+
 class XMLRpcHandler(webapp.RequestHandler):                                    
     rpcserver = None
                                 
