@@ -1,21 +1,43 @@
 <html>
-  <body>
-    {% for greeting in greetings %}
-      {% if greeting.author %}
-        <b>{{ greeting.author.nickname }}</b> wrote:
-      {% else %}
-       An anonymous person wrote:
-      {% endif %}
-      <blockquote>{{ greeting.content|escape }}</blockquote>
-    {% endfor %}
-
-    <form action="/" method="post">
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Sign Guestbook"></div>
-    </form>
-
-    <a href="{{ url }}">{{ url_linktext }}</a>
-
+  <head>
+  <title>Alice Bot</title>
+  <style type="text/css">
+<!--
+  body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+  }
+  #output {
+	width:336px;
+	height:141px;
+  }
+  -->
+  </style>
+  </head>
+  <body OnLoad="document.chatform.input.focus();">
+   <div id="outer">
+	<div id="output">
+  	   <p>
+           {% if bot_output %}
+               <h4 class="usertext">>>> {{ user_input }}</h4>
+               <h4 class="bottext">{{ bot_output }}</h4>
+           {% else %}
+               &nbsp;
+           {% endif %}
+           </p>
+	</div>
+	<form name="chatform" id="chatform" action="/" method="get">
+          <p>
+  	    <input type="text" name="input" id="input" size="35" />
+  	    <input type="submit" name="submit" value="SAY" />
+          </p>
+	</form>
+        <a href="{{ url }}">{{ url_linktext }}</a>
+   </div>
   </body>
 </html>
 
