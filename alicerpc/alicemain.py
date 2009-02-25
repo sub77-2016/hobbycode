@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 
 import cgi
+import logging  
+import os
 
 from google.appengine.api import users
 from google.appengine.ext import webapp                                        
 from google.appengine.ext.webapp.util import run_wsgi_app           
-from google.appengine.ext.webapp import template           
-import logging                                                                 
+from google.appengine.ext.webapp import template       
+from google.appengine.runtime import DeadlineExceededError                                                           
      
 from StringIO import StringIO                                                  
 import traceback
@@ -14,7 +16,6 @@ import xmlrpclib
 from xmlrpcserver import XmlRpcServer
 
 import aiml
-import os
                                                                                
 
 class AliceBot:
@@ -22,8 +23,13 @@ class AliceBot:
         self.aiml_k = aiml.Kernel()
         if os.path.isfile("standard.brn"):
 	  self.aiml_k.verbose(False)
-          self.aiml_k.bootstrap(brainFile = "standard.brn")    
-	  self.aiml_k.verbose(True) 
+          try:
+            self.aiml_k.bootstrap(brainFile = "standard.brn")    
+          except DeadlineExceededError:
+            self.response.clear()
+            self.response.set_status(500)
+            self.response.out.write("bootstrap() could not be completed in time...") 
+	  #self.aiml_k.verbose(True) 
        
     def respond(self,meta,inputrpc):                                                    
         return self.aiml_k.respond(input=inputrpc)
