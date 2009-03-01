@@ -2,7 +2,7 @@
 # by Dr. Richard Wallace at the following site:
 # http://www.alicebot.org/documentation/matching.html
 
-import marshal
+import pickle
 import pprint
 import re
 import string
@@ -48,9 +48,9 @@ class PatternMgr:
 		"""
 		try:
 			outFile = open(filename, "wb")
-			marshal.dump(self._templateCount, outFile)
-			marshal.dump(self._botName, outFile)
-			marshal.dump(self._root, outFile)
+			pickle.dump(self._templateCount, outFile)
+			pickle.dump(self._botName, outFile)
+			pickle.dump(self._root, outFile)
 			outFile.close()
 		except Exception, e:
 			print "Error saving PatternMgr to file %s:" % filename
@@ -60,9 +60,9 @@ class PatternMgr:
 		"""Restore a previously save()d collection of patterns."""
 		try:
 			inFile = open(filename, "rb")
-			self._templateCount = marshal.load(inFile)
-			self._botName = marshal.load(inFile)
-			self._root = marshal.load(inFile)
+			self._templateCount = pickle.load(inFile)
+			self._botName = pickle.load(inFile)
+			self._root = pickle.load(inFile)
 			inFile.close()
 		except Exception, e:
 			print "Error restoring PatternMgr from file %s:" % filename
