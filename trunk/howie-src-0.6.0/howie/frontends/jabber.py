@@ -61,8 +61,9 @@ class FrontEndJabber(frontend.IFrontEnd):
         except KeyError: self._maxdelay = 0
 
         # Connect to server through SSL
-        self._con = xmpp.Client(server, port=5223, debug=None)
-        if not self._con.connect(server=(server,5223)):
+        self._con = xmpp.Client(server, port=5222, debug=None)
+        #if not self._con.connect(server=(server,5222), proxy={'host':'202.28.187.181','port':8080,'user':'g4837776','password':'love045duck'}, secure=1):
+        if not self._con.connect(server=(server,5222)):
             sys.stderr.write("JABBER: Couldn't connect to %s: network error\n" % server)
             return
 

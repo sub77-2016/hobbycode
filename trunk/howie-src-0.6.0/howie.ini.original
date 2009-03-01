@@ -64,19 +64,19 @@ channel =
 
 # The Jabber chat interface
 [jabber]
-active = yes
-username = duckybot
-password = 97HSHN
-server = jabber.com
+active = no
+username = 
+password = 
+server = jabber.org
 resource = default
-nickname = DuckyBot
+nickname = Howie
 
 # The MSN Messenger interface
 [msn]
 active = no
-screenname = duckybot@live.com
-password = 97HSHN
-displayname = DuckyBot
+screenname = 
+password = 
+displayname = Howie
 
 # The local TTY (text console) interface.
 [tty]
