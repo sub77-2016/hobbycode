@@ -23,7 +23,8 @@ configDefaults = {
     "jabber.active":        "no",
     "jabber.username":      "",
     "jabber.password":      "",
-    "jabber.server":        "jabber.org",
+    "jabber.server":        "jabber.com",
+    "jabber.port":          "5222",
     "jabber.resource":      "default",
     "jabber.nickname":      "Howie",
 }
@@ -46,6 +47,9 @@ class FrontEndJabber(frontend.IFrontEnd):
             server = config['jabber.server']
             if server == "": raise KeyError
         except KeyError: server = raw_input("Jabber Server: ")
+	try:
+	    port = int(config['irc.port'])
+	except: port = raw_input("Port: ")
         try:
             resource = config['jabber.resource']
             if resource == "": raise KeyError
@@ -61,8 +65,8 @@ class FrontEndJabber(frontend.IFrontEnd):
         except KeyError: self._maxdelay = 0
 
         # Connect to server through SSL
-        self._con = xmpp.Client(server, port=5222, debug=None)
-        if not self._con.connect(server=(server,5222)):
+        self._con = xmpp.Client(server, port, debug=None)
+        if not self._con.connect(server=(server,port)):
             sys.stderr.write("JABBER: Couldn't connect to %s: network error\n" % server)
             return
 
