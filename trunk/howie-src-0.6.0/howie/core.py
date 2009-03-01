@@ -1,4 +1,4 @@
-import marshal
+import pickle
 import os
 import os.path
 import pyclbr
@@ -63,9 +63,13 @@ def init():
 	
 	# set up the kernel
 	kernel.verbose(verbose)
-	kernel.setPredicate("secure", "yes") # secure the global session
-	kernel.bootstrap(learnFiles="std-startup.xml", commands="bootstrap")
-	kernel.setPredicate("secure", "no") # and unsecure it.
+	if os.path.isfile("standard.brn"):
+	  kernel.bootstrap(brainFile = "standard.brn") 
+	else:
+	  kernel.setPredicate("secure", "yes") # secure the global session
+	  kernel.bootstrap(learnFiles="std-startup.xml", commands="bootstrap")
+	  kernel.setPredicate("secure", "no") # and unsecure it.
+          kernel.saveBrain("standard.brn")
 
 	# Initialize bot predicates
 	for k,v in config.items():
@@ -87,7 +91,7 @@ def init():
 				# containing all the predicates for this session).
 				if verbose: print "Loading session:", root
 				f = file("%s/%s" %(sessionsDir, session), "rb")
-				d = marshal.load(f)
+				d = pickle.load(f)
 				f.close()
 				# update the predicate values in the Kernel.
 				for k,v in d.items():
@@ -160,7 +164,7 @@ def submit(input, session):
 			sessionsdir = config["general.sessionsdir"]
 			if not os.path.isdir(sessionsdir): os.mkdir(sessionsdir)
 			sessionfile = file("%s/%s.ses" % (sessionsdir, session), "wb")
-			marshal.dump(kernel.getSessionData(session), sessionfile)
+			pickle.dump(kernel.getSessionData(session), sessionfile)
 			sessionfile.close()
 	except KeyError:
 		pass
