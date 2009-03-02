@@ -14,7 +14,7 @@ class PatternMgr:
 	_STAR       = 1
 	_TEMPLATE   = 2
 	_THAT       = 3
-	_TOPIC		= 4
+	_TOPIC	    = 4
 	_BOT_NAME   = 5
 	
 	def __init__(self):

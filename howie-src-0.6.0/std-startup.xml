@@ -10,12 +10,24 @@ Interpreter Version Info: <version/>
      additional content, or add additional learn statements to
      the existing category that you are using for loading AIML
      content -->
-<srai>LOAD AIML B</srai>
+<srai>LOAD AIML AAA</srai>
 
 <!-- read the user's custom AIML file as well! -->
 <learn>my-howie.aiml</learn>
 
 </think>
+</template>
+</category>
+
+<!-- This category works with the Annotated A.L.I.C.E. AIML (AAA) fileset -->
+<category>
+<pattern>LOAD AIML AAA</pattern>
+<template>
+<!-- only allow this operation if the "secure" predicate is set to yes. -->
+<condition name="secure">
+    <li value="yes"><learn>aaa/*.aiml</learn></li>
+    <li>You are not permitted to load AIML sets.</li>
+</condition>
 </template>
 </category>
 
