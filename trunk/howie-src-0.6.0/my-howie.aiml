@@ -7,4 +7,10 @@
 <template>Howie says: <system mode="sync">scripts\echo.py <star/></system>, a'ite?</template>
 </category>
 
+<!-- unicode support for THAI -->
+<category>
+<pattern>สวัสดี</pattern>
+<template>Hey, you speak Thai! สวัสดี</template>
+</category>
+
 </aiml>
