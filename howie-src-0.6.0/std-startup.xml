@@ -10,7 +10,7 @@ Interpreter Version Info: <version/>
      additional content, or add additional learn statements to
      the existing category that you are using for loading AIML
      content -->
-<srai>LOAD AIML AAA</srai>
+<srai>LOAD AIML B</srai>
 
 <!-- read the user's custom AIML file as well! -->
 <learn>my-howie.aiml</learn>
