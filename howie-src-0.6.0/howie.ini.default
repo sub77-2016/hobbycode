@@ -79,10 +79,6 @@ screenname =
 password = 
 displayname = Howie
 
-# The local TTY (text console) interface.
-[tty]
-active = yes
-
 # The XML-RPC interface.
 # This interface serves a single function: respond(input,sessionID).
 # The "input" parameter contains the user's input, and the "user" parameter
@@ -91,3 +87,7 @@ active = yes
 [xmlrpc]
 active = no
 port = 8000
+
+# The local TTY (text console) interface.
+[tty]
+active = yes
