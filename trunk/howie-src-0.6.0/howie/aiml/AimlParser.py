@@ -416,11 +416,11 @@ class AimlHandler(ContentHandler):
 	_validationInfo101 = {
 		"bot":      	( ["name"], [], False ),
 		"condition":    ( [], ["name", "value"], True ), # can only contain <li> elements
-		"date":         ( [], [], False ),
+		"date":         ( [], ["format"], False ),
 		"formal":       ( [], [], True ),
 		"gender":       ( [], [], True ),
 		"get":          ( ["name"], [], False ),
-		"gossip":		( [], [], True ),
+		"gossip":	( [], [], True ),
 		"id":           ( [], [], False ),
 		"input":        ( [], ["index"], False ),
 		"javascript":	( [], [], True ),
@@ -437,13 +437,20 @@ class AimlHandler(ContentHandler):
 		"srai":         ( [], [], True ),
 		"star":         ( [], ["index"], False ),
 		"system":       ( [], [], True ),
-		"template":		( [], [], True ), # needs to be in the list because it can be a parent.
+		"template":	( [], [], True ), # needs to be in the list because it can be a parent.
 		"that":         ( [], ["index"], False ),
 		"thatstar":     ( [], ["index"], False ),
 		"think":        ( [], [], True ),
 		"topicstar":    ( [], ["index"], False ),
 		"uppercase":    ( [], [], True ),
 		"version":      ( [], [], False ),
+		"html:br":      ( [], [], False ),
+		"html:em":      ( [], [], True ),
+		"html:b":      	( [], [], True ),
+		"html:p":      ( [], [], True ),
+		"html:a":       ( ["href"], ["target"], True ),
+		"html:img":     ( ["src"], [], True ),
+		"html:ul":      ( [], [], True ),
 	}
 
 	def _validateElemStart(self, name, attr, version):
@@ -502,7 +509,7 @@ class AimlHandler(ContentHandler):
 		# required attributes are dependent upon which attributes are
 		# present in the <condition> parent.
 		elif name=="li":
-			if not (parent=="random" or nonBlockStyleCondition):
+			if not (parent=="random" or parent=="html:ul" or nonBlockStyleCondition):
 				raise AimlParserError, ("Unexpected <li> element contained by <%s> element "%parent)+self._location()
 			if nonBlockStyleCondition:
 				if parentAttr.has_key("name"):
