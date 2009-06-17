@@ -1,4 +1,5 @@
-//2D Ising simulation of Lipid Membrane
+//2D Ising simulation of Lipid Membrane for Non-conserved Order Parameter
+//It is based on standard spin-flip algorithm
 //Waipot Ngamsaad (waipotn@yahoo.com)
 //June 17, 2009
 

@@ -1,4 +1,5 @@
-//2D Ising simulation of Lipid Membrane
+//2D Ising simulation of Lipid Membrane for Coserved Order Parameter
+//It is based on Kawasaki spin-exchange algorithm
 //Waipot Ngamsaad (waipotn@yahoo.com)
 //June 17, 2009
 
@@ -67,22 +68,46 @@ int done = 0;
 int automate = 0;
 
 //Global Variables
-double rho[XMAX][YMAX];
-double phi[YMAX][YMAX];
+//Spin arrays
+double phi[XMAX][YMAX]; 
 double psi[XMAX][YMAX];
+double rho[XMAX][YMAX]; //Total Spin
+
+//Spin Coordinate List
+int nup1=0, nup2=0, ndown1=0, ndown2=0;
+int spinup1[NMAX][2];
+int spindown1[NMAX][2];
+int spinup2[NMAX][2];
+int spindown2[NMAX][2];
+
+//Boltzmann Weigth
 double w[17][3];
 
-void GenerateSpin(double spin[XMAX][YMAX], double ratio) {
+void GenerateSpin(double spin[XMAX][YMAX], int spinup[NMAX][2], int spindown[NMAX][2], int *nup, int *ndown, double ratio) {
   int i,j;
+  *nup = 0;
+  *ndown = 0;
   //Set initial spin configuration
   for (i=0;i<xdim;i++) {
     for (j=0;j<ydim;j++) {
-      spin[i][j] = rnd()<=ratio ? +1: -1;
+      spin[i][j] = rnd() <= ratio ? +1: -1;
+      //Separate into Spin-type Lists
+      if (spin[i][j] == 1){
+	spinup[*nup][0] = i;
+	spinup[*nup][1] = j;
+	*nup += 1;
+      }
+      else{
+	spindown[*ndown][0] = i;
+	spindown[*ndown][1] = j;
+	*ndown += 1;
+      }
     }
   }
+  printf("nup = %d, ndown = %d\n", *nup, *ndown);
 }
 
-void TotalSpin(double spin1[XMAX][YMAX],double spin2[XMAX][YMAX],double tot[XMAX][YMAX])
+void TotalSpin(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], double tot[XMAX][YMAX])
 {
   int i,j;
   //Total spin
@@ -107,7 +132,7 @@ void Init(void) {
   char name[256];
   FILE *out;
 
-  //Zero arrays
+  //Zero arrays (if neccessary)
   for (i=0;i<xdim;i++) {
     for (j=0;j<ydim;j++) {  
       phi[i][j] = 0; 
@@ -117,10 +142,10 @@ void Init(void) {
   }
 
   //init spin
-  GenerateSpin(phi,r_zero[0]);
-  GenerateSpin(psi,r_zero[1]);
+  GenerateSpin(phi, spinup1, spindown1, &nup1, &ndown1, r_zero[0]);
+  GenerateSpin(psi, spinup2, spindown2, &nup2, &ndown2, r_zero[1]);
 
-  TotalSpin(phi,psi,rho);
+  TotalSpin(phi, psi, rho);
 
   //Compute Boltzmann probability ratios
   ComputeBoltzmannProb();
@@ -151,48 +176,70 @@ void OnTempChange()
     }
 }
 
-int DeltaE(double spin[XMAX][YMAX],int x,int y,int L)
-{
-  int xm,xp,ym,yp,dE,left,right,up,down,center;
-
-  //Periodic BC.
-  xm  = (x+xdim-1)%xdim;
-  xp  = (x+1)%xdim;
-  ym  = (y+ydim-1)%ydim;
-  yp  = (y+1)%ydim;
-
-  center = spin[x][y];
-  left = spin[xm][y];
-  right = spin[xp][y];
-  up = spin[x][yp];
-  down = spin[x][ym];
-    
-  dE = 2*center*(left + right + up + down);
-
-  return dE;
-}
-
-void Exchange(double spin1[XMAX][YMAX],double spin2[XMAX][YMAX],int N,int L,double *E,double *M,double *accept)
+void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMAX][2], int spindown[NMAX][2], int nup, int ndown, int N, int L, double *E, double *M, double *accept)
 {
   /*one Monte Carlo step per spin  */
-  int ispin,x,y,dE,choose=0;
+  int spini, Ei, Ef, dE, sum_mn, sum_pq;
+  double prob;
   //Check If Temperature
   OnTempChange();
-  for (ispin=1; ispin <= N; ispin++)
+  for (spini = 1; spini <= N; spini++)
     {
-      /* random x and y coordinates for trial spin  */
-      x = L*rnd();
-      y = L*rnd();
-      dE = DeltaE(spin1,x,y,L);      
-      choose = lambda != 0 ? 1+(int)(spin1[x][y]*spin2[x][y]): 1+(int)spin1[x][y];
-      if (rnd() <= w[dE+8][choose])
-	{
-	  spin1[x][y] = -spin1[x][y];
-	  *accept = *accept + 1;
-	  *M = *M + 2*spin1[x][y];
-	  *E = *E + dE;
+      /* randomly choose coordinates for trial spin  */
+      const int iup = nup*rnd();
+      const int idown = ndown*rnd(); //printf("iup = %d, idown = %d\n", iup, idown);
+      const int m = spinup[iup][0];
+      const int n = spinup[iup][1];
+      const int p = spindown[idown][0];
+      const int q = spindown[idown][1];
+      /* search their neibors with periodic b.c. */
+      const int mm  = (m+xdim-1)%xdim;
+      const int mp  = (m+1)%xdim;
+      const int nm  = (n+ydim-1)%ydim;
+      const int np  = (n+1)%ydim;
+      const int pm  = (p+xdim-1)%xdim;
+      const int pp  = (p+1)%xdim;
+      const int qm  = (q+ydim-1)%ydim;
+      const int qp  = (q+1)%ydim;
+      printf("(m,n)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", m,n,mm,n,mp,n,m,nm,m,np);
+      printf("(p,q)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", p,q,pm,q,pp,q,p,qm,p,qp);
+      /* calculate energy before exchange */
+      sum_mn = spin1[mm][n]+spin1[mp][n]+spin1[m][nm]+spin1[m][np];
+      sum_pq = spin1[pm][q]+spin1[pp][q]+spin1[p][qm]+spin1[p][qp];   
+      Ei = -spin1[m][n]*sum_mn -spin1[p][q]*sum_pq;   
+      /* Exchange spin */ 
+      spin1[m][n] = -spin1[m][n]; 
+      spin1[p][q] = -spin1[p][q];  
+      /* Calculate energy after exchange */   
+      Ef = -spin1[m][n]*sum_mn -spin1[p][q]*sum_pq;              
+      dE = Ef - Ei; //printf("dE = %d\n", dE);
+
+      // Exchange or Not ?  
+      if ( dE <= 0 ){
+	spindown[idown][0] = m;
+	spindown[idown][1] = n;
+	spinup[iup][0] = p;
+	spinup[iup][1] = q;
+      }
+      else{
+	prob = exp(-(double)dE/T); //printf("rnd() = %f, prob = %f\n", rnd(), prob);
+	if ( rnd() >= prob){ // accept exchange
+	  spindown[idown][0] = m;
+	  spindown[idown][1] = n;
+	  spinup[iup][0] = p;
+	  spinup[iup][1] = q;
+	  //printf("Accepted\n");
 	}
-    }
+	else{ //decline exchange
+	  spin1[m][n] = -spin1[m][n]; // restore at this site
+	  spin1[p][q] = -spin1[p][q]; 
+	  //For testing ONLY
+	  //spin1[m][n] = 0;
+	  //spin1[p][q] = 0;
+	  //printf("Rejected\n");
+	}
+      } // End exchange  
+    }// End sweep
 }
 
 void WriteFile() {
@@ -255,11 +302,11 @@ void check_unstable(void) {
 void iteration1(void){
   double E=0,M=0,accept=0;
 
-  Exchange(phi,psi,NMAX,LMAX,&E,&M,&accept);
-  Exchange(psi,phi,NMAX,LMAX,&E,&M,&accept);
-  TotalSpin(phi,psi,rho);
+  Exchange(phi, psi, spinup1, spindown1, nup1, ndown1, NMAX, LMAX, &E, &M, &accept);
+  Exchange(psi, phi, spinup2, spindown2, nup2, ndown2, NMAX, LMAX, &E, &M, &accept);
+  TotalSpin(phi, psi, rho);
 
-  check_unstable();
+  //check_unstable();
 }
 
 void analysis(void){
