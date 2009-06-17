@@ -16,17 +16,14 @@
 #define XMAX (LMAX)
 #define YMAX (XMAX)
 #define NMAX (XMAX*YMAX)
-#define TEMPINIT (2.2)
+#define TEMPINIT (2.0)
 #define LAMBDAINIT (0.0)
 
 //Initial simulation params
 #define XDIMINIT (100)
 #define YDIMINIT (100)
-#define BORDINIT (5)
 #define REPEATINIT (1)
-//Maximum random number size
-#define RANDMAX (2147483647)
-#define PI (3.14159265358979323846264338327)
+
 //Searchparams
 #define TMAX  (0.10)
 #define TMIN1 (0.01)
@@ -40,7 +37,7 @@
 #endif
 
 #ifndef rnd
-#define rnd(void) (double)rand()/(double)RANDMAX
+#define rnd(void) (double)rand()/(double)RAND_MAX
 #endif
 
 //Main inputs
@@ -51,8 +48,6 @@ double r_zero[2] = {0.5,0.5};
 int x_zero = 0;
 int xdim = XMAX;
 int ydim = YMAX;
-int hdim = 1000;
-int border = BORDINIT;
 
 //Stability factors
 double s = 0.1;
@@ -77,7 +72,7 @@ double phi[YMAX][YMAX];
 double psi[XMAX][YMAX];
 double w[17][3];
 
-void init_spin(double spin[XMAX][YMAX], double ratio) {
+void GenerateSpin(double spin[XMAX][YMAX], double ratio) {
   int i,j;
   //Set initial spin configuration
   for (i=0;i<xdim;i++) {
@@ -106,8 +101,8 @@ void ComputeBoltzmannProb(void){
   }
 }
 
-void init(void) {
-  int i, j, n;
+void Init(void) {
+  int i, j;
 
   char name[256];
   FILE *out;
@@ -122,8 +117,8 @@ void init(void) {
   }
 
   //init spin
-  init_spin(phi,r_zero[0]);
-  init_spin(psi,r_zero[1]);
+  GenerateSpin(phi,r_zero[0]);
+  GenerateSpin(psi,r_zero[1]);
 
   TotalSpin(phi,psi,rho);
 
@@ -177,7 +172,7 @@ int DeltaE(double spin[XMAX][YMAX],int x,int y,int L)
   return dE;
 }
 
-void Metropolis(double spin1[XMAX][YMAX],double spin2[XMAX][YMAX],int N,int L,double *E,double *M,double *accept)
+void Exchange(double spin1[XMAX][YMAX],double spin2[XMAX][YMAX],int N,int L,double *E,double *M,double *accept)
 {
   /*one Monte Carlo step per spin  */
   int ispin,x,y,dE,choose=0;
@@ -200,7 +195,7 @@ void Metropolis(double spin1[XMAX][YMAX],double spin2[XMAX][YMAX],int N,int L,do
     }
 }
 
-void write_file() {
+void WriteFile() {
   int i,j;
   char name[256];
 
@@ -260,8 +255,8 @@ void check_unstable(void) {
 void iteration1(void){
   double E=0,M=0,accept=0;
 
-  Metropolis(phi,psi,NMAX,LMAX,&E,&M,&accept);
-  Metropolis(psi,phi,NMAX,LMAX,&E,&M,&accept);
+  Exchange(phi,psi,NMAX,LMAX,&E,&M,&accept);
+  Exchange(psi,phi,NMAX,LMAX,&E,&M,&accept);
   TotalSpin(phi,psi,rho);
 
   check_unstable();
@@ -286,18 +281,6 @@ void GUI(void){
   SetActiveGraph(0);
   DefineGraph(contour2d_,"Visualize");
 
-  //StartMenu("Main Inputs",0);
-  //DefineDouble("Amp",&Amp1);
-  //DefineDouble("a",&a_);
-  //DefineDouble("b",&b_);
-  //DefineDouble("kappa",&kappa_);
-  //DefineDouble("PARAM",&PARAM);
-  //DefineDouble("tau0",&tau0);
-  //DefineDouble("tau1",&tau1);
-  //DefineDouble("UX_tp",&UX1);
-  //DefineDouble("UY_tp",&UY1);
-  //EndMenu();
-
   //StartMenu("Controls",0);
   DefineInt("iterations", &iterations);
   DefineInt("repeat", &repeat);
@@ -313,16 +296,7 @@ void GUI(void){
   DefineInt("ydim", &ydim);
   EndMenu();
 
-  //StartMenu("Stability Factors",0);
-  //DefineDouble("s",&s);
-  //EndMenu();
-
-  //StartMenu("Set Initializations",0);
-  //DefineBool("Use Set Init", &setinit);
-  //DefineInt("Num Vert Domains", &initvert);
-  //EndMenu();
-     
-  DefineFunction("reinitialize",&init);
+  DefineFunction("reinitialize",&Init);
 
   DefineBool("Pause",&Pause);
   DefineBool("Single Step",&singlestep);
@@ -359,7 +333,8 @@ int main(int argc, char *argv[]){
 
   if (!graphics) Pause = 0;
   
-  init(); 
+  Init(); 
+
    //test for speed
   BEGIN_T = time(NULL);
   for (n=0;n<10;n++)
@@ -368,7 +343,7 @@ int main(int argc, char *argv[]){
   if (!graphics)
     printf("sec/iteration: %s\n", wtime_string( (double)(time(NULL)-BEGIN_T)/10) );
 
-  init();
+  Init();
 
   //Just reset
   sprintf(name,"data-%f.txt",PARAM);
@@ -411,7 +386,7 @@ int main(int argc, char *argv[]){
 	printf("ETA: %s\n", wtime_string( (double)(time(NULL)-BEGIN_T)*(iteration_max-iterations)/iterations) );
 
       if (repeat==0) 
-	init();
+	Init();
     }
     else 
       sleep(1);
