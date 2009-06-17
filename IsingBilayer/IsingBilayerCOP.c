@@ -13,7 +13,7 @@
 #include "mygraph.h"
 
 //Maximum Simulation Size
-#define LMAX (256)
+#define LMAX (512)
 #define XMAX (LMAX)
 #define YMAX (XMAX)
 #define NMAX (XMAX*YMAX)
@@ -23,7 +23,7 @@
 //Initial simulation params
 #define XDIMINIT (100)
 #define YDIMINIT (100)
-#define REPEATINIT (1)
+#define REPEATINIT (10)
 
 //Searchparams
 #define TMAX  (0.10)
@@ -176,13 +176,13 @@ void OnTempChange()
     }
 }
 
-void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMAX][2], int spindown[NMAX][2], int nup, int ndown, int N, int L, double *E, double *M, double *accept)
+void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMAX][2], int spindown[NMAX][2], int nup, int ndown, double *E, double *M, double *accept)
 {
   int spini, Ei, Ef, dE, sum_mn, sum_pq;
   double prob;
   //Check If Temperature
   OnTempChange();
-  for (spini = 1; spini <= N; spini++)
+  for (spini = 1; spini <= NMAX; spini++)
     {
       /* randomly choose coordinates for trial spin  */
       const int iup = nup*rnd();
@@ -262,6 +262,41 @@ void WriteFile() {
   
 }
 
+void Corre(double spin[XMAX][YMAX], int iter){
+  int i, j, r, L = XMAX;
+  double temp;
+  double cor[XMAX];
+  FILE *fp1;
+  char name[256];
+  sprintf(name, "Corr.dat");
+  fp1 = fopen(name, "a+");
+  
+  fprintf(fp1, "%d\t", iter);
+  for(r=0; r<L; r++){ 
+    cor[r] = 0;
+    for(i=0; i<XMAX; i++){
+      for(j=0; j<YMAX; j++){
+	if(r==0) 
+	  cor[r] += spin[i][j]*spin[i][j];
+	if(r!=0){
+	  temp = spin[(i+r)%L][j] + spin[i][(j+r)%L];
+	  cor[r] += spin[i][j]*temp/2.0;
+	}
+	//printf("spin[%d][%d] = %d\n", i, j, spin[i][j]);
+      }
+    } 
+    //printf("Corr = %f\n", cor[r]);
+  }
+	
+  for (r=0; r<L/2; r++){
+    cor[r] = 0.5*(cor[r]+cor[L-1-r])/(L*L);
+    fprintf(fp1, "%f\t", cor[r]);
+  }
+  fprintf(fp1, "\n");
+
+  fclose(fp1);
+}
+
 const char* wtime_string(double sec)
 {
 #define BUF_SIZE 64
@@ -301,14 +336,15 @@ void check_unstable(void) {
 void iteration1(void){
   double E=0,M=0,accept=0;
 
-  Exchange(phi, psi, spinup1, spindown1, nup1, ndown1, NMAX, LMAX, &E, &M, &accept);
-  Exchange(psi, phi, spinup2, spindown2, nup2, ndown2, NMAX, LMAX, &E, &M, &accept);
+  Exchange(phi, psi, spinup1, spindown1, nup1, ndown1, &E, &M, &accept);
+  Exchange(psi, phi, spinup2, spindown2, nup2, ndown2, &E, &M, &accept);
   TotalSpin(phi, psi, rho);
 
   //check_unstable();
 }
 
 void analysis(void){
+  Corre(phi, iterations);
 }
 
 //Graphics
@@ -423,7 +459,7 @@ int main(int argc, char *argv[]){
 	iterations++;
 	iteration1();
       }
-      //analysis();
+      analysis();
       
       if (!graphics)
 	repeat *= 1.1;
