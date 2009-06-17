@@ -84,12 +84,12 @@ int spindown2[NMAX][2];
 double w[17][3];
 
 void GenerateSpin(double spin[XMAX][YMAX], int spinup[NMAX][2], int spindown[NMAX][2], int *nup, int *ndown, double ratio) {
-  int i,j;
+  int i, j;
   *nup = 0;
   *ndown = 0;
   //Set initial spin configuration
-  for (i=0;i<xdim;i++) {
-    for (j=0;j<ydim;j++) {
+  for (i=0; i<xdim; i++) {
+    for (j=0; j<ydim; j++) {
       spin[i][j] = rnd() <= ratio ? +1: -1;
       //Separate into Spin-type Lists
       if (spin[i][j] == 1){
@@ -109,10 +109,10 @@ void GenerateSpin(double spin[XMAX][YMAX], int spinup[NMAX][2], int spindown[NMA
 
 void TotalSpin(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], double tot[XMAX][YMAX])
 {
-  int i,j;
+  int i, j;
   //Total spin
-  for (i=0;i<xdim;i++) {
-    for (j=0;j<ydim;j++) {  
+  for (i=0 ;i<xdim; i++) {
+    for (j=0; j<ydim; j++) {  
       tot[i][j] = spin1[i][j] + spin2[i][j]; 
     }
   }
@@ -133,8 +133,8 @@ void Init(void) {
   FILE *out;
 
   //Zero arrays (if neccessary)
-  for (i=0;i<xdim;i++) {
-    for (j=0;j<ydim;j++) {  
+  for (i=0; i<xdim; i++) {
+    for (j=0; j<ydim; j++) {  
       phi[i][j] = 0; 
       psi[i][j] = 0; 
       rho[i][j] = 0;   
@@ -178,7 +178,6 @@ void OnTempChange()
 
 void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMAX][2], int spindown[NMAX][2], int nup, int ndown, int N, int L, double *E, double *M, double *accept)
 {
-  /*one Monte Carlo step per spin  */
   int spini, Ei, Ef, dE, sum_mn, sum_pq;
   double prob;
   //Check If Temperature
@@ -204,8 +203,8 @@ void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMA
       //printf("(m,n)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", m,n,mm,n,mp,n,m,nm,m,np);
       //printf("(p,q)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", p,q,pm,q,pp,q,p,qm,p,qp);
       /* calculate energy before exchange */
-      sum_mn = spin1[mm][n]+spin1[mp][n]+spin1[m][nm]+spin1[m][np];
-      sum_pq = spin1[pm][q]+spin1[pp][q]+spin1[p][qm]+spin1[p][qp];   
+      sum_mn = spin1[mm][n]+spin1[mp][n]+spin1[m][nm]+spin1[m][np] +lambda*spin2[m][n];
+      sum_pq = spin1[pm][q]+spin1[pp][q]+spin1[p][qm]+spin1[p][qp] +lambda*spin2[p][q];   
       Ei = -spin1[m][n]*sum_mn -spin1[p][q]*sum_pq;   
       /* Exchange spin */ 
       spin1[m][n] = -spin1[m][n]; 
@@ -226,7 +225,7 @@ void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMA
       }
       else{
 	prob = exp(-(double)dE/T); //printf("rnd() = %f, prob = %f\n", rnd(), prob);
-	if ( rnd() >= prob){ // accept exchange
+	if ( rnd() <= prob){ // accept exchange
 	  spindown[idown][0] = m;
 	  spindown[idown][1] = n;
 	  spinup[iup][0] = p;
@@ -236,9 +235,6 @@ void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMA
 	else{//decline exchange
 	  spin1[m][n] = -spin1[m][n]; //restore at this site
 	  spin1[p][q] = -spin1[p][q]; 
-	  //For testing ONLY
-	  //spin1[m][n] = 0;
-	  //spin1[p][q] = 0;
 	  //printf("Rejected\n");
 	}
       }// End exchange  
