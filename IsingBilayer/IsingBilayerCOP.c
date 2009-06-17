@@ -13,7 +13,7 @@
 #include "mygraph.h"
 
 //Maximum Simulation Size
-#define LMAX (512)
+#define LMAX (1024)
 #define XMAX (LMAX)
 #define YMAX (XMAX)
 #define NMAX (XMAX*YMAX)
@@ -157,11 +157,14 @@ void Init(void) {
   iterations = 0;
   //x_zero = 0;
 
-  sprintf(name,"data-%f.txt", PARAM);
+  sprintf(name,"data-%f.dat", PARAM);
   out = fopen(name,"w+");
+  if (out==(FILE *)NULL) Error("\n Error: Cannot open data-*.dat!!! \n");
+  fclose(out);
 
-  if (out==(FILE *)NULL) Error("\n Error: Cannot open data-*.txt!!! \n");
-
+  sprintf(name,"Corr.dat");
+  out = fopen(name,"w+");
+  if (out==(FILE *)NULL) Error("\n Error: Cannot open Corr.dat!!! \n");
   fclose(out);
 }
 
@@ -428,7 +431,7 @@ int main(int argc, char *argv[]){
   Init();
 
   //Just reset
-  sprintf(name,"data-%f.txt",PARAM);
+  sprintf(name,"data-%f.dat",PARAM);
   out = fopen(name,"w+");
 
  //Write some information
