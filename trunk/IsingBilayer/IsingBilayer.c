@@ -1,6 +1,6 @@
 //2D Ising simulation of Lipid Membrane
 //Waipot Ngamsaad (waipotn@yahoo.com)
-//16 Nov. 2008
+//June 17, 2009
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,8 +19,6 @@
 #define TEMPINIT (2.2)
 #define LAMBDAINIT (0.0)
 
-//Maximum History Size
-#define HMAX (100000)
 //Initial simulation params
 #define XDIMINIT (100)
 #define YDIMINIT (100)
@@ -73,22 +71,11 @@ int singlestep = 0;
 int done = 0;
 int automate = 0;
 
-//Set init
-int setinit = 0;
-int initvert = 10;
-
 //Global Variables
 double rho[XMAX][YMAX];
 double phi[YMAX][YMAX];
 double psi[XMAX][YMAX];
 double w[17][3];
-
-double timepassed[HMAX];
-double totalmass[HMAX];
-double domainwidth_vert[HMAX];
-double domainwidth_vert_SD[HMAX];
-double domainwidth_horiz[HMAX];
-double domainwidth_horiz_SD[HMAX];
 
 void init_spin(double spin[XMAX][YMAX], double ratio) {
   int i,j;
@@ -142,15 +129,6 @@ void init(void) {
 
   //Compute Boltzmann probability ratios
   ComputeBoltzmannProb();
-
-  for (n=0;n<HMAX;n++) {
-    timepassed[n] = 0.0;
-    totalmass[n] = 0.0;
-    domainwidth_vert[n] = 0.0;
-    domainwidth_vert_SD[n] = 0.0;
-    domainwidth_horiz[n] = 0.0;
-    domainwidth_horiz_SD[n] = 0.0;
-  }
 
   //Reset book-keeping
   if (repeat==0) 
@@ -353,8 +331,7 @@ void GUI(void){
 }
 
 // Never change if not neccesary
-int 
-main(int argc, char *argv[]){
+int main(int argc, char *argv[]){
   int n, newdata = 0;
 
   time_t BEGIN_T;
