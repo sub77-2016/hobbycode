@@ -201,8 +201,8 @@ void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMA
       const int pp  = (p+1)%xdim;
       const int qm  = (q+ydim-1)%ydim;
       const int qp  = (q+1)%ydim;
-      printf("(m,n)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", m,n,mm,n,mp,n,m,nm,m,np);
-      printf("(p,q)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", p,q,pm,q,pp,q,p,qm,p,qp);
+      //printf("(m,n)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", m,n,mm,n,mp,n,m,nm,m,np);
+      //printf("(p,q)::(%d,%d)->(%d,%d),(%d,%d),(%d,%d),(%d,%d)\n", p,q,pm,q,pp,q,p,qm,p,qp);
       /* calculate energy before exchange */
       sum_mn = spin1[mm][n]+spin1[mp][n]+spin1[m][nm]+spin1[m][np];
       sum_pq = spin1[pm][q]+spin1[pp][q]+spin1[p][qm]+spin1[p][qp];   
@@ -210,6 +210,9 @@ void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMA
       /* Exchange spin */ 
       spin1[m][n] = -spin1[m][n]; 
       spin1[p][q] = -spin1[p][q];  
+      //For testing ONLY
+      //spin1[m][n] = 0;
+      //spin1[p][q] = 0;
       /* Calculate energy after exchange */   
       Ef = -spin1[m][n]*sum_mn -spin1[p][q]*sum_pq;              
       dE = Ef - Ei; //printf("dE = %d\n", dE);
@@ -230,15 +233,15 @@ void Exchange(double spin1[XMAX][YMAX], double spin2[XMAX][YMAX], int spinup[NMA
 	  spinup[iup][1] = q;
 	  //printf("Accepted\n");
 	}
-	else{ //decline exchange
-	  spin1[m][n] = -spin1[m][n]; // restore at this site
+	else{//decline exchange
+	  spin1[m][n] = -spin1[m][n]; //restore at this site
 	  spin1[p][q] = -spin1[p][q]; 
 	  //For testing ONLY
 	  //spin1[m][n] = 0;
 	  //spin1[p][q] = 0;
 	  //printf("Rejected\n");
 	}
-      } // End exchange  
+      }// End exchange  
     }// End sweep
 }
 
