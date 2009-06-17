@@ -16,7 +16,7 @@ ylabel('C(r)');
 
 for (i=1:m)
     r = 1;
-    while(Cor(i,r)>=0) 
+    while( Cor(i,r) >=0 ) 
         r = r + 1;
     end
     R(i) = r;        
@@ -43,7 +43,9 @@ end
 %     R(i) = 1/k_;    
 % end
 
+Rth = (5)*t.^(1/3);
+
 figure();
-loglog(t,R,'--*');
+loglog(t,R,'--*',t,Rth,'-');
 xlabel('t');
 ylabel('R(t)');
