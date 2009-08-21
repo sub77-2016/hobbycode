@@ -13,7 +13,7 @@
 #include "mygraph.h"
 
 //Maximum Simulation Size
-#define LMAX (1024)
+#define LMAX (256)
 #define XMAX (LMAX)
 #define YMAX (XMAX)
 #define NMAX (XMAX*YMAX)
@@ -157,14 +157,14 @@ void Init(void) {
   iterations = 0;
   //x_zero = 0;
 
-  sprintf(name,"data-%f.dat", PARAM);
+  sprintf(name,"data-%f.txt", PARAM);
   out = fopen(name,"w+");
-  if (out==(FILE *)NULL) Error("\n Error: Cannot open data-*.dat!!! \n");
+  if (out==(FILE *)NULL) Error("\n Error: Cannot open data-*.txt!!! \n");
   fclose(out);
 
-  sprintf(name,"Corr.dat");
+  sprintf(name,"Corr.txt");
   out = fopen(name,"w+");
-  if (out==(FILE *)NULL) Error("\n Error: Cannot open Corr.dat!!! \n");
+  if (out==(FILE *)NULL) Error("\n Error: Cannot open Corr.txt!!! \n");
   fclose(out);
 }
 
@@ -250,7 +250,7 @@ void WriteFile() {
 
   FILE *out;
 
-  sprintf(name,"image/image-%f-%08i.txt",PARAM,iterations);
+  sprintf(name,"image/image-%f-%08i.txt", PARAM, iterations);
   out = fopen(name,"w+");
 
   if (out==(FILE *)NULL) Error("\n Error: Cannot open ./image!!! \n");
@@ -271,7 +271,7 @@ void Corre(double spin[XMAX][YMAX], int iter){
   double cor[XMAX];
   FILE *fp1;
   char name[256];
-  sprintf(name, "Corr.dat");
+  sprintf(name, "Corr.txt");
   fp1 = fopen(name, "a+");
   
   fprintf(fp1, "%d\t", iter);
@@ -348,6 +348,7 @@ void iteration1(void){
 
 void analysis(void){
   Corre(phi, iterations);
+  WriteFile();
 }
 
 //Graphics
@@ -361,7 +362,7 @@ void GUI(void){
   DefineGraphNxN_R("rho", &rho[0][0], &xdim, &ydim, NULL); 
   NewGraph();
 
-  StartMenu("Ising Bilayer",1);
+  StartMenu("Ising Bilayer", 1);
 
   SetActiveGraph(0);
   DefineGraph(contour2d_,"Visualize");
@@ -431,7 +432,7 @@ int main(int argc, char *argv[]){
   Init();
 
   //Just reset
-  sprintf(name,"data-%f.dat",PARAM);
+  sprintf(name,"data-%f.txt",PARAM);
   out = fopen(name,"w+");
 
  //Write some information
