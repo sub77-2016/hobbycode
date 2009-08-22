@@ -58,7 +58,7 @@ void lb_d3q19_Landau_dump(const lb_d3q19_Landau*, const char* filename);
 
 LBD3Q19LandauStats* lb_d3q19_Landau_stats(const lb_d3q19_Landau*);
 
-// remove this
+/*// remove this*/
 double lb_d3q19_Landau_mass(const lb_d3q19_Landau*);
 
 LB_END_DECLS

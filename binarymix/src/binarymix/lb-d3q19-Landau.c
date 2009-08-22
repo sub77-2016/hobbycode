@@ -789,7 +789,7 @@ lb_d3q19_Landau_set_equilibrium(lb_d3q19_Landau* self)
 
 	lb_assert(self != NULL);
 
-	//lb_d3q19_Landau_setup_rho_guards(self);
+	/*//lb_d3q19_Landau_setup_rho_guards(self);*/
 	lb_d3q19_setup_rho_guards(&self->d3q19, self->rho);
 
 	N = RANK*(NY + 2)*(NX + 2)*(NZ + 2);
@@ -810,13 +810,13 @@ lb_d3q19_Landau_advance(lb_d3q19_Landau* self)
 
 	lb_d3q19_stream_pdfs(&self->d3q19, self->pdfs);
 
-	//lb_d3q19_Landau_average_pdfs(self);
+	/*//lb_d3q19_Landau_average_pdfs(self);*/
 	lb_d3q19_average_pdfs(&self->d3q19, 
 				self->pdfs,
 				self->rho,
 				self->u);
 
-	//lb_d3q19_Landau_setup_rho_guards(self);
+	/*//lb_d3q19_Landau_setup_rho_guards(self);*/
 	lb_d3q19_setup_rho_guards(&self->d3q19, self->rho);
 
 	lb_d3q19_Landau_collide_pdfs(self, 

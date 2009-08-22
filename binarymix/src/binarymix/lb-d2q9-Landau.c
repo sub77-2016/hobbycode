@@ -208,7 +208,7 @@ lb_d2q9_Landau_collide_node_pdfs(lb_d2q9_Landau* self, int o,
 	for (n = 0; n < 9; ++n)
 		eq[n] = lb_new(double, 2);
 
-	//printf("drx0=%f, dry0=%f, drx1=%f, dry1=%f, ddr0=%f, ddr1=%f\n", *drx0,*dry0,*drx1,*dry1,*ddr0,*ddr1);
+	/*//printf("drx0=%f, dry0=%f, drx1=%f, dry1=%f, ddr0=%f, ddr1=%f\n", *drx0,*dry0,*drx1,*dry1,*ddr0,*ddr1);*/
 
 	lb_d2q9_Landau_equilibrium(&self->parameters,
 				  self->rho + o, self->u + o,
@@ -627,11 +627,11 @@ lb_d2q9_Landau_advance(lb_d2q9_Landau* self)
 
 	lb_d2q9_stream_pdfs(&self->d2q9, self->pdfs);
 
-	//lb_d2q9_Landau_average_pdfs(self);
+	/*//lb_d2q9_Landau_average_pdfs(self);*/
 	lb_d2q9_average_pdfs(&self->d2q9, 
 				self->pdfs, self->rho, self->u);
 
-	//lb_d2q9_Landau_setup_rho_guards(self);
+	/*//lb_d2q9_Landau_setup_rho_guards(self);*/
 	lb_d2q9_setup_rho_guards(&self->d2q9, self->rho);
 
 	lb_d2q9_Landau_collide_pdfs(self, 
