@@ -1,7 +1,7 @@
 dofile("utils.lua")
 
-NX = 128
-NY = 128
+NX = 2048
+NY = 2048
 
 PARAMETERS = lb.LBLandauParameters()
 
@@ -81,13 +81,13 @@ for t = START, END do
 		end
 	end
 
-	stats = simulation:stats()
-	print("ENERGY\t= ", stats.kin_energy)
-	print("MASS\t= ", simulation:mass())
+	--stats = simulation:stats()
+	--print("ENERGY\t= ", stats.kin_energy)
+	--print("MASS\t= ", simulation:mass())
 
 	if math.mod(t, FREQ) == 0 then
-		render(ordering2rgb, simulation, t)
---		simulation:dump(make_filename(t, ".h5"))
+--		render(ordering2rgb, simulation, t)
+		simulation:dump(make_filename(t, ".h5"))
 	end
 end
 
