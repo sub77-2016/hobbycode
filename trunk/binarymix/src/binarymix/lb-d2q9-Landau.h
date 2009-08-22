@@ -38,10 +38,10 @@ lb_d2q9_Landau* lb_d2q9_Landau_new(int nx, int ny, int py);
 void lb_d2q9_Landau_destroy(lb_d2q9_Landau*);
 
 LBPartitionInfo* lb_d2q9_Landau_partition_info(const lb_d2q9_Landau*);
-//void LBD2Q9VdW_partition_info(const LBD2Q9VdW*, LBPartitionInfo*);
+/*//void LBD2Q9VdW_partition_info(const LBD2Q9VdW*, LBPartitionInfo*);*/
 
 void lb_d2q9_Landau_set_parameters(lb_d2q9_Landau*, const LBLandauParameters*);
-//void LBD2Q9VdW_get_parameters(const LBD2Q9VdW*, LBVdWParameters*);
+/*//void LBD2Q9VdW_get_parameters(const LBD2Q9VdW*, LBVdWParameters*);*/
 LBLandauParameters* lb_d2q9_Landau_get_parameters(const lb_d2q9_Landau*);
 
 void lb_d2q9_Landau_set_walls_speed(lb_d2q9_Landau*, double top, double bottom);
@@ -57,10 +57,10 @@ void lb_d2q9_Landau_set_equilibrium(lb_d2q9_Landau*);
 void lb_d2q9_Landau_advance(lb_d2q9_Landau*);
 void lb_d2q9_Landau_dump(const lb_d2q9_Landau*, const char* filename);
 
-//void LBD2Q9VdW_stats(const LBD2Q9VdW*, LBD2Q9VdWStats*);
+/*//void LBD2Q9VdW_stats(const LBD2Q9VdW*, LBD2Q9VdWStats*);*/
 LBD2Q9LandauStats* lb_d2q9_Landau_stats(const lb_d2q9_Landau*);
 
-// remove this
+/*// remove this*/
 double lb_d2q9_Landau_mass(const lb_d2q9_Landau*);
 
 LB_END_DECLS
