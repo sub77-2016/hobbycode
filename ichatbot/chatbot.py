@@ -24,10 +24,10 @@ from datetime import datetime
 import aiml
 import marshal
 
-loginemail="duckybot@live.com" # MSN account that robot will login to
-loginpassword="97HSHN" # account password
-botname="DuckyBot" # Robot's MSN nickname
-admin_email="waipot@live.com" # emailaddress for admin the robot
+loginemail="mybot@email.address" # MSN account that robot will login to
+loginpassword="msnpassword" # account password
+botname="mychatbot" # Robot's MSN nickname
+admin_email="mymsn@email.com" # emailaddress for admin the robot
 
 # ==== normally nothing needs to be changed below ====
 
