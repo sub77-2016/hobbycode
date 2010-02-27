@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
 twitterbot
 
@@ -98,10 +99,10 @@ class TwitterBot(object):
     def __init__(self, configFilename):
         self.configFilename = configFilename
         self.config = load_config(self.configFilename)
-        self.irc = irclib.IRC()
-        self.irc.add_global_handler('privmsg', self.handle_privmsg)
-        self.irc.add_global_handler('ctcp', self.handle_ctcp)
-        self.ircServer = self.irc.server()
+        #self.irc = irclib.IRC()
+        #self.irc.add_global_handler('privmsg', self.handle_privmsg)
+        #self.irc.add_global_handler('ctcp', self.handle_ctcp)
+        #self.ircServer = self.irc.server()
         self.twitter = Twitter(
             self.config.get('twitter', 'email'),
             self.config.get('twitter', 'password'))
@@ -112,6 +113,7 @@ class TwitterBot(object):
 
     def check_statuses(self):
         debug("In check_statuses")
+	#print "In check_statuses"
         try:
             updates = self.twitter.statuses.friends_timeline()
         except Exception, e:
@@ -119,10 +121,16 @@ class TwitterBot(object):
             traceback.print_exc(file=sys.stderr)
             return
         
+	#print updates
         nextLastUpdate = self.lastUpdate
         for update in updates:
+            #print u"test"
             crt = parse(update['created_at']).utctimetuple()
+            #text = (htmlentitydecode(update['text'].replace('\n', ' ')).encode('utf-8', 'replace'))
+            #print crt, self.lastUpdate 
             if (crt > self.lastUpdate):
+ 	    #if (True):
+                #print "test"
                 text = (htmlentitydecode(
                     update['text'].replace('\n', ' '))
                     .encode('utf-8', 'replace'))
@@ -130,20 +138,28 @@ class TwitterBot(object):
                 # Skip updates beginning with @
                 # TODO This would be better if we only ignored messages
                 #   to people who are not on our following list.
+
                 if not text.startswith("@"):
-                    self.privmsg_channel(
-                        u"=^_^=  %s%s%s %s" %(
-                            IRC_BOLD, update['user']['screen_name'],
-                            IRC_BOLD, text.decode('utf-8')))
+                    print u"%s: %s" %(
+                            update['user']['screen_name'],
+                            text.decode('utf-8'))
+                    #self.privmsg_channel(
+                    #    u"=^_^=  %s%s%s %s" %(
+                    #        IRC_BOLD, update['user']['screen_name'],
+                    #        IRC_BOLD, text.decode('utf-8')))
+		    #pass
                 
                 nextLastUpdate = crt
             else:
                 break
+
         self.lastUpdate = nextLastUpdate
+	#print "In check_statuses"
         
     def process_events(self):
         debug("In process_events")
-        self.irc.process_once()
+        #self.irc.process_once()
+	#print "In process_events"
     
     def handle_privmsg(self, conn, evt):
         debug('got privmsg')
@@ -220,11 +236,11 @@ class TwitterBot(object):
                     userNick, name))
     
     def run(self):
-        self.ircServer.connect(
-            self.config.get('irc', 'server'), 
-            self.config.getint('irc', 'port'),
-            self.config.get('irc', 'nick'))
-        self.ircServer.join(self.config.get('irc', 'channel'))
+        #self.ircServer.connect(
+            #self.config.get('irc', 'server'), 
+            #self.config.getint('irc', 'port'),
+            #self.config.get('irc', 'nick'))
+        #self.ircServer.join(self.config.get('irc', 'channel'))
 
         while True:
             try:
@@ -278,3 +294,7 @@ def main():
 
     bot = TwitterBot(configFilename)
     return bot.run()
+
+if __name__ == "__main__":
+	main()
+
