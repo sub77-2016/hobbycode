@@ -57,7 +57,7 @@ int automate = 0;
 #define A -1
 #define B 1
 #define K 0.9
-#define Amp 0.01
+#define Amp 0.001
 
 double lambda = 0.001, s = 0.1, PARAM = 0;
 double r_zero[2] = {0.,0.};
