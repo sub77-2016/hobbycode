@@ -7,7 +7,6 @@ This latest version works with:
  * newlib-1.16.0
  * insight-6.8
 
-
 To install
 
 1. Download the latest installer gnu-arm-installer-v0.1.tar.gz and then extract by typing:
@@ -26,14 +25,7 @@ and type these commands:
 cd gnu-arm-installer
 ./gnu-arm-installer.sh
 
-
 The installer will extract and compile all of the source files automatically. If it is successful, you will get the toolchain in install/ directory.
-
-Support forum:
-http://forum.mcuprogramming.com/arm/gnu-arm-toolchain-installer/0/
 
 License: 
 GPL v3 (http://www.gnu.org/copyleft/gpl.html)
-
-Maintained by: Waipot Ngamsaad (waipot@ngamsaad.name)
-
